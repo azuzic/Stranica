@@ -14,6 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="style.css">
     <!--JS-->
@@ -81,7 +82,7 @@
             <a class="inactive" href="Inkscape.html">Inkscape</a>
             <a class="active">Gimp</a>
             <a class="inactive" href="SEL.html">Serial&nbspExperiments&nbspLain</a>
-            <a class="inactive" href="Audacity.html">Audacity</a>
+            <a class="inactive" href="Reaper.html">Reaper</a>
             <a class="inactive" href="OpenShot.html">OpenShot&nbspVideo&nbspEditor</a>
             <a class="inactive" href="Kontakt.html">Kontakt</a>
           </div>
@@ -97,26 +98,131 @@
               <h2 class="text-center text-light projekt-naslov-h2">
                   Projekt iz multimedijalnih sustava
               </h2>
-              <br>
-              <h4 class="text-center text-light">
-                  Dobro došli na moju web stranicu
-              </h4>
               <br> <br>
                 <div class="container-fluid col-12 text-area2">
-                    <p class="text-light text-area">
-                      Ova stranica je napravljena za projekt iz kolegija multimedijalni sustavi.
-                      <br>
-                      Izrađena je pomoću programa Atom i GitHub koristeći HTML, CSS, JavaScript te Bootstrap i JQuery library.
-                      <br>
-                      <br>
-                      Zadatak nam je bio da za neku temu (u ovom slučaju Serial Experiment Lain) uz pomoć različitih alata
-                      za izradu reklama za tisak ili brošura, za uređivanje i obradu fotografija, za kreiranje i obradu grafičkih
-                      elemenata vektorske grafike i/ili animcaija, za snimanje i obradu audio sadržaja, za uređivanje i
-                      sastavljanje videozapisa napravimo svoje slike, grafike, zvuk kojima ćemo predstaviti našu temu.
-                      <br>
-                      <br>
-                      Svaki uradak ćemo korak po korak opisivati postupak izrade u svakome od alata te će se nalaziti u svojoj zasebnoj kartici.
+                    <p class="text-justify text-light text-area">
+                      Za grafički dio projekta odabrao sam kreiranje i obradu grafičkih elemenata vektorske grafike.
+                      Koristio sam program Inkscape, pomoću kojega sam rekreirao The Knowledge Navigator ili NAVI logo iz serije Serial Experiments Lain.
+                      <br><br>
+                      Cijeli proces je bio dugotrajan, no nije bio kompliciran. Ima puno koraka koji se ponavljaju i ogroman broj "tweaking" to jest puno
+                      malih podešavanja, namještavanja, micanja određenih elemenata.
+                      <br><br>
+                      Dolje je prikazan gotov logo i cijeli opisani postupak zajedno sa videom gdje je prikazan cijeli postupak ubrzan (timelapse).
                     </p>
+                    <br>
+                    <h1 class="text-center text-light projekt-naslov-h2 display-4 pt-4">
+                      SLIKE
+                    </h1>
+                    <br>
+                    <!--IMAGES----------------------------------------------------------------------------------------------------------->
+                    <div class="row m-0 p-0">
+
+                        <div class="container-fluid col-12 text-center text-light projekt-naslov-h3 pt-4">
+                          Train Station
+                        </div>
+
+                        <div class="column m-0">
+                          <img class="shadow" src="foto\Train station - no train.png" alt="Train station" style="width:100%" onclick="myFunction(this);">
+                        </div>
+                        <div class="column m-0">
+                          <img class="shadow" src="foto\Train station - Lain.png" alt="Lain at Train Station" style="width:100%" onclick="myFunction(this);">
+                        </div>
+
+                        <div class="container m-0 p-1">
+                          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                          <img class="shadow" id="expandedImg" style="width:100%">
+                          <div id="imgtext"></div>
+                        </div>
+
+                        <div class="container-fluid col-12 text-center text-light projekt-naslov-h3 pt-4">
+                          Train Passing By
+                        </div>
+
+                        <div class="column m-0">
+                          <img class="shadow" src="foto\Train station - train passing.png" alt="Train Passing By" style="width:100%" onclick="myFunction1(this);">
+                        </div>
+                        <div class="column m-0">
+                          <img class="shadow" src="foto\Train station - Lain Wind.png" alt="Lain Windy" style="width:100%" onclick="myFunction1(this);">
+                        </div>
+
+                        <div class="container m-0 p-1">
+                          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                          <img class="shadow" id="expandedImg1" style="width:100%">
+                          <div id="imgtext1"></div>
+                        </div>
+                    </div>
+
+                    <!--IMAGES----------------------------------------------------------------------------------------------------------->
+                    <br>
+                    <button href="#logo1" class="btn btn-custom mt-4 mb-4 mt-4 mx-auto d-block text-light" style="font-size:30px;" data-toggle="collapse">
+                      POSTUPAK
+                    </button>
+                    <br>
+                    <div id="logo1" class="collapse container-fluid col-12 p-0">
+                      <p class="text-justify text-light text-area">
+                        <h1 class="text-center text-light mb-4 projekt-naslov-h2">
+                          POSTUPAK IZRADE
+                        </h1>
+                        <ul class="text-justify ul-custom rounded p-4">
+                          <li>Prvo kad sam otvorio Inkscape na gornjem <b>Menu</b> sam odabrao <b>Layer</b> i otvorio <b>Layers...</b> da mi se sa desne strane stvori prikaz <b>Layers</b></li>
+                          <li>Na <b>Layers</b> sam kliknuo znak <b>+</b> da stvorim novi <b>Layer</b> koji sam nazvao <i>Background</i> u kojem sam zalijepio <i>"reference"</i> sliku po kojoj ću raditi logo,
+                          zatim sam stavio opacity na 50% i <i>zaključao</i> layer pritiskon na ikonicu <b>lokota</b></li>
+                          <li>Opet sam kliknuo znak <b>+</b> da stvorim drugi layer koji se nalazi iznad prvog na kojem ću raditi logo te sam ga nazvao <i>Vector Navi Logo</i> </li>
+                          <li>Na <b>Toolbox-u</b> na lijevoj strani odabrao sam <b>Krug</b> koji sam stavio na sredinu <b>Canvas-a</b> te koristeći <b>CTRL</b> sam ga povečao da sadrži pravilan oblik</li>
+                          <li>Kliknuo sam desnim klikom na njega da se stvori <b>Dropdown Menu</b> na kojem sam odabrao <b>Fill and Stroke...</b>, zatim se pojavio sa desne strane novi menu <b>Fill and Stroke</b> na kojem sam
+                          odabrao <b>Fill</b> gdje sam za krug odabrao bijelu boju koristeći <b>RGB Colour Palete</b>, zatim sam kliknuo <b>Stroke paint</b> gdje sam odabrao crnu boju te sam kliknuo na <b>Stroke style</b>
+                           gdje sam stavio debljinu ruba na 1.000</li>
+                          <li>Zatim sam kopirao krug dva puta i uvećao ih, nakon toga sam ih stavio iza prvog kruga tako što sam kliknuo na <b>Lower selection one step</b> koji se nalazi na
+                          <b>Tool Controls Bar</b></li>
+                          <li>Označio sam oba kruga i na gornjem <b>Menu</b> sam odabrao <b>Path</b> i kliknuo <b>Difference</b> i dobio sam <i>"donut"</i> oblik </li>
+                          <li>Na <b>Toolbox-u</b> na lijevoj strani odabrao sam <b>Kvadrat</b> koji sam stavio na donji dio novodobivenog oblika</li>
+                          <li>Označio sam kvadrat i "donut" oblik te na <b>Menu</b> sam odabrao <b>Path</b> i kliknuo <b>Difference</b> izrezavši kvadrasti oblik u "donut" obliku </li>
+                          <li>Na <b>Toolbox-u</b> na lijevoj strani odabrao sam <b>Draw Bezier curves</b> alat pomoću kojeg sam napravio <i>Candy cane</i> oblik </li>
+                          <li>Kad sam napravio željeni oblik Na <b>Toolbox-u</b> na lijevoj strani odabrao sam <b>Edit paths by nodes</b> alat pomoću kojeg sam ispravljao greške,
+                          izravnavao i poboljšavao linije</li>
+                          <li>Zatim sam kopirao "Candy cane" oblik te ga zrcalio tako što sam kliknuo na <b>Flip selected object horizontally</b> koji se nalazi na
+                          <b>Tool Controls Bar</b></li>
+                          <li>Nakon što sam ga stavio na suprotnu stranu odabrao sam sve oblike koje imam, kliknuo sam desnim klikom da se stvori <b>Dropdown Menu</b> na kojem sam odabrao <b>Group</b> </li>
+                          <li>Zatim koristeći <b>Join selected nodes</b>, <b>Make selected nodes smooth</b> opcije na <b>Tool Controls Bar</b> izravnao sam i ispravio linije</li>
+                          <li>Na <b>Toolbox-u</b> na lijevoj strani odabrao sam <b>Krug</b> te sam postavio tri kruga na tri strane trokuta u crvenoj boji</li>
+                          <li>Na <b>Toolbox-u</b> na lijevoj strani odabrao sam <b>Draw Bezier curves</b> alat pomoću kojeg sam napravio <i>"Boomerang"</i> oblik </li>
+                          <li>Kad sam napravio željeni oblik Na <b>Toolbox-u</b> na lijevoj strani odabrao sam <b>Edit paths by nodes</b> alat pomoću kojeg sam ispravio greške,
+                          izravnavao i poboljšao linije</li>
+                          <li>Zatim sam kopirao "Boomerang" oblik te ga zrcalio tako što sam kliknuo na <b>Flip selected object horizontally</b> koji se nalazi na
+                          <b>Tool Controls Bar</b> i stavio ga na suprotnu stranu</li>
+                          <li>Napravio sam još jedan veliki krug i jedan manji koje sam stavio iza svih oblika tako što sam kliknuo na <b>Lower selection to bottom</b> koji se nalazi na
+                          <b>Tool Controls Bar</b></li>
+                          <li>Označio sam oba kruga i na gornjem <b>Menu</b> sam odabrao <b>Path</b> i kliknuo <b>Difference</b> i dobio sam još jedan <i>"donut"</i> oblik </li>
+                          <li>Isti postupak sam opet ponovio samo sa manjim krugovima</li>
+                          <li>Označio sam sve oblike te kliknuo desnim klikom na njih da se stvori <b>Dropdown Menu</b> na kojem sam odabrao <b>Fill and Stroke...</b>, zatim se pojavio sa desne strane menu <b>Fill and Stroke</b> na kojem sam
+                          odabrao <b>Stroke paint</b> gdje sam odabrao crnu boju te sam kliknuo na <b>Stroke style</b>
+                          gdje sam stavio debljinu ruba na 0.600 za sve</li>
+                          <li>Za četiri kruga sam odabrao <i>svijetloplavu/bijelu</i> boju dok sam za "Boomerang" oblike i "custom" oblik u sredini odabrao <i>svijetloplavu</i> boju</li>
+                          <li>Zatim sam sve oblike kopirao i postavio ih iza samih sebe tako što sam nekoliko puta kliknuo na <b>Lower selection one step</b> koji se nalazi na
+                          <b>Tool Controls Bar</b></li>
+                          <li>Kliknuo sam desnim klikom na njih da se stvori <b>Dropdown Menu</b> na kojem sam odabrao <b>Fill and Stroke...</b>, zatim na desnoj strani na menu <b>Fill and Stroke</b> sam
+                          odabrao <b>Stroke paint</b> gdje sam im potamnio boju i povećao <b>Blur</b> da dobijem <i>"Glow"</i> efekt </li>
+                          <li>Nakon što sam dobio željene efekte na <b>Toolbox-u</b> na lijevoj strani odabrao sam <b>Create and edit text object</b> te sam stavio text ispod logotipa</li>
+                          <li>Na <b>Tool Controls Bar</b> sam kliknuo na <b>Select Font Family</b> i odabrao sam <i>Elephant</i> font i kliknuo sam na <b>Font size</b> i stavio na 30pt </li>
+                          <li>Dva puta sam brzo kliknu na tekst da se pojave <b>strelice</b> kojima sam tekst ukosio u desno </li>
+                          <li>Zatim sam stavio još jedan manji tekst ispod</li>
+                          <li>Zatim sam oba teksta kopirao i postavio ih iza samih sebe tako što sam nekoliko puta kliknuo na <b>Lower selection one step</b> koji se nalazi na
+                          <b>Tool Controls Bar</b></li>
+                          <li>Kliknuo sam desnim klikom na oba teksta da se stvori <b>Dropdown Menu</b> na kojem sam odabrao <b>Fill and Stroke...</b>, zatim na desnoj strani na menu <b>Fill and Stroke</b> sam
+                          odabrao <b>Stroke paint</b> gdje sam im promijenio boju i povećao <b>Blur</b> da dobijem <i>"Glow"</i> efekt </li>
+                          <li>Odabrao sam sve oblike te sam kliknuo desnim klikom da se stvori <b>Dropdown Menu</b> na kojem sam odabrao <b>Group</b> </li>
+                          <li>Na kraju sam na gornjem <b>Menu</b> sam odabrao <b>Edit</b> i kliknuo <b>Resize Page to Selection</b> da se <b>Canvas</b> smanji na veličinu selekcije </li>
+                          <li>Spremio sam projekt na način da sam na gornjem <b>Menu</b> odabrao <b>File</b> i kliknuo <b>Save As..</b></li>
+                        </ul>
+                      </p>
+                      <br>
+                      <h1 class="text-center text-light projekt-naslov-h2 mb-4">
+                        TIMELAPSE VIDEO
+                      </h1>
+                      <iframe controls class="mx-auto d-block mb-5 video_size" allow="fullscreen"
+                        src="https://www.youtube.com/embed/tuLxDHw1MV8">
+                      </iframe>
+                    </div>
                 </div>
           </div>
           <!--TEXT AREA----------------------------------------------------------------------------------------------------------->
@@ -171,6 +277,22 @@
 
         </div>
 <!--SIDE------------------------------------------------------------------------->
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+function myFunction1(imgs) {
+  var expandImg = document.getElementById("expandedImg1");
+  var imgText = document.getElementById("imgtext1");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
   </body>
 <!--BODY------------------------------------------------------------------------->
 </html>
