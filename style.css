@@ -2,15 +2,39 @@
   font-family: Courier, monospace;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   background-image: url(foto/background2.gif);
   background-color: grey;
   background-size: 100%;
   background-repeat: repeat-y;
+  overflow-x: hidden;
+}
+
+.text-black {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+a.text-black:hover {
+  color: white;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-grey {
+  background-color: rgba(36,36,36);
+}
+
+.bg-static {
+  background-image: url(foto/static.gif);
+  background-size: 100%;
+  background-repeat: repeat-y;
+}
+
+hr {
+  border-top: 4px dashed white;
 }
 
 .naslov {
@@ -31,7 +55,7 @@ body {
 /* Style the navigation menu */
 .navbar {
   width: 100%;
-  background-color:rgba(41,33,48,1);
+  background-color:black;
   overflow: auto;
   border-top: black solid 4px;
   border-bottom: black solid 4px;
@@ -53,23 +77,24 @@ body {
 
 /* Add a background color on mouse-over */
 .navbar a.inactive:hover {
-  background-color: #25122f !important;
-  border: rgba(61,25,75,1) solid 2px;
-  color: rgba(206,162,250,1);
+  background-color: darkgray !important;
+  border: white solid 2px;
+  color: black;
+  font-weight: bold;
 }
 
 /* Style the current/active link */
 .navbar a.active {
-  background-color: rgba(152,134,204,1);
-  border: rgba(71,23,91,1) solid 2px;
-  color: rgba(32,0,64,1);
+  background-color: gray;
+  border: white solid 2px;
+  color: black;
   font-weight: bold;
 }
 
 /* Style the inactive links */
 .navbar a.inactive {
-  background-color: rgba(63,57,82,1);
-  border: rgba(95,53,112,1) solid 2px;
+  background-color: black;
+  border: white solid 2px;
 }
 
 /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
@@ -91,20 +116,21 @@ body {
     text-align: left; /* If you want the text to be left-aligned on small screens */
   }
 }
-
-.blackb {
-  background-color: black;
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .text-area {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
-.text-area {
-  background-color: rgba(36,36,36);
+@media screen and (max-width: 800px) {
+  .text-area {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
 }
-
-.text-area2 {
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
+/*-------------------------------------*/
 .border-area {
   border-left: 2px black solid;
   border-right: 2px black solid;
@@ -118,23 +144,45 @@ body {
   border-right: 2px black solid;
   border-top: 2px black solid;
   border-radius: 4px;
-  background-color:rgba(41,33,48,1);
+  background-color:gray;
 }
 
 .border-color {
   border-left: 2px black solid;
-  border-color: white;
+  border-color: black;
 }
 
-.projekt-naslov-h1 {
-  font-weight: bold;
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .projekt-naslov-h1 {
+    font-weight: bold;
+    font-size: 70px;
+  }
 }
 
-.projekt-naslov-h2 {
-  font-weight: bold;
+@media screen and (max-width: 800px) {
+  .projekt-naslov-h1 {
+    font-weight: bold;
+    font-size: 60px;
+  }
+}
+/*-------------------------------------*/
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .projekt-naslov-h2 {
+    font-weight: bold;
+    font-size: 50px;
+  }
 }
 
-/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 800px) {
+  .projekt-naslov-h2 {
+    font-weight: bold;
+    font-size: 40px;
+  }
+}
+/*-------------------------------------*/
+/*-------------------------------------*/
 @media screen and (min-width: 800px) {
   .projekt-naslov-h3 {
     font-weight: bold;
@@ -142,29 +190,26 @@ body {
   }
 }
 
-/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
 @media screen and (max-width: 800px) {
   .projekt-naslov-h3 {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px;
   }
 }
-
-hr {
-  border-top: 4px dashed black;
-}
+/*-------------------------------------*/
 
 .btn-custom {
-  background-color: rgba(63,57,82,1);
-  border: rgba(95,53,112,1) solid 2px;
-  color: white;
+  background-color: darkgray;
+  border: black solid 2px;
+  color: black;
   font-size: 100%;
 }
 
 button.btn-custom:hover {
-  background-color: #25122f !important;
-  border: rgba(61,25,75,1) solid 2px;
-  color: rgba(206,162,250,1) !important;
+  background-color: gray !important;
+  border: white solid 2px;
+  color: black !important;
+  font-weight: bold;
 }
 
 .ul-custom  {
@@ -191,11 +236,6 @@ button.btn-custom:hover {
 /*button size*/
 .button-size {
   width:100%;
-}
-
-/*background black*/
-.bg-black {
-  background-color: black;
 }
 
 /*image----------------------------------------------------*/
