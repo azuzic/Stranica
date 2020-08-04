@@ -3,11 +3,21 @@
 }
 
 body {
-  background-image: url(foto/background2.gif);
+  background-image: url(foto/background.gif);
   background-color: grey;
   background-size: 100%;
   background-repeat: repeat-y;
   overflow-x: hidden;
+}
+
+.fix {
+  font-size: 0px;
+  background-color: black;
+}
+
+.border-image {
+  border: white 2.5px solid;
+  border-radius: 5px;
 }
 
 .text-black {
@@ -46,76 +56,6 @@ hr {
   border-left: black solid 4px;
   border-right: black solid 4px;
 }
-
-/* Style the navigation menu */
-.navbardiv {
-  background-color:black;
-}
-
-/* Style the navigation menu */
-.navbar {
-  width: 100%;
-  background-color:black;
-  overflow: auto;
-  border-top: black solid 4px;
-  border-bottom: black solid 4px;
-  border-radius: 8px;
-  border: 2px black solid;
-  border-radius: 4px;
-}
-
-/* Navigation links */
-.navbar a {
-  float: left;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 17px;
-  width: 25%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
-  text-align: center; /* If you want the text to be centered */
-}
-
-/* Add a background color on mouse-over */
-.navbar a.inactive:hover {
-  background-color: darkgray !important;
-  border: white solid 2px;
-  color: black;
-  font-weight: bold;
-}
-
-/* Style the current/active link */
-.navbar a.active {
-  background-color: gray;
-  border: white solid 2px;
-  color: black;
-  font-weight: bold;
-}
-
-/* Style the inactive links */
-.navbar a.inactive {
-  background-color: black;
-  border: white solid 2px;
-}
-
-/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
-@media screen and (max-width: 1600px) {
-  .navbar a {
-    float: none;
-    display: block;
-    width: 50%;
-    text-align: left; /* If you want the text to be left-aligned on small screens */
-  }
-}
-
-/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
-@media screen and (max-width: 600px) {
-  .navbar a {
-    float: none;
-    display: block;
-    width: 100%;
-    text-align: left; /* If you want the text to be left-aligned on small screens */
-  }
-}
 /*-------------------------------------*/
 @media screen and (min-width: 800px) {
   .text-area {
@@ -131,14 +71,6 @@ hr {
   }
 }
 /*-------------------------------------*/
-.border-area {
-  border-left: 2px black solid;
-  border-right: 2px black solid;
-  border-top: 2px black solid;
-  border-bottom: 2px black solid;
-  border-radius: 4px;
-}
-
 .border-area2 {
   border-left: 2px black solid;
   border-right: 2px black solid;
@@ -197,20 +129,6 @@ hr {
   }
 }
 /*-------------------------------------*/
-
-.btn-custom {
-  background-color: darkgray;
-  border: black solid 2px;
-  color: black;
-  font-size: 100%;
-}
-
-button.btn-custom:hover {
-  background-color: gray !important;
-  border: white solid 2px;
-  color: black !important;
-  font-weight: bold;
-}
 
 .ul-custom  {
   background-color: rgba(200,195,214,1);
@@ -297,3 +215,144 @@ button.btn-custom:hover {
   font-size: 20px;
 }
 /*image----------------------------------------------------*/
+
+a.inactive{
+    display: inline-block;
+    color: #03e9f4;
+    text-decoration: none;
+    height: 50px;
+    transition: 0.5s;
+    overflow: hidden;
+    text-align: center !important;
+    padding: 12px;
+    font-size: 18px;
+}
+a.active{
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    background: #03e9f4;
+    text-decoration: none;
+    transition: 0.5s;
+    overflow: hidden;
+    text-align: center !important;
+    padding: 12px;
+    font-size: 20px;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 200px #03e9f4;
+}
+
+a.inactive:hover{
+    background: #03e9f4;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 200px #03e9f4;
+}
+a:nth-child(1){
+    filter: hue-rotate(45deg);
+}
+a:nth-child(2){
+    filter: hue-rotate(90deg);
+}
+a:nth-child(3){
+    filter: hue-rotate(135deg);
+}
+a:nth-child(4){
+    filter: hue-rotate(180deg);
+}
+a:nth-child(5){
+    filter: hue-rotate(225deg);
+}
+a:nth-child(6){
+    filter: hue-rotate(270deg);
+}
+a:nth-child(7){
+    filter: hue-rotate(315deg);
+}
+a:nth-child(8){
+    filter: hue-rotate(360deg);
+}
+a span{
+    position: absolute;
+    display: block;
+}
+a span:nth-child(1){
+    bottom: 0;
+    right: 0;
+    width: 25%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent,#03e9f4);
+    animation: animate3 2s linear infinite;
+    animation-delay: 0s;
+}
+@keyframes animate3{
+    0%{
+        right: -100%;
+    }
+    50%,100%{
+        right: 100%;
+    }
+}
+a span:nth-child(2){
+    bottom: 0;
+    right: 0;
+    width: 25%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#03e9f4);
+    animation: animate2 2s linear infinite;
+    animation-delay: 1;
+}
+@keyframes animate2{
+    50%,100%{
+        left: 100%;
+    }
+    0%{
+        left: -100%;
+    }
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (min-width: 800px) {
+  a.inactive2{
+      width: 35%;
+      font-size: 35px;
+      position: relative;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      transition: 0.5s;
+      overflow: hidden;
+      text-align: center !important;
+  }
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 800px) {
+  a.inactive2{
+      width: 50%;
+      font-size: 35px;
+      position: relative;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      transition: 0.5s;
+      overflow: hidden;
+      text-align: center !important;
+  }
+}
+
+a.inactive2:hover{
+    background: white;
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 0 5px white,
+                0 0 25px white,
+                0 0 50px white,
+                0 0 200px white;
+}
