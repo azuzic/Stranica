@@ -29,6 +29,11 @@ a.text-black:hover {
   color: white;
 }
 
+.bg-card {
+  color: black;
+  background-color:gray;
+}
+
 .bg-black {
   background-color: black;
 }
@@ -81,6 +86,7 @@ hr {
   }
 }
 /*-------------------------------------*/
+
 .border-area2 {
   border-left: 2px black solid;
   border-right: 2px black solid;
@@ -89,9 +95,19 @@ hr {
   background-color:gray;
 }
 
-.border-color {
-  border-left: 2px black solid;
-  border-color: black;
+
+/*-------------------------------------*/
+@media screen and (min-width: 767px) {
+  .border-color {
+    border-left: 2px black solid;
+    border-color: black;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .border-color {
+    border-top: 2px black solid;
+    border-color: black;
 }
 
 /*-------------------------------------*/
@@ -155,7 +171,21 @@ hr {
     height: 250px;
   }
 }
+/*-------------------------------------*/
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (min-width: 800px) {
+  .image-size {
+    width: 50%;
+  }
+}
 
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 800px) {
+  .image-size {
+    width: 100%;
+  }
+}
+/*-------------------------------------*/
 /*button size*/
 .button-size {
   width:100%;
