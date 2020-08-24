@@ -2,12 +2,17 @@
   font-family: Courier, monospace;
 }
 
-body {
+html,body {
   background-image: url(foto/background.gif);
   background-color: grey;
   background-size: 100%;
   background-repeat: repeat-y;
   overflow-x: hidden;
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 
 .fix {
@@ -30,8 +35,13 @@ a.text-black:hover {
 }
 
 .bg-card {
-  color: black;
-  background-color:gray;
+  color: white;
+  background-color:black;
+  border: white solid 2px;
+  box-shadow: 0 0 0.4px white,
+              0 0 2px white,
+              0 0 4px white,
+              0 0 12px white;
 }
 
 .bg-black {
@@ -71,6 +81,65 @@ hr {
   border-left: black solid 4px;
   border-right: black solid 4px;
 }
+
+.card-button {
+  background-color: black;
+  border: solid white 1px;
+  color: white;
+  font-size: 20px;
+  border-radius: 0px;
+}
+
+.card-button:hover {
+  background-color: white;
+  color: black;
+  font-weight: bolder;
+}
+
+/*-------------------------------------*/
+@media screen and (min-width: 991px) {
+  .card-font {
+    color: white;
+    font-size: 1.5vw;
+  }
+}
+@media screen and (max-width: 991px) {
+  .card-font {
+    color: white;
+    font-size: 2vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card-font {
+    color: white;
+    font-size: 4vw;
+  }
+}
+
+/*-------------------------------------*/
+
+/*-------------------------------------*/
+@media screen and (min-width: 991px) {
+  .card-font2 {
+    color: white;
+    font-size: 1.2vw;
+  }
+}
+@media screen and (max-width: 991px) {
+  .card-font2 {
+    color: white;
+    font-size: 2vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .card-font2 {
+    color: white;
+    font-size: 4vw;
+  }
+}
+
+/*-------------------------------------*/
+
 /*-------------------------------------*/
 @media screen and (min-width: 800px) {
   .text-area {
@@ -108,6 +177,7 @@ hr {
   .border-color {
     border-top: 2px black solid;
     border-color: black;
+  }
 }
 
 /*-------------------------------------*/
@@ -136,7 +206,7 @@ hr {
 @media screen and (max-width: 800px) {
   .projekt-naslov-h2 {
     font-weight: bold;
-    font-size: 40px;
+    font-size: 35px;
   }
 }
 /*-------------------------------------*/
@@ -371,7 +441,7 @@ a.inactive span:nth-child(2){
 @media screen and (max-width: 800px) {
   a.inactive2{
       width: 50%;
-      font-size: 35px;
+      font-size: 25px;
       position: relative;
       background-color: black;
       color: white;
