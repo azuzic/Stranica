@@ -67,7 +67,6 @@ a.text-black:hover {
               0 0 40px white;
 }
 
-
 hr {
   border-top: 4px dashed white;
 }
@@ -94,6 +93,15 @@ hr {
   background-color: white;
   color: black;
   font-weight: bolder;
+}
+
+.btn-danger:hover {
+  color: black !important;
+}
+
+mark {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
 }
 
 /*-------------------------------------*/
@@ -152,6 +160,22 @@ hr {
   .text-area {
     padding-left: 0%;
     padding-right: 0%;
+  }
+}
+/*-------------------------------------*/
+
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .text-area2 {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .text-area2 {
+    margin-left: 0%;
+    margin-right: 0%;
   }
 }
 /*-------------------------------------*/
