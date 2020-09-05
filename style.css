@@ -69,6 +69,10 @@ a.text-black:hover {
   color: white;
 }
 
+a.text-white:hover {
+  color: grey !important;
+}
+
 .bg-card {
   color: white;
   background-color:black;
@@ -82,6 +86,12 @@ a.text-black:hover {
 .icon:hover {
   filter: drop-shadow(0px 0px 2px white)
           drop-shadow(0px 0px 14px white);
+}
+.icon-active {
+  filter: drop-shadow(0px 0px 2px white)
+          drop-shadow(0px 0px 14px white);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .bg-black {
@@ -255,7 +265,7 @@ mark {
 @media screen and (max-width: 800px) {
   .projekt-naslov-h1 {
     font-weight: bold;
-    font-size: 60px;
+    font-size: 45px;
   }
 }
 /*-------------------------------------*/
@@ -317,6 +327,21 @@ mark {
 @media screen and (max-width: 800px) {
   .image-size {
     width: 100%;
+  }
+}
+/*-------------------------------------*/
+/*-------------------------------------*/
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (min-width: 800px) {
+  .image-size2 {
+    width: 40%;
+  }
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 800px) {
+  .image-size2 {
+    width: 80%;
   }
 }
 /*-------------------------------------*/
@@ -594,4 +619,27 @@ a.inactive2 span:nth-child(4){
     50%,100%{
         bottom: 100%;
     }
+}
+
+.social-media{
+    display: flex;
+    justify-content: center;
+}
+
+.glow {
+  color: white;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white;
+  }
+
+  to {
+    text-shadow: 0 0 10px grey, 0 0 15px grey, 0 0 20px grey, 0 0 25px grey, 0 0 30px grey;
+  }
 }

@@ -31,7 +31,7 @@ $(window).scroll(function() {
         $(".navbarfixed").removeClass("change");
     }
 });
-
+ 
 $(window).scroll(function() {
     var intFrameWidth = window.innerWidth;
     var scroll = $(window).scrollTop();
