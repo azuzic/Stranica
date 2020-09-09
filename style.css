@@ -30,20 +30,16 @@ body {
 @media screen and (min-width: 800px) {
   .projekt-naslov-h1 {
     font-weight: bold;
-    font-size: 70px;
-    -webkit-animation: glowtext 1s ease-in-out infinite alternate;
-    -moz-animation: glowtext 1s ease-in-out infinite alternate;
-    animation: glowtext 1s ease-in-out infinite alternate;
+    font-size: 60px;
+    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white, 0 0 128px white;
   }
 }
 
 @media screen and (max-width: 800px) {
   .projekt-naslov-h1 {
     font-weight: bold;
-    font-size: 45px;
-    -webkit-animation: glowtext 1s ease-in-out infinite alternate;
-    -moz-animation: glowtext 1s ease-in-out infinite alternate;
-    animation: glowtext 1s ease-in-out infinite alternate;
+    font-size: 40px;
+    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white, 0 0 128px white;
   }
 }
 
@@ -65,36 +61,11 @@ a {
 a:hover {
   background: #03e9f4;
   color: #050801;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+  box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 200px #03e9f4;
   text-shadow: none;
-}
-
-@-webkit-keyframes glow {
-  from {
-    box-shadow: 0 0 3px #03e9f4,
-      0 0 15px #03e9f4,
-      0 0 40px #03e9f4,
-      0 0 150px #03e9f4;
-  }
-
-  to {
-    box-shadow: 0 0 5px #03e9f4,
-      0 0 25px #03e9f4,
-      0 0 50px #03e9f4,
-      0 0 200px #03e9f4;
-  }
-}
-
-@-webkit-keyframes glowtext {
-  from {
-    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white, 0 0 128px white;
-  }
-
-  to {
-    text-shadow: 0 0 2px white, 0 0 8px white, 0 0 52px white, 0 0 128px white;
-  }
 }
 
 a:nth-child(1) {
