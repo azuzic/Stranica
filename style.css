@@ -20,7 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   background: #050801;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
@@ -42,8 +42,25 @@ body {
     text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white;
   }
 }
-
 /*-------------------------------------*/
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .projekt-naslov-h2 {
+    font-weight: bold;
+    font-size: 40px;
+    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .projekt-naslov-h2 {
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white;
+  }
+}
+/*-------------------------------------*/
+
 a {
   position: relative;
   display: inline-block;
