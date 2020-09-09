@@ -21,7 +21,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 80vh;
-  background: #050801;
+  background-image: url(dark_wood.jpg);
+  background-size: 100%;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
 }
@@ -65,6 +66,7 @@ a {
   position: relative;
   display: inline-block;
   padding: 25px 30px;
+  background-color: rgba(0,0,0,0.6);
   color: #03e9f4;
   text-decoration: none;
   text-transform: uppercase;
@@ -73,6 +75,9 @@ a {
   overflow: hidden;
   margin-right: 50px;
   text-shadow: 0 0 4px #03e9f4, 0 0 16px #03e9f4;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4),
+    0 0 25px rgba(0,0,0,0.8),
+    0 0 100px rgba(0,0,0,1);
 }
 
 a:hover {
