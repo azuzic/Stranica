@@ -31,7 +31,7 @@ body {
   .projekt-naslov-h1 {
     font-weight: bold;
     font-size: 60px;
-    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white, 0 0 128px white;
+    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white;
   }
 }
 
@@ -39,7 +39,7 @@ body {
   .projekt-naslov-h1 {
     font-weight: bold;
     font-size: 40px;
-    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white, 0 0 128px white;
+    text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white;
   }
 }
 
@@ -55,7 +55,7 @@ a {
   letter-spacing: 4px;
   overflow: hidden;
   margin-right: 50px;
-  text-shadow: 0 0 4px #03e9f4, 0 0 8px #03e9f4, 0 0 24px #03e9f4, 0 0 32px #03e9f4;
+  text-shadow: 0 0 4px #03e9f4, 0 0 16px #03e9f4;
 }
 
 a:hover {
@@ -63,8 +63,7 @@ a:hover {
   color: #050801;
   box-shadow: 0 0 5px #03e9f4,
     0 0 25px #03e9f4,
-    0 0 50px #03e9f4,
-    0 0 200px #03e9f4;
+    0 0 100px #03e9f4;
   text-shadow: none;
 }
 

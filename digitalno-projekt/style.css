@@ -1,5 +1,10 @@
 html, body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  min-height: 800px;
+}
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 /*------------------------------------------*/
 @media screen and (min-width: 991px) {
@@ -237,12 +242,12 @@ img.banner:hover{
 
 button.pitanje_button:hover {
     background-color: #dd7850;
-     color:rgb(255, 221, 177); 
+     color:rgb(255, 221, 177);
 }
 
 a.pitanje_button:hover {
     background-color: #dd5550;
-     color:rgb(255, 221, 177); 
+     color:rgb(255, 221, 177);
 }
 
 a.pitanje:hover {
@@ -365,7 +370,7 @@ transition-delay:.2s;
 
 .kat_naz {
   background-color: #dd7850 !important;
-  color:rgb(255, 221, 177); 
+  color:rgb(255, 221, 177);
 }
 
 .content {
@@ -408,7 +413,7 @@ div.page_change:hover {
 
 button.kat_naz:hover {
   background-color: #dd7850 !important;
-  color:rgb(255, 221, 177); 
+  color:rgb(255, 221, 177);
 }
 
 ul.lista {
@@ -441,7 +446,7 @@ audio {
 /*------------------SLIKA-------------------*/
 @media screen and (max-width:990px){
     .proizvod_div {
-      border-top-left-radius: 0px; 
+      border-top-left-radius: 0px;
       border-top-right-radius: 0px;
       border-left: 0px;
       border-right: 0px;
@@ -449,7 +454,7 @@ audio {
 }
 @media screen and (min-width:991px){
     .proizvod_div {
-      border-top-left-radius: 10px; 
+      border-top-left-radius: 10px;
       border-top-right-radius: 10px;
     }
 }
@@ -469,32 +474,32 @@ audio {
 /*-------------------Glavi grid-------------*/
 @media screen and (max-width:990px){
     .proizvod1 {
-      border-left:0px; 
-      border-right:0px; 
+      border-left:0px;
+      border-right:0px;
       border-bottom:0px;
     }
 }
 @media screen and (min-width:991px){
     .proizvod1 {
       border: auto;
-      border-left:0px; 
-      border-top:0px; 
+      border-left:0px;
+      border-top:0px;
       border-bottom:0px;
     }
 }
 
 @media screen and (max-width:990px){
     .proizvod2 {
-      border-left:0px; 
-      border-right:0px; 
-      border-top:0px; 
+      border-left:0px;
+      border-right:0px;
+      border-top:0px;
     }
 }
 @media screen and (min-width:991px){
     .proizvod2 {
       border: auto;
-      border-bottom-left-radius: 10px; 
-      border-bottom-right-radius: 10px; 
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
       border-top:0px;
     }
 }
@@ -514,37 +519,37 @@ audio {
 
 @media screen and (max-width:990px){
     .proizvod12 {
-      border-left:0px; 
-      border-right:0px; 
+      border-left:0px;
+      border-right:0px;
     }
 }
 @media screen and (min-width:991px){
     .proizvod12 {
       border: auto;
-      border-left:0px; 
+      border-left:0px;
       border-right:0px;
     }
 }
 
 @media screen and (max-width:990px){
     .proizvod21 {
-       border:none; 
+       border:none;
        border-top:0px;
     }
 }
 @media screen and (min-width:991px){
     .proizvod21 {
       border: auto;
-      border-left:0px; 
-      border-top:0px; 
+      border-left:0px;
+      border-top:0px;
       border-bottom:0px;
     }
 }
 
 @media screen and (max-width:990px){
     .proizvod22 {
-      border-left:0px; 
-      border-right:0px; 
+      border-left:0px;
+      border-right:0px;
       border-bottom:0px;
     }
 }
@@ -606,7 +611,7 @@ audio {
 @media screen and (max-width: 990px) {
     .info_font_size2 {
       border-left:0px;
-      border-right:0px; 
+      border-right:0px;
       border-bottom:0px;
     }
 }
@@ -615,13 +620,13 @@ audio {
 /*------------------------------------------*/
 @media screen and (min-width: 991px) {
     .info_pad {
-        padding-left:20px; 
+        padding-left:20px;
     }
 }
 
 @media screen and (max-width: 990px) {
     .info_pad {
-        padding-left:20px; 
+        padding-left:20px;
     }
 }
 /*------------------------------------------*/
