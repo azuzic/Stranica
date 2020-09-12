@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: black;
+  background-size: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(../foto/dark_wood.jpg);
+  background-size: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
