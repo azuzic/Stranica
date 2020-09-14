@@ -22,11 +22,11 @@ function eraseCookie(name) {
 }
 
 // Pause and play the video, and change the button text
-function myFunction() {
+function pausevideo() {
   // Get the video
   var video = document.getElementById("myVideo");
   // Get the button
-  var btn = document.getElementById("myBtn");
+  var btn = document.getElementById("myBtn1");
   if (video.paused) {
     video.play();
     btn.innerHTML = "PAUSE VIDEO";
@@ -41,10 +41,10 @@ $(document).ready(function() {
   // Get the video
   var video = document.getElementById("myVideo");
   // Get the button
-  var btn = document.getElementById("myBtn");
+  var btn = document.getElementById("myBtn1");
   // Get the coockie
-  var darkMode = getCookie('video');
-  if (darkMode == "1") {
+  var play = getCookie('video');
+  if (play == "1") {
     video.pause();
     btn.innerHTML = "PLAY VIDEO";
   } else {
@@ -52,3 +52,18 @@ $(document).ready(function() {
     btn.innerHTML = "PAUSE VIDEO";
   }
 });
+
+// Unmute and mute the video, and change the button text
+function unmutevideo() {
+  // Get the video
+  var video = document.getElementById("myVideo");
+  // Get the button
+  var btn = document.getElementById("myBtn2");
+  if (video.muted == true) {
+    $('#myVideo').prop('muted', false);
+    btn.innerHTML = "MUTE VIDEO";
+  } else {
+    $('#myVideo').prop('muted', true);
+    btn.innerHTML = "UNMUTE VIDEO";
+  }
+}

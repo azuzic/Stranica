@@ -30,7 +30,120 @@
     gtag('config', 'UA-166262274-1');
   </script>
 </head>
-
+<!--body-------------------------------------------------------------------------------->
 <body class="row">
-  
+  <div class="alert_box container-fluid text-center m-0 collapse">
+        <p class="alert_box2 bg-light mx-auto d-block">Active box exists!</p>
+  </div>
+  <img src="bg/rain.png" class="images">
+<!--NASLOV---------------------------------------------------->
+  <div class="container-fluid col-12 bg-primary p-4 text-center">
+    <h1>NASLOV</h1>
+  </div>
+<!--NASLOV END------------------------------------------------>
+<!--MENU------------------------------------------------------>
+  <div class="container-fluid col-xl-2 col-sm-4 col-12 bg-dark text-light">
+
+    <h2 class="text-center p-3 bg-danger">SIDE MENU</h2>
+
+    <div class="container-fluid col-12 bg-danger p-4 text-center">
+      OPTION 1
+    </div>
+
+    <div class="container-fluid col-12 bg-danger p-4 text-center">
+      OPTION 2
+    </div>
+
+    <div class="container-fluid col-12 bg-danger p-4 text-center">
+      OPTION 3
+    </div>
+
+    <div class="container-fluid col-12 bg-danger p-4 text-center">
+      OPTION 4
+    </div>
+
+    <div class="container-fluid col-12 bg-danger p-4 text-center">
+      OPTION 5
+    </div>
+
+    <div class="container-fluid col-12 bg-danger p-4 text-center">
+      OPTION 6
+    </div>
+
+  </div>
+<!--MENU END--------------------------------------------------->
+<!--IMAGES----------------------------------------------------->
+  <div class="row container-fluid col-xl-10 col-sm-8 col-12 p-0 m-0">
+    <!--IMAGE ADD---------------------------->
+    <div class="container-fluid p-0 m-0 col-12">
+      <h2 class="text-center p-3 text-light">
+      <a class="text-decoration-none text-left p-0 m-0 plus" onclick="addBox()">
+        &nbsp&nbsp&nbsp&nbsp
+      </a>
+      IMAGES
+      </h2>
+    </div>
+    <!--IMAGE ADD END------------------------>
+    <!--IMAGE BODY--------------------------->
+    <div class="row container-fluid p-2 m-0 col-12 boxes">
+
+<!--
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 p-2">
+        <div class="custom-shadow rounded">
+
+          <div class="container-fluid m-0 custom-border change_image check_image img-pad text-center">
+              <label for="imgname" class="custom-submit">Choose file</label>
+              <input id="imgname" name="file1" type="file" class="collapse"></input>
+              <input type="submit" class="button mt-4 ml-2 custom-submit" onclick="addBoxImage()">
+          </div>
+
+          <div class="container-fluid m-0 text-right">
+
+            <p class="change_naslov pt-2 pl-2 pr-2 text-center">
+              <input id="naslov" placeholder="Naslov" type="text" class="text-center text-light custom-text-input" maxlength="50"></input>
+            </p>
+
+            <p id="new2" class="change_opis pl-2 pr-2 text-light text-center" style="font-weight: normal;">
+              <textarea id="opis" placeholder="Opis" type="text" class="text-center text-light custom-text-input2" maxlength="200" rows="5" cols="25"></textarea>
+            </p>
+
+            <div class="change_index pb-3 text-center">
+              <input id="index" placeholder="index" type="nuber" class="text-center text-light custom-text-input3 mb-3" maxlength="4"></input>
+              <br>
+              <a class="button custom-done" onclick="boxDone()">Done</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 p-2">
+        <div class="custom-shadow rounded">
+
+          <div class="container-fluid m-0 img-pad text-center p-0 change_image_0002">
+            <img id="image_0002" class="rounded" src="foto/0sagiri.jpg" alt="0sagiri.jpg" width="100%">
+          </div>
+
+          <div class="container-fluid m-0 text-right">
+
+            <p class="text-center p-0 m-0 change_naslov_0002">
+            <h3 id="naslov_0002" class=" naslov_0002 p-3 text-light text-center">Sagiri</h3>
+            </p>
+
+            <p id="opis_0002" class="text-light text-center pb-3 opis_0002" style="font-weight: normal;">Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing Amazing</p>
+
+            <div class="pb-3 pt-0 m-0 text-right change_index_0002">
+              <p id="index_0002" class="index_0002 float-left pl-2 text-light">Index: 0001</p>
+              <a id="0002" class="button custom-done pr-2" onclick="boxEdit(this.id)">Edit</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+-->
+    </div>
+    <!--IMAGE BODY END------------------------>
+  </div>
+<!--IMAGES END-------------------------------------------------->
 </body>
+<!--body-------------------------------------------------------------------------------->

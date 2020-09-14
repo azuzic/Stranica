@@ -131,10 +131,19 @@ hr {
   font-size: 4vw;
 }
 
+.carousel-item img {
+  filter: drop-shadow(0px 5px 3px rgba(0,0,0,0.8))
+          drop-shadow(0px 5px 20px rgba(0,0,0,0.6))
+          drop-shadow(0px 5px 80px rgba(0,0,0,0.4));
+}
+
 .middle-body {
   background-color: rgba(36, 36, 36, .81);
   border-left: black solid 4px;
   border-right: black solid 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4),
+    0 0 25px rgba(0,0,0,0.8),
+    0 0 100px rgba(0,0,0,1);
 }
 
 .card-button {

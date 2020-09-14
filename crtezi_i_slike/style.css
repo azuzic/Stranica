@@ -4,20 +4,146 @@ html, body {
   overflow-x: hidden;
 }
 
-body {
-  background-color: black;
-  background-size: 100%;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
 body {
-  background-image: url(../foto/dark_wood.jpg);
-  background-size: 100%;
+  background-color: black;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
+}
+
+.plus {
+  background-image: url("icons/plus.svg");
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.plus:hover {
+  background-image: url("icons/plus_pressed.svg");
+  cursor: pointer;
+}
+
+.img-pad {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  background-color: rgba(180,180,180,0.1);
+}
+
+.custom-shadow {
+  background-color: rgba(180,180,180,0.1);
+  box-shadow: 0 0 2px rgba(0,0,0,0.4),
+    0 0 10px rgba(0,0,0,0.8),
+    0 0 25px rgba(0,0,0,1);
+}
+
+.custom-shadow2 {
+  box-shadow: 0 0 2px rgba(255,0,0,0.4),
+    0 0 10px rgba(255,0,0,0.8),
+    0 0 25px rgba(255,0,0,1);
+}
+
+.alert_box {
+  position: fixed;
+  top: auto;
+
+  z-index: 9999;
+}
+
+.alert_box2 {
+  width: 400px;
+  color: red;
+  font-size: 25px;
+  padding: 20px;
+  border: grey solid 1px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.4),
+    0 0 6px rgba(0,0,0,0.6);
+  margin-top: 25%;
+}
+
+.images {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.custom-border {
+  border: solid rgba(0,0,0,0.6) 1px;
+  border-radius: 6px;
+}
+
+.custom-submit {
+  background-color: rgba(0,0,0,0.4);
+  font-weight: normal !important;
+  border: none;
+  border-radius: 4px;
+  color: darkgray;
+  padding: 6px 12px 6px 12px;
+}
+
+.custom-submit:hover {
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+}
+
+.custom-text-input {
+  background-color: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px 6px 12px;
+  width: 100%;
+}
+
+.custom-text-input2 {
+  background-color: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px 6px 12px;
+  width: 100%;
+}
+
+.custom-text-input3 {
+  background-color: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px 6px 12px;
+  width: 50%;
+}
+
+.custom-text-input:hover, .custom-text-input2:hover, .custom-text-input3:hover {
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+}
+
+.custom-text-input:focus, .custom-text-input2:focus, .custom-text-input3:focus {
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+}
+
+.custom-done {
+  background-color: rgba(0,0,0,0.4);
+  font-weight: normal !important;
+  border: none;
+  border-radius: 4px;
+  color: darkgray !important;
+  padding: 6px 12px 6px 12px;
+}
+
+.custom-done:hover {
+  background-color: rgba(0,0,0,0.6) !important;
+  color: white !important;
+  cursor: pointer;
 }
