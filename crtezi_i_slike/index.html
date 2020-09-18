@@ -33,15 +33,25 @@
 <!--body-------------------------------------------------------------------------------->
 <body class="row">
   <div class="alert_box container-fluid text-center m-0 collapse">
-        <p class="alert_box2 bg-light mx-auto d-block">Active box exists!</p>
+        <p class="alert_box2 mx-auto d-block">Active box exists!</p>
+  </div>
+  <div id="html_code" class="html_box container-fluid text-center collapse">
+        <p class="html_box2 mx-auto d-block">
+          <b style="font-size:35px;">HTML CODE</b>
+          <a class="float-right text-decoration-none exs" onclick="exs()">
+            X
+          </a>
+          <textarea id="placeholder" placeholder="HTML code" type="text" class="text-light custom-text-input4" rows="10" cols="25"></textarea>
+          <button class="button custom-submit2 m-2" onclick="exportCode()">Export</button>
+        </p>
   </div>
   <img src="bg/rain.png" class="images">
 <!--NASLOV---------------------------------------------------->
-  <div class="container-fluid col-12 bg-primary p-4 text-center">
-    <h1>NASLOV</h1>
+  <div class="container-fluid col-12 bg-naslov pt-3 text-center">
+    <p>CRTEŽI I SLIKE</p>
   </div>
 <!--NASLOV END------------------------------------------------>
-<!--MENU------------------------------------------------------>
+<!--MENU
   <div class="container-fluid col-xl-2 col-sm-4 col-12 bg-dark text-light">
 
     <h2 class="text-center p-3 bg-danger">SIDE MENU</h2>
@@ -71,24 +81,32 @@
     </div>
 
   </div>
-<!--MENU END--------------------------------------------------->
+MENU END--------------------------------------------------->
 <!--IMAGES----------------------------------------------------->
-  <div class="row container-fluid col-xl-10 col-sm-8 col-12 p-0 m-0">
+  <div class="row container-fluid col-12 p-0 m-0">
     <!--IMAGE ADD---------------------------->
-    <div class="container-fluid p-0 m-0 col-12">
-      <h2 class="text-center p-3 text-light">
-      <a class="text-decoration-none text-left p-0 m-0 plus" onclick="addBox()">
-        &nbsp&nbsp&nbsp&nbsp
-      </a>
-      IMAGES
-      </h2>
+    <div class="container-fluid p-0 m-0 col-12 bg-tb">
+      <p class="p-2 text-light text-center">
+        <button class="button custom-submit2 m-2" onclick="addBox()">Add Box</button>
+        <button class="button custom-submit2 m-2" onclick="extractCode()">Extract HTML</button>
+        <button class="button custom-submit2 m-2" onclick="addAll()">Add All</button>
+        <button class="button custom-submit2 m-2" onclick="fixAll()">Fix All</button>
+        <button class="button custom-submit2 m-2" onclick="deleteAll()">Delete All</button>
+      </p>
     </div>
     <!--IMAGE ADD END------------------------>
     <!--IMAGE BODY--------------------------->
-    <div class="row container-fluid p-2 m-0 col-12 boxes">
+    <div id="code" class="row container-fluid p-2 m-0 col-12 boxes">
+
+    </div>
+    <!--IMAGE BODY END------------------------>
+  </div>
+<!--IMAGES END-------------------------------------------------->
+</body>
+<!--body-------------------------------------------------------------------------------->
 
 <!--
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 p-2">
+      <div id="boxnumber" class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 p-2">
         <div class="custom-shadow rounded">
 
           <div class="container-fluid m-0 custom-border change_image check_image img-pad text-center">
@@ -111,6 +129,7 @@
               <input id="index" placeholder="index" type="nuber" class="text-center text-light custom-text-input3 mb-3" maxlength="4"></input>
               <br>
               <a class="button custom-done" onclick="boxDone()">Done</a>
+              <a class="button custom-done" onclick="boxDelete()">Delete</a>
             </div>
 
           </div>
@@ -140,10 +159,8 @@
           </div>
         </div>
       </div>
+
+      '<label for="imgname" class="custom-submit">Choose file</label>'+
+      '<input id="imgname" name="file1" type="file" class="collapse"></input>'+
+      '<input type="submit" class="button mt-4 ml-2 custom-submit" onclick="addBoxImage()">'
 -->
-    </div>
-    <!--IMAGE BODY END------------------------>
-  </div>
-<!--IMAGES END-------------------------------------------------->
-</body>
-<!--body-------------------------------------------------------------------------------->

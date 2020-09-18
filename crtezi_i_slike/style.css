@@ -21,21 +21,24 @@ body {
   font-weight: bold;
 }
 
-.plus {
-  background-image: url("icons/plus.svg");
-  background-size: 75%;
-  background-repeat: no-repeat;
-  background-position: center;
+.bg-tr {
+  background-color: rgba(0,0,0,0.7) !important;
 }
-.plus:hover {
-  background-image: url("icons/plus_pressed.svg");
-  cursor: pointer;
+
+.bg-naslov {
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 60px;
 }
 
 .img-pad {
   padding-top: 120px;
   padding-bottom: 120px;
+  padding-left: 0px;
+  padding-right: 0px;
   background-color: rgba(180,180,180,0.1);
+  overflow: hidden;
+  height: 500px;
 }
 
 .custom-shadow {
@@ -54,19 +57,50 @@ body {
 .alert_box {
   position: fixed;
   top: auto;
-
   z-index: 9999;
 }
 
 .alert_box2 {
+  background-color: rgba(0,0,0,0.6);
   width: 400px;
   color: red;
-  font-size: 25px;
+  font-size: 35px;
   padding: 20px;
-  border: grey solid 1px;
+  border: rgba(0,0,0,0.4) solid 1px;
+  border-radius: 4px;
   box-shadow: 0 0 2px rgba(0,0,0,0.4),
-    0 0 6px rgba(0,0,0,0.6);
+    0 0 6px rgba(0,0,0,0.6),
+    0 0 18px rgba(0,0,0,0.8);
   margin-top: 25%;
+  text-shadow: 0 0 2px red, 0 0 8px red;
+}
+
+.html_box {
+  position: fixed;
+  top: auto;
+  z-index: 8999;
+}
+
+.exs {
+  font-size: 25px;
+}
+
+.exs:hover {
+  color: grey !important;
+  cursor: pointer;
+}
+
+.html_box2 {
+  background-color: rgba(0,0,0,0.7);
+  width: 70vw;
+  color: white;
+  padding: 20px;
+  border: rgba(0,0,0,0.4) solid 1px;
+  border-radius: 4px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.4),
+    0 0 6px rgba(0,0,0,0.6),
+    0 0 18px rgba(0,0,0,0.8);
+  margin-top: 20%;
 }
 
 .images {
@@ -83,6 +117,8 @@ body {
 .custom-border {
   border: solid rgba(0,0,0,0.6) 1px;
   border-radius: 6px;
+  overflow: hidden;
+  height: 500px;
 }
 
 .custom-submit {
@@ -94,7 +130,16 @@ body {
   padding: 6px 12px 6px 12px;
 }
 
-.custom-submit:hover {
+.custom-submit2 {
+  background-color: rgba(0,0,0,0.4);
+  font-weight: normal !important;
+  border: none;
+  border-radius: 4px;
+  color: darkgray;
+  padding: 6px 12px 6px 12px;
+}
+
+.custom-submit:hover, .custom-submit2:hover {
   background-color: rgba(0,0,0,0.6);
   color: white;
 }
@@ -123,7 +168,15 @@ body {
   width: 50%;
 }
 
-.custom-text-input:hover, .custom-text-input2:hover, .custom-text-input3:hover {
+.custom-text-input4 {
+  background-color: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px 6px 12px;
+  width: 100%;
+}
+
+.custom-text-input:hover, .custom-text-input2:hover, .custom-text-input3:hover, .custom-text-input4:hover {
   background-color: rgba(0,0,0,0.5);
   color: white;
 }
@@ -131,6 +184,11 @@ body {
 .custom-text-input:focus, .custom-text-input2:focus, .custom-text-input3:focus {
   background-color: rgba(0,0,0,0.7);
   color: white;
+}
+
+.bg-tb{
+  background-color: rgba(0,0,0,0.4);
+  height: 70px;
 }
 
 .custom-done {
@@ -146,4 +204,19 @@ body {
   background-color: rgba(0,0,0,0.6) !important;
   color: white !important;
   cursor: pointer;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.frame {
+    white-space: nowrap;
+    text-align: center; margin: 1em 0;
+}
+
+.relative {
+  position: relative;
 }
