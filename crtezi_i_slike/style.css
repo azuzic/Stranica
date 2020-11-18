@@ -16,13 +16,13 @@ html, body {
 }
 
 body {
-  background-color: black;
+  background-color: grey;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
 }
 
 .bg-tr {
-  background-color: rgba(0,0,0,0.7) !important;
+  background-color: rgba(0,0,0,0.9) !important;
 }
 
 .bg-naslov {
@@ -38,8 +38,50 @@ body {
   padding-right: 0px;
   background-color: rgba(180,180,180,0.1);
   overflow: hidden;
+  height: 250px;
+}
+
+.img-pad2 {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: rgba(180,180,180,0.1);
+  overflow: hidden;
   height: 500px;
 }
+
+.img-pad3 {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: rgba(180,180,180,0.1);
+  overflow: hidden;
+  height: 750px;
+}
+
+.tag-shape, .tag-shape-3{
+  color: black;
+  background-color: rgba(255, 137, 79, 0.5);
+  border-radius: 50px;
+}
+.tag-shape:hover, .tag-shape-3:hover {
+  background-color: rgba(255, 105, 79, 0.8);
+  cursor: pointer;
+}
+
+
+.tag-shape2 {
+  color: black;
+  background-color: rgba(79, 123, 255, 0.5);
+  border-radius: 50px;
+}
+.tag-shape2:hover {
+  background-color: rgba(79, 86, 255, 0.66);
+  cursor: pointer;
+}
+
 
 .custom-shadow {
   background-color: rgba(180,180,180,0.1);
@@ -107,18 +149,30 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
+  -webkit-filter: blur(5px) brightness(75%);
+  -moz-filter: blur(5px) brightness(75%);
+  -o-filter: blur(5px) brightness(75%);
+  -ms-filter: blur(5px) brightness(75%);
+  filter: blur(5px) brightness(75%);
 }
 
 .custom-border {
   border: solid rgba(0,0,0,0.6) 1px;
   border-radius: 6px;
   overflow: hidden;
+  height: 250px;
+}
+.custom-border2 {
+  border: solid rgba(0,0,0,0.6) 1px;
+  border-radius: 6px;
+  overflow: hidden;
   height: 500px;
+}
+.custom-border3 {
+  border: solid rgba(0,0,0,0.6) 1px;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 750px;
 }
 
 .custom-submit {
@@ -165,7 +219,7 @@ body {
   border: none;
   border-radius: 4px;
   padding: 6px 12px 6px 12px;
-  width: 50%;
+  width: 40%;
 }
 
 .custom-text-input4 {
@@ -174,6 +228,14 @@ body {
   border-radius: 4px;
   padding: 6px 12px 6px 12px;
   width: 100%;
+}
+
+.custom-text-input5 {
+  background-color: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px 6px 12px;
+  width: 150px;
 }
 
 .custom-text-input:hover, .custom-text-input2:hover, .custom-text-input3:hover, .custom-text-input4:hover {
@@ -188,7 +250,10 @@ body {
 
 .bg-tb{
   background-color: rgba(0,0,0,0.4);
-  height: 70px;
+}
+
+.bg-tb2{
+  background-color: rgba(0,0,0,0.3);
 }
 
 .custom-done {
@@ -203,6 +268,17 @@ body {
 .custom-done:hover {
   background-color: rgba(0,0,0,0.6) !important;
   color: white !important;
+  cursor: pointer;
+}
+
+.custom-done2 {
+  font-weight: normal !important;
+  color: black !important;
+}
+
+.custom-done2:hover {
+  color: darkred !important;
+  font-weight: bold !important;
   cursor: pointer;
 }
 
