@@ -1,0 +1,34 @@
+hr {
+  border-top: 2px solid black;
+}
+
+.mark {
+  background-color: lightyellow;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+@media screen and (min-width: 991px) {
+  input, select {
+    width: 35% !important;
+  }
+}
+@media screen and (max-width: 991px) {
+  input, select {
+    width: 50% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  input, select {
+    width: 100% !important;
+  }
+}
+
+.delete:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 20px !important;
+}
