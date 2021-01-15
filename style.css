@@ -101,6 +101,9 @@ body {
       0 0 25px rgba(0,0,0,0.8),
       0 0 100px rgba(0,0,0,1);
   }
+  a u {
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -121,6 +124,9 @@ body {
     box-shadow: 0 0 5px rgba(0,0,0,0.4),
       0 0 25px rgba(0,0,0,0.8),
       0 0 100px rgba(0,0,0,1);
+  }
+  a u {
+    font-size: 7px;
   }
 }
 /*-------------------------------------*/

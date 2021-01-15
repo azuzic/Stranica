@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <!--Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projekt iz multimedije - Luka Blašković</title>
+    <!--CSS include-->
+    <link rel="stylesheet" href="style.css">
+    <!--W3C animations-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!--scripts-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <script src="script.js"></script>
+
+      <script>
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+      </script>
+      <link rel = "icon" type ="image/png" href="ikonica.png">
+  </head>
+
+    <body style="background-color:#f6f7f9">
+      <div class="container-fluid p-0">
+
+        <div class="jumbotron text-center m-0" style="background-color:#3f6184;">
+            <h1><b>Zvuk</b></h1>
+            <h3>Reaper</h3>
+        </div><!--Jumbotron Div-->
+
+        <div class="row m-0">
+          <!--Navbar-->
+          <div class="col-lg-12 text-center" style="background-color:#323a45;">
+
+            <nav class="navbar navbar-expand-sm justify-content-center">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="index.html"><i class="fas fa-home fa-2x "></i></a>
+                  <a class="nav-link  mr-3 menu" href="index.html">Početna</a>
+                </li>
+                <li class="nav-item">
+                  <a href="tekst.html"><i class="far fa-file fa-2x " style="color:white;"></i></a>
+                  <a class="nav-link  mr-2 menu" href="tekst.html">Tekst</a>
+                </li>
+                <li class="nav-item">
+                  <a href="slika.html"><i class="fas fa-camera-retro fa-2x" style="color:white;"></i></a>
+                  <a class="nav-link ml-2 mr-2 menu" href="slika.html">Slika</a>
+                </li>
+                <li class="nav-item">
+                  <a href="grafika.html"><i class="fas fa-cube fa-2x" style="color:white;"></i></a>
+                  <a class="nav-link ml-2 mr-2 menu" href="grafika.html">Grafika</a>
+                </li>
+                <li class="nav-item">
+                  <a href="zvuk.html"><i class="fas fa-music fa-2x" style="color:#5faeb6;"></i></a>
+                  <a class="nav-link ml-2 mr-2 menu" href="zvuk.html" style="color:#5faeb6">Zvuk</a>
+                </li>
+                <li class="nav-item">
+                  <a href="video.html"><i class="fas fa-film fa-2x" style="color:white;"></i></a>
+                  <a class="nav-link ml-2 mr-2 menu" href="video.html">Video</a>
+                </li>
+                <li class="nav-item">
+                  <a href="info.html"><i class="fas fa-info fa-2x" style="color:white;"></i></a>
+                  <a class="nav-link ml-2 mr-2 menu" href="info.html">Info</a>
+                </li>
+              </ul>
+            </nav>
+
+          </div>
+        </div><!--Navbar end-->
+        <div class="container-fluid">
+
+          <div class="row justify-content-around">
+
+            <div class="col-lg-4 mt-3" style="background-color:#323a45; color:white; opacity:0.75;">
+              <h3 style="text-align:center;">Izrada autorske pjesme pomoću programa Reaper</h3>
+              <ul>
+                <li>Koristio sam zvučnu karticu <a href="https://focusrite.com/en" target=" _blank"> Focusrite </a> scarlett 2i2</li>
+                <p>To je vanjska zvučna kartica specijalno dizajnirana za glazbenu produkciju</p>
+                <li>Sadrži XLR (Mikrofon) i 3.5mm instrumentalne ulaze kako bi se mogli spajati mikrofoni, klavijature, gitare itd</li>
+                <p>Kartica pretvara analogni signal u digitalni koji računalo može čitati</p>
+                <li>Od mikrofona sam koristio <a href="https://www.shure.eu/" target="_blank">Shure </a>SM57 i <a href="https://www.akg.com/">AKG</a> C1000s</li>
+                <p>To su dinamički instrumentalni mikrofoni koji se koriste prvenstveno za ozvučavanje/snimanje instrumenata</p>
+                <li>Ozvučio sam gitarsko pojačalo tako da mikrofon gleda prema samom zvučniku te sam ga spojio direktno u zvučnu karticu</li>
+                <li>Za samo snimanje i produkciju koristit ću DAW <a href="https://www.reaper.fm/" target="_blank">Reaper</a>  budući da ima dosta jednostavno korisničko sučelje, besplatan je i imam prethodnog iskustva</li>
+                <a href="https://www.reaper.fm/" target="_blank"> <img src="zvuk/reaper.jpg" class="img-thumbnail img-fluid reaper m-2 mx-auto d-block" alt="Reaper" width="130px"></a>
+                <br>
+                </ul>
+                <div class="text-center">
+                  <audio controls>
+                    <source src="zvuk/hurricane.mp3" type="audio/mpeg">
+
+                  </audio>
+
+                  <h4>The Hurricane</h4>
+                  <i class="fas fa-headphones mb-4"></i> Slušalice su preporuka
+
+                </div>
+            </div>
+
+            <div class="col-lg-2 mt-3">
+              <div class="card zvuk-karte">
+                <img class="card-img-top" src="zvuk/focusrite.png" alt="Zvucna kartica" style="width:100%">
+                <div class="card-body">
+                  <h4 class="card-title">Zvučna kartica</h4>
+                </div>
+              </div>
+              <img class="begone" src="zvuk/Curved_Arrow.svg" alt="" width="150px" style="float:right;">
+            </div>
+
+            <div class="col-lg-2 mt-3">
+              <div class="card zvuk-karte">
+                <img class="card-img-top" src="zvuk/mikrofon.png" alt="Shure SM57 mikrofon" style="width:100%">
+                <div class="card-body">
+                  <h4 class="card-title">Mikrofon Shure SM57</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 mt-3">
+              <div class="card zvuk-karte">
+                <img class="card-img-top" src="zvuk/pojacalo.png" alt="Pojacalo" style="width:100%">
+                <div class="card-body">
+                  <h4 class="card-title">Pojačalo za električnu gitaru</h4>
+                </div>
+              </div>
+              <img class="begone" src="zvuk/Curved_Arrow.svg" alt="" width="150px" style="float:left; transform:rotate(-60deg);">
+            </div>
+
+          </div>
+
+          <div class="row justify-content-around">
+
+
+            <div class="col-lg-4 mt-3 " style="background-color:#323a45; color:white; opacity:0.75;">
+              <h3 style="text-align:center;"></h3>
+              <ul>
+                <li>Kako bi ostvario svoj cilj, uz minimalno glazbene opreme, koristit ću ASIO drivere koji mi pružaju nizak latency i zadovoljavajuću kvalitetu zvuka</li>
+                <a href="https://en.wikipedia.org/wiki/Audio_Stream_Input/Output" target="_blank"> <img class="img-fluid " src="zvuk/Asio_logo.png" alt="ASIO" width="50%" style="display:block; margin:auto;";> </a>
+                <li>Uz standardne reaper audio FX plugine, koristit ću i plugine i virtualne instrumente firme <a href="https://www.meldaproduction.com/" target="_blank">MeldaProduction</a> koji između ostalog nude i besplatan paket alata</li>
+                  <a href="https://www.meldaproduction.com/" target="_blank"> <img class="img-fluid mb-1" src="zvuk/MCompleteBundle.v1.png" alt="MeldaProduction logo" width="25%" style="display:block; margin:auto;";> </a>
+                  <li>Također htio bih ovdje dodati stranicu <a href="http://soundbible.com" target="_blank">Sound Bible</a> koja nudi mnoštvo besplatnih zvučnih efekta koji se jednostavno preuzmu i ubace u DAW</li>
+                  <a href="http://soundbible.com" target="_blank"> <img class="img-fluid mt-1" src="zvuk/sound-bible-1.jpg" alt="Sound Bible" width="25%" style="display:block; margin:auto;";> </a>
+              </ul>
+            </div>
+
+            <div class="col-lg-6 mt-3  " style="background-color:#323a45; color:white; opacity:0.90;">
+              <h3 style="text-align:center;">The Hurricane Music video</h3>
+
+              <iframe class="video_size" src="https://www.youtube.com/embed/Qp7UxPtHyFU" style="display:block; margin:auto;"></iframe>
+              <p class="text-center">Za pjesmu sam izradio videozapis čiji sam postupak izrade opisao u <a href="video.html">VIDEO</a></p>
+              <div class="text-center">
+                <button type="button" class="btn btn-warning mb-2" data-toggle="collapse" data-target="#tekst_postupak2"><i class="fas fa-spinner"></i> Prikaži postupak</button>
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+          <div class="row m-3 justify-content-center collapse" id="tekst_postupak2">
+          <div class="col-md-12 m-1 " style="background-color:#323a45; color:white; opacity:0.85;">
+            <h2 class="text-center">Detaljan postupak izrade</h2>
+              <li>Podešavanje ASIO drivera te odabir zvučne kartice Focusrite Scarlet 2i2 - Options &#x2192; Prefrences &#x2192; Device, Audio system: odabir ASIO</li>
+              <li>Podešavanje buffer size (kako bi smanjio latency) na 128 budući da je to najniže što mi računalo može podnijeti</li>
+              <li>Kreiranje traka <kbd style="color:yellow;">Akusticna gitara</kbd>, <kbd style="color:orange;">Elektricna gitara</kbd>, <kbd style="color:lightgreen;">Bass</kbd>, <kbd style="color:#EE82EE;">Drums</kbd>, <kbd style="color:lightblue;">Oboa</kbd>, <kbd>SFX</kbd></li>
+              <li>Dodao sam odgovarajuće ikonice i boje za svaku traku kako bi ih jasnije razlikovao, desni klik na traku &#x2192; Track color &#x2192; Track icon</li>
+              <li>Za svaku traku sam Record monitoring podesio na ON te sam namjestio odgovarajući input ovisno gdje mi je bio spojen mikrofon u zvučnoj kartici</li>
+              <li>Prije nego sam započeo sa snjimanjem na Transport traci sam podesio tempo na 71, a mjeru ostavio 4/4 kakva je i bila zadana</li>
+              <li>Sljedeći korak bio je podešavanje metronoma koji se nalazi u gornjem lijevom kutu. Aktivirao sam Count-in before recording kako bi metronom otkucao 2 dobre prije početka snimanja, također sam pojačao zvuk metronoma</li>
+              <li>Započeo sam sa <kbd style="color:yellow;">akustičnom gitarom</kbd> koju sam ozvučio sa AKG c1000s mikrofonom, glavni 'riff' sam izmislio ranije tako da sam brzo snimio uvod</li>
+              <li>Zatim sam dodao uvodnu <kbd style="color:orange;">električnu gitaru</kbd> čije sam pojačalo snimio sa Shure SM57 mikrofonom</li>
+              <li>Zatim kako bi dobio bolje zvukove instrumenata, dodao sam efekte (prvo na <kbd style="color:yellow;">akustičnu gitaru</kbd>) na način da sam stisnuo FX ikonicu te sa liste izabrao MConvoluzionEZ gdje samo odabrao small room reverb</li>
+              <li>Također sam dodao MEqualizer te sam koristio preset za <kbd style="color:yellow;">akustičnu gitaru</kbd> te sam dodatno dignuo treble budući da je snimka bila pomalo mutna</li>
+              <li>Za kraj sam dodao MCompressor gdje sam također koristio preset za <kbd style="color:yellow;">akustičnu gitaru</kbd>, dodao sam kompresor kako bi izjednačio preglasne i pretihe dijelove snimke kako bi ispala bolja cijelina</li>
+              <li>Dalje sam dodao <kbd style="color:#EE82EE;">bubnjeve</kbd> koje sam snimio pomoću klavijature</li>
+              <li>Na <kbd style="color:#EE82EE;">bubnjeve</kbd> sam od efekata dodao kompresor i Drum room reverb koji imitra studijski prostor za snimanje bubnjeva</kbd></li>
+              <li>Dalje sam na uvodu dodao <kbd style="color:lightblue;">Obou</kbd> koju sam također odsvirao preko klavijature</li>
+              <li>Na obou nisam dodavao posebnih efekata budući da mi se svidjela kako je zvučala sama po sebi</li>
+              <li>Naposlijetku sam dodao <kbd style="color:lightgreen">Bass</kbd>, snimio sam ga također sa klavijaturom, njemu sam dodao kompresor koristeći preset za bass te sa mu sa EQ podigao niske frekvencije kako bi ton bio dublji i doimao se kao pravi bass</li>
+              <li>Uvodnoj <kbd style="color:orange;">električnoj gitari</kbd> dodao sam fade in budući da je prvobitno bila prenagla, dok sam <kbd style="color:lightblue;">oboi</kbd> dodao fade out kako bi ispala nježnija, u Reaperu se to jednostavno postiže vizualnim povlačenjem kraja trake za željenu količinu</li>
+              <li>Prije daljnjeg snimanja podesio sam PAN  <kbd style="color:yellow;">akustične gitare</kbd> 80% na desno uho,  <kbd style="color:orange;">električne gitare</kbd> 100% na lijevo uho,  <kbd style="color:lightgreen;">bass</kbd> i  <kbd style="color:#EE82EE;">bubanj</kbd> sam ostavio na sredini a obou sam stavio 33% na lijevo</li>
+              <li>Dalje sam snimao sredinu gdje sam dodao za svaki instruemnt po još jednu traku za sve instrumente a za akustičnu gitaru još 2 kako bi lakše snimao budući da je bilo dosta ispravljanja, ubacivanja i presnimavanja</li>
+              <li>Na kraju sam dodao <kbd>SFX</kbd> traku u koju sam ubacivao sound efekte (vjetar na početku, pucnjava i vrisak pri kraju pjesme)</li>
+              <li>Na kraju sam dodao fade out na sve trake tako da pjesma završava postupnim stišavanjem, dodatno sam mnoge trake stišavao, pojačavao, te dodavao sitne fade out/fade in efekte</li>
+              <li>Na kraju je trebalo obraditi master traku, nju prvo treba prikazati tako da se ide na View &#x2192; i omogući Master track</li>
+              <li>Mastering sam odradio tako što sam dodao reaperov ReaComp kompresor i dodao mrvicu kompresije</li>
+              <li>Dalje, koristio sam ReaEQ plugin pomoću kojeg sam otklonio jako niske frekvencije (40Hz) te sam podigao frekvencije na 300Hz za 2dB, također sam visoke frekvencije (od 3500Hz) podigao za 1dB</li>
+              <li>Na kraju sam stavio najglasniji dio pjesme te sam dodao Master Limiter i smanjivao Threshold kako bi maksimalno dobio na glasnoći mixa prije distorziranja zvuka, uspio sam pojačati mix za 5.3 dB</li>
+              <li class="mb-2">Na kraju sam jednostavno exportao tako što sam išao na File &#x2192; Render, odabrao sam da rendera cijeli mix i renderao dvaput. U WAV i MP3 formatima</li>
+
+          </div>
+        </div>
+        <div class="row justify-content-center collapse" id="tekst_postupak2">
+          <div class="col-md-12 text-center">
+              <img src="zvuk/reaper.png" alt="reaper program" width="95%">
+          </div>
+
+        </div>
+
+
+    </div> <!--Drugi cointainer kraj-->
+
+
+      </div><!--Container Div-->
+      <div class="row">
+      <div class="col-lg-12 text-center mt-3" style="background-color:#3f6184;">
+        <a class="footer" href="index.html"><h4>Projekt iz multimedije - Luka Blašković </h4></a>
+      </div>
+    </div><!--Footer kraj-->
+    </body>
+
+</html>
