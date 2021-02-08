@@ -343,6 +343,10 @@ body {
   border-radius: 0px !important;
 }
 
+.card-body {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .manga-card {
   border: none;
   background-color: rgba(0, 0, 0, 0.75);
@@ -368,7 +372,7 @@ body {
 }
 
 .manga-img-div {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
   object-fit:contain;
   overflow: hidden;
   text-align: center;
@@ -376,6 +380,9 @@ body {
 
 .manga-img {
   height: 660px;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+  border-top: 5px solid black;
 }
 
 .manga-size {
@@ -402,5 +409,27 @@ body {
   bottom: 200px;
   height: 300px;
   transform: skewY(0deg) scaleX(1);
+}
+
+.carousel-control-prev {
+  left: 10px;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.carousel-control-next {
+  right: 10px;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.score {
+  color: cyan;
 }
 /**----------LIBRARYLEFTEND-----------------*/

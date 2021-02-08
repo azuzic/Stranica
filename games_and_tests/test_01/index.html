@@ -45,35 +45,29 @@
   </div>
 
   <div class="row pos library-left library-left-hide">
-    <div id="_0001"  class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
-      <img id="manga_0001" class="manga-size" src="pictures\manga\manga_0001.jpg">
-      <h1 id="p_manga_0001" class="collapse">Another</h1>
-      <p id="h1_manga_0001" class="collapse">text_1</p>
-    </div>
     <div id="_0002" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
       <img id="manga_0002" class="manga-size" src="pictures\manga\manga_0002.jpg">
-      <h1 id="p_manga_0002" class="collapse">B-gata H-kei</h1>
-      <p id="h1_manga_0002" class="collapse">text_2</p>
+      <h1 id="p_manga_0002" class="collapse">B Gata H Kei <br> B Type H Style</h1>
+      <p id="manga_score_0002" class="collapse">10/10</p>
+      <p id="manga_volumes_0002" class="collapse">9/9</p>
     </div>
     <div id="_0003" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
       <img id="manga_0003" class="manga-size" src="pictures\manga\manga_0003.jpg">
-      <h1 id="p_manga_0003" class="collapse">Bocchi na Bokura no Renai Jijou</h1>
-      <p id="h1_manga_0003" class="collapse">text_3</p>
+      <h1 id="p_manga_0003" class="collapse">Bocchi na Bokura no Renai Jijou <br> The Circumstances of Our Lonely Love</h1>
+      <p id="manga_score_0003" class="collapse">7/10</p>
+      <p id="manga_volumes_0003" class="collapse">2/2</p>
     </div>
-    <div id="_0004" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
-      <img id="manga_0004" class="manga-size" src="pictures\manga\manga_0004.jpg">
-      <h1 id="p_manga_0004" class="collapse">Citrus</h1>
-      <p id="h1_manga_0004" class="collapse">text_4</p>
+    <div id="_0007" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
+      <img id="manga_0007" class="manga-size" src="pictures\manga\manga_0007.jpg">
+      <h1 id="p_manga_0007" class="collapse">Bokura wa Minna Kawai-sou <br> The Kawai Complex Guide to Manors and Hostel</h1>
+      <p id="manga_score_0007" class="collapse">10/10</p>
+      <p id="manga_volumes_0007" class="collapse">8/11</p>
     </div>
-    <div id="_0005" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
-      <img id="manga_0005" class="manga-size" src="pictures\manga\manga_0005.jpg">
-      <h1 id="p_manga_0005" class="collapse">Cosmo Familia*</h1>
-      <p id="h1_manga_0005" class="collapse">text_5</p>
-    </div>
-    <div id="_0006" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
-      <img id="manga_0006" class="manga-size" src="pictures\manga\manga_0006.jpg">
-      <h1 id="p_manga_0006" class="collapse">Hiyokoi</h1>
-      <p id="h1_manga_0006" class="collapse">text_6</p>
+    <div id="_0008" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
+      <img id="manga_0008" class="manga-size" src="pictures\manga\manga_0008.jpg">
+      <h1 id="p_manga_0008" class="collapse">Nekota no Koto ga Kininatte Shikatanai.</h1>
+      <p id="manga_score_0008" class="collapse">10/10</p>
+      <p id="manga_volumes_0008" class="collapse">10/10</p>
     </div>
   </div>
 
@@ -103,11 +97,19 @@
 
   <div class="row p-0 m-0 pos card manga-card manga-card-hide">
     <div class="col-12 p-0 m-0 manga-img-div">
-      <img id="card-img-top" class="manga-img" src="pictures\manga\manga_0001.jpg">
+      <img id="card-img-top" class="manga-img" src="pictures\manga\manga_0002.jpg">
+      <a class="carousel-control-prev" onclick="prevVol();">
+        <span class="carousel-control-prev-icon"></span>
+      <a class="carousel-control-next" onclick="nextVol();">
+        <span class="carousel-control-next-icon"></span>
+      </a>
     </div>
-     <div class="col-12 card-body text-center">
-       <h4 id="card-title" class="card-title text-center">Another</h4>
-       <p id="card-text" class="card-text text-center">TEXT</p>
+     <div class="col-12 card-body text-center pb-0">
+       <h4 id="card-title" class="card-title text-center">B gata H kei <br> B type H Style</h4>
+       <p class="card-text float-left text-center">Score: <b id="manga-score" class="score">10/10</b></p>
+       <p class="card-text float-right text-center">Volumes: <b id="manga-volumes" class="score">9/9</b></p>
+       <div id="cur-vol" class="collapse">1</div>
+       <div id="cur-id" class="collapse">_0002</div>
      </div>
  </div>
 
