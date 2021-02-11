@@ -30,7 +30,7 @@
   </script>
 </head>
 <!--body-------------------------------------------------------------------------------->
-<body class="row">
+<body class="row" onload="txt()">
 
 <div class="div-left" onclick="disableLeft(); enableRight();" onmouseover="left()" onmouseout="deleteleft()">
   <img class="img-left" src="manga.jpg" height="1080px">
@@ -44,31 +44,7 @@
       <div class="option-left-hide" onmouseover="left()" onclick="showLibrary()"> <b class="MA-S">L</b>IBRARY </div>
   </div>
 
-  <div class="row pos library-left library-left-hide">
-    <div id="_0002" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
-      <img id="manga_0002" class="manga-size" src="pictures\manga\manga_0002.jpg">
-      <h1 id="p_manga_0002" class="collapse">B Gata H Kei <br> B Type H Style</h1>
-      <p id="manga_score_0002" class="collapse">10/10</p>
-      <p id="manga_volumes_0002" class="collapse">9/9</p>
-    </div>
-    <div id="_0003" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
-      <img id="manga_0003" class="manga-size" src="pictures\manga\manga_0003.jpg">
-      <h1 id="p_manga_0003" class="collapse">Bocchi na Bokura no Renai Jijou <br> The Circumstances of Our Lonely Love</h1>
-      <p id="manga_score_0003" class="collapse">7/10</p>
-      <p id="manga_volumes_0003" class="collapse">2/2</p>
-    </div>
-    <div id="_0007" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
-      <img id="manga_0007" class="manga-size" src="pictures\manga\manga_0007.jpg">
-      <h1 id="p_manga_0007" class="collapse">Bokura wa Minna Kawai-sou <br> The Kawai Complex Guide to Manors and Hostel</h1>
-      <p id="manga_score_0007" class="collapse">10/10</p>
-      <p id="manga_volumes_0007" class="collapse">8/11</p>
-    </div>
-    <div id="_0008" class="manga" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >
-      <img id="manga_0008" class="manga-size" src="pictures\manga\manga_0008.jpg">
-      <h1 id="p_manga_0008" class="collapse">Nekota no Koto ga Kininatte Shikatanai.</h1>
-      <p id="manga_score_0008" class="collapse">10/10</p>
-      <p id="manga_volumes_0008" class="collapse">10/10</p>
-    </div>
+  <div id=library class="row pos library-left library-left-hide">
   </div>
 
   <div class="pos back-left" onmouseover="left()">
@@ -97,7 +73,7 @@
 
   <div class="row p-0 m-0 pos card manga-card manga-card-hide">
     <div class="col-12 p-0 m-0 manga-img-div">
-      <img id="card-img-top" class="manga-img" src="pictures\manga\manga_0002.jpg">
+      <img id="card-img-top" class="manga-img" src="pictures\manga\B Gata H Kei\B Gata H Kei_vol_1.jpg">
       <a class="carousel-control-prev" onclick="prevVol();">
         <span class="carousel-control-prev-icon"></span>
       <a class="carousel-control-next" onclick="nextVol();">
@@ -109,7 +85,7 @@
        <p class="card-text float-left text-center">Score: <b id="manga-score" class="score">10/10</b></p>
        <p class="card-text float-right text-center">Volumes: <b id="manga-volumes" class="score">9/9</b></p>
        <div id="cur-vol" class="collapse">1</div>
-       <div id="cur-id" class="collapse">_0002</div>
+       <div id="cur-id" class="collapse">B Gata H Kei</div>
      </div>
  </div>
 
@@ -119,6 +95,9 @@
   1
 </div>
 <div id="check-right" class="collapse">
+  1
+</div>
+<div id="list" class="collapse">
   1
 </div>
 </body>

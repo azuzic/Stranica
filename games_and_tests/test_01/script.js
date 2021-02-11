@@ -1,3 +1,30 @@
+function txt() {
+    var print =  document.getElementById("list");
+    var fileUrl = 'test.txt';
+    fetch(fileUrl)
+       .then( r => r.text() )
+       .then( t => print.innerHTML=t )
+}
+
+function alphaOnly(a) {
+    var b = '';
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] >= 'A' && a[i] <= 'z' || a[i] == " " || a[i] == "-" || a[i] == "'" || a[i] == ",")
+          b += a[i];
+    }
+    return b;
+}
+
+function test() {
+  var print =  document.getElementById("list");
+
+  var manga = JSON.parse(print.innerHTML);
+
+  manga.forEach((element, index) => {
+      console.log(index + ". " + element.name + " Score:" + element.score + " Vol:" + element.vol);
+  });
+}
+
 function left() {
   var checkLeft = document.getElementById("check-left").innerHTML;
   var checkRight = document.getElementById("check-right").innerHTML;
@@ -142,12 +169,29 @@ function enableRight() {
 function showLibrary() {
   var check = document.getElementsByClassName('library-left-hide');
   if (check.length>0) {
+    $(".library-left").empty();
     $(".library-left").removeClass("library-left-hide");
     $(".library-left").addClass("library-left-show");
     $(".manga-card").removeClass("manga-card-hide");
     $(".manga-card").addClass("manga-card-show");
-
     $(".option-left-show").addClass("option-left-show-active");
+
+    var print =  document.getElementById("list");
+
+    var manga = JSON.parse(print.innerHTML);
+
+    manga.forEach((element, index) => {
+        $("#library").append(
+          '<div id="manga_' + index + '" class="manga" onclick="mangaShow(this.id)" onmouseover="mangaFocus(this.id)" onmouseout="mangaUnFocus(this.id)" >' +
+            '<img id="hover_manga_' + index + '" class="manga-size" src="pictures/manga/' + alphaOnly(element.jpnname) + '/' + alphaOnly(element.jpnname) + '_vol_1.jpg">' +
+            '<h1 id="title_manga_' + index + '" class="collapse">' + element.jpnname + "<br>" + element.engname + '</h1>' +
+            '<h1 id="img_manga_' + index + '" class="collapse">' + element.jpnname + '</h1>' +
+            '<p id="score_manga_' + index + '" class="collapse">' + element.score + '/10</p>' +
+            '<p id="volumes_manga_' + index + '" class="collapse">' + element.vol + '</p>' +
+          '</div>'
+        )
+        /*console.log(index + ". " + element.name + " Score:" + element.score + " Vol:" + element.vol);*/
+    });
   }
   else {
     $(".library-left").addClass("library-left-hide");
@@ -157,38 +201,51 @@ function showLibrary() {
 
     $(".option-left-show").removeClass("option-left-show-active");
   }
-
 }
 
 function mangaFocus(id) {
-  var id2="#manga"+id;
-  var id3="p_manga"+id;
-  var id4="manga_score"+id;
-  var id5="manga_volumes"+id;
+  var id2="#hover_"+id;
+
   $(".manga-size").removeClass("manga-size-hover");
   $(id2).addClass("manga-size-hover");
-  var check = document.getElementById("card-img-top");
-  check.src = "pictures/manga/manga"+id+".jpg";
+
+}
+
+function mangaUnFocus(id) {
+  var id2="#hover_"+id;
+  $(id2).removeClass("manga-size-hover");
+  $(".manga-size").removeClass("manga-size-hover");
+}
+
+function mangaShow(id){
+  var id3="title_"+id;
+  var id3v2="img_"+id;
+  var id4="score_"+id;
+  var id5="volumes_"+id;
+
   var title = document.getElementById(id3).innerHTML;
-  check = document.getElementById("card-title");
+  var check = document.getElementById("card-title");
   check.innerHTML = title;
+
+  var img = alphaOnly(document.getElementById(id3v2).innerHTML);
+  check = document.getElementById("card-img-top");
+  check.src = "pictures/manga/"+img+"/"+img+"_vol_1.jpg";
+  check = document.getElementById("cur-id");
+  check.innerHTML = img;
+
   var score = document.getElementById(id4).innerHTML;
   check = document.getElementById("manga-score");
   check.innerHTML = score;
+
   var volumes = document.getElementById(id5).innerHTML;
   check = document.getElementById("manga-volumes");
   check.innerHTML = volumes;
+
   check = document.getElementById("cur-vol");
   check.innerHTML = 1;
-  check = document.getElementById("cur-id");
-  check.innerHTML = id;
+
   $(".card-img-top").addClass("manga-img-show");
   $(".card-img-top").removeClass("manga-img-hide");
-}
-function mangaUnFocus(id) {
-  var id2="#manga"+id;
-  $(id2).removeClass("manga-size-hover");
-  $(".manga-size").removeClass("manga-size-hover");
 }
 
 function prevVol() {
@@ -196,8 +253,9 @@ function prevVol() {
   var vol = document.getElementById("cur-vol").innerHTML;
 
   var str = document.getElementById("manga-volumes").innerHTML;
-  str = str.substring(2);
-  str = parseInt(str.replace(/[^0-9]/g, ''));
+  if (str=="?")
+    str = 1;
+  str = parseInt(str);
 
   if (vol>1)
     vol = parseInt(vol)-1;
@@ -205,12 +263,8 @@ function prevVol() {
     vol = str;
   check = document.getElementById("cur-vol");
   check.innerHTML = vol;
-
   check = document.getElementById("card-img-top");
-  if (vol !=1 )
-    check.src = "pictures/manga/manga"+id+vol+".jpg";
-  else
-    check.src = "pictures/manga/manga"+id+".jpg";
+  check.src = "pictures/manga/"+id+"/"+id+"_vol_"+vol+".jpg";
 }
 
 function nextVol() {
@@ -218,8 +272,7 @@ function nextVol() {
   var vol = document.getElementById("cur-vol").innerHTML;
 
   var str = document.getElementById("manga-volumes").innerHTML;
-  str = str.substring(2);
-  str = parseInt(str.replace(/[^0-9]/g, ''));
+  str = parseInt(str);
 
   if (vol<str)
     vol = parseInt(vol)+1;
@@ -228,11 +281,5 @@ function nextVol() {
   check = document.getElementById("cur-vol");
   check.innerHTML = vol;
   var check = document.getElementById("card-img-top");
-  check.src = "pictures/manga/manga"+id+".jpg";
-
-  check = document.getElementById("card-img-top");
-  if (vol !=1 )
-    check.src = "pictures/manga/manga"+id+vol+".jpg";
-  else
-    check.src = "pictures/manga/manga"+id+".jpg";
+  check.src = "pictures/manga/"+id+"/"+id+"_vol_"+vol+".jpg";
 }

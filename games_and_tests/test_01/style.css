@@ -335,8 +335,9 @@ body {
 }
 
 .manga {
-  width: 10%;
-  height: 200px;
+  width: 8%;
+  height: 0px;
+  cursor: pointer;
 }
 
 .card , .card-img-top {
@@ -394,7 +395,7 @@ body {
   border-top-left-radius: 1px;
   border-bottom-left-radius: 10px;
   bottom: 0%;
-  height: 200px;
+  height: 150px;
   transform: skewY(-10deg) scaleX(0.8);
 }
 
