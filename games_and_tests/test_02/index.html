@@ -30,12 +30,66 @@
   </script>
 </head>
 <!--body-------------------------------------------------------------------------------->
-<body class="row" onload="txt()">
-  <div class="container text-center p-4">
-    <button type="button" class="btn btn-light" onclick="test()">JAVASCRIPT MAGIC</button>
+
+<body class="row p-4" onload="txt();">
+
+  <p><h1 class="glavni-naslov text-center">E-UČENJE TEST SIMULATOR</h1></p>
+
+  <div class="sidebar">
   </div>
-  <div id="list" class="container bg-dark text-left p-4" style="height:500px;">
-    TEST
+  <div class="zapocni-div pb-4">
+    <button class="btn zapocni" type="button" name="button" onclick="zapocni(); timer();">Započni</button>
   </div>
+
+  <div class="sidebar">
+  </div>
+  <div class="row card bg-light navigacija">
+    <h2>
+      <span class="navigacija-naslov">Navigacija u testu</span>
+    </h2>
+    <div class="navigacija-pitanja row">
+
+    </div>
+    <span id="timer2" class="timer2 text-center"></span>
+  </div>
+
+  <div class="pitanja row">
+    <div class="table container-fluid">
+      <table>
+        <tbody>
+          <tr>
+            <td class="cell">Započeto</td>
+            <td id="zapoceto" class="cell3"></td>
+            <td id="zapoceto-full" class="collapse"></td>
+          </tr>
+          <tr>
+            <td class="cell2">Stanje</td>
+            <td id="stanje" class="cell3"></td>
+          </tr>
+          <tr>
+            <td class="cell">Završeno</td>
+            <td id="zavrseno" class="cell3"></td>
+          </tr>
+          <tr>
+            <td class="cell2">Proteklo vrijeme</td>
+            <td id="proteklo" class="cell3"></td>
+          </tr>
+          <tr>
+            <td class="cell">Ocjena</td>
+            <td id="ocjena" class="cell3"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pitanja2 row container-fluid">
+
+
+    </div>
+  </div>
+
+  <div id="list" class="collapse">
+
+  </div>
+
 </body>
 <!--body-------------------------------------------------------------------------------->

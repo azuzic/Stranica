@@ -1,0 +1,5 @@
+[
+  {"id": -1 , "vrijeme": 3},
+  {"id": 1 , "vrsta": "TN" , "pitanje": "2+2=4" , "odgovor": "točno" ,   "bodovi": 1},
+  {"id": 2 , "vrsta": "TN" , "pitanje": "2+3=7" , "odgovor": "netočno" ,   "bodovi": 1}
+]
