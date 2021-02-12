@@ -6,7 +6,7 @@ function txt() {
        .then( t => print.innerHTML=t )
 }
 
-var trenutno_vrijeme, endtimer=0;
+var trenutno_vrijeme, endtimer=0,  total_pitanja=0;
 
 
 
@@ -131,8 +131,10 @@ function timer() {
     else {
       if (seconds2<=10)
         timer2.innerHTML = '<b style="color:red; font-weight:bold;"> Preostalo vrijeme: ' + seconds2 + " s <b/>";
-      else
+      else if (seconds2<=30)
         timer2.innerHTML = '<b style="color:red; font-weight:normal;"> Preostalo vrijeme: ' + seconds2 + " s <b/>";
+      else
+        timer2.innerHTML = '<b style="font-weight:normal;"> Preostalo vrijeme: ' + seconds2 + " s <b/>";
     }
     // If the count down is finished, write some text
     if (Math.round(distance/1000) > limit-1) {
@@ -151,6 +153,8 @@ function timer() {
 
 
 function zapocni() {
+  var trenutno_pitanje = document.getElementById("trenutno_pitanje");
+  trenutno_pitanje.innerHTML = 1;
   $(".zapocni-div").empty();
   $("#proteklo").empty();
   $(".zapocni-div").append('<button class="btn zapocni" type="button" name="button" onclick="zavrsi();">Završi</button>');
@@ -194,19 +198,19 @@ function zapocni() {
           '<div id="odg_pitanje_id_'+element.id+'" class="collapse">'+
             element.odgovor+
           '</div>'+
-          '<div id="choosen_odg_id_'+element.id+'" class="collapse">0'+
+          '<div id="choosen_odg_id_'+element.id+'" class="collapse">-1'+
           '</div>'
           );
           $(".navigacija-pitanja").append(
             '<a id="nav_pitanje_id_'+element.id+'" class="navigacija-pitanje" onclick="navigacija(this.id);">'+
               '<div id="sel_pitanje_id_'+element.id+'" class="'+selected+' text-center">'+
                 '<span class="navigacija-pitanje-number">'+element.id+'</span>'+
-                '<div id="col_pitanje_id_'+element.id+'" class="navigacija-pitanje-color-red"></div>'+
+                '<div id="col_pitanje_id_'+element.id+'" class="navigacija-pitanje-color-grey"></div>'+
               '</div>'+
             '</a>'
           );
         }
-      /*console.log(index + ". " + element.name + " Score:" + element.score + " Vol:" + element.vol);*/
+      total_pitanja = element.id;
   });
   var zapoceto = document.getElementById("zapoceto");
   var stanje = document.getElementById("stanje");
@@ -285,15 +289,24 @@ function zavrsi() {
       bod = parseInt(document.getElementById(choosen_odg_id).innerHTML);
       if (bod==0) {
         $(col_pitanje_id).addClass("navigacija-pitanje-color-red");
+        $(col_pitanje_id).removeClass("navigacija-pitanje-color-grey");
         $(col_pitanje_id).removeClass("navigacija-pitanje-color-green");
         bod_pitanje_id.innerHTML = 'Broj bodova: '+0+',00 <br> od '+element.bodovi+',00'
       }
-      else {
+      else if (bod==-1) {
+        $(col_pitanje_id).addClass("navigacija-pitanje-color-grey");
+        $(col_pitanje_id).removeClass("navigacija-pitanje-color-green");
         $(col_pitanje_id).removeClass("navigacija-pitanje-color-red");
+        bod_pitanje_id.innerHTML = 'Broj bodova: '+0+',00 <br> od '+element.bodovi+',00'
+      }
+      else {
         $(col_pitanje_id).addClass("navigacija-pitanje-color-green");
+        $(col_pitanje_id).removeClass("navigacija-pitanje-color-red");
+        $(col_pitanje_id).removeClass("navigacija-pitanje-color-grey");
         col_pitanje_id2.innerHTML = '<b class="checkmark">✓</b>';
         bod_pitanje_id.innerHTML = 'Broj bodova: '+bod+',00 <br> od '+element.bodovi+',00'
       }
+      if (bod==-1) bod = 0;
       rez+=bod;
       ukupno_moguce += parseInt(element.bodovi);
     }
@@ -302,7 +315,7 @@ function zavrsi() {
   rez = rez.toFixed(2);
   ukupno_moguce = ukupno_moguce.toFixed(2)
   var ocjena = document.getElementById("ocjena");
-  ocjena.innerHTML = "<b>" + rez + "</b> od maksimalno " + ukupno_moguce + " (<b>"+postotak+"</b>%)";
+  ocjena.innerHTML = "<b>" + rez + "</b> od maksimalno " + ukupno_moguce + " (<b>"+postotak.toFixed(2)+"</b>%)";
 
   $(".navigacija-pitanja").append(
 
@@ -324,6 +337,8 @@ function idToNumber(id) {
 
 function navigacija(id) {
   var id = idToNumber(id);
+  var trenutno_pitanje = document.getElementById("trenutno_pitanje");
+  trenutno_pitanje.innerHTML = id;
   var pitanje_id = "#pitanje_id_" + id;
   var pitanje_sel_id = "#sel_pitanje_id_" + id;
 
@@ -368,5 +383,37 @@ function checkAnswer(id) {
     id_pitanja2.innerHTML = '';
     id_pitanja3.innerHTML = '';
     id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X</b>';
+  }
+}
+
+function pretPitanje() {
+  var trenutno_pitanje = document.getElementById("trenutno_pitanje");
+  var id = trenutno_pitanje.innerHTML;
+  id = parseInt(id);
+  if (id!=1) {
+    var pitanje_id = "#pitanje_id_" + (id-1);
+    $(".visibility").addClass("collapse");
+    $(pitanje_id).removeClass("collapse");
+    trenutno_pitanje.innerHTML = id-1;
+    var pitanje_sel_id = "#sel_pitanje_id_" + (id-1);
+    $(".navigacija-pitanje-box-selected").addClass("navigacija-pitanje-box");
+    $(".navigacija-pitanje-box-selected").removeClass("navigacija-pitanje-box-selected");
+    $(pitanje_sel_id).addClass("navigacija-pitanje-box-selected");
+  }
+}
+
+function sljedPitanje () {
+  var trenutno_pitanje = document.getElementById("trenutno_pitanje");
+  var id = trenutno_pitanje.innerHTML;
+  id = parseInt(id);
+  if (id!=total_pitanja) {
+    var pitanje_id = "#pitanje_id_" + (id+1);
+    $(".visibility").addClass("collapse");
+    $(pitanje_id).removeClass("collapse");
+    trenutno_pitanje.innerHTML = id+1;
+    var pitanje_sel_id = "#sel_pitanje_id_" + (id+1);
+    $(".navigacija-pitanje-box-selected").addClass("navigacija-pitanje-box");
+    $(".navigacija-pitanje-box-selected").removeClass("navigacija-pitanje-box-selected");
+    $(pitanje_sel_id).addClass("navigacija-pitanje-box-selected");
   }
 }

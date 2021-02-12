@@ -38,7 +38,7 @@
   font-size: 32px;
   font-weight: bold;
   color: rgb(51, 51, 51);
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   margin-top: 100px;
 }
 
@@ -88,6 +88,13 @@
   font-size: 14px;
   position: relative;
   top: -5px;
+}
+
+.navigacija-pitanje-color-grey {
+  height: 20px;
+  position: relative;
+  top: -8px;
+  background-color: grey;
 }
 
 .navigacija-pitanje-color-red {
@@ -156,6 +163,7 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px 0px inset;
     padding: 0px 8px 0px 12px;
     width: 20%;
+    height: 400px;
   }
 }
 
@@ -181,6 +189,7 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px 0px inset;
     padding: 0px 8px 0px 12px;
     width: 25%;
+    height: 400px;
   }
 }
 /*-------------------------------------*/
@@ -238,6 +247,18 @@
 }
 
 .showAll:hover {
+  color: #004263 !important;
+  text-decoration: underline !important;
+  cursor: pointer;
+}
+
+.a-nav {
+  color: #0070a8 !important;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+}
+
+.a-nav:hover {
   color: #004263 !important;
   text-decoration: underline !important;
   cursor: pointer;
