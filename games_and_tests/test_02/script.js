@@ -210,6 +210,105 @@ function zapocni() {
             '</a>'
           );
         }
+        if(element.vrsta == "WORD" && element.id!=-1) {
+          $(".pitanja2").append(
+          '<div id="pitanje_id_'+element.id+'" class="row container-fluid p-0 mb-4 visibility '+collapse+'">'+
+            '<div class="pitanje-bodovi">'+
+                '<h3 class="pitanje-bodovi-naslov mt-2 mb-2">Pitanje<span class="pitanje-bodovi-naslov-broj"> '+element.id+'</span></h3>'+
+                '<div id="odgovoreno_id_'+element.id+'" class=" mt-2 mb-2 ">Nije odgovoreno</div>'+
+                '<div id="d_bod_pitanje_id_'+element.id+'" class=" mt-2 mb-2 ">Broj bodova od <b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+'">'+element.bodovi+',00</b></div>'+
+            '</div>'+
+            '<div class="pitanje-okvir p-3">'+
+              '<p class="pitanje-text">'+element.pitanje+'</p>'+
+              '<div class="vrsta-WORD">'+
+                '<div class="form-check pl-0">'+
+                  '<form>'+
+                    '<input id="odabir_text_'+element.id+'" class="mr-2 odabir input-text" type="text" id="male" name="check" value="" oninput="checkAnswerWord(this.id);" style="text-transform:lowercase">'+
+                    '<label for="točno" class="mb-0"><b id="odabir_label_'+element.id+'" class="collapse label"></b></label><br>'+
+                  '</form>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+          '</div>'+
+          '<div id="odg_pitanje_id_'+element.id+'" class="collapse">'+
+            element.odgovor+
+          '</div>'+
+          '<div id="choosen_odg_id_'+element.id+'" class="collapse">-1'+
+          '</div>'
+          );
+          $(".navigacija-pitanja").append(
+            '<a id="nav_pitanje_id_'+element.id+'" class="navigacija-pitanje" onclick="navigacija(this.id);">'+
+              '<div id="sel_pitanje_id_'+element.id+'" class="'+selected+' text-center">'+
+                '<span class="navigacija-pitanje-number">'+element.id+'</span>'+
+                '<div id="col_pitanje_id_'+element.id+'" class="navigacija-pitanje-color-grey"></div>'+
+              '</div>'+
+            '</a>'
+          );
+        }
+        var ponude = [];
+        if(element.vrsta == "CHOOSE" && element.id!=-1) {
+          for (var i=0, k=0; i<element.ponude.length; i++) {
+            if (Number.isInteger(element.ponude[i])) {
+                ponude[k] = element.ponude[i];
+                k++;
+            }
+          }
+          var bodovi_total = 0;
+          for (var i=0; i<element.bodovi.length; i++) {
+            bodovi_total+=element.bodovi[i];
+          }
+          $(".pitanja2").append(
+          '<div id="pitanje_id_'+element.id+'" class="row container-fluid p-0 mb-4 visibility '+collapse+'">'+
+            '<div class="pitanje-bodovi pitanje_bodovi_'+element.id+'">'+
+                '<h3 class="pitanje-bodovi-naslov mt-2 mb-2">Pitanje<span class="pitanje-bodovi-naslov-broj"> '+element.id+'</span></h3>'+
+                '<div id="odgovoreno_id_'+element.id+'" class=" mt-2 mb-2 ">Nije odgovoreno</div>'+
+                '<div id="d_bod_pitanje_id_'+element.id+'" class=" mt-2 mb-2 ">Broj bodova od <b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+'">'+bodovi_total+',00</b></div>'+
+            '</div>'+
+            '<div class="pitanje-okvir p-3">'+
+              '<p class="pitanje-text">'+element.pitanje+'</p>'+
+              '<div class="vrsta-CHOOSE">'+
+                '<div class="form-check pl-0 form_id_'+element.id+'">'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+          '</div>'
+          );
+
+          for (var i=0, h=0; i<element.povez.length; i++) {
+            $('.form_id_'+element.id).append(
+              '<b class="povez_style">'+element.povez[i]+'</b>'+
+              '<select id="odabir_choose_'+element.id+i+'" class="mr-2 odabir input-select select_id_'+element.id+i+'" type="" id="male" name="check" value="" onchange="checkAnswerChoose(this.id);">'+
+              '<option label="Odaberi" class="grey-text" disabled selected value>  </option></select><label for="točno" class="mb-0"><b id="odabir_label_'+element.id+i+'" class="collapse label"></b></label><br>'
+            );
+            for (var j=0; j<ponude[i]; j++) {
+              $('.select_id_'+element.id+i).append(
+                '<option value="'+element.ponude[h+1]+'">'+element.ponude[h+1]+'</option>'
+              );
+              h++;
+            }
+            h++;
+            $(".pitanja2").append(
+            '<div id="odg_pitanje_id_'+element.id+i+'" class="collapse">'+
+              element.odgovor[i]+
+            '</div>'+
+            '<div id="choosen_odg_id_'+element.id+i+'" class="collapse">-1'+
+            '</div>'
+            );
+            $(".pitanje_bodovi_"+element.id).append(
+              '<div id="d_bod_pitanje_id_'+element.id+i+'" class="collapse"><b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+i+'">'+element.bodovi[i]+'</b></div>'
+            );
+          }
+
+
+          $(".navigacija-pitanja").append(
+            '<a id="nav_pitanje_id_'+element.id+'" class="navigacija-pitanje" onclick="navigacija(this.id);">'+
+              '<div id="sel_pitanje_id_'+element.id+'" class="'+selected+' text-center">'+
+                '<span class="navigacija-pitanje-number">'+element.id+'</span>'+
+                '<div id="col_pitanje_id_'+element.id+'" class="navigacija-pitanje-color-grey"></div>'+
+              '</div>'+
+            '</a>'
+          );
+        }
       total_pitanja = element.id;
   });
   var zapoceto = document.getElementById("zapoceto");
@@ -240,6 +339,7 @@ function zavrsi() {
   $(".zapocni-div").append('<button class="btn zapocni" type="button" name="button" onclick="zapocni();  timer();">Započni</button>');
   var print =  document.getElementById("list");
   $("input[name=check]").attr('disabled', true);
+  $("select[name=check]").attr('disabled', true);
 
   var zapoceto = document.getElementById("zapoceto-full").innerHTML;
   var zavrseno = document.getElementById("zavrseno");
@@ -272,43 +372,73 @@ function zavrsi() {
   var print =  document.getElementById("list");
   var pitanja = JSON.parse(print.innerHTML);
   var rez = 0;
-  var bod;
+  var bod = 0;
+  var bod3 = 0;
   var ukupno_moguce = 0;
+  var bodovi_total_choose = 0;
+  var choosen_odg_id;
   $(".visibility").removeClass("collapse");
   $(".label").removeClass("collapse");
   var timer2 =  document.getElementById("timer2");
   timer2.innerHTML = '<a class="showAll" onclick="showAll()">Prikaži sva pitanja na jednoj stranici</a>';
-
   pitanja.forEach((element, index) => {
     if (element.id !=-1) {
       var id = element.id;
-      var choosen_odg_id = "choosen_odg_id_" + id;
+      if (element.vrsta=="CHOOSE") {
+        for (var i=0; i<element.povez.length; i++) {
+          choosen_odg_id = "choosen_odg_id_" + id + i;
+          var bod2 = parseInt(document.getElementById(choosen_odg_id).innerHTML);
+          bod3+=bod2;
+          if(bod2==-1) bod2 = 0;
+          bod+=bod2;
+          bodovi_total_choose+=element.bodovi[i];
+
+        }
+        if (bod3==(0-bodovi_total_choose)) {
+          bod=-1;
+        }
+      }
+      else {
+        choosen_odg_id = "choosen_odg_id_" + id;
+        bod = parseInt(document.getElementById(choosen_odg_id).innerHTML);
+        bodovi_total_choose=element.bodovi;
+      }
+
       var col_pitanje_id = "#col_pitanje_id_" + id;
       var col_pitanje_id2 = document.getElementById("col_pitanje_id_" + id);
       var bod_pitanje_id = document.getElementById("d_bod_pitanje_id_" + id);
-      bod = parseInt(document.getElementById(choosen_odg_id).innerHTML);
+
       if (bod==0) {
         $(col_pitanje_id).addClass("navigacija-pitanje-color-red");
         $(col_pitanje_id).removeClass("navigacija-pitanje-color-grey");
         $(col_pitanje_id).removeClass("navigacija-pitanje-color-green");
-        bod_pitanje_id.innerHTML = 'Broj bodova: '+0+',00 <br> od '+element.bodovi+',00'
+        bod_pitanje_id.innerHTML = 'Broj bodova: '+0+',00 <br> od '+bodovi_total_choose+',00'
       }
       else if (bod==-1) {
         $(col_pitanje_id).addClass("navigacija-pitanje-color-grey");
         $(col_pitanje_id).removeClass("navigacija-pitanje-color-green");
-        $(col_pitanje_id).removeClass("navigacija-pitanje-color-red");
-        bod_pitanje_id.innerHTML = 'Broj bodova: '+0+',00 <br> od '+element.bodovi+',00'
+        bod_pitanje_id.innerHTML = 'Broj bodova: '+0+',00 <br> od '+bodovi_total_choose+',00'
       }
-      else {
+      else if (bod==bodovi_total_choose){
         $(col_pitanje_id).addClass("navigacija-pitanje-color-green");
-        $(col_pitanje_id).removeClass("navigacija-pitanje-color-red");
         $(col_pitanje_id).removeClass("navigacija-pitanje-color-grey");
         col_pitanje_id2.innerHTML = '<b class="checkmark">✓</b>';
-        bod_pitanje_id.innerHTML = 'Broj bodova: '+bod+',00 <br> od '+element.bodovi+',00'
+        bod_pitanje_id.innerHTML = 'Broj bodova: '+bod+',00 <br> od '+bodovi_total_choose+',00'
+      }
+
+      else {
+        $(col_pitanje_id).addClass("navigacija-pitanje-color-yellow");
+        $(col_pitanje_id).removeClass("navigacija-pitanje-color-grey");
+        col_pitanje_id2.innerHTML = '<b class="checkmark2">●</b>';
+        bod_pitanje_id.innerHTML = 'Broj bodova: '+bod+',00 <br> od '+bodovi_total_choose+',00'
       }
       if (bod==-1) bod = 0;
       rez+=bod;
-      ukupno_moguce += parseInt(element.bodovi);
+      ukupno_moguce += bodovi_total_choose;
+      bodovi_total_choose = 0;
+      bod=0;
+      bod2=0;
+      bod3=0;
     }
   });
   var postotak = rez/ukupno_moguce*100;
@@ -316,6 +446,7 @@ function zavrsi() {
   ukupno_moguce = ukupno_moguce.toFixed(2)
   var ocjena = document.getElementById("ocjena");
   ocjena.innerHTML = "<b>" + rez + "</b> od maksimalno " + ukupno_moguce + " (<b>"+postotak.toFixed(2)+"</b>%)";
+  $(".rezultati").append(postotak.toFixed(2) + "% | ");
 
   $(".navigacija-pitanja").append(
 
@@ -367,7 +498,7 @@ function checkAnswer(id) {
 
   $("input[checked=false]").attr("disabled",false);
 
-  $(pitanje_id).removeClass("navigacija-pitanje-color-red");
+  $(pitanje_id).removeClass("navigacija-pitanje-color-grey");
   $(pitanje_id).addClass("navigacija-pitanje-color-green");
 
   var bod =  parseInt(document.getElementById(bod_id).innerHTML);
@@ -385,6 +516,68 @@ function checkAnswer(id) {
     id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X</b>';
   }
 }
+
+
+function checkAnswerWord(id) {
+  var choosen = document.getElementById(id).value;
+  var id = idToNumber(id);
+  var id_pitanja2 = document.getElementById("odabir_text_"+id);
+  var id_pitanja = document.getElementById("odabir_label_"+id);
+  var odgovoreno_id = "odgovoreno_id_" + id;
+  var choosen_odg_id = "choosen_odg_id_" + id;
+  var pitanje_id = "#col_pitanje_id_" + id;
+  var odg_id = "odg_pitanje_id_" + id;
+  var bod_id = "bod_pitanje_id_" + id;
+  var odg = document.getElementById(odg_id).innerHTML;
+  document.getElementById(odgovoreno_id).innerHTML = "Odgovoreno";
+
+  $(pitanje_id).removeClass("navigacija-pitanje-color-grey");
+  $(pitanje_id).addClass("navigacija-pitanje-color-green");
+
+  var bod =  parseInt(document.getElementById(bod_id).innerHTML);
+  var rez = document.getElementById(choosen_odg_id);
+  if (odg==choosen) {
+    rez.innerHTML=bod;
+    id_pitanja.innerHTML = '<b style="color:green;">✓</b>';
+  }
+  else {
+    rez.innerHTML=0;
+    id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X</b>';
+  }
+}
+
+
+
+function checkAnswerChoose(id) {
+  var choosen = document.getElementById(id).value;
+  var id = idToNumber(id);
+  var id_pitanja2 = document.getElementById("odabir_choose_"+id);
+  var id_pitanja = document.getElementById("odabir_label_"+id);
+  var odgovoreno_id = ("odgovoreno_id_" + id).slice(0, -1);
+  var choosen_odg_id = "choosen_odg_id_" + id;
+  var pitanje_id = ("#col_pitanje_id_" + id).slice(0, -1);
+  var odg_id = "odg_pitanje_id_" + id;
+  var bod_id = "bod_pitanje_id_" + id;
+  var odg = document.getElementById(odg_id).innerHTML;
+
+  document.getElementById(odgovoreno_id).innerHTML = "Odgovoreno";
+
+  $(pitanje_id).removeClass("navigacija-pitanje-color-grey");
+  $(pitanje_id).addClass("navigacija-pitanje-color-green");
+
+  var bod =  parseInt(document.getElementById(bod_id).innerHTML);
+  var rez = document.getElementById(choosen_odg_id);
+  if (odg==choosen) {
+    rez.innerHTML=bod;
+    id_pitanja.innerHTML = '<b style="color:green;">✓</b>';
+  }
+  else {
+    rez.innerHTML=0;
+    id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X</b>';
+  }
+}
+
+
 
 function pretPitanje() {
   var trenutno_pitanje = document.getElementById("trenutno_pitanje");

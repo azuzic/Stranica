@@ -42,6 +42,16 @@
   margin-top: 100px;
 }
 
+.navigacija {
+  background-color: rgb(245, 245, 245);
+  border: solid 1px rgb(227, 227, 227);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px 0px inset;
+  padding: 0px 8px 0px 12px;
+  width: 100%;
+  height: 300px;
+}
+
 .navigacija-naslov {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #999;
@@ -69,17 +79,20 @@
 }
 
 .navigacija-pitanje-box-selected {
-  width: 28px;
-  height: 38px;
+  width: 32px;
+  height: 42px;
   border: black solid 3px;
   border-radius: 3px;
   margin: 0px;
   padding: 0px;
   overflow: hidden;
+  position: relative;
+  right: 2px;
+  bottom: 2px;
 }
 
 .navigacija-pitanje-box:hover {
-    text-decoration: underline !important;
+    background-color: rgb(222, 222, 222);
     cursor: pointer;
 }
 
@@ -109,6 +122,13 @@
   position: relative;
   top: -8px;
   background-color: #468847;
+}
+
+.navigacija-pitanje-color-yellow {
+  height: 20px;
+  position: relative;
+  top: -8px;
+  background-color: #f89406;
 }
 
 .pitanje-bodovi {
@@ -141,7 +161,7 @@
     font-weight: bold;
 }
 /*-------------------------------------*/
-@media screen and (min-width: 964px) {
+@media screen and (min-width: 1050px) {
   .pitanje-okvir {
     margin-left: 5px;
     width: 80%;
@@ -156,18 +176,13 @@
     width: 70%;
     padding: 16px 0px 0px 32px;
   }
-  .navigacija {
-    background-color: rgb(245, 245, 245);
-    border: solid 1px rgb(227, 227, 227);
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px 0px inset;
-    padding: 0px 8px 0px 12px;
+
+  .navigacija2 {
     width: 20%;
-    height: 400px;
   }
 }
 
-@media screen and (max-width: 964px) {
+@media screen and (max-width: 1050px) {
   .pitanje-okvir {
     margin-left: 5px;
     width: 70%;
@@ -182,14 +197,41 @@
     width: 75%;
     padding: 16px 0px 0px 16px;
   }
-  .navigacija {
-    background-color: rgb(245, 245, 245);
-    border: solid 1px rgb(227, 227, 227);
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px 0px inset;
-    padding: 0px 8px 0px 12px;
+
+  .navigacija2 {
     width: 25%;
-    height: 400px;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .pitanje-okvir {
+    margin-left: 0px;
+    width: 100%;
+    background-color: #d9edf7;
+    border: solid 1px #bce8f1;
+    border-radius: 4px;
+  }
+  .sidebar {
+    width: 0%;
+  }
+  .pitanja {
+    width: 100%;
+    padding: 16px 0px 0px 0px;
+  }
+  .pitanja2 {
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+  }
+
+  .navigacija2 {
+    width: 100%;
+  }
+
+  .table {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    position: relative;
+    height: 200px !important;
   }
 }
 /*-------------------------------------*/
@@ -233,6 +275,12 @@
   position: relative;
   bottom: 5px;
 }
+.checkmark2 {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  bottom: 7px;
+}
 
 .timer2 {
     left: 10px;
@@ -262,4 +310,17 @@
   color: #004263 !important;
   text-decoration: underline !important;
   cursor: pointer;
+}
+
+.input-text {
+  padding-left: 4px;
+}
+
+.input-select {
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.povez_style {
+  font-weight: normal;
 }
