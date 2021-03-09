@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Alesandro Žužić</title>
   <meta charset="utf-8" />
@@ -13,6 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="style.css">
   <!--JS-->
@@ -31,14 +31,19 @@
 </head>
 <!--body-------------------------------------------------------------------------------->
 
-<body class="row p-4" onload="txt();">
-
+<body class="row p-4">
   <p><h1 class="glavni-naslov text-center">E-UČENJE TEST SIMULATOR</h1></p>
 
   <div class="sidebar">
   </div>
   <div class="zapocni-div pb-4">
-    <button class="btn zapocni" type="button" name="button" onclick="zapocni(); timer();">Započni</button>
+    <button class="btn zapocni zapocni2" type="button" name="button" onclick="zapocni(); timer();">Započni</button>
+    <button class="btn zapocni dropdown-toggle" type="button" name="button" data-toggle="dropdown">Odabir<span class="caret"></span></button>
+    <ul class="dropdown-menu dropdown-text">
+      <li class="dropdown-text2" onclick="txt(this);">OS</li>
+      <li class="dropdown-text2" onclick="txt(this);">ENG</li>
+    </ul>
+    <span> Odabran test: <b id="odabran-test"></b> </span>
   </div>
 
   <div class="sidebar">
@@ -55,7 +60,6 @@
       <span id="timer2" class="timer2 text-center"></span>
     </div>
   </div>
-
 
 
   <div class="pitanja row">
@@ -92,6 +96,20 @@
     </div>
     <div class="pitanja2 row container-fluid">
 
+      <div class="pitanje-okvir p-3">
+        <p class="pitanje-text">2+2=7</p>
+        <div class="vrsta-TN">
+          <div class="form-check pl-0">
+            <form>
+              <input id="odabir_t_1" class="mr-2 odabir" type="checkbox" name="check" value="točno" onchange="checkAnswer(this.id);">
+                <label for="točno" class="mb-0"> Točno <b id="todabir_t_1" class="collapse label"></b></label>
+              <br>
+              <input id="odabir_n_1" class="mr-2 odabir" type="checkbox" name="check" value="netočno" onchange="checkAnswer(this.id);">
+                <label for="netočno" class="mb-0"> Netočno <b id="todabir_n_1" class="collapse label"></b></label>
+            </form>
+          </div>
+        </div>
+      </div>
 
     </div>
     <div class="row container-fluid">
@@ -107,8 +125,8 @@
     </div>
   </div>
 
-  <div id="list" class="collapse">
-
+  <div id="list" class="collapse list99">
+    0
   </div>
 
 </body>

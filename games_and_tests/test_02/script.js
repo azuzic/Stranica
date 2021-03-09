@@ -1,13 +1,14 @@
-function txt() {
+function txt(id) {
     var print =  document.getElementById("list");
-    var fileUrl = 'test.txt';
+    var odabir =  document.getElementById("odabran-test");
+    var fileUrl = 'test'+id.innerHTML+'.txt';
     fetch(fileUrl)
        .then( r => r.text() )
        .then( t => print.innerHTML=t )
+    odabir.innerHTML = id.innerHTML;
 }
 
 var trenutno_vrijeme, endtimer=0,  total_pitanja=0;
-
 
 
 function Fdan(dan) {
@@ -86,6 +87,7 @@ function Fmjesec(mjesec) {
 function timer() {
   // Set the date we're counting down to
   var print =  document.getElementById("list");
+  if (print.innerHTML!=0) {
   var timer2 =  document.getElementById("timer2");
   var pitanja = JSON.parse(print.innerHTML);
   var limit = 0;
@@ -149,16 +151,22 @@ function timer() {
     }
   }
 }
+else
+alert("Odaberi test!");
+}
 
 
 
 function zapocni() {
+  var print =  document.getElementById("list");
+  if (print.innerHTML!=0) {
+  $('.dropdown-toggle').prop('disabled', true);
   var trenutno_pitanje = document.getElementById("trenutno_pitanje");
   trenutno_pitanje.innerHTML = 1;
-  $(".zapocni-div").empty();
+  $(".zapocni2").remove();
   $("#proteklo").empty();
-  $(".zapocni-div").append('<button class="btn zapocni" type="button" name="button" onclick="zavrsi();">Završi</button>');
-  var print =  document.getElementById("list");
+  $(".zapocni-div").prepend('<button class="btn zapocni zavrsi2" type="button" name="button" onclick="zavrsi();">Završi</button>');
+
 
   var pitanja = JSON.parse(print.innerHTML);
   $(".pitanja2").empty();
@@ -210,30 +218,37 @@ function zapocni() {
             '</a>'
           );
         }
-        if(element.vrsta == "WORD" && element.id!=-1) {
+        var ponude = [];
+        if(element.vrsta == "MULTI" && element.id!=-1) {
+          for (var i=0, k=0; i<element.ponude.length; i++) {
+            if (Number.isInteger(element.ponude[i])) {
+                ponude[k] = element.ponude[i];
+                k++;
+            }
+          }
+          var bodovi_total = 0;
+          for (var i=0; i<element.bodovi.length; i++) {
+            if (element.bodovi[i]>0)
+              bodovi_total+=element.bodovi[i];
+          }
           $(".pitanja2").append(
           '<div id="pitanje_id_'+element.id+'" class="row container-fluid p-0 mb-4 visibility '+collapse+'">'+
-            '<div class="pitanje-bodovi">'+
+            '<div class="pitanje-bodovi pitanje_bodovi_'+element.id+'">'+
                 '<h3 class="pitanje-bodovi-naslov mt-2 mb-2">Pitanje<span class="pitanje-bodovi-naslov-broj"> '+element.id+'</span></h3>'+
                 '<div id="odgovoreno_id_'+element.id+'" class=" mt-2 mb-2 ">Nije odgovoreno</div>'+
-                '<div id="d_bod_pitanje_id_'+element.id+'" class=" mt-2 mb-2 ">Broj bodova od <b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+'">'+element.bodovi+',00</b></div>'+
+                '<div id="d_bod_pitanje_id_'+element.id+'" class=" mt-2 mb-2 ">Broj bodova od <b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+'">'+bodovi_total+',00</b></div>'+
             '</div>'+
+
             '<div class="pitanje-okvir p-3">'+
               '<p class="pitanje-text">'+element.pitanje+'</p>'+
-              '<div class="vrsta-WORD">'+
+              '<img class="mb-2" src="'+element.slika+'" height="400px;">'+
+              '<div class="vrsta-MULTI">'+
                 '<div class="form-check pl-0">'+
-                  '<form>'+
-                    '<input id="odabir_text_'+element.id+'" class="mr-2 odabir input-text" type="text" id="male" name="check" value="" oninput="checkAnswerWord(this.id);" style="text-transform:lowercase">'+
-                    '<label for="točno" class="mb-0"><b id="odabir_label_'+element.id+'" class="collapse label"></b></label><br>'+
+                  '<form class="form_id_'+element.id+'">'+
                   '</form>'+
                 '</div>'+
               '</div>'+
             '</div>'+
-          '</div>'+
-          '<div id="odg_pitanje_id_'+element.id+'" class="collapse">'+
-            element.odgovor+
-          '</div>'+
-          '<div id="choosen_odg_id_'+element.id+'" class="collapse">-1'+
           '</div>'
           );
           $(".navigacija-pitanja").append(
@@ -244,7 +259,147 @@ function zapocni() {
               '</div>'+
             '</a>'
           );
+          for (var i=0; i<element.ponude.length; i++) {
+            $('.form_id_'+element.id).append(
+              '<input id="odabir_id_'+element.id+i+'" class="mr-2 odabir" type="checkbox" name="check" value="'+element.ponude[i]+'" onchange="checkAnswerMulti(this.id);">'+
+                '<label class="mb-0"> '+element.ponude[i]+' <b id="todabir_id_'+element.id+i+'" class="collapse label"></b></label>'+
+              '<br>'
+            );
+            $(".pitanja2").append(
+            '<div id="odg_pitanje_id_'+element.id+i+'" class="collapse">'+
+              element.odgovor[i]+
+            '</div>'+
+            '<div id="choosen_odg_id_'+element.id+i+'" class="collapse">-2'+
+            '</div>'
+            );
+            $(".pitanje_bodovi_"+element.id).append(
+              '<div id="d_bod_pitanje_id_'+element.id+i+'" class="collapse"><b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+i+'">'+element.bodovi[i]+'</b></div>'
+            );
+          }
         }
+        if(element.vrsta == "WORD" && element.id!=-1) {
+          if(element.velicina == "SMALL") {
+            $(".pitanja2").append(
+            '<div id="pitanje_id_'+element.id+'" class="row container-fluid p-0 mb-4 visibility '+collapse+'">'+
+              '<div class="pitanje-bodovi">'+
+                  '<h3 class="pitanje-bodovi-naslov mt-2 mb-2">Pitanje<span class="pitanje-bodovi-naslov-broj"> '+index+'</span></h3>'+
+                  '<div id="odgovoreno_id_'+element.id+'" class=" mt-2 mb-2 ">Nije odgovoreno</div>'+
+                  '<div id="d_bod_pitanje_id_'+element.id+'" class=" mt-2 mb-2 ">Broj bodova od <b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+'">'+element.bodovi+',00</b></div>'+
+              '</div>'+
+              '<div class="pitanje-okvir p-3">'+
+                '<p class="pitanje-text">'+element.pitanje+'</p>'+
+                '<img class="mb-2" src="'+element.slika+'" height="400px;">'+
+                '<div class="vrsta-WORD">'+
+                  '<div class="form-check pl-0">'+
+                    '<form>'+
+                      '<input id="odabir_text_'+element.id+'" class="mr-2 odabir input-text" type="text" id="male" name="check" value="" oninput="checkAnswerWord(this.id);" style="text-transform:lowercase">'+
+                      '<label for="točno" class="mb-0"><b id="odabir_label_'+element.id+'" class="collapse label"></b></label><br>'+
+                    '</form>'+
+                  '</div>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '<div id="odg_pitanje_id_'+element.id+'" class="collapse">'+
+              element.odgovor+
+            '</div>'+
+            '<div id="choosen_odg_id_'+element.id+'" class="collapse">-1'+
+            '</div>'
+            );
+            $(".navigacija-pitanja").append(
+              '<a id="nav_pitanje_id_'+element.id+'" class="navigacija-pitanje" onclick="navigacija(this.id);">'+
+                '<div id="sel_pitanje_id_'+element.id+'" class="'+selected+' text-center">'+
+                  '<span class="navigacija-pitanje-number">'+index+'</span>'+
+                  '<div id="col_pitanje_id_'+element.id+'" class="navigacija-pitanje-color-grey"></div>'+
+                '</div>'+
+              '</a>'
+            );
+          }
+          else if(element.velicina == "BIG") {
+            $(".pitanja2").append(
+            '<div id="pitanje_id_'+element.id+'" class="row container-fluid p-0 mb-4 visibility '+collapse+'">'+
+              '<div class="pitanje-bodovi">'+
+                  '<h3 class="pitanje-bodovi-naslov mt-2 mb-2">Pitanje<span class="pitanje-bodovi-naslov-broj"> '+index+'</span></h3>'+
+                  '<div id="odgovoreno_id_'+element.id+'" class=" mt-2 mb-2 ">Nije odgovoreno</div>'+
+                  '<div id="d_bod_pitanje_id_'+element.id+'" class=" mt-2 mb-2 ">Broj bodova od <b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+'">'+element.bodovi+',00</b></div>'+
+              '</div>'+
+              '<div class="pitanje-okvir p-3">'+
+                '<p class="pitanje-text">'+element.pitanje+'</p>'+
+                '<img class="mb-2" src="'+element.slika+'" height="400px;">'+
+                '<div class="vrsta-WORD">'+
+                  '<div class="form-check pl-0">'+
+                    '<form>'+
+                      '<textarea id="odabir_text_'+element.id+'" class="mr-2 odabir input-text2" type="textarea" id="male" name="check" value="" oninput="checkAnswerWord(this.id);" style="text-transform:lowercase" rows="10"></textarea>'+
+                      '<label for="točno" class="mb-0"><b id="odabir_label_'+element.id+'" class="collapse label"></b></label><br>'+
+                    '</form>'+
+                  '</div>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '<div id="odg_pitanje_id_'+element.id+'" class="collapse">'+
+              element.odgovor+
+            '</div>'+
+            '<div id="choosen_odg_id_'+element.id+'" class="collapse">-1'+
+            '</div>'
+            );
+            $(".navigacija-pitanja").append(
+              '<a id="nav_pitanje_id_'+element.id+'" class="navigacija-pitanje" onclick="navigacija(this.id);">'+
+                '<div id="sel_pitanje_id_'+element.id+'" class="'+selected+' text-center">'+
+                  '<span class="navigacija-pitanje-number">'+index+'</span>'+
+                  '<div id="col_pitanje_id_'+element.id+'" class="navigacija-pitanje-color-grey"></div>'+
+                '</div>'+
+              '</a>'
+            );
+          }
+        }
+        if(element.vrsta == "WORDS" && element.id!=-1) {
+            var bodovi_total = 0;
+            for (var i=0; i<element.bodovi.length; i++) {
+              if (element.bodovi[i]>0)
+                bodovi_total+=element.bodovi[i];
+            }
+            $(".pitanja2").append(
+            '<div id="pitanje_id_'+element.id+'" class="row container-fluid p-0 mb-4 visibility '+collapse+'">'+
+              '<div class="pitanje-bodovi">'+
+                  '<h3 class="pitanje-bodovi-naslov mt-2 mb-2">Pitanje<span class="pitanje-bodovi-naslov-broj"> '+index+'</span></h3>'+
+                  '<div id="odgovoreno_id_'+element.id+'" class=" mt-2 mb-2 ">Nije odgovoreno</div>'+
+                  '<div id="d_bod_pitanje_id_'+element.id+'" class=" mt-2 mb-2 ">Broj bodova od <b style="font-weight:normal;" id="bod_pitanje_id_'+element.id+'">'+bodovi_total+',00</b></div>'+
+              '</div>'+
+              '<div class="pitanje-okvir p-3">'+
+                '<p class="pitanje-text-'+element.id+'"></p>'+
+              '</div>'+
+            '</div>'
+            );
+            for (var i=0; i<element.text.length; i++) {
+                  $(".pitanje-text-"+element.id).append(
+                    element.text[i] + " "
+                  );
+                  if (i!=element.text.length-1)
+                  $(".pitanje-text-"+element.id).append(
+                    '<div class="tooltip2 class_odabir_text_'+element.id+i+'">'+
+                      '<input id="odabir_text_'+element.id+i+'" class="mr-2 odabir input-text3 " type="text" id="male" name="check" value="" oninput="checkAnswerWords(this.id);" style="text-transform:lowercase">'+
+                      '<label for="točno" class="mb-0"><b id="odabir_label_'+element.id+i+'" class="collapse label"></b></label>'+
+                      '<span class="tooltiptext2 collapse tooltip_'+element.id+i+'">'+
+                        'Netočno <br>'+
+                        'Ispravan odgovor je: <b>'+ element.odgovor[i] +'</b><br>' +
+                        'Broj bodova: 0,00 od 1,00' +
+                      '</span>'+
+                    '</div>'+
+                    '<div id="odg_pitanje_id_'+element.id+i+'" class="collapse">'+
+                      element.odgovor[i]+
+                    '</div>'+
+                    '<div id="choosen_odg_id_'+element.id+i+'" class="collapse">-1'+
+                    '</div>'
+                  );
+            }
+            $(".navigacija-pitanja").append(
+              '<a id="nav_pitanje_id_'+element.id+'" class="navigacija-pitanje" onclick="navigacija(this.id);">'+
+                '<div id="sel_pitanje_id_'+element.id+'" class="'+selected+' text-center">'+
+                  '<span class="navigacija-pitanje-number">'+index+'</span>'+
+                  '<div id="col_pitanje_id_'+element.id+'" class="navigacija-pitanje-color-grey"></div>'+
+                '</div>'+
+              '</a>'
+            );
+          }
         var ponude = [];
         if(element.vrsta == "CHOOSE" && element.id!=-1) {
           for (var i=0, k=0; i<element.ponude.length; i++) {
@@ -329,17 +484,20 @@ function zapocni() {
 
   zapoceto.innerHTML = dan + date + mjesec + godina + ", " + sati + ":" + minute;
   stanje.innerHTML = "Započeto";
+  }
 }
 
 
 
 function zavrsi() {
+  $('.dropdown-toggle').prop('disabled', false);
   endtimer = 1;
-  $(".zapocni-div").empty();
-  $(".zapocni-div").append('<button class="btn zapocni" type="button" name="button" onclick="zapocni();  timer();">Započni</button>');
+  $(".zavrsi2").remove();
+  $(".zapocni-div").prepend('<button class="btn zapocni zapocni2" type="button" name="button" onclick="zapocni();  timer();">Započni</button>');
   var print =  document.getElementById("list");
   $("input[name=check]").attr('disabled', true);
   $("select[name=check]").attr('disabled', true);
+  $("textarea").attr('disabled', true);
 
   var zapoceto = document.getElementById("zapoceto-full").innerHTML;
   var zavrseno = document.getElementById("zavrseno");
@@ -378,6 +536,7 @@ function zavrsi() {
   var bodovi_total_choose = 0;
   var choosen_odg_id;
   $(".visibility").removeClass("collapse");
+  $(".tooltipshow").removeClass("collapse");
   $(".label").removeClass("collapse");
   var timer2 =  document.getElementById("timer2");
   timer2.innerHTML = '<a class="showAll" onclick="showAll()">Prikaži sva pitanja na jednoj stranici</a>';
@@ -392,11 +551,42 @@ function zavrsi() {
           if(bod2==-1) bod2 = 0;
           bod+=bod2;
           bodovi_total_choose+=element.bodovi[i];
-
         }
         if (bod3==(0-bodovi_total_choose)) {
           bod=-1;
         }
+      }
+      else if (element.vrsta=="WORDS") {
+        for (var i=0; i<element.bodovi.length; i++) {
+          choosen_odg_id = "choosen_odg_id_" + id + i;
+          var bod2 = parseInt(document.getElementById(choosen_odg_id).innerHTML);
+          bod3+=bod2;
+          if(bod2==-1) bod2 = 0;
+          bod+=bod2;
+          bodovi_total_choose+=element.bodovi[i];
+        }
+        if (bod3==(0-bodovi_total_choose)) {
+          bod=-1;
+        }
+      }
+      else if (element.vrsta=="MULTI") {
+        var multi_check = 1;
+        for (var i=0; i<element.ponude.length; i++) {
+          choosen_odg_id = "choosen_odg_id_" + id + i;
+          multi_odabir = document.getElementById("odabir_id_" + id + i);
+          if (multi_odabir.checked == true)
+            multi_check = 0;
+          var bod2 = parseInt(document.getElementById(choosen_odg_id).innerHTML);
+          if(bod2==-2) bod2 = 0;
+          bod3+=bod2;
+          bod+=bod2;
+          if (element.bodovi[i] > 0)
+            bodovi_total_choose+=element.bodovi[i];
+        }
+        if (bod3==0 && multi_check)
+          bod=-1;
+        else if (bod3 < 0)
+          bod=0;
       }
       else {
         choosen_odg_id = "choosen_odg_id_" + id;
@@ -510,7 +700,6 @@ function checkAnswer(id) {
     id_pitanja.innerHTML = '<b style="color:green;">✓</b>';
   }
   else {
-    rez.innerHTML=0;
     id_pitanja2.innerHTML = '';
     id_pitanja3.innerHTML = '';
     id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X</b>';
@@ -520,6 +709,7 @@ function checkAnswer(id) {
 
 function checkAnswerWord(id) {
   var choosen = document.getElementById(id).value;
+  var choosen2 = document.getElementById(id).type;
   var id = idToNumber(id);
   var id_pitanja2 = document.getElementById("odabir_text_"+id);
   var id_pitanja = document.getElementById("odabir_label_"+id);
@@ -536,17 +726,68 @@ function checkAnswerWord(id) {
 
   var bod =  parseInt(document.getElementById(bod_id).innerHTML);
   var rez = document.getElementById(choosen_odg_id);
-  if (odg==choosen) {
-    rez.innerHTML=bod;
-    id_pitanja.innerHTML = '<b style="color:green;">✓</b>';
+  if (choosen2!="textarea") {
+    if (stringSimilarity.compareTwoStrings(odg,choosen)>0.79) {
+      rez.innerHTML=bod;
+      id_pitanja.innerHTML = '<b style="color:green;">✓</b>';
+    }
+    else {
+      rez.innerHTML=0;
+      id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X '+ odg +'</b>';
+    }
   }
   else {
-    rez.innerHTML=0;
-    id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X</b>';
+    if (stringSimilarity.compareTwoStrings(odg,choosen)>0.90) {
+      rez.innerHTML=bod;
+      id_pitanja.innerHTML = '<b style="color:green;">✓</b>';
+    }
+    else if (stringSimilarity.compareTwoStrings(odg,choosen)>0.10) {
+      rez.innerHTML=(bod*stringSimilarity.compareTwoStrings(odg,choosen)).toFixed(2);
+      id_pitanja.innerHTML = '<b style="color:orange; font-weight:normal;">• '+ odg +'</b>';
+    }
+    else {
+      rez.innerHTML=0;
+      id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X '+ odg +'</b>';
+    }
   }
 }
 
+function checkAnswerWords(id) {
+  var choosen = document.getElementById(id).value;
+  var choosen2 = document.getElementById(id).type;
+  var id = idToNumber(id);
+  var id_pitanja2 = document.getElementById("odabir_text_"+id);
+  var id_pitanja = document.getElementById("odabir_label_"+id);
+  if (id>100) {
+    var odgovoreno_id = ("odgovoreno_id_" + id).slice(0, -2);
+    var pitanje_id = ("#col_pitanje_id_" + id).slice(0, -2);
+  }
+  else {
+    var odgovoreno_id = ("odgovoreno_id_" + id).slice(0, -1);
+    var pitanje_id = ("#col_pitanje_id_" + id).slice(0, -1);
+  }
+  var choosen_odg_id = "choosen_odg_id_" + id;
+  var odg_id = "odg_pitanje_id_" + id;
+  var bod_id = "bod_pitanje_id_" + id;
+  var odg = document.getElementById(odg_id).innerHTML;
+  document.getElementById(odgovoreno_id).innerHTML = "Odgovoreno";
 
+  $(pitanje_id).removeClass("navigacija-pitanje-color-grey");
+  $(pitanje_id).addClass("navigacija-pitanje-color-green");
+
+  var bod = 1;
+  var rez = document.getElementById(choosen_odg_id);
+    if (stringSimilarity.compareTwoStrings(odg,choosen)==1) {
+      rez.innerHTML=bod;
+      $('.tooltip_'+id).removeClass("tooltipshow");
+      id_pitanja.innerHTML = '<b style="color:green;">✓ &nbsp</b>';
+    }
+    else {
+      rez.innerHTML=0;
+      $('.tooltip_'+id).addClass("tooltipshow");
+      id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X &nbsp</b>';
+    }
+}
 
 function checkAnswerChoose(id) {
   var choosen = document.getElementById(id).value;
@@ -577,7 +818,47 @@ function checkAnswerChoose(id) {
   }
 }
 
+function checkAnswerMulti(id) {
+  var choosen = document.getElementById(id).value;
+  var id = idToNumber(id);
+  var id_pitanja2 = document.getElementById("odabir_choose_"+id);
+  var id_pitanja = document.getElementById("todabir_id_"+id);
+  var odgovoreno_id = ("odgovoreno_id_" + id).slice(0, -1);
+  var choosen_odg_id = "choosen_odg_id_" + id;
+  var pitanje_id = ("#col_pitanje_id_" + id).slice(0, -1);
+  var odg_id = "odg_pitanje_id_" + id;
+  var bod_id = "bod_pitanje_id_" + id;
+  var odg = document.getElementById(odg_id).innerHTML;
 
+  document.getElementById(odgovoreno_id).innerHTML = "Odgovoreno";
+
+  $(pitanje_id).removeClass("navigacija-pitanje-color-grey");
+  $(pitanje_id).addClass("navigacija-pitanje-color-green");
+
+  var bod =  parseInt(document.getElementById(bod_id).innerHTML);
+  var rez = document.getElementById(choosen_odg_id);
+  if (odg==choosen) {
+    if (id_pitanja.innerHTML == '<b style="color:green;">✓</b>') {
+      id_pitanja.innerHTML = '';
+      rez.innerHTML=0;
+    }
+    else {
+      id_pitanja.innerHTML = '<b style="color:green;">✓</b>';
+      rez.innerHTML=bod;
+    }
+  }
+  else {
+    rez.innerHTML=0;
+    if (id_pitanja.innerHTML == '<b style="color:red; font-weight:normal;">X</b>') {
+      id_pitanja.innerHTML = '';
+      rez.innerHTML=0;
+    }
+    else {
+      id_pitanja.innerHTML = '<b style="color:red; font-weight:normal;">X</b>';
+      rez.innerHTML=bod;
+    }
+  }
+}
 
 function pretPitanje() {
   var trenutno_pitanje = document.getElementById("trenutno_pitanje");
@@ -610,3 +891,30 @@ function sljedPitanje () {
     $(pitanje_sel_id).addClass("navigacija-pitanje-box-selected");
   }
 }
+
+
+/*
+[
+  //vrijeme
+  {"id": -1 , "vrijeme": 300},
+
+  //točno - netočno
+  {"id": 1 , "vrsta": "TN" , "pitanje": "2+2=7" , "odgovor": "netočno" ,   "bodovi": 1},
+
+  //upisivanje riječi
+  {"id": 2 , "vrsta": "WORD" , "velicina": "SMALL" , "pitanje": "Što znači skraćenica AFK?" , "odgovor": "away from keyboard" ,   "bodovi": 1, "slika": "slike/01.png"},
+
+  //povezivanje
+  {"id": 3 , "vrsta": "CHOOSE" , "pitanje": "Poveži odgovore." ,
+  "povez": ["OS", "RM"] ,
+  "ponude": [2, "operacijski sustavi" , "računalne mreže" , 2 , "operacijski sustavi" , "računalne mreže"] ,
+  "odgovor": ["operacijski sustavi" , "računalne mreže"] ,
+  "bodovi": [1, 1]},
+
+  //odabir
+  {"id": 4 , "vrsta": "MULTI" , "pitanje": "Odaberi točno." ,
+  "ponude": ["operacijski sustavi" , "računalne mreže" , "programiranje" , "baze podataka"] ,
+  "odgovor": ["operacijski sustavi" , "računalne mreže" , "netočno" , "netočno"] ,
+  "bodovi": [1, 1, -1, -1], "slika": "slike/01.png"}
+]
+*/
