@@ -1,4 +1,4 @@
-function setCookie(name,value,days) {
+/* function setCookie(name,value,days) {
     var expires = "";
     if (days) {
         var date = new Date();
@@ -67,3 +67,4 @@ function unmutevideo() {
     btn.innerHTML = "UNMUTE VIDEO";
   }
 }
+*/

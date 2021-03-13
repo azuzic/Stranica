@@ -22,26 +22,26 @@ body {
   justify-content: center;
   align-items: center;
   padding: 10vh;
-  /*background-image: url(foto/dark_wood.jpg);*/
-  background-size: 100%;
+  background-image: url(foto/bg.png);
+  background-size: cover;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
 }
 
 #myVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1000;
-    overflow: hidden;
-    object-fit: fill;
-    -webkit-filter: brightness(65%) blur(10px);
-    -moz-filter: brightness(65%) blur(10px);
-    -o-filter: brightness(65%) blur(10px);
-    -ms-filter: brightness(65%) blur(10px);
-    filter: brightness(65%) blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1000;
+  overflow: hidden;
+  object-fit: fill;
+  -webkit-filter: brightness(65%) blur(10px);
+  -moz-filter: brightness(65%) blur(10px);
+  -o-filter: brightness(65%) blur(10px);
+  -ms-filter: brightness(65%) blur(10px);
+  filter: brightness(65%) blur(10px);
 }
 
 /*-------------------------------------*/
@@ -60,6 +60,7 @@ body {
     text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white;
   }
 }
+
 /*-------------------------------------*/
 /*-------------------------------------*/
 @media screen and (min-width: 800px) {
@@ -79,6 +80,7 @@ body {
     text-shadow: 0 0 4px white, 0 0 16px white, 0 0 64px white;
   }
 }
+
 /*-------------------------------------*/
 /*NEON EFFECT------------------------------------*/
 /*-------------------------------------*/
@@ -87,7 +89,7 @@ body {
     position: relative;
     display: inline-block;
     padding: 25px 30px;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     color: #03e9f4;
     font-size: 17px;
     text-decoration: none;
@@ -97,10 +99,11 @@ body {
     overflow: hidden;
     margin-right: 50px;
     text-shadow: 0 0 4px #03e9f4, 0 0 16px #03e9f4;
-    box-shadow: 0 0 5px rgba(0,0,0,0.4),
-      0 0 25px rgba(0,0,0,0.8),
-      0 0 100px rgba(0,0,0,1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4),
+      0 0 25px rgba(0, 0, 0, 0.8),
+      0 0 100px rgba(0, 0, 0, 1);
   }
+
   a u {
     font-size: 10px;
   }
@@ -111,7 +114,7 @@ body {
     position: relative;
     display: inline-block;
     padding: 20px 15px;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     color: #03e9f4;
     font-size: 12px;
     text-decoration: none;
@@ -121,16 +124,17 @@ body {
     overflow: hidden;
     margin-right: 50px;
     text-shadow: 0 0 4px #03e9f4, 0 0 16px #03e9f4;
-    box-shadow: 0 0 5px rgba(0,0,0,0.4),
-      0 0 25px rgba(0,0,0,0.8),
-      0 0 100px rgba(0,0,0,1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4),
+      0 0 25px rgba(0, 0, 0, 0.8),
+      0 0 100px rgba(0, 0, 0, 1);
   }
+
   a u {
     font-size: 7px;
   }
 }
-/*-------------------------------------*/
 
+/*-------------------------------------*/
 a:hover {
   background: #03e9f4;
   color: #050801;
@@ -139,13 +143,14 @@ a:hover {
     0 0 100px #03e9f4;
   text-shadow: none;
 }
+
 /*-------------------------------------*/
 @media screen and (min-width: 800px) {
   a.pause {
     position: relative;
     display: inline-block;
     padding: 20px 25px;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-size: 15px;
     text-decoration: none;
@@ -155,17 +160,18 @@ a:hover {
     overflow: hidden;
     margin-right: 50px;
     text-shadow: 0 0 4px white, 0 0 16px white;
-    box-shadow: 0 0 5px rgba(0,0,0,0.4),
-      0 0 25px rgba(0,0,0,0.8),
-      0 0 100px rgba(0,0,0,1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4),
+      0 0 25px rgba(0, 0, 0, 0.8),
+      0 0 100px rgba(0, 0, 0, 1);
   }
 }
+
 @media screen and (max-width: 800px) {
   a.pause {
     position: relative;
     display: inline-block;
     padding: 15px 20px;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-size: 10px;
     text-decoration: none;
@@ -175,11 +181,12 @@ a:hover {
     overflow: hidden;
     margin-right: 50px;
     text-shadow: 0 0 4px white, 0 0 16px white;
-    box-shadow: 0 0 5px rgba(0,0,0,0.4),
-      0 0 25px rgba(0,0,0,0.8),
-      0 0 100px rgba(0,0,0,1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4),
+      0 0 25px rgba(0, 0, 0, 0.8),
+      0 0 100px rgba(0, 0, 0, 1);
   }
 }
+
 /*-------------------------------------*/
 a.pause:hover {
   background: white;
@@ -194,15 +201,19 @@ a.pause:hover {
 a:nth-child(2) {
   filter: hue-rotate(0deg);
 }
+
 a:nth-child(3) {
   filter: hue-rotate(180deg);
 }
+
 a:nth-child(4) {
   filter: hue-rotate(240deg);
 }
+
 a:nth-child(5) {
   filter: hue-rotate(120deg);
 }
+
 a:nth-child(6) {
   filter: hue-rotate(300deg);
 }
@@ -290,4 +301,5 @@ a span:nth-child(4) {
     bottom: 100%;
   }
 }
+
 /*NEON EFFECT------------------------------------*/
