@@ -210,6 +210,7 @@ body {
   transition: 0.25s;
   color: aqua;
   text-shadow: 0 0 4px aqua, 0 0 16px aqua, 0 0 64px aqua;
+  text-decoration: none;
 }
 /*----------ENDBACKLEFT------------*/
 /*----------BACKRIGHT------------*/
@@ -226,6 +227,7 @@ body {
   transition: 0.25s;
   color: lightgreen;
   text-shadow: 0 0 4px lightgreen, 0 0 16px lightgreen, 0 0 64px lightgreen;
+  text-decoration: none;
 }
 /*----------ENDBACKRIGHT------------*/
 /*----------MENULEFT------------*/
