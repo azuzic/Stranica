@@ -33,6 +33,10 @@ hr {
 
 .daily {
   background-color: rgb(235, 168, 168);
+  box-shadow:
+    0 0 4px rgba(75,25,25,0.9),
+    0 0 8px rgba(200,100,100,0.4),
+    0 0 16px rgba(200,100,100,0.8);
   border-top: solid black 4px;
   border-bottom: solid black 4px;
 }
@@ -43,6 +47,10 @@ hr {
 
 .day {
   border: 4px solid black;
+  box-shadow:
+    0 0 4px rgba(75,25,25,0.9),
+    0 0 8px rgba(200,100,100,0.4),
+    0 0 16px rgba(200,100,100,0.8);
 }
 
 .back {
@@ -53,20 +61,83 @@ hr {
   color: darkred;
 }
 
-.day-t1 , .day-t2 , .day-t3 {
+.day-t , .day-t , .day-t {
   border-bottom: solid black 4px;
 }
 
-.day-t1 {
+.day-t1{
   background-color: rgb(230, 145, 145);
 }
-
 .day-t2 {
   background-color: rgb(215, 119, 119);
 }
-
 .day-t3 {
   background-color: rgb(204, 105, 105);
+}
+
+.day-t12{
+  background-color: rgb(230, 145, 145);
+  filter: hue-rotate(30deg);
+}
+.day-t22 {
+  background-color: rgb(215, 119, 119);
+  filter: hue-rotate(30deg);
+}
+.day-t32 {
+  background-color: rgb(204, 105, 105);
+  filter: hue-rotate(30deg);
+}
+
+.day-t13{
+  background-color: rgb(230, 145, 145);
+  filter: hue-rotate(120deg);
+}
+.day-t23 {
+  background-color: rgb(215, 119, 119);
+  filter: hue-rotate(120deg);
+}
+.day-t33 {
+  background-color: rgb(204, 105, 105);
+  filter: hue-rotate(120deg);
+}
+
+.day-t14{
+  background-color: rgb(230, 145, 145);
+  filter: hue-rotate(180deg);
+}
+.day-t24 {
+  background-color: rgb(215, 119, 119);
+  filter: hue-rotate(180deg);
+}
+.day-t34 {
+  background-color: rgb(204, 105, 105);
+  filter: hue-rotate(180deg);
+}
+
+.day-t15{
+  background-color: rgb(230, 145, 145);
+  filter: hue-rotate(260deg);
+}
+.day-t25 {
+  background-color: rgb(215, 119, 119);
+  filter: hue-rotate(260deg);
+}
+.day-t35 {
+  background-color: rgb(204, 105, 105);
+  filter: hue-rotate(260deg);
+}
+
+.day-t16{
+  background-color: rgb(230, 145, 145);
+  filter: hue-rotate(320deg);
+}
+.day-t26 {
+  background-color: rgb(215, 119, 119);
+  filter: hue-rotate(320deg);
+}
+.day-t36 {
+  background-color: rgb(204, 105, 105);
+  filter: hue-rotate(320deg);
 }
 
 .black {
