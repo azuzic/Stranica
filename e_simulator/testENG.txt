@@ -4,7 +4,7 @@
   {"id": 1 , "vrsta": "WORDS" ,
   "text":
   [
-  "Many years ago, I (bear)" , "in Seattle, Washington USA. Seattle (locate)",
+  "<b>Put the verbs in brackets into the appropriate verb tense. You will sometimes have to use the passive form as well.</b> <br> Many years ago, I (bear)" , "in Seattle, Washington USA. Seattle (locate)",
   "in the Northwest corner of the USA. Recently, Seattle (become)",
   "the focus of much international attention. Many films (make)",
   "there, probably the most famous of which is Sleepless in Seattle starring Meg Ryan and Tom Hanks. Seattle (know, also)",

@@ -191,17 +191,20 @@ a.pause:hover {
   text-shadow: none;
 }
 
-a:nth-child(1) {
-  filter: hue-rotate(0deg);
-}
 a:nth-child(2) {
-  filter: hue-rotate(120deg);
+  filter: hue-rotate(0deg);
 }
 a:nth-child(3) {
-  filter: hue-rotate(0deg);
+  filter: hue-rotate(180deg);
 }
 a:nth-child(4) {
-  filter: hue-rotate(200deg);
+  filter: hue-rotate(240deg);
+}
+a:nth-child(5) {
+  filter: hue-rotate(120deg);
+}
+a:nth-child(6) {
+  filter: hue-rotate(300deg);
 }
 
 a span {
