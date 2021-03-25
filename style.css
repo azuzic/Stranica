@@ -44,6 +44,11 @@ body {
   filter: brightness(65%) blur(10px);
 }
 
+.version {
+  font-size: 25px;
+  cursor: default;
+}
+
 /*-------------------------------------*/
 @media screen and (min-width: 800px) {
   .projekt-naslov-h1 {
@@ -303,3 +308,44 @@ a span:nth-child(4) {
 }
 
 /*NEON EFFECT------------------------------------*/
+
+.tooltip2 {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip2 .tooltiptext2 {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  padding: 8px;
+}
+
+.tooltip2 .tooltiptext2::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip2:hover .tooltiptext2 {
+  visibility: visible;
+}
+
+.tooltiptext2 {
+  font-size: 12px;
+  width: 400px;
+  margin-left: -200px;
+  padding: 2px;
+  text-shadow: none !important;
+}

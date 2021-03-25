@@ -1,5 +1,5 @@
 [
-  {"id": -1 , "vrijeme": 1200},
+  {"id": -1 , "vrijeme": 900},
 
   {"id": 1 , "vrsta": "WORDS" ,
   "text":
