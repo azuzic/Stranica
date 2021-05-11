@@ -129,7 +129,6 @@ hr {
 
 #rating_svg {
   width: 100%;
-  overflow-x: hidden;
   filter:
     drop-shadow(4px 4px 4px #878f99);
 }
