@@ -1,0 +1,530 @@
+
+<!DOCTYPE html>
+<head>
+  <title>Davor Krivić - Grafovi</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Istra music shop u Puli. Prodaja glazbenih instrumenata Pula. Otkup glazbenih instrumenata. Prodaja povoljnih gitara, bubnjeva, pojačala u Puli." <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <!--Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- Load d3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <!--CSS-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style_1.css">
+  <!--JS-->
+  <script src="script.js"></script>
+  <!--Ikona-->
+  <link rel="shortcut icon" type="image/png" href="swag_yoda.png">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-166262274-1');
+  </script>
+</head>
+
+
+<body class="row">
+
+  <div class="col-3"></div>
+
+  <div class="col-6 pb-5">
+
+    <div class="row container-fluid m-0 p-0 icon-div">
+      <div class="fx2">
+            <a href="projekt.html">
+                <div class="item col4 p-4">
+                    <img class="transition img-responsive body-icon" src="slike/icon-plan.png">
+                    <h4 class="icon-text">O PROJEKTU</h4>
+                </div>
+            </a>
+            <a href="#">
+                <div class="item col4 p-4">
+                    <img class="transition img-responsive body-icon selected" src="slike/icon-statistics.png">
+                    <h4 class="icon-text">GRAFOVI</h4>
+                </div>
+            </a>
+            <a href="biografija.html">
+                <div class="item col4 p-4">
+                    <img class="transition img-responsive body-icon" src="slike/icon-chess.png">
+                    <h4 class="icon-text">BIOGRAFIJA</h4>
+                </div>
+            </a>
+            <div class="container-fluid text-center">
+               <h1 class="pb-4 pt-4 pfp-name pfp-name2"><a href="index.html"><img class="pb-2 back text-left" src="slike/back-arrow.png" alt="" width="35px;"></a> GRAFOVI</h1>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="rating_div" class="row container-fluid mt-5 ml-0 p-0 svg-container">
+
+      <h1 class="pt-4  pfp-name"> > RATING < </h1>
+
+        <div class="container-fluid m-0 p-0" id="rating_svg"></div>
+      <hr>
+
+      <h1 class="pt-2 pfp-name"> > PARTIJE < </h1>
+      <div class="row container-fluid m-0 p-0">
+        <div class="row col-12 m-0 p-0">
+          <div class="col-4 m-0 p-0 right-border">
+            <h2 class="pt-4 pfp-name"> --- BIJELI --- </h2>
+            <br>
+            <div class="text-left p-5 font-size-pie">
+              <p><b class="circle-cyan">&nbsp&nbsp&nbsp&nbsp</b> Pobjede</p>
+              <p><b class="circle-orange">&nbsp&nbsp&nbsp&nbsp</b> Gubitci</p>
+              <p><b class="circle-blue">&nbsp&nbsp&nbsp&nbsp</b> Izjednačeno</p>
+            </div>
+          </div>
+          <div class="m-0 p-0" id="white_svg"></div>
+        </div>
+
+        <hr>
+
+        <div class="row col-12 m-0 p-0">
+          <div class="col-4 m-0 p-0 right-border">
+            <h2 class="pt-4 pfp-name"> --- CRNI --- </h2>
+            <br>
+            <div class="text-left p-5 font-size-pie">
+              <p><b class="circle-cyan">&nbsp&nbsp&nbsp&nbsp</b> Pobjede</p>
+              <p><b class="circle-orange">&nbsp&nbsp&nbsp&nbsp</b> Gubitci</p>
+              <p><b class="circle-blue">&nbsp&nbsp&nbsp&nbsp</b> Izjednačeno</p>
+            </div>
+          </div>
+          <div class="m-0 p-0" id="black_svg"></div>
+        </div>
+
+        <hr>
+
+        <div class="row col-12 m-0 p-0">
+          <div class="col-4 m-0 p-0 right-border">
+            <h2 class="pt-4 pfp-name"> --- UKUPNO --- </h2>
+            <br>
+            <div class="text-left p-5 font-size-pie">
+              <p><b class="circle-cyan">&nbsp&nbsp&nbsp&nbsp</b> Pobjede</p>
+              <p><b class="circle-orange">&nbsp&nbsp&nbsp&nbsp</b> Gubitci</p>
+              <p><b class="circle-blue">&nbsp&nbsp&nbsp&nbsp</b> Izjednačeno</p>
+            </div>
+          </div>
+          <div class="m-0 p-0" id="total_svg"></div>
+        </div>
+
+        <hr>
+
+      </div>
+      <h1 class="pfp-name"> > DOSTIGNUĆA < </h1>
+
+      <div class="row container-fluid m-0 p-0 font-size-aschivements2">
+        <div class="col-12 pl-5 text-left" style="margin-bottom:10px;">
+          <img class="img-shadow" src="slike/GM.png" style="height:180px;width:180px;">
+          <span style="padding-left:20px;"><span><b>GM</b></span> (International Correspondence Chess Grand Master) <b>2007</b></span>
+        </div>
+
+        <div class="col-12 pl-5 text-left mt-4 mb-4" style="margin-bottom:10px;">
+          <img class="img-shadow" src="slike/SIM.png" style="height:180px;width:180px;">
+          <span style="padding-left:20px;"><span><b>SIM</b></span> (Senior International Correspondence Chess Master) <b>2002</b></span>
+        </div>
+
+        <div class="col-12 pl-5 text-left" style="margin-bottom:10px;">
+          <img class="img-shadow" src="slike/IM.png" style="height:180px;width:180px;">
+          <span style="padding-left:20px;"><span><b>IM</b></span> (International Correspondence Chess Master) <b>2001</b></span>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div class="row container-fluid m-0 p-0 font-size-aschivements">
+        <div class="col-6 m-0 pl-5 text-left" style="margin-bottom:10px;">
+          <img class="img-shadow" src="slike/games_played_bronze.png" style="height:80px;width:80px;">
+          <span style="padding-left:20px;"><span><b>430</b></span> završenih partija</span>
+        </div>
+
+        <div class="col-6 m-0 pl-5 text-left" style="margin-bottom:10px;">
+          <img class="img-shadow" src="slike/games_bronze.png" style="height:80px;width:80px;">
+          <span style="padding-left:20px;"><span><b>98</b></span> pobjeda</span>
+        </div>
+
+        <div class="col-6 m-0 pl-5 text-left" style="margin-bottom:10px;">
+          <img class="img-shadow" src="slike/moves_bronze.png" style="height:80px;width:80px;">
+          <span style="padding-left:20px;"><span><b>10554</b></span> povučenih poteza</span>
+        </div>
+
+        <div class="col-6 mb-5 pl-5 text-left" style="margin-bottom:10px;">
+          <img class="img-shadow" src="slike/tournaments_bronze.png" style="height:80px;width:80px;">
+          <span style="padding-left:20px;"><span><b>39</b></span> odigranih turnira</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-3"></div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.myCircle:hover {
+  stroke: black;
+}
+</style>
+
+<script>
+// postavljanje dimenzija i margina grafikona
+var margin_rating = {top: 10, right: 30, bottom: 30, left: 60},
+    width_rating = document.getElementById("rating_div").offsetWidth - margin_rating.left - margin_rating.right,
+    height_rating = 400 - margin_rating.top - margin_rating.bottom;
+
+// dodamo svg objekt tijelu stranice
+var svg_rating = d3.select("#rating_svg")
+  .append("svg")
+    .attr("width", width_rating + margin_rating.left + margin_rating.right)
+    .attr("height", height_rating + margin_rating.top + margin_rating.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin_rating.left + "," + margin_rating.top + ")");
+
+// Očitavanje podataka
+d3.csv("rating.csv",
+
+  // Kada čitamo csv, moramo formatirati varijable:
+  function(d){
+    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+  },
+
+  // Sada možemo koristiti ovaj skup podataka:
+  function(data) {
+
+    // Dodaj os X -> to je format datuma
+    var x = d3.scaleTime()
+      .domain(d3.extent(data, function(d) { return d.date; }))
+      .range([ 0, width_rating ]);
+    svg_rating.append("g")
+      .attr("transform", "translate(0," + height_rating + ")")
+      .call(d3.axisBottom(x));
+
+    // Dodaj os Y
+    var y = d3.scaleLinear()
+      .domain( [2200, 2650])
+      .range([ height_rating, 0 ]);
+    svg_rating.append("g")
+      .call(d3.axisLeft(y));
+
+    // Dodaj linije
+    svg_rating.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", 1.5)
+      .attr("d", d3.line()
+        .curve(d3.curveBasis) // Just add that to have a curve instead of segments
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d.value) })
+        )
+
+    // stvaranje opisa
+    var Tooltip = d3.select("#rating_svg")
+      .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("background-color", "white")
+      .style("border", "solid")
+      .style("border-color", "#69b3a2")
+      .style("border-width", "2px")
+      .style("border-radius", "5px")
+      .style("padding", "5px")
+
+      // Tri funkcije koje mijenjaju opis alata kada korisnik drži pokazivač miša / premjesti / napusti ćeliju
+      var mouseover = function(d) {
+        Tooltip
+          .style("opacity", 1)
+      }
+      var mousemove = function(d) {
+        var newdate = new Date(d.date);
+
+        var datestring =  (newdate.getDate() >= 10) ?
+                          (newdate.getDate() + "-0" + (newdate.getMonth()+1) + "-" + newdate.getFullYear()) :
+                          ("0" + newdate.getDate() + "-0" + (newdate.getMonth()+1) + "-" + newdate.getFullYear());
+        Tooltip
+          .html("<b>Datum:</b> " + datestring + "<br><b>Točna vrijednost:</b> " + d.value)
+          .style("left", (d3.mouse(this)[0]+70) + "px")
+          .style("top", (d3.mouse(this)[1]) + "px")
+      }
+      var mouseleave = function(d) {
+        Tooltip
+          .style("opacity", 0)
+      }
+
+    // Dodavanje krugova
+    svg_rating
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
+        .attr("class", "myCircle")
+        .attr("cx", function(d) { return x(d.date) } )
+        .attr("cy", function(d) { return y(d.value) } )
+        .attr("r", 8)
+        .attr("stroke", "#69b3a2")
+        .attr("stroke-width", 4)
+        .attr("fill", "white")
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// postavljanje dimenzija i margina grafikona
+var width = 450
+    height = 450
+    margin = 40
+
+// Polumjer pločaste plohe je polovica širine ili polovine visine (najmanja). Oduzimamo malo od margine.
+var radius = Math.min(width, height) / 2 - margin
+
+// dodavajne svg objekta divu zvanom 'white_svg'
+var svg = d3.select("#white_svg")
+  .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+// Kreiranje podataka
+var data = {POBJEDE: 66, GUBITCI: 16, IZJEDNAČENO:101}
+
+// Postavljanje boja
+var color = d3.scaleOrdinal()
+  .domain(data)
+  .range(d3.schemeSet2);
+
+// Izračunavanje položaja svake skupine na tortni dijagram:
+var pie = d3.pie()
+  .value(function(d) {return d.value; })
+var data_ready = pie(d3.entries(data))
+
+// Oblikovanje pomagača za izgradnju lukova:
+var arcGenerator = d3.arc()
+  .innerRadius(0)
+  .outerRadius(radius)
+
+// Izrada tortnog grafikona: U osnovi, svaki dio tortice put je koji gradimo pomoću funkcije luka.
+svg
+  .selectAll('mySlices')
+  .data(data_ready)
+  .enter()
+  .append('path')
+    .attr('d', arcGenerator)
+    .attr('fill', function(d){ return(color(d.data.key)) })
+    .attr("stroke", "black")
+    .style("stroke-width", "2px")
+    .style("opacity", 1)
+
+// Dodavanje anotacija. Koristimo metodu centroida da bismo dobili najbolje koordinate
+svg
+  .selectAll('mySlices')
+  .data(data_ready)
+  .enter()
+  .append('text')
+  .text(function(d){ return(d.data.value)})
+  .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+  .style("text-anchor", "middle")
+  .style("font-size", 24)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // postavljanje dimenzija i margina grafikona
+  var width = 450
+      height = 450
+      margin = 40
+
+  // Polumjer pločaste plohe je polovica širine ili polovine visine (najmanja). Oduzimamo malo od margine.
+  var radius = Math.min(width, height) / 2 - margin
+
+  // dodavajne svg objekta divu zvanom 'black_svg'
+  var svg = d3.select("#black_svg")
+    .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+    .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  // Kreiranje podataka
+  var data = {POBJEDE: 28, GUBITCI: 30, IZJEDNAČENO:116}
+
+  // Postavljanje boja
+  var color = d3.scaleOrdinal()
+    .domain(data)
+    .range(d3.schemeSet2);
+
+  // Izračunavanje položaja svake skupine na tortni dijagram:
+  var pie = d3.pie()
+    .value(function(d) {return d.value; })
+  var data_ready = pie(d3.entries(data))
+
+  // Oblikovanje pomagača za izgradnju lukova:
+  var arcGenerator = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius)
+
+  // Izrada tortnog grafikona: U osnovi, svaki dio tortice put je koji gradimo pomoću funkcije luka.
+  svg
+    .selectAll('mySlices')
+    .data(data_ready)
+    .enter()
+    .append('path')
+      .attr('d', arcGenerator)
+      .attr('fill', function(d){ return(color(d.data.key)) })
+      .attr("stroke", "black")
+      .style("stroke-width", "2px")
+      .style("opacity", 1)
+
+  // Dodavanje anotacija. Koristimo metodu centroida da bismo dobili najbolje koordinate
+  svg
+    .selectAll('mySlices')
+    .data(data_ready)
+    .enter()
+    .append('text')
+    .text(function(d){ return(d.data.value)})
+    .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+    .style("text-anchor", "middle")
+    .style("font-size", 24)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // postavljanje dimenzija i margina grafikona
+    var width = 450
+        height = 450
+        margin = 40
+
+    // Polumjer pločaste plohe je polovica širine ili polovine visine (najmanja). Oduzimamo malo od margine.
+    var radius = Math.min(width, height) / 2 - margin
+
+    // dodavajne svg objekta divu zvanom 'total_svg'
+    var svg = d3.select("#total_svg")
+      .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    // Kreiranje podataka
+    var data = {POBJEDE: 94, GUBITCI: 46, IZJEDNAČENO:217}
+
+    // Postavljanje boja
+    var color = d3.scaleOrdinal()
+      .domain(data)
+      .range(d3.schemeSet2);
+
+    // Izračunavanje položaja svake skupine na tortni dijagram:
+    var pie = d3.pie()
+      .value(function(d) {return d.value; })
+    var data_ready = pie(d3.entries(data))
+
+    // Oblikovanje pomagača za izgradnju lukova:
+    var arcGenerator = d3.arc()
+      .innerRadius(0)
+      .outerRadius(radius)
+
+    // Izrada tortnog grafikona: U osnovi, svaki dio tortice put je koji gradimo pomoću funkcije luka.
+    svg
+      .selectAll('mySlices')
+      .data(data_ready)
+      .enter()
+      .append('path')
+        .attr('d', arcGenerator)
+        .attr('fill', function(d){ return(color(d.data.key)) })
+        .attr("stroke", "black")
+        .style("stroke-width", "2px")
+        .style("opacity", 1)
+
+    // Dodavanje anotacija. Koristimo metodu centroida da bismo dobili najbolje koordinate
+    svg
+      .selectAll('mySlices')
+      .data(data_ready)
+      .enter()
+      .append('text')
+      .text(function(d){ return(d.data.value)})
+      .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+      .style("text-anchor", "middle")
+      .style("font-size", 24)
+
+</script>

@@ -1,55 +1,192 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+* {
+  font-family: "Times New Roman", Times, serif;
+}
 
 html, body {
   overflow-x: hidden;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.row {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-
 body {
-  background-color: grey;
-  font-family: 'Raleway', sans-serif;
+  background-image: url("slike/bg.jpg");
+  background-size: cover;
+}
+
+hr {
+  width: 98%;
+  border: 1px solid rgba(135, 143, 153, 0.5);
+    filter:
+      drop-shadow(2px 2px 2px #c2c9d1);
+}
+
+.right-border {
+}
+
+.img-shadow {
+    filter:
+      drop-shadow(4px 4px 4px #878f99);
+}
+
+.font-size-aschivements {
+  font-size: 24px;
+}
+.font-size-aschivements2 {
+  font-size: 24px;
+}
+.projekt_font_size {
+  font-size: 18px;
+}
+
+.pfp-div {
+  background-color: #f7f7f7;
+  filter:
+    drop-shadow(4px 4px 4px #c2c9d1);
+  text-align: center;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-image: url("https://cdn.wallpapersafari.com/87/15/4yiWdg.jpg");
+  background-size: cover;
+}
+
+.fx2 {
+  background-image: url("https://cdn.wallpapersafari.com/87/15/4yiWdg.jpg");
+  background-size: cover;
+}
+
+.icon-div {
+  background-color: #f7f7f7;
+  filter:
+    drop-shadow(4px 4px 4px #c2c9d1);
+  text-align: center;
+  border-radius: 4px;
+}
+
+.svg-container{
+
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcwsfr4BDryOImYwLRNmD8VSsqOWUC3_fLQYX8tkXyoUyDVe0thD_2xT0VJK4x_Zdnpy0&usqp=CAU");
+    background-size: cover;
+    background-color: #f7f7f7;
+    filter:
+      drop-shadow(4px 4px 4px #c2c9d1);
+    text-align: center;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 0 auto;
+ }
+
+ .svg-container{
+     display: inline-block;
+     margin: 0 auto;
+  }
+
+  .back {
+    transition: 0.5s;
+    transform: scale(1.0);
+    filter: opacity(50%);
+  }
+
+  .back:hover {
+    transition: 0.5s;
+    transform: scale(1.2);
+      filter: opacity(100%);
+  }
+
+.pfp-img {
+  height: 340px;
+  filter:
+    drop-shadow(0px 3px 2px #595047)
+    drop-shadow(6px 6px 12px #c2c9d1)
+}
+
+.pfp-img2 {
+  height: 340px;
+  filter:
+    drop-shadow(4px 4px 4px #878f99)
+}
+
+.pfp-name {
+  text-shadow: 1px 1px 2px;
+}
+
+.pfp-name2 {
+  font-size: 52px;
+}
+
+.body-icon {
+  width: 100%;
+  filter:
+    drop-shadow(4px 4px 4px #878f99)
+}
+
+.icon-text {
   font-weight: bold;
-  background-color: rgba(0,0,0,0.9) !important;
-}
-
-div {
-  background-color: black;
-  width: 1000px;
-  height: 800px;
-}
-
-button.custom {
-  background-color: grey;
-  border: 1px dashed white;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 500px;
-  left: 500px;
-}
-
-button.custom2 {
-  background-color: black;
-  border: 1px dashed red;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-}
-
-button.custom3 {
+  color: black;
+  font-size: 24px;
   background-color: white;
-  border: 1px dashed grey;
-  width: 50px;
-  height: 50px;
-  position: absolute;
+  width: 200px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+#rating_svg {
+  width: 100%;
+  overflow-x: hidden;
+  filter:
+    drop-shadow(4px 4px 4px #878f99);
+}
+
+#rating_svg text {
+  font-size: 16px !important;
+}
+
+#white_svg , #black_svg  , #total_svg  {
+  transform: scale(1);
+  filter:
+    drop-shadow(4px 4px 4px #878f99);
+}
+
+#white_svg path:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
+  filter: contrast(200%);
+}
+#black_svg path:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
+  filter: contrast(200%);
+}
+#total_svg path:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
+  filter: contrast(200%);
+}
+
+#white_svg path {
+  transition: 0.2s;
+  transform: scale(1.0);
+  filter: contrast(100%);
+}
+#black_svg path {
+  transition: 0.2s;
+  transform: scale(1.0);
+  filter: contrast(100%);
+}
+#total_svg path {
+  transition: 0.2s;
+  transform: scale(1.0);
+  filter: contrast(100%);
+}
+.font-size-pie {
+  font-size: 24px;
+}
+.circle-cyan {
+  background-color: #74fbd0;
+  border-radius: 50%;
+}
+.circle-orange {
+  background-color: #ff8b5e;
+  border-radius: 50%;
+}
+.circle-blue {
+  background-color: #8fa9e2;
+  border-radius: 50%;
 }

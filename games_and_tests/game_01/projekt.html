@@ -1,7 +1,7 @@
-<!-- Code from d3-graph-gallery.com -->
+
 <!DOCTYPE html>
 <head>
-  <title>Davor Krivić - Glavna stranica</title>
+  <title>Davor Krivić - O projektu</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,6 +15,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <!-- Load d3.js -->
   <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
   <!--CSS-->
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="style_1.css">
@@ -41,21 +42,9 @@
 
   <div class="col-6 pb-5">
 
-    <div class="container-fluid pfp-div">
-      <div class="container-fluid text-center">
-        <img class="pfp-img" src="slike/pfp3.png" alt="davor">
-      </div>
-      <h1 class="pb-4 pt-4 pfp-name">Projekt o šahistu Davoru Kriviću</h1>
-    </div>
-
-    <div class="container-fluid">
-      <br><br><br><br>
-    </div>
-
     <div class="row container-fluid m-0 p-0 icon-div">
       <div class="fx2">
-
-            <a href="projekt.html">
+            <a href="#">
                 <div class="item col4 p-4">
                     <img class="transition img-responsive body-icon" src="slike/icon-plan.png">
                     <h4 class="icon-text">O PROJEKTU</h4>
@@ -63,7 +52,7 @@
             </a>
             <a href="grafovi.html">
                 <div class="item col4 p-4">
-                    <img class="transition img-responsive body-icon" src="slike/icon-statistics.png">
+                    <img class="transition img-responsive body-icon selected" src="slike/icon-statistics.png">
                     <h4 class="icon-text">GRAFOVI</h4>
                 </div>
             </a>
@@ -73,14 +62,38 @@
                     <h4 class="icon-text">BIOGRAFIJA</h4>
                 </div>
             </a>
-
+            <div class="container-fluid text-center">
+               <h1 class="pb-4 pt-4 pfp-name pfp-name2"><a href="index.html"><img class="pb-2 back text-left" src="slike/back-arrow.png" alt="" width="35px;"></a> O PROJEKTU</h1>
+            </div>
         </div>
+
+    </div>
+
+    <div class="row container-fluid mt-5 ml-0 p-0 svg-container text-left">
+
+      <p class="p-4 font-size-pie pfp-name">Projekt iz Poslovnih informacijskih sustava</p>
+      <br>
+      <p class="pl-4 projekt_font_size">
+        Ovaj projekt je posvećen mom djedu <b>šahistu Davoru Kriviću</b> gdje ću grafički prikazati podatake iz njegove šahovske karijere. Stanica je podijeljena na 3 dijela:
+        <br>
+      </p>
+        <ul>
+          <li><b>O projektu</b> - općenito o projektu</li>
+          <li><b>Grafovi</b> - prikaz podataka, grafova</li>
+          <li><b>Biografija</b> - šahovska biografija o Davoru Kriviću</li>
+        </ul>
+      <p class="pl-4 projekt_font_size">
+        Koristim grafove sa <a href="https://www.d3-graph-gallery.com/">The D3.js Graph Gallery</a>" stranice i
+        <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/">Bootstrap</a> framework.
+        <br>
+        Izmjenjivao sam podatke, uređivao HTML, JavaScript i CSS.
+      </p>
+
+
     </div>
 
   </div>
 
   <div class="col-3"></div>
 
-  <!-- Create a div where the graph will take place -->
-  <div id="my_dataviz"></div>
 </body>
