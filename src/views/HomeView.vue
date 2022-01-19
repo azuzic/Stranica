@@ -171,7 +171,7 @@ html, body {
   background-size: 100%;
   justify-content: center;
   align-items: center;
-  background-image: url(../assets/foto/bg.png);
+  background-image: url(../assets/foto/bg.jpg);
   background-size: cover;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
