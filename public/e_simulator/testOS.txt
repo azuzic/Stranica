@@ -1,0 +1,46 @@
+[
+  {"id": -1 , "vrijeme": 1200},
+
+  {"id": 1 , "vrsta": "MULTI" , "pitanje": "Označi ispravne tvrdnje:" ,
+  "ponude": ["D2 < D4" , "D2 i D6 su nezavisni" , "D2 i D4 su nezavisni" , "D3 < D6"] ,
+  "odgovor": ["netočno" , "netočno" , "D2 i D4 su nezavisni" , "D3 < D6"] ,
+  "bodovi": [-1, -1, 1, 1], "slika": "slike/01.png"},
+
+  {"id": 2 , "vrsta": "MULTI" , "pitanje": "Koja su blokirana stanja dretvi?" ,
+  "ponude": ["Aktivno" , "Pasivno" , "Pripravno" , "Opći semafor" , "Odgođene" , "Binarni semafor" , "Čekanje na U/I"] ,
+  "odgovor": ["netočno" , "netočno" , "netočno" , "Opći semafor" , "netočno" , "Binarni semafor" , "Čekanje na U/I"] ,
+  "bodovi": [-1, -1, -1, 1, -1, 1, 1], "slika": ""},
+
+  {"id": 3 , "vrsta": "MULTI" , "pitanje": "Iz aktivnog stanja dretva može biti izbačena" ,
+  "ponude": ["Prekidom", "Pozivom jezgrene funkcije", "Pozivom potprogama"] ,
+  "odgovor": ["Prekidom", "Pozivom jezgrene funkcije", "netočno"] ,
+  "bodovi": [1, 1, -1], "slika": ""},
+
+  {"id": 4 , "vrsta": "WORD" , "velicina": "SMALL", "pitanje": "Današnji računalni sustavi zasnivaju se koncepcijskom modelu koji je opisao:" , "odgovor": "john von neumann" , "bodovi": 1, "slika": ""},
+
+  {"id": 5 , "vrsta": "WORD" , "velicina": "SMALL", "pitanje": "Za svaku se dretvu u jezgri pohranjuju svi važni podaci u zapis koji se zove" , "odgovor": "opisnikom ili deskriptorom dretve" , "bodovi": 1, "slika": ""},
+
+  {"id": 6 , "vrsta": "TN" , "pitanje": "Blokirana dretva može samu sebe izbaviti iz blokiranog stanja?" , "odgovor": "netočno" ,   "bodovi": 1},
+
+  {"id": 7 , "vrsta": "TN" , "pitanje": "Mogu li stranice logičkog adresnog prostora biti smještene u okvire fizičkog adresnog prostora proizvoljnim redoslijedom?" , "odgovor": "točno" ,   "bodovi": 1},
+
+  {"id": 8 , "vrsta": "WORD" , "velicina": "BIG", "pitanje": "Navesti uvjet nezavisnosti zadatka! <br> (Koristi simbole  „U“ za uniju „P“ za presjek) " , "odgovor": "(xi p yj) u (xj P yi) u (yi p yj) = 0" , "bodovi": 3, "slika": ""},
+
+  {"id": 900000 , "vrsta": "WORD" , "velicina": "BIG", "pitanje": "Opiši i objasni graf: (skica je podsjetnik i očekuje da je student poznaje tijekom odgovaranja na ovo pitanje)" ,
+  "odgovor":
+  "prikazana su sva moguća stanja i prijelaze između njih u obliku grafa. stanja su predočena čvorovima koji nose jednake nazive kao i zaglavlja lista u kojima se nalaze opisnici dretvi kada se nalaze u tom stanju.mogući prijelazi između stanja označeni su na slici strelicama. uz strelice su napisana imena jezgrinih funkcija koje pod određenim uvjetima mogu uzrokovati pojedine od prijelaza, kao i prekidi pod čijim se utjecajem mogu dogoditi pojedini prelazi." ,
+
+  "bodovi": 8, "slika": "slike/02.png"},
+
+  {"id": 100000 , "vrsta": "WORD" , "velicina": "BIG", "pitanje": "Navesti sadržaj opisnika dretve." ,
+  "odgovor": "identifikator_procesa označava kojem procesu pripada dretva (prirodni broj). identifikator_dretve omogućuje međusobno razlikovanje dretvi (prirodni broj). stanje_dretve je parametar koji označava u kojem se stanju dretva trenutačno nalazi. (vidjet ćemo da dretva u našem modelu može biti pasivna, aktivna, blokirana i pripravna za izvođenje.) prioritet_dretve je parametar koji određuje prednost dretvi pri dodjeljivanju procesora (prioritet ćemo izraziti prirodnim brojem, i to tako da veći broj označava veći prioritet). početna_adresa_dretvenog_adresnog_prostora i veličina_prostora opisuju smještanje dretvenog adresnog prostora unutar procesnog adresnog prostora. adresa_prve_instrukcije sadrži adresu na kojoj je smještena adresa prve instrukcije dretve. zadano_kašnjenjenje parametar koji će odrediti odgađanje izvođenja dretve za zadani broj perioda otkucaja sata. prostor_za_smještanje _ konteksta poslužit će nam za smještanje konteksta dretve onda kada dretva bude prekinuta u svom izvođenju." ,
+
+  "bodovi": 8, "slika": ""},
+
+  {"id": 110000 , "vrsta": "WORD" , "velicina": "BIG", "pitanje": "U nekoliko rečenica objasni što se dešava u procesoru nakon aktiviranja prekida." ,
+  "odgovor":
+  "pojava prekidnog signala prebacuje procesor u tzv. sustavski način rada. privremeno onemogući daljnje prekidanje djeluje na adresni dio sabirnice tako da adresira odvojeni dio spremnika (time je spremnik podijeljen na dva dijela: korisnički dio i sustavski dio) aktivira drugi sustavski registar kazaljke stoga, koji se uz već spomenuti korisnički registar kazaljke stoga nalazi u procesoru (time se omogućuje ostvarenje posebnog sustavskog stoga, koji nema veza s korisničkim stogom, taj se stog mora nalaziti u jezgrenom adresnom prostoru) pohranjuje trenutačni sadržaj programskog brojila na sustavski stog; u programsko brojilo stavlja adresu na kojoj počinje potprogram za obradu prekida (ta se adresa nalazi u jezgrenom adresnom prostoru)" ,
+
+  "bodovi": 6, "slika": ""}
+
+]

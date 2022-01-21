@@ -1,0 +1,12 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse stroke="#ffffff" ry="218.589803" rx="218.589803" id="svg_12" cy="253.75642" cx="253.115392" fill-opacity="0" stroke-width="15" fill="#00fcfc"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="122" id="svg_10" y="302.133652" x="118.38841" stroke-opacity="0" stroke-width="0" stroke="#0f0f00" fill="#ffffff">FIPU</text>
+ </g>
+</svg>
