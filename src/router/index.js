@@ -12,6 +12,11 @@ const routes = [
     name: '/main',
     component: () => import("../views/MainPage.vue"),
   },
+  {
+    path: '/TicTacToe',
+    name: '/TicTacToe',
+    component: () => import("../views/games/TicTacToe.vue"),
+  },
 ]
 
 const router = createRouter({
