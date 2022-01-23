@@ -61,7 +61,11 @@
       <hr class="menu-hr">
 
       <p class="menu-naslov">GAMES AND TESTS</p>
-
+      <div class="menu-link">
+        <router-link to="/TicTacToe">
+          TIC TAC TOE
+        </router-link>
+      </div>
       <div class="menu-pull">
 
       </div>
