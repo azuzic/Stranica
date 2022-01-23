@@ -3,9 +3,13 @@
 
     <div class="body-div">
       <div class="div-reset">
-        <p @click="name!='' && !gameExists ? reset(name) : dummy()" class="reset">CREATE GAME</p>
-        <input v-model="name" class="c-input" type="text" maxlength="10">
-        <p class="text-red" v-if="checkGameExists(name)">Game name already exists!</p>
+        <p @click="name!='' && !gameExists && data.username!='' ? create(name) : dummy()" 
+            class="reset" :class="name!='' && !gameExists && data.username!='' ? 'can' : 'cant'">CREATE GAME</p>
+        <div class="div-gameName">
+          <input v-model="name" class="c-input" type="text" maxlength="10">
+          <p class="text-red" v-if="checkGameExists(name)">Game name already exists!</p>
+        </div>
+        <check-box @selected="retrieveValue"/>
       </div>
 
       <div class="board-data">
@@ -14,9 +18,9 @@
           <p class="li"
           v-for="(z, i) of games"
           :key="`key-${i}`"
-          @click="joinGame(z.id)"
           >
-            - {{z.name}}
+            <b v-if="data.email=='alesandro.zuzic@gmail.com'" class="x" @click="deleteGame(z.id)">X</b> - <i @click="joinGame(z.id)">{{z.name}}</i>
+            
           </p>
         </div>
 
@@ -79,18 +83,25 @@
         {{player1}} <b class="red">VS</b> {{player2}}
       </div>
       <div v-if="end!=0" class="div-msg">
-        <p class="msg">{{msg}}</p>
+        <p class="msg">Winner is <b class="w-red">{{msg}}</b></p>
+      </div>
+      <div v-if="player1!='' && player2==''" class="div-msg">
+        <p class="msg">Waiting for player 2 to join</p>
       </div>
     </div>
   </div>
 </template>
 <script>
+import CheckBox from "@/components/CheckBox.vue";
 import data from "@/data";
 
 import { collection, addDoc, db, doc, updateDoc, onSnapshot, getDocs, deleteDoc } from "@/firebase";
 
 export default {
   name: "TicTacToe",
+  components: { 
+    CheckBox,
+  },
   data() {
     return {
       board: ['','','',
@@ -100,14 +111,15 @@ export default {
       end: 0,
       msg: "",
       data,
-      playerType: 'x',
+      playerType: "",
       player1: "",
       player2: "",
-      gameID: 'game',
+      gameID: "",
       gameExists: false,
       games: [],
       name: "",
       getter: false,
+      checked: false,
     }
   },
   created() {
@@ -117,12 +129,14 @@ export default {
   },
   methods: {
     joinGame(n) {
-      this.gameID = n; 
-      this.playerType='o'; 
-      this.end=0;
-      this.msg="";
-      this.player2=data.username;
-      this.updatePlayer2();
+      if (this.gameID != n) {
+        this.gameID = n; 
+        this.end=0;
+        this.msg="";
+        this.playerType = "";
+        this.player2=data.username;
+        this.updatePlayer2();
+      }
     },
     async getGameData() {
       const g = await getDocs(collection(db, "TicTacToe"));
@@ -135,25 +149,37 @@ export default {
             }
             this.getter = true;
             this.check(this.board);
-            this.player == "x" ? this.player="o" : this.player="x";
+            this.player = `${doc.data().move}`;
           }
-          if (this.player2=="")
+          if (this.player2=="") {
             this.player2 = `${doc.data().player2}`;
+          }
           if (this.player1=="")
             this.player1 = `${doc.data().player1}`;
+          if (this.playerType!='x' && this.playerType != 'o') 
+            this.playerType = `${doc.data().playerType2}`;
         }
         this.games.push({"id": `${doc.id}`, "name": `${doc.data().id}`})
       });
     },
     async createGame(gameName) {
-      if (this.gameID != "") {
+      if (this.gameID != "") 
         await deleteDoc(doc(db, "TicTacToe", this.gameID));
+      let p1='o';
+      let p2='x';
+      this.playerType = p1;
+      if (this.checked) {
+        p1='x';
+        p2='o';
+        this.playerType = p1;
       }
-      this.playerType = 'x';
       await addDoc(collection(db, "TicTacToe"), {
         board: this.board,
         player1: data.username,
         player2: "",
+        playerType1: p1,
+        playerType2: p2,
+        move: this.player,
         id: gameName,
       })
       .then((docRef) => {
@@ -165,6 +191,7 @@ export default {
       const g = doc(db, "TicTacToe", this.gameID);
       await updateDoc(g, {
         board: this.board,
+        move: this.player,
       })
     },
     async updatePlayer2(){
@@ -174,7 +201,7 @@ export default {
       })
     },
     move(n) {
-      if (this.board[n] != 'x' && this.board[n] != 'o' && this.end==0 && this.playerType==this.player) {
+      if (this.board[n] != 'x' && this.board[n] != 'o' && this.end==0 && this.playerType==this.player && this.player2!="") {
         this.board[n] = this.player;
         this.check(this.board);
         this.player = this.player=='x' ? 'o' : 'x';
@@ -192,21 +219,27 @@ export default {
         else if(b[0]==b[4]&&b[4]==b[8]&&b[0]!=''&&b[4]!=''&&b[8]!='') {w=1; this.end=7;} 
         else if(b[2]==b[4]&&b[4]==b[6]&&b[2]!=''&&b[4]!=''&&b[6]!='') {w=1; this.end=8;}
         if (w) {
-          if (this.player == "x")
-            this.msg = "Winner is "+ this.player1;
+          let p1 = data.username==this.player1 ? this.player1 : this.player2;
+          let p2 = data.username==this.player1 ? this.player2 : this.player1;
+          if (this.player == this.playerType)
+            this.msg = p1;
           else
-            this.msg = "Winner is "+ this.player2;
+            this.msg = p2;
           if (this.getter)
             await deleteDoc(doc(db, "TicTacToe", this.gameID));
         }
         this.getter = false;
     },
-    reset(name) {
+    create(name) {
       this.board = ['','','','','','','','',''];
       this.end = 0;
       this.msg = "";
+      this.playerType = "";
+      this.playerType2 = "";
+      this.player1 = data.username;
       this.player2 = "";
       this.player = "x";
+      this.name = "";
       this.createGame(name);
     },
     checkGameExists(gameName) {
@@ -221,6 +254,12 @@ export default {
           this.gameExists = true;
         }
       });
+    },
+    retrieveValue(value) {
+      this.checked=value;
+    },
+    async deleteGame(id) {
+      await deleteDoc(doc(db, "TicTacToe", id));
     },
     dummy() {},
   },
@@ -299,23 +338,28 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-bottom: 16px;
       .reset {
         padding-top: 4px;
         padding-bottom: 4px;
         padding-left: 48px;
         padding-right: 48px;
         border-radius: 48px;
-        background-color: rgba(0, 0, 0, 0.9);
         text-align: center;
         font-size: 24px;
         color: rgba(255, 255, 255, 0.75);
-        margin-bottom: 16px;
+      }
+      .can {
+        background-color: rgba(0, 0, 0, 0.9);
         &:hover {
           background-color: rgba(255, 255, 255, 0.9);
           color: rgba(0, 0, 0, 0.75);
           font-weight: bold;
           cursor: pointer;
         }
+      }
+      .cant {
+        background-color: rgba(0, 0, 0, 0.2);
       }
     }
     .div-msg {
@@ -330,6 +374,25 @@ export default {
         text-align: center;
         font-size: 36px;
         color: rgba(255, 255, 255, 0.75);
+        .w-red {
+          color: rgb(202, 44, 44);
+        }
+      }
+    }
+    .c-input {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--balticSea3) !important;
+      border-radius: 32px;
+      padding: 8px 16px 8px 16px;
+      margin-left: 16px;
+      width: 130px;
+      &:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+      &:hover {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.25);
       }
     }
   }
@@ -346,29 +409,20 @@ export default {
       font-size: 16px;
     }
     .li {
-      cursor: pointer;
-      &:hover {
-        color: white;
+      & i {
+        cursor: pointer;
+        &:hover {
+          color: white;
+        }
+      }
+      .x {
+        cursor: pointer;
+        color: rgb(104, 31, 31);
+        &:hover {
+          color: rgb(236, 76, 76);
+        }
       }
     }
-  }
-}
-
-.c-input {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--balticSea3) !important;
-  border-radius: 32px;
-  padding: 8px 16px 8px 16px;
-  margin-bottom: 16px;
-  margin-left: 16px;
-  width: 130px;
-  &:focus {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.25);
-  }
-  &:hover {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.25);
   }
 }
 
@@ -377,6 +431,16 @@ export default {
   font-size: 36px;
   color: #fff;
   .red {
+    color: rgb(202, 44, 44);
+  }
+}
+
+.div-gameName {
+  position: relative;
+  & p {
+    position: absolute;
+    top: -25px;
+    width: 200px;
     color: rgb(202, 44, 44);
   }
 }

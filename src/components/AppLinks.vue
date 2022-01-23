@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
       <div class="home-link">
-        <router-link to="/">
+        <router-link to="/home">
           HOME
         </router-link>
       </div>
