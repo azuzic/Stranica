@@ -1,0 +1,344 @@
+{
+  "Gitara": {
+    "Gibson": {
+      "Les Paul": {
+        "Standard": 9800,
+        "Special": 11000,
+        "Deluxe": 12000,
+        "Junior": 3500,
+        "Modern": 5000,
+        "Classic": 10200,
+        "Studio": 4500,
+        "Tribute": 9000,
+        "Reissue": 7000,
+        "Artist": 12000
+      },
+      "SG": {
+        "Standard": 8000,
+        "Special": 7500,
+        "Junior": 5500,
+        "Modern": 5000,
+        "Tribute": 7000,
+        "Reissue": 5500,
+        "Doubleneck": 9000,
+        "Artist": 7000
+      },
+      "ES": {
+        "335": 11000,
+        "345": 10000,
+        "339": 10500,
+        "Reissue": 8500,
+        "Artist": 12000
+      },
+      "Designer": {
+        "Firebird": 9200,
+        "Flying V": 9000,
+        "Explorer": 9500,
+        "Artist": 11000
+      }
+    },
+    "Fender": {
+      "Stratocaster": {
+        "American Original": 9200,
+        "Mexican Original" : 6200,
+        "American Traditional" : 8150,
+        "Mexican Traditional" : 5000,
+        "Artist": 12000,
+        "American Acoustasonic": 7500,
+        "American Performer": 6000,
+        "American Professional II": 7000,
+        "American Ultra": 8500,
+        "Boxer": 5500,
+        "Contemporary": 6500,
+        "Noventa": 7000,
+        "Player": 5500,
+        "Player Plus": 3500,
+        "Vintera": 4300
+      },
+      "Telecaster": {
+        "American Original": 7200,
+        "Mexican Original" : 5200,
+        "American Traditional" : 7150,
+        "Mexican Traditional" : 4000,
+        "Artist": 8000,
+        "Special": 5500,
+        "American Acoustasonic": 3500,
+        "American Performer": 4500,
+        "American Professional II": 5250,
+        "American Ultra": 5500,
+        "Boxer": 4000,
+        "Contemporary": 4500,
+        "Noventa": 4250,
+        "Player": 4750,
+        "Player Plus": 4000,
+        "Vintera": 4500
+      },
+      "Jazzmaster": {
+        "American Original": 7000,
+        "Mexican Original" : 5150,
+        "American Traditional" : 6000,
+        "Mexican Traditional" : 4750,
+        "Artist": 9000,
+        "American Acoustasonic": 5500,
+        "American Performer": 6500,
+        "American Professional II": 7000,
+        "American Ultra": 6200,
+        "Contemporary": 6750,
+        "Noventa": 600,
+        "Player": 5500,
+        "Vintera": 5000
+      },
+      "Jaguar": {
+        "American Original": 10000,
+        "Mexican Original" : 7500,
+        "American Traditional" : 8150,
+        "Mexican Traditional" : 6000,
+        "Artist": 12000,
+        "Contemporary": 7000,
+        "Player": 5500,
+        "Vintera": 5750
+      },
+      "Mustang": {
+        "American Original": 9200,
+        "Mexican Original" : 7000,
+        "American Traditional" : 7750,
+        "Mexican Traditional" : 5000,
+        "Artist": 6000,
+        "American Performer": 5500,
+        "Player": 4000,
+        "Vintera": 4500
+      },
+      "Lead": { "Player": 4600 }
+    },
+    "Ibanez": {
+      "AZ": { "Prestige": 5500, "Premium": 4000 },
+      "AZES": { "Standard": 2500 },
+      "AZS": { "Prestige": 7500 },
+      "RG": {
+        "j.custom": 9000,
+        "Prestige": 5000,
+        "Genesis Collection": 3000,
+        "Premium": 4500,
+        "Axion Label": 3500,
+        "IronLabel": 3750,
+        "Standard": 1250,
+        "Gio": 100,
+        "RGR": 950
+      },
+      "RGA": { "Standard": 1500 },
+      "RGD": { "Prestige": 4500, "Axion Label": 5500, "Standard": 3500 },
+      "Q": { "Standard": 3500 },
+      "S": { "Prestige": 2500, "Axion Label": 2750, "Standard": 2000 },
+      "SA": { "Standard": 1500, "Gio": 1750 },
+      "X": { "IronLabel": 2000 },
+      "Iceman": { "IronLabel": 4000 },
+      "AX": { "Gio": 4000 },
+      "AR": { "Standard": 2000 },
+      "miKro": { "miKro": 1000 },
+      "Jumpstart": { "Jumpstart": 1250 }
+    },
+    "PRS": {
+      "Custom 24": {
+        "Bonnie Pink": 3500,
+        "Faded Blue Burst": 3250,
+        "Floyd charcoal burst": 4750,
+        "Eriza verde": 6500,
+        "Vintage sunburst": 6500
+      },
+      "S2": {
+        "Standard": 7500,
+        "Vela Antique": 8000,
+        "Vela Semi-hollow": 8000,
+        "Vela Satin Charcoal": 7500,
+        "Custom whale blue": 7500
+      },
+      "SE": {
+        "Custom": 3500,
+        "Standard": 1500,
+        "Hollowbody": 4500,
+        "Signature": 4500,
+        "245": 3000,
+        "Starla": 1500
+      },
+      "Other": {
+        "LTD edition": 17000,
+        "Vela": 7000,
+        "CE-24": 13000,
+        "McCarty": 11000,
+        "Custom 22": 4000
+      }
+    },
+    "G&L": {
+      "Tribute": { "Legacy": 2000, "Fullerton Deluxe": 6000 },
+      "Asat": {
+        "Classic": 2250,
+        "Special": 2250,
+        "Bluesboy": 8500,
+        "Bluesboy Semi-hollow": 8000
+      },
+      "Comache": {
+        "Fullerton Deluxe": 6500,
+        "Tribute burl": 2200
+      },
+      "S-500": {
+        "Fullerton deluxe ": 11000
+      },
+      "Skyhawk": { "Research in pharaoh gold": 9000 },
+      "Doheny": {
+        "CLF Research": 10000,
+        "Fullertone Deluxe": 7500,
+        "Research Doheny": 10500
+      },
+      "Fallout": {
+        "Tribute black": 1250,
+        "Tribute sonic blue": 1000,
+        "Tribute alpine white": 1000
+      }
+    },
+    "Jackson": {
+      "JS": {
+        "Dinky": 1850,
+        "Rhoads": 2250,
+        "Kelly": 2500,
+        "King VS": 2500,
+        "Monarkh": 2250,
+        "Warrior": 2250,
+        "Star": 2500
+      },
+      "X": {
+        "Soloist": 4500,
+        "Dinky": 3000,
+        "Rhoads": 4750,
+        "Kelly": 3500,
+        "King V": 3250,
+        "Monarkh": 3250,
+        "Warrior": 2000,
+        "San Dimas": 4500,
+        "Dominion": 5000
+      },
+      "Pro": {
+        "Soloist": 3500,
+        "Dinky": 4250,
+        "Rhoads": 5000,
+        "Juggernaut": 5500,
+        "Demmelition Fury": 3750,
+        "Dominion": 5250,
+        "Kelly": 3250,
+        "King V": 3500,
+        "Monarkh": 2250,
+        "Warrior": 2000,
+        "San Dimas": 4750,
+        "Shadowcaster": 3750
+      },
+      "MJ": {
+        "Dinky": 7000,
+        "Rhoads": 10500,
+        "So-Cal": 12000,
+        "Soloist": 9000
+      }
+    },
+    "Epiphone": {
+      "Epi-Les Paul": {
+        "Standard": 3000,
+        "Traditional":3250,
+        "Junior": 1850,
+        "Special": 3250,
+        "Custom": 2750,
+        "Express": 2150,
+        "Modern": 3250,
+        "Classic": 3500,
+        "Melody": 1500,
+        "Studio": 1500,
+        "Muse": 1750
+      },
+      "Epi-ES": {
+        "339": 1750,
+        "335": 2500
+      },
+      "Epi-SG": {
+        "Standard": 2750,
+        "Special": 2500,
+        "Custom": 3000,
+        "Modern": 2750,
+        "Classic": 2750,
+        "Muse": 1500
+      },
+      "Epi-Designer": {
+        "Flying V": 4200,
+        "Firebird": 4250,
+        "Explorer": 4150,
+        "Prophecy Extura": 5000,
+        "Flying V Prophecy": 5000
+      }
+    },
+    "Gretsch": {
+      "Broadkaster": { "Players Edition": 14000 },
+      "Falcon": {
+        "Players Edition": 9000,
+        "Limited edition": 11000,
+        "Custom Shop": 12000,
+        "Vintage Select Edition": 14000,
+        "Artist": 18000
+      },
+      "Country Gentleman": {
+        "Players Edition": 9000,
+        "Vintage Select Edition": 13000
+      },
+      "Nashville": {
+        "Players Edition": 15500,
+        "Limited edition": 17500,
+        "Vintage Select Edition": 18000,
+        "Artist": 19000
+      },
+      "Tennessee Rose": {
+        "Players Edition": 8500,
+        "Limited edition": 9500,
+        "Vintage Select Edition": 10000
+      },
+      "Anniversary": {
+        "Players Edition": 10000,
+        "Vintage Select Edition": 9500,
+        "Artist": 11200
+      },
+      "Penguin": {
+        "Limited edition": 5100,
+        "Vintage Select": 4850,
+        "Artist": 6000
+      },
+      "Jet": {
+        "Streamliner": 7500,
+        "Electromatic": 2500,
+        "Players Edition": 9000,
+        "Custom Shop": 9500,
+        "Vintage Select": 12000,
+        "Artist": 13500
+      },
+      "Country Club": { "Vintage Select": 6750 }
+    },
+    "Yamaha": {
+      "Revstar": {
+        "RSP20CR": 6500,
+        "RS820CR": 3250,
+        "RS702B": 3000,
+        "RS720BX": 3000,
+        "RS720B": 2250,
+        "RS620": 1250,
+        "RS502TFMX": 1500,
+        "RS502TFM": 750,
+        "RS502T": 1500,
+        "RS502": 750,
+        "RS420": 1000,
+        "RS320": 750
+      },
+      "Yam-SG": { "SG1820": 7500, "SG1820A": 8000, "SG1802": 9500 },
+      "Pacifica": {
+        "PAC600": 2250,
+        "PAC300": 2000,
+        "PAC200": 1950,
+        "PAC012/100": 1750
+      },
+      "RGX": { "RGX121Z": 1500 },
+      "Hollow Body": { "SA2200": 4500, "SG1820": 3500 }
+    }
+  }
+}
