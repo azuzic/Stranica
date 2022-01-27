@@ -61,7 +61,7 @@ import CTitle from "@/components/CTitle.vue";
 import CButton from "@/components/CButton.vue";
 import CCard from "@/components/CCard.vue";
 //Firebase
-import { collection, query, orderBy, getDocs } from "@/firebase";
+import { collection, getDocs } from "@/firebase";
 import { db } from "@/firebase";
 
 export default {
@@ -78,15 +78,12 @@ export default {
     CCard,
   },
   mounted() {
-    this.readData('U razradi');
+    this.readData();
   },
   methods: {
     async readData(state) {
       if (this.state != state && state) {
-        
-        const q = query(collection(db, "zahtjevi"), orderBy("zahtjevPredan", "desc"));
-        const querySnapshot = await getDocs(q);
-
+        const querySnapshot = await getDocs(collection(db, "zahtjevi"));
         var highestTimeoutId = setTimeout(";");
         for (var i = 0 ; i < highestTimeoutId ; i++) {
             clearTimeout(i); 
@@ -97,38 +94,38 @@ export default {
         this.state = state;
         this.zahtjevi = [];
         this.canLoad = false;
-          querySnapshot.forEach((doc) => {
-            if (`${doc.data().status}` == this.state) {
-              setTimeout(() => {
-                this.$set(this.zahtjevi, b, {
-                  instrument: 
-                  [
-                    (`${doc.data().instrument[0]}`),
-                    (`${doc.data().instrument[1]}`),
-                    (`${doc.data().instrument[2]}`),
-                    (`${doc.data().instrument[3]}`),
-                    (`${doc.data().instrument[4]}`),
-                    (`${doc.data().instrument[5]}`),
-                    (`${doc.data().instrument[6]}`),
-                  ],
-                  slike:
-                  [
-                    (`${doc.data().slike[0]}`),
-                    (`${doc.data().slike[1]}`),
-                    (`${doc.data().slike[2]}`),
-                    (`${doc.data().slike[3]}`),
-                    (`${doc.data().slike[4]}`),
-                    (`${doc.data().slike[5]}`),
-                  ],
-                  korisnik: (`${doc.data().korisnik}`),
-                  napomena: (`${doc.data().napomena}`),
-                  preporucenaCijena: (`${doc.data().preporucenaCijena}`),
-                  novaPreporucenaCijena: `${doc.data().novaPreporucenaCijena}`,
-                  status: (`${doc.data().status}`),
-                  date: (`${doc.data().zahtjevPredan}`),
-                  sifra: `${doc.id}`,
-              });
-              b++;
+        querySnapshot.forEach((doc) => {
+          if (`${doc.data().status}` == this.state) {
+            setTimeout(() => {
+              this.$set(this.zahtjevi, b, {
+                instrument: 
+                [
+                  (`${doc.data().instrument[0]}`),
+                  (`${doc.data().instrument[1]}`),
+                  (`${doc.data().instrument[2]}`),
+                  (`${doc.data().instrument[3]}`),
+                  (`${doc.data().instrument[4]}`),
+                  (`${doc.data().instrument[5]}`),
+                  (`${doc.data().instrument[6]}`),
+                ],
+                slike:
+                [
+                  (`${doc.data().slike[0]}`),
+                  (`${doc.data().slike[1]}`),
+                  (`${doc.data().slike[2]}`),
+                  (`${doc.data().slike[3]}`),
+                  (`${doc.data().slike[4]}`),
+                  (`${doc.data().slike[5]}`),
+                ],
+                korisnik: (`${doc.data().korisnik}`),
+                napomena: (`${doc.data().napomena}`),
+                preporucenaCijena: (`${doc.data().preporucenaCijena}`),
+                novaPreporucenaCijena: `${doc.data().novaPreporucenaCijena}`,
+                status: (`${doc.data().status}`),
+                date: (`${doc.data().zahtjevPredan}`),
+                sifra: `${doc.id}`,
+            });
+            b++;
             },
             time += delay);
           }

@@ -9,7 +9,7 @@
 
       <div class="CCard-data">
 
-        <div v-if="zahtjev.novaPreporucenaCijena > 0 && zahtjev.status == 'U razradi' && store.currentUser != 'istramusicshop@gmail.com'">
+        <div v-if="zahtjev.novaPreporucenaCijena > 0 && zahtjev.status == 'U razradi' && store.currentUser != 'djelatnik@gmail.com'">
           <div class="ping animate-ping"></div>
           <div class="ping"> </div>
         </div>
@@ -43,7 +43,7 @@
             v-if="zahtjev.status != 'Riješeno'"
             class="CCard-icon-2"
             :class="zahtjev.status != 'U razradi' ? 'tranparent-10' : ''" >
-            <img v-if="zahtjev.novaPreporucenaCijena > 0 && zahtjev.status == 'U razradi' && store.currentUser == 'istramusicshop@gmail.com'"
+            <img v-if="zahtjev.novaPreporucenaCijena > 0 && zahtjev.status == 'U razradi' && store.currentUser == 'djelatnik@gmail.com'"
             class="CCard-svg mx-auto mt-2" src="@/assets/email_sent.png" />
             <img v-else class="CCard-svg mx-auto mt-2" src="@/assets/load_icon.png" />
             <p class="CCard-icontext">U RAZRADI</p>

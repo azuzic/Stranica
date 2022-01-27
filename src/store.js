@@ -1,7 +1,6 @@
 export default {
   currentUser: "",
   userID: "",
-  emailVerified: false,
   theme: "Svijetla",
   darkToggle: true,
   zahtjev: {

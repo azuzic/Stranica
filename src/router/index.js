@@ -97,7 +97,7 @@ router.beforeEach((to, from, next) => {
       to.name !== "Prijava" &&
       to.name !== "Home") {
         wait(3).then(() => {
-          next("Prijava");
+          next();
         });
       }
 
