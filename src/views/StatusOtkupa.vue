@@ -19,7 +19,7 @@ import CTitle from "@/components/CTitle.vue";
 import CButton from "@/components/CButton.vue";
 import CCard from "@/components/CCard.vue";
 //Firebase
-import { collection, getDocs } from "@/firebase";
+import { collection, query, getDocs, orderBy, onSnapshot } from "@/firebase";
 import { db } from "@/firebase";
 
 export default {
@@ -43,7 +43,10 @@ export default {
   methods: {
     async readData(state) {
       if (this.state != state && state) {
-        const querySnapshot = await getDocs(collection(db, "zahtjevi"));
+        
+        const q = query(collection(db, "zahtjevi"), orderBy("zahtjevPredan", "desc"));
+        const querySnapshot = await getDocs(q);
+
         var highestTimeoutId = setTimeout(";");
         for (var i = 0; i < highestTimeoutId; i++) {
           clearTimeout(i);
@@ -52,10 +55,10 @@ export default {
         let delay = 250; //ADJUST TIME DELAY BETWEEN CARDS
         let time = 0 - delay;
         this.state = state;
-        this.zahtjevi = [];
         this.canLoad = false;
-        querySnapshot.forEach((doc) => {
-          if (doc.data().korisnik === store.currentUser) {
+        this.zahtjevi = [];
+          querySnapshot.forEach((doc) => {
+            if (doc.data().korisnik === store.currentUser) {
               setTimeout(() => {
                 this.$set(this.zahtjevi, b, {
                   instrument: [
@@ -85,10 +88,10 @@ export default {
                 });
                 b++;
               }, (time += delay));
-          }
-        });
-      }
-    },
+            }
+          });
+        }
+      },
     dummy() {},
   },
 };

@@ -215,7 +215,7 @@
         <CSuccess
           v-if="registered"
           msg1="Uspješna registracija!"
-          msg2="Odmah ćemo Vas prebaciti na mjesto gdje možete prodati svoje instrumente"
+          msg2="Na vašu email adresu poslali smo poveznicu za potvrdu emaila."
         />
         <!--================/ALERT====================-->
         <!--===============REGISTRIRAJ SE=======-->
@@ -247,8 +247,13 @@ import CWarning from "@/components/CWarning.vue";
 
 //Firebase
 import { getAuth, createUserWithEmailAndPassword } from "@/firebase";
+<<<<<<< HEAD
 import { collection, setDoc, doc } from "@/firebase";
 import { db } from "@/firebase";
+=======
+import { sendEmailVerification, setDoc, doc } from "@/firebase";
+import { db, signOut } from "@/firebase";
+>>>>>>> parent of b25c086 (test2)
 
 const auth = getAuth();
 
@@ -293,9 +298,18 @@ export default {
                 mob: this.mob,
                 theme: "Svijetla",
               });
+<<<<<<< HEAD
               console.log("Document written");
+=======
+              this.signout();
+              console.log("Uspješno dodan novi korisnik");
+              sendEmailVerification(auth.currentUser)
+              .then(() =>{
+                console.log("Email verification sent!");
+              });
+>>>>>>> parent of b25c086 (test2)
             } catch (e) {
-              console.error("Error adding document: ", e);
+              console.error("Greška kod dodavanja novog korisnika: ", e);
             }
           })
           .catch((e) => {
@@ -306,6 +320,16 @@ export default {
               this.greska = true;
           });
       }
+    },
+    signout() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          console.log("Signed out!");
+        })
+        .catch((error) => {
+          console.error("Error signing out!" + error);
+        });
     },
     eye() {
       let x = document.getElementById("pass1");

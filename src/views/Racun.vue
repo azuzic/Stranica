@@ -72,7 +72,7 @@
         <!--===================BROJ MOBITELA END===========-->
         <!--===================THEME===================-->
         <div @click="updateTheme()">
-          <p class="text-left text-18px m-0 p-0">Izgled aplikacije</p>
+          <p class="text-left text-18px m-0 p-0 mb-1">Izgled aplikacije</p>
           <CSelect
             id="$THEME"
             :options="['Svijetla', 'Tamna Plava', 'Tamna Crvena']"
@@ -90,6 +90,11 @@
           :class="!canSave ? 'hide2' : 'hide'"
            msg1="Spremljeno!"
           msg2="Uneseni podaci su spremljeni. Nakon nestanka ove obavijesti možete ponovno spremiti podatke."
+        />
+        <CWarning
+          :class="!wrongPass ? 'hide2' : 'hide'"
+           msg1="Upozorenje!"
+          msg2="Unijeli ste krivu lozinku za promjenu emaila."
         />
         <!--===================RESETIRAJ LOZINKU====================-->
         <div class="place-self-center mt-6 mb-32"> 
@@ -124,6 +129,33 @@ import { collection, getDocs } from "@/firebase";
 import { doc, updateDoc } from "@/firebase";
 import { db, } from "@/firebase";
 import {updateEmail, reauthenticateWithCredential, EmailAuthProvider} from "@/firebase";
+<<<<<<< HEAD
+=======
+
+function eye() {
+  let x = document.getElementById("dg-input-elem");
+  let y = document.getElementById("eye1");
+  let z = document.getElementById("eye2");
+  if (x.type === "password") {
+    x.type = "text";
+    y.classList.add("invisible");
+    z.classList.remove("invisible");
+  } else {
+    x.type = "password";
+    z.classList.add("invisible");
+    y.classList.remove("invisible");
+  }
+}
+
+function bindingFunction() {
+  document.getElementById('eye1').onclick = function() {
+    eye();
+  };
+  document.getElementById('eye2').onclick = function() {
+    eye();
+  };
+}
+>>>>>>> parent of b25c086 (test2)
 
 export default {
   name: "Racun",
@@ -137,6 +169,7 @@ export default {
       mob: "",
       theme: store.theme,
       canSave: true,
+      wrongPass: true
     };
   },
   components: {
@@ -179,8 +212,27 @@ export default {
       if(this.email !== this.oldEmail) {
           setTimeout(() => {
             //Promjena 
+<<<<<<< HEAD
             document.getElementById('dg-input-elem').type = 'password';
           }, 100);
+=======
+            document.getElementsByClassName("dg-form")[0].innerHTML = ('<label for="dg-input-elem" style="font-size: 13px;">Molimo unesite vašu lozinku:</label>' +
+            '<input type="password" placeholder="" autocomplete="off" id="dg-input-elem" style="width: 100%; margin-top: 10px; padding: 5px 15px; font-size: 16px; border-radius: 4px; border: 2px solid rgb(238, 238, 238);" type = "password">' +
+            ' <hr/>' +
+            ' <img ' +
+              'id="eye1"' +
+              ' @click="eye"' +
+              ' class="eye"' +
+              ' src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/OOjs_UI_icon_eyeClosed.svg/1200px-OOjs_UI_icon_eyeClosed.svg.png"/>' +
+              ' <img ' +
+              'id="eye2"' +
+              ' @click="eye"' +
+              ' class="eye invisible"' +
+              ' src="https://image.flaticon.com/icons/png/512/63/63568.png"/>'
+            );
+            bindingFunction();
+          }, 200);
+>>>>>>> parent of b25c086 (test2)
           this.$dialog
           .prompt({
             title: "Promjena email adrese",
@@ -190,7 +242,11 @@ export default {
           .then(dialog => {
             const credential = EmailAuthProvider.credential(
               store.currentUser,
+<<<<<<< HEAD
               dialog.data
+=======
+              document.getElementById("dg-input-elem").value,
+>>>>>>> parent of b25c086 (test2)
             );
             const auth = getAuth();
             const user = auth.currentUser;
@@ -206,8 +262,17 @@ export default {
                   console.log("Email not updated." + error);
               })
             })
+<<<<<<< HEAD
             .catch((error) => {
               console.log("Wrong password!");
+=======
+            .catch(() => {
+              console.log("Wrong password!");
+              this.wrongPass = false;
+              setTimeout(() => {
+                this.wrongPass = true;
+              }, 4000);
+>>>>>>> parent of b25c086 (test2)
             });
             
           })
@@ -267,7 +332,7 @@ export default {
           else if (l >= 5)
             this.mobTemp =
               br.slice(0, 1) + "-" + br.slice(1, 4) + "-" + br.slice(4);
-    }
+    },
   },
   computed: {
     IsAllFilled() {
@@ -349,5 +414,13 @@ export default {
 .hide2 {
   overflow: hidden;
   height: 106px;
+}
+.eye {
+  float: right;
+  margin-top: -28px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  height: 20px;
 }
 </style>

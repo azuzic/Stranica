@@ -11,7 +11,11 @@ import {
   sendEmailVerification, 
   updateEmail, 
   reauthenticateWithCredential,
+<<<<<<< HEAD
   EmailAuthProvider,
+=======
+  EmailAuthProvider, 
+>>>>>>> parent of b25c086 (test2)
 } from "firebase/auth";
 
 import { 
@@ -24,6 +28,7 @@ import {
   onSnapshot,
   query,
   where,
+  orderBy,
 } from "firebase/firestore";
 
 import { 
@@ -75,7 +80,8 @@ export {
   updateDoc, 
   where, 
   query, 
-  onSnapshot 
+  onSnapshot,
+  orderBy, 
 };
 //FirebaseStorage exports
 export { 
