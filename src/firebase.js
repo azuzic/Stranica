@@ -8,14 +8,6 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
-  sendEmailVerification, 
-  updateEmail, 
-  reauthenticateWithCredential,
-<<<<<<< HEAD
-  EmailAuthProvider,
-=======
-  EmailAuthProvider, 
->>>>>>> parent of b25c086 (test2)
 } from "firebase/auth";
 
 import { 
@@ -28,7 +20,6 @@ import {
   onSnapshot,
   query,
   where,
-  orderBy,
 } from "firebase/firestore";
 
 import { 
@@ -58,15 +49,11 @@ const storage = getStorage(app);
 export { 
   getAuth,
   createUserWithEmailAndPassword, 
-  updateEmail, 
   signInWithEmailAndPassword, 
   onAuthStateChanged, 
   signOut, 
   sendPasswordResetEmail, 
-  sendEmailVerification, 
-  app,
-  reauthenticateWithCredential,
-  EmailAuthProvider,
+  app 
 };
 
 //Firestore exports
@@ -80,8 +67,7 @@ export {
   updateDoc, 
   where, 
   query, 
-  onSnapshot,
-  orderBy, 
+  onSnapshot 
 };
 //FirebaseStorage exports
 export { 
