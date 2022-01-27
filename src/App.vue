@@ -68,7 +68,8 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("LOGGED IN: " + user.email);
     store.currentUser = user.email;
-
+    store.userID = user.uid;
+    
     //Posebni slucaj kad korisnik napusta PregledOtkupa (dodano zbog gubitka podataka)
     if (currentRoute.name == "PregledOtkupa") {
       store.currentUser === "djelatnik@gmail.com"
