@@ -5,48 +5,50 @@
     <div v-if="store.currentUser">
       
     <!--==============DJELATNIK============================-->
-    <div v-if="store.currentUser == 'djelatnik@gmail.com'" class="menu2 top-0 grid grid-cols-2 mb-4"> <!--Paragraph routes-->
-  
-      <div :class=" currentRouteName == 'Djelatnik' ? 'menu-item2 menu-top-item-grid0' : 
-                    currentRouteName == 'Racun' ? 'menu-item2 menu-top-item-grid1' : ''"> 
+      <div v-if="currentRouteName != 'Registracija' && currentRouteName != 'Prijava' && currentRouteName != 'PasswordReset'">
+        <div v-if="store.currentUser == 'djelatnik@gmail.com'" class="menu2 top-0 grid grid-cols-2 mb-4"> <!--Paragraph routes-->
+      
+          <div :class=" currentRouteName == 'Djelatnik' ? 'menu-item2 menu-top-item-grid0' : 
+                        currentRouteName == 'Racun' ? 'menu-item2 menu-top-item-grid1' : ''"> 
+          </div>
+          <!--Div routes-->
+          <div v-if="currentRouteName != 'PregledOtkupa'" class="menu top-0 grid grid-cols-2 mb-4">
+
+            <div :class="currentRouteName == 'Djelatnik' ? 'menu-item-active' : 'menu-item'">
+              <p><router-link to="djelatnik"> <p>Pregled otkupa</p> </router-link></p>
+            </div>
+            <div :class="currentRouteName == 'Racun' ? 'menu-item-active' : 'menu-item'">
+              <p><router-link to="racun"> <p>Račun</p> </router-link></p>
+            </div>
+
+          </div> <!--/Div routes-->
+        </div> <!--/Paragraph routes-->
+        <!--==============/DJELATNIK=========================-->
+
+        <!--==============KORISNIK =============================-->
+        <div v-else class="menu2 top-0 grid grid-cols-3 mb-4"> <!--Paragraph routes-->
+
+          <div :class=" currentRouteName == 'StatusOtkupa' ? 'menu-item2 menu-top2-item-grid0' : 
+                        currentRouteName == 'OtkupOpreme'  ? 'menu-item2 menu-top2-item-grid1' : 
+                        currentRouteName == 'Racun'        ? 'menu-item2 menu-top2-item-grid2' : ''">
+          </div> <!--Div routes-->
+
+          <div v-if="currentRouteName != 'PregledOtkupa'" class="menu top-0 grid grid-cols-3 mb-4">
+
+            <div :class="currentRouteName == 'StatusOtkupa' ? 'menu-item-active' : 'menu-item'">
+              <p><router-link to="status-otkupa"><p> Status otkupa </p></router-link></p>
+            </div>
+            <div :class="currentRouteName == 'OtkupOpreme' ? 'menu-item-active' : 'menu-item'">
+              <p><router-link to="otkup-opreme"><p> Otkup opreme </p></router-link></p>
+            </div>
+            <div :class="currentRouteName == 'Racun' ? 'menu-item-active' : 'menu-item'">
+              <p><router-link to="racun"><p> Račun </p></router-link></p>
+            </div>
+
+          </div> <!--/Div routes-->
+        </div> <!--/Paragraph routes-->
+        <!--==============/KORISNIK==========================-->
       </div>
-      <!--Div routes-->
-      <div v-if="currentRouteName != 'PregledOtkupa'" class="menu top-0 grid grid-cols-2 mb-4">
-
-        <div :class="currentRouteName == 'Djelatnik' ? 'menu-item-active' : 'menu-item'">
-          <p><router-link to="djelatnik"> <p>Pregled otkupa</p> </router-link></p>
-        </div>
-        <div :class="currentRouteName == 'Racun' ? 'menu-item-active' : 'menu-item'">
-          <p><router-link to="racun"> <p>Račun</p> </router-link></p>
-        </div>
-
-      </div> <!--/Div routes-->
-    </div> <!--/Paragraph routes-->
-    <!--==============/DJELATNIK=========================-->
-
-    <!--==============KORISNIK =============================-->
-    <div v-else class="menu2 top-0 grid grid-cols-3 mb-4"> <!--Paragraph routes-->
-
-      <div :class=" currentRouteName == 'StatusOtkupa' ? 'menu-item2 menu-top2-item-grid0' : 
-                    currentRouteName == 'OtkupOpreme'  ? 'menu-item2 menu-top2-item-grid1' : 
-                    currentRouteName == 'Racun'        ? 'menu-item2 menu-top2-item-grid2' : ''">
-      </div> <!--Div routes-->
-
-      <div v-if="currentRouteName != 'PregledOtkupa'" class="menu top-0 grid grid-cols-3 mb-4">
-
-        <div :class="currentRouteName == 'StatusOtkupa' ? 'menu-item-active' : 'menu-item'">
-          <p><router-link to="status-otkupa"><p> Status otkupa </p></router-link></p>
-        </div>
-        <div :class="currentRouteName == 'OtkupOpreme' ? 'menu-item-active' : 'menu-item'">
-          <p><router-link to="otkup-opreme"><p> Otkup opreme </p></router-link></p>
-        </div>
-        <div :class="currentRouteName == 'Racun' ? 'menu-item-active' : 'menu-item'">
-          <p><router-link to="racun"><p> Račun </p></router-link></p>
-        </div>
-
-      </div> <!--/Div routes-->
-    </div> <!--/Paragraph routes-->
-    <!--==============/KORISNIK==========================-->
     </div>
 
     <router-view />
