@@ -121,14 +121,16 @@ import CSuccess from "@/components/CSuccess.vue";
 //Firebase
 import { getAuth, signOut } from "@/firebase";
 import { collection, getDocs } from "@/firebase";
-import {doc, updateDoc} from "@/firebase";
-import { db } from "@/firebase";
+import { doc, updateDoc } from "@/firebase";
+import { db, } from "@/firebase";
+import {updateEmail, reauthenticateWithCredential, EmailAuthProvider} from "@/firebase";
 
 export default {
   name: "Racun",
   data() {
     return {
       imePrezime: "",
+      oldEmail: "",
       email: "",
       oib: "",
       mobTemp: "",
@@ -152,9 +154,13 @@ export default {
     async readData() {
       const querySnapshot = await getDocs(collection(db, "users"));
       querySnapshot.forEach((doc) => {
-        if (store.currentUser === `${doc.data().email}`) {
+        if (store.userID === `${doc.id}`) {
+          if(store.currentUser != `${doc.data().email}`){
+            this.updateEmail();
+          }
           this.imePrezime = `${doc.data().imePrezime}`;
-          this.email = `${doc.data().email}`;
+          this.oldEmail = store.currentUser;
+          this.email = store.currentUser;
           this.oib = `${doc.data().oib}`;
           this.mobTemp = `${doc.data().mob}`;
           this.mobLoad();
@@ -162,24 +168,73 @@ export default {
         }
       });
     },
-    async updateKorisnik(){
+    //Potrebno kod poništavanja promjene preko emaila
+    updateEmail(){
+      const g = doc(db, "users", store.userID);
+        updateDoc(g, {
+          email: store.currentUser,
+        });
+    },
+    async updateKorisnik() {
+      if(this.email !== this.oldEmail) {
+          this.$dialog
+          .prompt({
+            title: "Promjena email adrese",
+          }, {
+            promptHelp: 'Molimo unesite vašu lozinku:'
+          })
+          .then(dialog => {
+            const credential = EmailAuthProvider.credential(
+              store.currentUser,
+              dialog.data
+            );
+            const auth = getAuth();
+            const user = auth.currentUser;
+            
+            reauthenticateWithCredential(user, credential)
+            .then(() => {
+              updateEmail(user, this.email).then(() => {
+                console.log("Email updated.");
+                store.currentUser = this.email;
+                this.saveData();
+              })
+              .catch((error) => {
+                  console.log("Email not updated." + error);
+              })
+            })
+            .catch((error) => {
+              console.log("Wrong password!");
+            });
+            
+          })
+          .catch(() => {  
+            console.log('Prompt closed');
+          });
+
+      }
+      else this.saveData();
+    },
+    //Spremi korisničke podatke u firestore
+    async saveData(){
       this.canSave = false;
       const g = doc(db, "users", store.userID);
-      await updateDoc(g, {
-        email: this.email,
-        imePrezime: this.imePrezime,
-        mob: this.mob,
-        oib: this.oib,
-        theme: this.theme,
-      }).then(() => {
-        console.log("Podaci o korisniku spremljeni!");
-        setTimeout(() => {
-          this.canSave = true;
-        }, 5000);
-      }).catch((error) =>{
-        console.error("Neuspješno spremanje podataka o korisniku!" + error);
-      });
-    },
+        await updateDoc(g, {
+          imePrezime: this.imePrezime,
+          email: this.email,
+          mob: this.mob,
+          oib: this.oib,
+          theme: this.theme,
+        })
+        .then(() => {
+          console.log("Podaci o korisniku spremljeni!");
+          setTimeout(() => {
+            this.canSave = true;
+          }, 5000);
+        })
+        .catch((error) => {
+          console.error("Neuspješno spremanje podataka o korisniku!" + error);
+        });
+      },
     dummy() {},
     signout() {
       store.theme="Svijetla"; //Theme reset

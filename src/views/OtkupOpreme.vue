@@ -214,11 +214,11 @@
 <div :class="mode ? 'show-ucitaj' : 'hide-ucitaj'">
 
     <div class="CDodavanje-bottom grid grid-cols-1">
-      <div class="place-self-center" :class="isSpining ? 'photo-iconD' : ''">
+      <div class="place-self-center">
           <CButtonSingle
-            :class="canUpload && !isSpining? '' : 'tranparent-25'"
+            :class="canUpload ? '' : 'tranparent-25'"
             btn="PRENESI  "
-            :btnClickHandler="canUpload && !isSpining ? savePhoto : dummy"
+            :btnClickHandler="canUpload ? savePhoto : dummy"
           />
         <a href="#scroll-slike">
           <img @click="!isUploading ? (
@@ -230,7 +230,7 @@
           isUploadingPicture[3] = false,
           isUploadingPicture[4] = false,
           isUploadingPicture[5] = false) : ''" 
-          :class="!isUploading && !isSpining ? '' : 'hide-loading'"
+          :class="!isUploading ? '' : 'hide-loading'"
           class="arrow2" src="@/assets/arrow_icon.png" />
         </a>
         <div class="loading flex mt-4" :class="!isUploading ? 'hide-loading' : 'show-loading'">
@@ -238,21 +238,10 @@
           Učitavanje slike
         </div>
       </div>
-      <div v-if="isSpining" class="place-self-center">
-          <CButtonSingle
-            :class="canUpload && !isSpining? '' : 'tranparent-25'"
-            btn="PRENESI  "
-            :btnClickHandler="canUpload && !isSpining ? savePhoto : dummy"
-          />
-          <div class="loading flex mt-4" :class="!isUploading ? 'hide-loading' : 'show-loading'">
-            <div class="loader animate-spin rounded-full border-4 border-t-4 h-6 w-6 mr-2"></div>
-            Učitavanje slike
-        </div>
-      </div>
     </div>
 
     <div class="CDodavanje-top">
-      <div v-if="uploaded()" class="menu-item6 mx-auto">
+      <div class="menu-item6 mx-auto">
         <img v-if="store.theme=='Svijetla'" class="dodavanje-icon" src="@/assets/upload.svg" />
         <img v-if="store.theme=='Tamna Plava'" class="dodavanje-icon" src="@/assets/upload_dark_blue.svg" />
         <img v-if="store.theme=='Tamna Crvena'" class="dodavanje-icon" src="@/assets/upload_dark_red.svg" />
@@ -262,40 +251,34 @@
           stranu gitare
         </p>
       </div>
-      
-      <div v-if="!uploaded()" class="loading2 flex mt-4 show-loading">
-        <div class="loader animate-spin rounded-full border-4 border-t-4 h-6 w-6 mr-2"></div>   
-      </div>
-
-        <croppa
-          :class="isUploading || isSpining ? 'hide-x' : 'show-x'"
-          v-if="refresh"
-          id="checkForUpload"
-          v-model="imageReference"
-          auto-sizing
-          :placeholder="''"
-          :accept="'image/*'"
-          :file-size-limit="0"
-          :quality="2"
-          :zoom-speed="3"
-          :disabled="false"
-          :disable-drag-and-drop="false"
-          :disable-click-to-choose="false"
-          :disable-drag-to-move="false"
-          :disable-scroll-to-zoom="false"
-          :disable-rotation="false"
-          :prevent-white-space="true"
-          :reverse-scroll-to-zoom="false"
-          :show-remove-button="true"
-          :remove-button-color="'gray'"
-          @new-image="canUpload = true,dummy(), uploading = false"
-          @image-remove="canUpload = false,dummy()"
-        ></croppa>
+      <croppa
+        :class="isUploading ? 'hide-x' : 'show-x'"
+        v-if="refresh"
+        id="checkForUpload"
+        v-model="imageReference"
+        auto-sizing
+        :placeholder="''"
+        :accept="'image/*'"
+        :file-size-limit="0"
+        :quality="2"
+        :zoom-speed="3"
+        :disabled="false"
+        :disable-drag-and-drop="false"
+        :disable-click-to-choose="false"
+        :disable-drag-to-move="false"
+        :disable-scroll-to-zoom="false"
+        :disable-rotation="false"
+        :prevent-white-space="true"
+        :reverse-scroll-to-zoom="false"
+        :show-remove-button="true"
+        :remove-button-color="'gray'"
+        @new-image="canUpload = true"
+        @image-remove="canUpload = false"
+      ></croppa>
 
       <div class="menu-bottom-dodavanje grid grid-cols-1 mt-4">
-        <div class="mx-auto menu-item7" :class="isSpining ? '' : ''"> 
-          <img @click="rotateImg()" class="photo-icon" :class="isSpining ? 'photo-iconD' : ''" src="@/assets/rotate.png" />
-          <img v-if="isSpining" class="photo-iconR" src="@/assets/rotate.png" />
+        <div @click="imageReference.rotate(), animateRotate=!animateRotate" class="mx-auto menu-item7">
+          <img :class="animateRotate ? 'photo-iconR' : 'photo-icon'" src="@/assets/rotate.png" />
         </div>
       </div>
 
@@ -375,7 +358,6 @@ export default {
       isUploadingPicture: [false,false,false,false,false,false],
       refresh: true,
       animateRotate: false,
-      isSpining: false,
     };
   },
   components: {
@@ -426,25 +408,6 @@ export default {
     this.fetchUserData();
   },
   methods: {
-    dummy() {},
-
-    rotateImg() {
-      this.isSpining = true;
-      this.animateRotate=!this.animateRotate;
-      setTimeout(() => {
-        this.imageReference.rotate(); 
-        this.animateRotate=!this.animateRotate;
-        this.isSpining = false;
-      },100)
-    },
-
-    uploaded() {
-      if (this.imageReference != null)
-        if (this.imageReference.chosenFile == null) {
-          return true;
-        }
-      return false;
-    },
     deleteImages(){
       const storage = getStorage();
         pictures.guitarPictures.filter(picture => picture.name!="").forEach((picture) => {
@@ -541,6 +504,7 @@ export default {
         console.error("Error adding document: ", e);
       }
     },
+    dummy() {},
     sendEmail(){
       this.fetchUserData;
       var params = {
@@ -886,14 +850,6 @@ export default {
   color: var(--BalticSea__BlackMana);
 }
 
-.loading2 {
-  width: 100%;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  color: var(--Snow__Lead);
-}
-
 .hide-loading {
   overflow: hidden;
   height: 0px;
@@ -954,16 +910,6 @@ export default {
 }
 .photo-iconR {
   height: 34px;
-  animation:spin 1s linear infinite;
-}
-.photo-iconD {
-  position: fixed;
-  width: 0px;
-  opacity: 0%;
-  bottom: 0px;
-  height: 0px;
-}
-@keyframes spin { 
-    100% { transform: rotate(360deg); } 
+  transform: rotate(360deg);
 }
 </style>

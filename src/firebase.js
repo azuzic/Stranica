@@ -8,6 +8,10 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
+  sendEmailVerification, 
+  updateEmail, 
+  reauthenticateWithCredential,
+  EmailAuthProvider,
 } from "firebase/auth";
 
 import { 
@@ -49,11 +53,15 @@ const storage = getStorage(app);
 export { 
   getAuth,
   createUserWithEmailAndPassword, 
+  updateEmail, 
   signInWithEmailAndPassword, 
   onAuthStateChanged, 
   signOut, 
   sendPasswordResetEmail, 
-  app 
+  sendEmailVerification, 
+  app,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
 };
 
 //Firestore exports
