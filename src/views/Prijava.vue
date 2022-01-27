@@ -142,6 +142,7 @@ export default {
           querySnapshot.forEach((doc) => {
             if (store.currentUser === `${doc.data().email}`) {
               store.theme = `${doc.data().theme}`;
+              store.userID = `${doc.id}`;
             }
           });
         },

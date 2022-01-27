@@ -247,7 +247,7 @@ import CWarning from "@/components/CWarning.vue";
 
 //Firebase
 import { getAuth, createUserWithEmailAndPassword } from "@/firebase";
-import { collection, setDoc, doc } from "@/firebase";
+import { collection, addDoc } from "@/firebase";
 import { db } from "@/firebase";
 
 const auth = getAuth();
@@ -284,16 +284,15 @@ export default {
             // Uspješna prijava, spremanje u bazu
             console.log("Uspješna registracija!" + userCredential);
             this.registered = true;
-            const user = userCredential.user;
             try {
-              await setDoc(doc(db, "users",user.uid), {
+              const docRef = await addDoc(collection(db, "users"), {
                 imePrezime: this.nameSurname,
                 email: this.email,
                 oib: this.oib,
                 mob: this.mob,
                 theme: "Svijetla",
               });
-              console.log("Document written");
+              console.log("Document written with ID: ", docRef.id);
             } catch (e) {
               console.error("Error adding document: ", e);
             }
