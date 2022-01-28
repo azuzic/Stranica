@@ -84,6 +84,14 @@
           "
         />
         <!--================WARNING END====================-->
+        <!--================WARNING EMAIL VERIFY========================-->
+        <CWarning
+          v-if="greska2"
+          msg1="Upozorenje!"
+          :msg2="'Molimo potvrdite email adresu kako biste nastavili.'
+          "
+        />
+        <!--================/WARNING EMAIL VERIFY====================-->
         <!--==============PRIJAVI SE BUTTON================-->
         <div
           class="place-self-center"
@@ -114,7 +122,7 @@ import CSelect from "@/components/CSelect.vue";
 //Firebase
 import { getAuth, signInWithEmailAndPassword } from "@/firebase";
 import { collection, getDocs } from "@/firebase";
-import { db } from "@/firebase";
+import { db, signOut } from "@/firebase";
 
 export default {
   name: "login",
@@ -124,6 +132,7 @@ export default {
       password: "",
       osoba: "Korisnik",
       greska: false,
+      greska2: false,
       store,
     };
   },
@@ -142,16 +151,19 @@ export default {
           querySnapshot.forEach((doc) => {
             if (store.currentUser === `${doc.data().email}`) {
               store.theme = `${doc.data().theme}`;
-              store.userID = `${doc.id}`;
             }
           });
         },
     login() {
       console.log("logging in...");
-      
       signInWithEmailAndPassword(getAuth(), this.email, this.password)
         //Koristi lambda/arrow funkcije u kombinaciji sa .then kako bi se sacuvao this iz parent konteksta
         .then((result) => {
+          if(!store.emailVerified) {
+            this.greska2 = true;
+            this.signout();
+            return;
+          }
           console.log("Uspješna prijava", result);
           this.greska = false;
           this.getUserData();
@@ -160,6 +172,17 @@ export default {
           let error = e.message.slice(22, -2).replace(/-/g, " ");
           error = error.charAt(0).toUpperCase() + error.slice(1) + "!";
           this.greska = true;
+        });
+      
+    },
+    signout() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          console.log("Signed out!");
+        })
+        .catch((error) => {
+          console.error("Error signing out!" + error);
         });
     },
     dummy() {},

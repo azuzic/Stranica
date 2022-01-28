@@ -37,6 +37,9 @@
             :btnClickHandler="sendEmailCheck ? resetPassword : dummy"
           />
         </div>
+        <router-link to="/prijava">
+          <img class="arrow2" src="@/assets/arrow_icon.png" />
+        </router-link>
         <!--===================POTVRDI BUTTON END==========-->
         <br />
       </div>
@@ -117,5 +120,13 @@ export default {
 <style>
 .disabled-click {
   pointer-events: none;
+}
+.arrow2 {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 8px;
+  width: 42px;
+  transform: scaleX(-1);
 }
 </style>

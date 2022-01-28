@@ -4,7 +4,7 @@
       <div class="grid auto-rows-auto gap-4 pl-4 pr-4 mt-2 mb-16">
         <!--===================VRSTA INSTRUMENTA===================-->
         <div>
-          <p class="text-left text-18px m-0 p-0">Vrsta instrumenta</p>
+          <p class="text-left text-18px m-0 p-0 mb-1">Vrsta instrumenta</p>
           <CSelect
             :options="vrste"
             :default="odabranaVrsta"
@@ -14,7 +14,7 @@
         <!--===================/VRSTA INSTRUMENTA===================-->
         <!--===================PROIZVOĐAČ===================-->
         <div>
-          <p class="text-left text-18px m-0 p-0">Proizvođač</p>
+          <p class="text-left text-18px m-0 p-0 mb-1">Proizvođač</p>
           <CSelect
             :options="proizvodacSet"
             :default="odabraniProizvodac"
@@ -24,7 +24,7 @@
         <!--===================/PROIZVOĐAČ===================-->
         <!--===================MODEL===================-->
         <div>
-          <p class="text-left text-18px m-0 p-0">Model</p>
+          <p class="text-left text-18px m-0 p-0 mb-1">Model</p>
           <CSelect
             :options="modelSet"
             :default="odabraniModel"
@@ -34,7 +34,7 @@
         <!--===================/MODEL===================-->
         <!--===================SERIJA===================-->
         <div>
-          <p class="text-left text-18px m-0 p-0">Serija</p>
+          <p class="text-left text-18px m-0 p-0 mb-1">Serija</p>
           <CSelect
             :options="serijaSet"
             :default="odabranaSerija"
@@ -61,7 +61,7 @@
         <!--================/GODINA PROIZVODNJE===================-->
         <!--===================VLASNIK===================-->
         <div>
-          <p class="text-left text-18px m-0 p-0">Vlasnik</p>
+          <p class="text-left text-18px m-0 p-0 mb-1">Vlasnik</p>
           <CSelect
             :options="['1', '2', '3']"
             :default="vlasnik"
@@ -71,7 +71,7 @@
         <!--===================/VLASNIK===================-->
         <!--===================STANJE===================-->
         <div>
-          <p class="text-left text-18px m-0 p-0">Stanje</p>
+          <p class="text-left text-18px m-0 p-0 mb-1">Stanje</p>
           <CSelect
             :options="stanjaSet"
             :default="stanje"

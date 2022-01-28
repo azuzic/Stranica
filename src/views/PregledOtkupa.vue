@@ -6,11 +6,11 @@
     </div>
     <div class="menu grid grid-cols-3 mb-4">
       <div class="menu-item-active menu-highlight">
-        <router-link :to="store.currentUser == 'djelatnik@gmail.com' ? 'djelatnik' : 'status-otkupa'">
+        <router-link :to="store.currentUser == 'istramusicshop@gmail.com' ? 'djelatnik' : 'status-otkupa'">
           <img class="arrow ml-2" src="@/assets/arrow_icon.png" />
         </router-link>
         <p>
-          <router-link :to="store.currentUser == 'djelatnik@gmail.com' ? 'djelatnik' : 'status-otkupa'"> Povratak </router-link>
+          <router-link :to="store.currentUser == 'istramusicshop@gmail.com' ? 'djelatnik' : 'status-otkupa'"> Povratak </router-link>
         </p>
       </div>
       <div class="menu-item" :class="stanje=='U razradi' ? 'menu-item-yellow' :
@@ -122,10 +122,10 @@
         </textarea >
       </div>
       <hr class="dotted mt-2 mb-2" />
-      <p v-if="store.currentUser != 'djelatnik@gmail.com' && cijenaUpdated"
+      <p v-if="store.currentUser != 'istramusicshop@gmail.com' && cijenaUpdated"
       class="text-20px text-center">Nova predložena cijena: <b class="price">{{novaPreporucenaCijena}} kn</b></p>
       <!--===================ODBIJ OTKUP====================-->
-      <div v-if="store.currentUser != 'djelatnik@gmail.com' && cijenaUpdated"
+      <div v-if="store.currentUser != 'istramusicshop@gmail.com' && cijenaUpdated"
             class="place-self-center mt-4" 
             :class="stanje=='U razradi' ? 'active' : 'inactive'">
         <div @click="stanje=='U razradi' ? promijeniCijenu(1) : dummy()">
@@ -134,7 +134,7 @@
       </div>
       <!--================/ODBIJ OTKUP======================-->
       <!--=================PRIHVATI OTKUP===================-->
-      <div v-if="store.currentUser != 'djelatnik@gmail.com' && cijenaUpdated"
+      <div v-if="store.currentUser != 'istramusicshop@gmail.com' && cijenaUpdated"
             class="place-self-center mt-4 mb-4" 
             :class="stanje=='U razradi' ? 'active' : 'inactive'">
         <div @click="stanje=='U razradi' ? promijeniCijenu(0) : dummy()">
@@ -143,35 +143,35 @@
       </div>
       <!--================/PRIHVATI OTKUP===================-->      
 
-      <div v-if="store.currentUser == 'djelatnik@gmail.com'">
+      <div v-if="store.currentUser == 'istramusicshop@gmail.com'">
         <hr class="dotted mt-2 mb-2" />
       </div>
-      <div v-if="store.currentUser == 'djelatnik@gmail.com'">
+      <div v-if="store.currentUser == 'istramusicshop@gmail.com'">
         <p class="text-center mb-2">
           <b class="text-24px">PODACI O KLIJENTU</b>
         </p>
       </div>
-      <div v-if="store.currentUser == 'djelatnik@gmail.com'">
+      <div v-if="store.currentUser == 'istramusicshop@gmail.com'">
         <p><u class="text-20px">Ime i prezime:</u></p>
         <p class="mt-1 text-18px"><b>{{korisnik[0].imePrezime}}</b></p>
       </div>
-      <div v-if="store.currentUser == 'djelatnik@gmail.com'">
+      <div v-if="store.currentUser == 'istramusicshop@gmail.com'">
         <p><u class="text-20px">Email:</u></p>
         <p class="mt-1 text-18px"><b>{{korisnik[0].email}}</b></p>
       </div>
-      <div v-if="store.currentUser == 'djelatnik@gmail.com'">
+      <div v-if="store.currentUser == 'istramusicshop@gmail.com'">
         <p><u class="text-20px">OIB:</u></p>
         <p class="mt-1 text-18px"><b>{{korisnik[0].oib}}</b></p>
       </div>
-      <div v-if="store.currentUser == 'djelatnik@gmail.com'">
+      <div v-if="store.currentUser == 'istramusicshop@gmail.com'">
         <p><u class="text-20px">Broj telefona:</u></p>
         <p class="mt-1 text-18px"><b>{{mob}}</b></p>
       </div>
-      <div v-if="store.currentUser == 'djelatnik@gmail.com'">
+      <div v-if="store.currentUser == 'istramusicshop@gmail.com'">
         <hr class="dotted mt-2 mb-2" />
       </div>
       <!--==============NOVA CIJENA==============================-->
-      <div v-if="store.currentUser == 'djelatnik@gmail.com'" :class="stanje=='U razradi' && !cijenaUpdated ? '' : 'tranparent'">
+      <div v-if="store.currentUser == 'istramusicshop@gmail.com'" :class="stanje=='U razradi' && !cijenaUpdated ? '' : 'tranparent'">
         <p class="text-left text-18px m-0 p-0 mt-6">Nova predložena cijena:</p>
         <input
           :disabled="stanje!='U razradi' || cijenaUpdated"
@@ -186,7 +186,7 @@
       <!--==============/NOVA CIJENA==============================-->
       <!--==============PREDLOŽI==============================-->
       <div
-        v-if="store.currentUser == 'djelatnik@gmail.com'"
+        v-if="store.currentUser == 'istramusicshop@gmail.com'"
         class="place-self-center mt-4"
         :class="novaCijena && stanje=='U razradi' ? 'active' : 'inactive'"
       >
@@ -200,7 +200,7 @@
       </div>
       <!--==============/PREDLOŽI=============================-->
       <!--===================ODBIJ OTKUP====================-->
-      <div  v-if="store.currentUser == 'djelatnik@gmail.com'"
+      <div  v-if="store.currentUser == 'istramusicshop@gmail.com'"
             class="place-self-center mt-8" 
             :class="stanje=='U razradi' && !cijenaUpdated ? 'active' : 'inactive'">
         <div @click="stanje=='U razradi' && !cijenaUpdated ? updateStatus('Odbijeno') : dummy()">
@@ -209,7 +209,7 @@
       </div>
       <!--================/ODBIJ OTKUP======================-->
       <!--=================PRIHVATI OTKUP===================-->
-      <div  v-if="store.currentUser == 'djelatnik@gmail.com'"
+      <div  v-if="store.currentUser == 'istramusicshop@gmail.com'"
             class="place-self-center mt-4" 
             :class="stanje=='U razradi' && !cijenaUpdated ? 'active' : 'inactive'">
         <div @click="stanje=='U razradi' && !cijenaUpdated ? updateStatus('Prihvaćeno') : dummy()">
@@ -300,10 +300,12 @@ export default {
             this.cijenaUpdated = false;
             return;
           }
-          this.novaPreporucenaCijena = doc.data().novaPreporucenaCijena;
-          this.cijenaUpdated = true;
+          else {
+            this.novaPreporucenaCijena = doc.data().novaPreporucenaCijena;
+            this.cijenaUpdated = true;
+            return;
+          }
         }
-        else this.cijenaUpdated = false;
       });
     });
   },
@@ -354,19 +356,12 @@ export default {
         msg
       )
       .then(() => {
-        const g = doc(db, "zahtjevi", store.zahtjev.sifra);
         if(rezultat){
-          updateDoc(g, {
-            status: "Odbijeno"
-          });
+          this.updateDocOdbijanje();
           this.stanje = "Odbijeno";
         }
         else {
-          updateDoc(g, {
-            preporucenaCijena: this.novaPreporucenaCijena,
-            novaPreporucenaCijena: 0,
-            status: "Prihvaćeno"
-          });
+          this.updateDocPrihvacanje();
           this.stanje = "Prihvaćeno";
           this.preporucenaCijena = this.novaPreporucenaCijena;
         }
@@ -375,22 +370,38 @@ export default {
       .catch(() => {
       });
     },
+    async updateDocOdbijanje() {
+      const g = doc(db, "zahtjevi", store.zahtjev.sifra);
+      await updateDoc(g, {
+        status: "Odbijeno"
+      });
+    },
+    async updateDocPrihvacanje() {
+      const g = doc(db, "zahtjevi", store.zahtjev.sifra);
+      await updateDoc(g, {
+        preporucenaCijena: this.novaPreporucenaCijena,
+        novaPreporucenaCijena: 0,
+        status: "Prihvaćeno"
+      });
+    },
     predloziCijenu() {
       this.$dialog
       .confirm(
         "Jeste li sigurni da želite predložiti novu cijenu? Više nećete moći predložiti novu cijenu."
       )
       .then(() => {
-        const g = doc(db, "zahtjevi", store.zahtjev.sifra);
-        updateDoc(g, {
-          novaPreporucenaCijena: this.novaCijena,
-        });
+        this.updateDocNovaPreporucenaCijena();
         this.novaPreporucenaCijena = this.novaCijena;
         this.preporucenaCijena = this.novaCijena;
-        //this.cijenaUpdated = true;
         this.novaCijena = "";
       })
       .catch(() => {});
+    },
+    async updateDocNovaPreporucenaCijena() {
+      const g = doc(db, "zahtjevi", store.zahtjev.sifra);
+      await updateDoc(g, {
+        novaPreporucenaCijena: this.novaCijena,
+      });
     },
     updateStatus(status) {
       let msg = "";
