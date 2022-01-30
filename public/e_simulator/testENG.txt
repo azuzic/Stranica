@@ -1,0 +1,58 @@
+[
+  {"id": -1 , "vrijeme": 900},
+
+  {"id": 1 , "vrsta": "WORDS" ,
+  "text":
+  [
+  "<b>Put the verbs in brackets into the appropriate verb tense. You will sometimes have to use the passive form as well.</b> <br> Many years ago, I (bear)" , "in Seattle, Washington USA. Seattle (locate)",
+  "in the Northwest corner of the USA. Recently, Seattle (become)",
+  "the focus of much international attention. Many films (make)",
+  "there, probably the most famous of which is Sleepless in Seattle starring Meg Ryan and Tom Hanks. Seattle (know, also)",
+  "as the birthplace of 'Grunge' music; both Pearl Jam and Nirvana (be)",
+  "from Seattle. For older people like me, it should (note)",
+  "that Jimmi Hendrix (bear)",
+  "in Seattle as well! NBA fans know Seattle for the 'Seattle Supersonics', a team that (play)",
+  "basketball in Seattle for more than 30 years. Unfortunately, Seattle is also famous for its bad weather. I can remember weeks and weeks of grey, wet weather when I (grow up)",
+  ". Seattle (become, also)",
+  "one of the fastest-growing business areas in the United States. Two of the most important names in the booming business scene in Seattle (be)",
+  "Microsoft and Boeing. Microsoft (found)",
+  "and (own)",
+  "by the world-famous Bill Gates (how much of his software (integrate)",
+  "into your computer?). Boeing (be, always)",
+  "essential to the economic situation in Seattle. It (locate)",
+  "to the north of Seattle and famous jets such as the 'Jumbo' (manufacture)",
+  "there for more than 50 years! Seattle (position)",
+  "between Puget Sound and the Cascade Mountains. The combination of its scenic location, thriving business conditions and exciting cultural scene (make)",
+  "Seattle one of America's most interesting cities."
+  ],
+
+  "odgovor":
+  [
+  "was born",
+  "is located",
+  "has become",
+  "have been made",
+  "is also known",
+  "were",
+  "be noted",
+  "was born",
+  "played",
+  "was growing up",
+  "has also become",
+  "are",
+  "was founded",
+  "is owned",
+  "has been integrated",
+  "has always been",
+  "is located",
+  "have been manufactured",
+  "is positioned",
+  "makes"
+  ],
+
+  "all": [20],
+
+  "bodovi": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+  }
+
+]

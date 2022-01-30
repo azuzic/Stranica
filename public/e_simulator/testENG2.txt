@@ -1,0 +1,83 @@
+[
+  {"id": -1 , "vrijeme": 900},
+
+  {"id": 1 , "vrsta": "WORDS" ,
+  "text":
+  [
+  "<b>Put the verbs in brackets into the passive voice. Be careful to choose the correct verb tense (Present or Past Simple).</b> <br> Google (found)" ,
+  "by Larry Page and Sergey Brin in 1998, while 'Don’t be evil' (make)",
+  "into its unofficial slogan. In 2004, Google (move)",
+  "to its new premises in California, and the headquarters (name)",
+  "the Googleplex. In 2013, google.com (declare)",
+  "the most visited website in the world. At the same time, Google's YouTube and Blogger (list)",
+  "in the top one hundred sites in the world. Google is a multinational corporation, which specializes in Internet services and products. Online advertising technologies, search, cloud computing, and software (include)",
+  "in Google's offer. Today, most of the company's profits (derive)",
+  "from AdWords. Productivity software such as Gmail, Google Drive, Google Docs, and Google+ (offer)",
+  "online. On the other hand, applications for web browsing, organizing and editing photos, and instant messaging (include)",
+  "as desktop products."
+  ],
+
+  "odgovor":
+  [
+  "was founded",
+  "was made",
+  "was moved",
+  "were named",
+  "was declared",
+  "were listed",
+  "are included",
+  "are derived",
+  "are offered",
+  "are included"
+  ],
+
+  "all": [10],
+
+  "bodovi": [1,1,1,1,1,1,1,1,1,1]
+  },
+  {"id": 2 , "vrsta": "WORDS" ,
+  "text":
+  [
+  "<b>Put the verbs in brackets into the passive voice. Be careful to choose the correct verb tense. Please use only full verb forms.</b> <br> 1. Currently, computers (use)" ,
+  "in many cities to help regulate traffic. <br> 2. In recent decades, the communications industry (revolutionize)",
+  "by new technology. <br> 3. By the mid-1950s, the first modern video recorder (introduce)",
+  "by Ampex Corporation. <br> 4. Electronic mail, which (know; commonly)",
+  "as e-mail, is the fastest growing means of communication in the world. <br> 5. The microprocessor (create; first)",
+  "by Intel Corporation in 1971. <br> 6. New computer networks (install)",
+  "by computer companies every day. <br> 7. A new computer network (install)",
+  "next week. <br> 8. The first generation of computers (invent)",
+  "in the early 1940s. <br> 9. Today the computer (take)",
+  "for granted by much of the world. <br> 10. Before the 1950s, high-quality audio and video equipment (develop; not yet)",
+  ". <br> 11. Between 1980 and 1999, millions of personal computers (sell)",
+  "to consumers. <br> 12. In the future, even faster computers (invent)",
+  ". <br> 13. Today, magazines and newspapers (fill)",
+  "with stories about the Internet. <br> 14. Over the past 40 years, audio and video technology (revolutionize)",
+  ". <br> 15. Ten years ago, traffic (regulate, still)",
+  "by traffic officers."
+  ],
+
+  "odgovor":
+  [
+  "are being used",
+  "has been revolutionized",
+  "had been introduced",
+  "is commonly known",
+  "was first created",
+  "are installed",
+  "will be installed",
+  "was invented",
+  "is taken",
+  "had not yet been developed",
+  "were sold",
+  "will be invented",
+  "are filled",
+  "has been revolutionized",
+  "was still being regulated"
+  ],
+
+  "all": [15],
+
+  "bodovi": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+  }
+
+]

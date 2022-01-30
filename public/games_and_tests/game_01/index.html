@@ -1,0 +1,86 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<head>
+  <title>Davor Krivić - Glavna stranica</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Istra music shop u Puli. Prodaja glazbenih instrumenata Pula. Otkup glazbenih instrumenata. Prodaja povoljnih gitara, bubnjeva, pojačala u Puli." <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <!--Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- Load d3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <!--CSS-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style_1.css">
+  <!--JS-->
+  <script src="script.js"></script>
+  <!--Ikona-->
+  <link rel="shortcut icon" type="image/png" href="swag_yoda.png">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-166262274-1');
+  </script>
+</head>
+
+
+<body class="row">
+
+  <div class="col-3"></div>
+
+  <div class="col-6 pb-5">
+
+    <div class="container-fluid pfp-div">
+      <div class="container-fluid text-center">
+        <img class="pfp-img" src="slike/pfp3.png" alt="davor">
+      </div>
+      <h1 class="pb-4 pt-4 pfp-name">Projekt o šahistu Davoru Kriviću</h1>
+    </div>
+
+    <div class="container-fluid">
+      <br><br><br><br>
+    </div>
+
+    <div class="row container-fluid m-0 p-0 icon-div">
+      <div class="fx2">
+
+            <a href="projekt.html">
+                <div class="item col4 p-4">
+                    <img class="transition img-responsive body-icon" src="slike/icon-plan.png">
+                    <h4 class="icon-text">O PROJEKTU</h4>
+                </div>
+            </a>
+            <a href="grafovi.html">
+                <div class="item col4 p-4">
+                    <img class="transition img-responsive body-icon" src="slike/icon-statistics.png">
+                    <h4 class="icon-text">GRAFOVI</h4>
+                </div>
+            </a>
+            <a href="biografija.html">
+                <div class="item col4 p-4">
+                    <img class="transition img-responsive body-icon" src="slike/icon-chess.png">
+                    <h4 class="icon-text">BIOGRAFIJA</h4>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+  </div>
+
+  <div class="col-3"></div>
+
+  <!-- Create a div where the graph will take place -->
+  <div id="my_dataviz"></div>
+</body>

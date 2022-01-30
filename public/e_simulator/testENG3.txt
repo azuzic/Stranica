@@ -1,0 +1,94 @@
+[
+  {"id": -1 , "vrijeme": 900},
+
+  {"id": 1 , "vrsta": "WORDS" ,
+  "text":
+  [
+  "<b>Choose the correct conditional form of the verbs in brackets to complete the sentences. Use full verb forms since contractions (short forms) are not allowed.</b> <br> 1. If I were you, I (learn)" ,
+  "programming harder. <br> 2. f you (click)",
+  "on that, it will just compact your C drive. <br> 3. I (write)",
+  "the program long ago if you had not disturbed me. <br> 4. If you used a better search engine, you (find)",
+  "more relevant results. <br> 5. You will make a copy of the screen if you (press)",
+  "Print Screen. <br> 6. If he (work)",
+  "harder, he would have achieved great progress. <br> 7. If you (add)",
+  "more memory, it would speed up the computer. <br> 8. If she doesn’t give the files meaningful names, she (forget)",
+  "what they contain. <br> 9. If they (know)",
+  "it before, they would have taken measures. <br> 10. Your PC (process)",
+  "data faster if you had installed a faster processor."
+  ],
+
+  "odgovor":
+  [
+  "would learn",
+  "click",
+  "would have written",
+  "would find",
+  "press",
+  "had worked",
+  "added",
+  "will forget",
+  "had known",
+  "would have processed"
+  ],
+
+  "all": [10],
+
+  "bodovi": [1,1,1,1,1,1,1,1,1,1]
+
+  },
+  {"id": 2 , "vrsta": "WORDS" ,
+  "text":
+  [
+  "<b>Complete the sentences using Conditional Type 3. Please use full verb forms since contractions (short forms) are not allowed.</b> <br> 1. I didn't know you were in hospital. If I (know)" ,
+  ", I (go)",
+  "to visit you. <br> 2. Ken got to the station in time to catch his train. If he (miss)",
+  "it, he (be)",
+  "late for his interview. <br> 3. It's good that you reminded me about Ann's birthday. I (forget)",
+  "if you (remind / not)",
+  "me. <br> 4. Unfortunately, I didn't have my address book with me when I was in New York. If I (have)",
+  "your address, I (send)",
+  "you a postcard. <br> 5. A: 'How was your holiday? Did you have a nice time?' B: 'It was OK, but we (enjoy)",
+  "it more if the weather (be)",
+  "better. <br> 6. I took a taxi to the hotel but the traffic was very bad. It (be)",
+  "quicker if I (walk)",
+  ". <br> 7. I wasn't tired last night. If I (be)",
+  "tired, I (go)",
+  "home earlier. <br> 8. If they (know)",
+  "it before, they (take)",
+  "measures. <br> 9. If he (forget)",
+  "his password, he (not be able to)",
+  "access his computer. <br> 10. He was not ill last week; if he (be)",
+  "ill, he (take / not)",
+  "part in the football match."
+  ],
+
+  "odgovor":
+  [
+  "had known",
+  "would have gone",
+  "had missed",
+  "would have been",
+  "would have forgotten",
+  "had not reminded",
+  "had had",
+  "would have sent",
+  "would have enjoyed",
+  "had been",
+  "would have been",
+  "had walked",
+  "had been",
+  "would have gone",
+  "had known",
+  "would have taken",
+  "had forgotten",
+  "would not have been able to",
+  "had been",
+  "would not have taken"
+  ],
+
+  "all": [20],
+
+  "bodovi": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+  }
+
+]

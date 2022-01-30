@@ -1,35 +1,51 @@
 {
-  "name": "IstraMusicShop",
+  "name": "stranica",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.3.1",
-    "@tailwindcss/postcss7-compat": "^2.2.17",
-    "animate.css": "^4.1.1",
-    "autoprefixer": "^9",
-    "core-js": "^3.6.5",
-    "firebase": "^9.6.1",
-    "firebase-admin": "^10.0.1",
-    "moment": "^2.29.1",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "vue": "^2.6.11",
-    "vue-croppa": "^1.3.8",
-    "vue-router": "^3.2.0",
-    "vue2-animate": "^2.1.4",
-    "vuejs-dialog": "^1.4.2"
+    "core-js": "^3.8.3",
+    "firebase": "^9.6.4",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.4.0",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
-    "vue-cli-plugin-tailwind": "~2.2.18",
-    "vue-template-compiler": "^2.6.11"
-  }
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0-rc.2",
+    "@vue/cli-plugin-eslint": "~5.0.0-rc.2",
+    "@vue/cli-plugin-router": "~5.0.0-rc.2",
+    "@vue/cli-service": "~5.0.0-rc.2",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.15"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
 }

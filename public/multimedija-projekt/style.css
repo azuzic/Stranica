@@ -1,0 +1,702 @@
+* {
+  font-family: Courier, monospace;
+}
+
+body {
+  min-height: 800px;
+}
+
+.header {}
+
+/*-------------------------------------*/
+@media screen and (min-width: 991px) {
+  .change {
+    position: fixed;
+    top: 0px;
+    left: 18%;
+    right: 18%;
+    z-index: 10;
+    background-color: black;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .change {
+    position: fixed;
+    top: 0px;
+    left: 3%;
+    right: 3%;
+    z-index: 10;
+    background-color: black;
+  }
+}
+
+/*-------------------------------------*/
+html, body {
+  overflow-x: hidden;
+  background-color: rgba(14,44,55,1);
+}
+
+.background-body {
+  background-image: url(foto/background.gif);
+  background-size: 100%;
+  background-repeat: repeat-y;
+}
+
+.bg-static {
+  background-image: url(foto/static.gif);
+  background-size: 100%;
+  background-repeat: repeat-y;
+}
+
+.bg-normal {
+    background-color: rgba(13,13,13,1);
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.fix {
+  font-size: 0px;
+  background-color: black;
+}
+
+.fix2 {
+  font-size: 0px;
+}
+
+.border-image {
+  border: white 2.5px solid;
+  border-radius: 5px;
+}
+
+.text-black {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a.text-black:hover {
+  color: white;
+}
+
+a.text-white:hover {
+  color: grey !important;
+}
+
+.bg-card {
+  color: white;
+  background-color: black;
+  border: white solid 2px;
+  box-shadow: 0 0 0.4px white,
+    0 0 2px white,
+    0 0 4px white,
+    0 0 12px white;
+}
+
+.icon:hover {
+  filter: drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 14px white);
+}
+
+.icon-active {
+  filter: drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 14px white);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-grey {
+  background-color: rgba(36, 36, 36);
+}
+
+.ul-custom {
+  background-color: #060000;
+  color: #f7eded;
+  box-shadow: 0 0 1px white,
+    0 0 5px white,
+    0 0 10px white,
+    0 0 40px white;
+}
+
+hr {
+  border-top: 4px dashed white;
+}
+
+.naslov {
+  font-size: 4vw;
+}
+
+.carousel-item img {
+  filter: drop-shadow(0px 5px 3px rgba(0,0,0,0.8))
+          drop-shadow(0px 5px 20px rgba(0,0,0,0.6))
+          drop-shadow(0px 5px 80px rgba(0,0,0,0.4));
+}
+
+.middle-body {
+  background-color: rgba(36, 36, 36, .81);
+  border-left: black solid 4px;
+  border-right: black solid 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4),
+    0 0 25px rgba(0,0,0,0.8),
+    0 0 100px rgba(0,0,0,1);
+}
+
+.card-button {
+  background-color: black;
+  border: solid white 1px;
+  color: white;
+  font-size: 20px;
+  border-radius: 0px;
+}
+
+.card-button:hover {
+  background-color: white;
+  color: black;
+  font-weight: bolder;
+}
+
+.btn-danger:hover {
+  color: black !important;
+}
+
+mark {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+}
+
+/*-------------------------------------*/
+@media screen and (min-width: 991px) {
+  .card-font {
+    color: white;
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .card-font {
+    color: white;
+    font-size: 2vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card-font {
+    color: white;
+    font-size: 4vw;
+  }
+}
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+@media screen and (min-width: 991px) {
+  .card-font2 {
+    color: white;
+    font-size: 1.2vw;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .card-font2 {
+    color: white;
+    font-size: 2vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card-font2 {
+    color: white;
+    font-size: 4vw;
+  }
+}
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .text-area {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .text-area {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .text-area2 {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .text-area2 {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+/*-------------------------------------*/
+.border-area2 {
+  border-left: 2px black solid;
+  border-right: 2px black solid;
+  border-top: 2px black solid;
+  border-radius: 4px;
+  background-color: gray;
+}
+
+/*-------------------------------------*/
+@media screen and (min-width: 767px) {
+  .border-color {
+    border-left: 2px black solid;
+    border-color: black;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .border-color {
+    border-top: 2px black solid;
+    border-color: black;
+  }
+}
+
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .projekt-naslov-h1 {
+    font-weight: bold;
+    font-size: 70px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .projekt-naslov-h1 {
+    font-weight: bold;
+    font-size: 45px;
+  }
+}
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .projekt-naslov-h2 {
+    font-weight: bold;
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .projekt-naslov-h2 {
+    font-weight: bold;
+    font-size: 35px;
+  }
+}
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+@media screen and (min-width: 800px) {
+  .projekt-naslov-h3 {
+    font-weight: bold;
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .projekt-naslov-h3 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+}
+
+/*-------------------------------------*/
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (min-width: 800px) {
+  .video_size {
+    width: 100%;
+    height: 500px;
+  }
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 800px) {
+  .video_size {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+/*-------------------------------------*/
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (min-width: 800px) {
+  .image-size {
+    width: 50%;
+  }
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 800px) {
+  .image-size {
+    width: 100%;
+  }
+}
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (min-width: 800px) {
+  .image-size2 {
+    width: 40%;
+  }
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 800px) {
+  .image-size2 {
+    width: 80%;
+  }
+}
+
+/*-------------------------------------*/
+/*button size*/
+.button-size {
+  width: 100%;
+}
+
+/*image----------------------------------------------------*/
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.column img:hover {
+  opacity: 0.5;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: -20px;
+  right: 5px;
+  color: white;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Expanding image text */
+#imgtext1 {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/*image----------------------------------------------------*/
+a.inactive {
+  display: inline-block;
+  color: #03e9f4;
+  text-decoration: none;
+  height: 50px;
+  transition: 0.5s;
+  overflow: hidden;
+  text-align: center !important;
+  padding: 12px;
+  font-size: 18px;
+}
+
+a.active {
+  display: inline-block;
+  color: black;
+  font-weight: bold;
+  background: #03e9f4;
+  text-decoration: none;
+  transition: 0.5s;
+  overflow: hidden;
+  text-align: center !important;
+  padding: 12px;
+  font-size: 20px;
+  box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 200px #03e9f4;
+}
+
+a.inactive:hover {
+  background: #03e9f4;
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 200px #03e9f4;
+}
+
+a:nth-child(1) {
+  filter: hue-rotate(45deg);
+}
+
+a:nth-child(2) {
+  filter: hue-rotate(90deg);
+}
+
+a:nth-child(3) {
+  filter: hue-rotate(135deg);
+}
+
+a:nth-child(4) {
+  filter: hue-rotate(180deg);
+}
+
+a:nth-child(5) {
+  filter: hue-rotate(225deg);
+}
+
+a:nth-child(6) {
+  filter: hue-rotate(270deg);
+}
+
+a:nth-child(7) {
+  filter: hue-rotate(315deg);
+}
+
+a:nth-child(8) {
+  filter: hue-rotate(360deg);
+}
+
+a span {
+  position: absolute;
+  display: block;
+}
+
+a.inactive span:nth-child(1) {
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: animate3 2s linear infinite;
+  animation-delay: 0s;
+}
+
+@keyframes animate3 {
+  0% {
+    right: -100%;
+  }
+
+  50%, 100% {
+    right: 100%;
+  }
+}
+
+a.inactive span:nth-child(2) {
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1;
+}
+
+@keyframes animate2 {
+  50%, 100% {
+    left: 100%;
+  }
+
+  0% {
+    left: -100%;
+  }
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (min-width: 800px) {
+  a.inactive2 {
+    width: 35%;
+    font-size: 35px;
+    position: relative;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+    overflow: hidden;
+    text-align: center !important;
+  }
+}
+
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 800px) {
+  a.inactive2 {
+    width: 50%;
+    font-size: 25px;
+    position: relative;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+    overflow: hidden;
+    text-align: center !important;
+  }
+}
+
+a.inactive2:hover {
+  background: white;
+  color: black;
+  font-weight: bold;
+  box-shadow: 0 0 5px white,
+    0 0 25px white,
+    0 0 50px white,
+    0 0 200px white;
+}
+
+a.inactive2 span:nth-child(1) {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, white);
+  animation: animate11 1s linear infinite;
+}
+
+@keyframes animate11 {
+  0% {
+    left: -100%;
+  }
+
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+a.inactive2 span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, white);
+  animation: animate22 1s linear infinite;
+  animation-delay: 0.25s;
+}
+
+@keyframes animate22 {
+  0% {
+    top: -100%;
+  }
+
+  50%, 100% {
+    top: 100%;
+  }
+}
+
+a.inactive2 span:nth-child(3) {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, white);
+  animation: animate33 1s linear infinite;
+  animation-delay: 0.50s;
+}
+
+@keyframes animate33 {
+  0% {
+    right: -100%;
+  }
+
+  50%, 100% {
+    right: 100%;
+  }
+}
+
+a.inactive2 span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, white);
+  animation: animate44 1s linear infinite;
+  animation-delay: 0.75s;
+}
+
+@keyframes animate44 {
+  0% {
+    bottom: -100%;
+  }
+
+  50%, 100% {
+    bottom: 100%;
+  }
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+}
+
+.glow {
+  color: white;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white, 0 0 25px white;
+  }
+
+  to {
+    text-shadow: 0 0 10px grey, 0 0 15px grey, 0 0 20px grey, 0 0 25px grey, 0 0 30px grey;
+  }
+}
+
+.inner-switch {
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 1.25rem;
+    width: 3.125rem;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.1875rem;
+    margin-left: 0.3125rem;
+}

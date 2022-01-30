@@ -1,0 +1,50 @@
+[
+  {"id": -1 , "vrijeme": 900},
+
+  {"id": 1 , "vrsta": "WORDS" ,
+  "text":
+  [
+  "<b>Choose the correct conditional form of the verbs in brackets to complete the sentences. Use full verb forms since contractions (short forms) are not allowed. <br><table><tbody><tr><td>computer systems</td><td>email service</td><td>unauthorized access</td></tr><tr><td>reroute email</td><td>planting passwords</td><td>gaining entry</td></tr><tr><td>gain access</td><td>hijacking websites</td><td>downloading files</td></tr><tr><td>email correspondence</span></td><td>true identity</span></td><td>more common</span></td></tr><tr><td>defacing websites</td><td>company staff</td><td>network system</td></tr></tbody></table></b><br>Since hacking, i.e. attempting to gain" ,
+  "to a network system is illegal, hackers often want to keep their",
+  "secret. The Internet has made hacking",
+  "and hackers are found throughout the world. Hackers like to attack and penetrate",
+  "belonging to large, important organizations such as the Pentagon, the US military bases or Hotmail, the free",
+  "provided by the Microsoft Corporation. Often, breaking into a system is done gradually, with the hacker",
+  "into a system, and then",
+  "in it, allowing them to gain access to the system more easily in the future. When hackers",
+  "to a system, they don't usually break into the system using the Internet and stealing all the data, as is often portrayed in the cinema. In fact, most hacks or break-ins are done by",
+  "misusing the company’s",
+  ". <br> Hackers have been known to do a variety of things to computer systems, such as",
+  "by copying them from a server computer and leaking confidential information, or exposing",
+  "managed by well-known email services, thus causing the service to be shut down. In addition, they sometimes hack email server computers to",
+  ", i.e. send it to a different email address than the one it was originally sent to.",
+  "refers to redirecting the Web address (or URL) to point to another website, while",
+  "refers to changing the text and graphics on the webpage, sometimes leaving rude messages on the system."
+  ],
+
+  "odgovor":
+  [
+  "unauthorized access",
+  "true identity",
+  "more common",
+  "computer systems",
+  "email service",
+  "gaining entry",
+  "planting passwords",
+  "gain access",
+  "company staff",
+  "network system",
+  "downloading files",
+  "email correspondence",
+  "reroute email",
+  "hijacking websites",
+  "defacing websites"
+  ],
+
+  "all": [15],
+
+  "bodovi": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+
+  }
+
+]

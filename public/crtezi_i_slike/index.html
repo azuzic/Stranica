@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Alesandro Žužić</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <!--Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!--CSS-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!--JS-->
+  <script src="script.js"></script>
+  <!--Ikona-->
+  <link rel="shortcut icon" type="image/png" href="foto/navi.png">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-166262274-1');
+  </script>
+</head>
+<!--body-------------------------------------------------------------------------------->
+<body class="row">
+  <div class="alert_box container-fluid text-center m-0 collapse">
+        <p class="alert_box2 mx-auto d-block">Active box exists!</p>
+  </div>
+  <div id="html_code" class="html_box container-fluid text-center collapse">
+        <p class="html_box2 mx-auto d-block">
+          <b style="font-size:35px;">HTML CODE</b>
+          <a class="float-right text-decoration-none exs" onclick="exs()">
+            X
+          </a>
+          <textarea id="placeholder" placeholder="HTML code" type="text" class="text-light custom-text-input4" rows="10" cols="25"></textarea>
+          <button class="button custom-submit2 m-2" onclick="exportCode()">Export</button>
+        </p>
+  </div>
+<img src="bg/rain.png" class="images">
+<!--NASLOV---------------------------------------------------->
+  <div class="container-fluid col-12 bg-naslov pt-3 text-center">
+    <p>CRTEŽI I SLIKE</p>
+  </div>
+<!--NASLOV END------------------------------------------------>
+
+<!--IMAGES----------------------------------------------------->
+  <div class="row container-fluid col-12 p-0 m-0">
+    <!--IMAGE ADD---------------------------->
+    <div class="container-fluid p-0 m-0 col-12 bg-tb">
+      <p class="p-2 text-light text-center pb-0 mb-0">
+        <a href="..\" class="button custom-submit2 m-2">Back to Main</a>
+        <button class="button custom-submit2 m-2" onclick="addBox()">Add Box</button>
+        <button class="button custom-submit2 m-2" onclick="extractCode()">Extract HTML</button>
+        <button class="button custom-submit2 m-2" onclick="showAll()">Show All</button>
+        <button class="button custom-submit2 m-2" onclick="hideAll()">Hide All</button>
+        <input id="tag2" placeholder="Tag" type="text" value="" class="text-center text-light button custom-submit2 m-2" maxlength="50">
+        <button class="button custom-submit2 m-2" onclick="addTag2()">Add tag</button>
+        <select name="velicina" class="button custom-submit2 m-2 p-2" id="kategorije" onchange="velicina()">
+                  <option class="bg-dark" value="1">Small Image Size</option>
+                  <option class="bg-dark" selected  value="2">Medium Image Size</option>
+                  <option class="bg-dark" value="3">Large Image Size</option>
+        </select>
+      </p>
+    </div>
+    <div id="code" class="container-fluid p-0 m-0">
+      <div id="taglist" class="row scontainer-fluid p-0 m-0 col-12 bg-tb2 taglist tag_drawing tag_color tag_landscape tag_black_and_white tag_hair tag_anime tag_digital tag_sketch tag_naruto tag_hamer tag_ink tag_coloring tag_lofi tag_anime_notebook tag_kotoura-san tag_sasuke">
+
+        <div id="tl_tag_0" class="p-1 m-1 tag-shape tag-shape-red0">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_0" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">drawing</a></div>
+            <div id="tl_tag_0" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_1" class="p-1 m-1 tag-shape tag-shape-red1">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_1" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">color</a></div>
+            <div id="tl_tag_1" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_2" class="p-1 m-1 tag-shape tag-shape-red2">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_2" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">landscape</a></div>
+            <div id="tl_tag_2" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_3" class="p-1 m-1 tag-shape-red3 tag-shape">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_3" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">black_and_white</a></div>
+            <div id="tl_tag_3" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_4" class="p-1 m-1 tag-shape-blue4 tag-shape">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_4" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">hair</a></div>
+            <div id="tl_tag_4" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_5" class="p-1 m-1 tag-shape-blue5 tag-shape">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_5" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">anime</a></div>
+            <div id="tl_tag_5" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_7" class="p-1 m-1 tag-shape tag-shape-red7">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_7" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">digital</a></div>
+            <div id="tl_tag_7" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_8" class="p-1 m-1 tag-shape-red8 tag-shape">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_8" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">sketch</a></div>
+            <div id="tl_tag_8" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_9" class="p-1 m-1 tag-shape-blue9 tag-shape">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_9" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">naruto</a></div>
+            <div id="tl_tag_9" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_6" class="p-1 m-1 tag-shape tag-shape-red6">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_6" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">hamer</a></div>
+            <div id="tl_tag_6" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_10" class="p-1 m-1 tag-shape tag-shape-red10">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_10" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">ink</a></div>
+            <div id="tl_tag_10" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_11" class="p-1 m-1 tag-shape tag-shape-red11">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_11" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">coloring</a></div>
+            <div id="tl_tag_11" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_12" class="p-1 m-1 tag-shape tag-shape-red12">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_12" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">lofi</a></div>
+            <div id="tl_tag_12" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_13" class="p-1 m-1 tag-shape tag-shape-red13">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_13" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">anime_notebook</a></div>
+            <div id="tl_tag_13" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_14" class="p-1 m-1 tag-shape tag-shape-red14">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_14" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">kotoura-san</a></div>
+            <div id="tl_tag_14" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+        <div id="tl_tag_15" class="p-1 m-1 tag-shape tag-shape-red15">
+          <div class="row p-0 m-0">
+            <div class="m-0 p-0"><a id="text_tl_tag_15" class="tageffect pl-2 pr-2" onclick="tagSort2(this.innerHTML,this);">sasuke</a></div>
+            <div id="tl_tag_15" class="m-0 p-0"><a class="ml-2 button custom-done2 pr-1" onclick="tagDelete2(this)">X</a></div>
+          </div>
+        </div>
+      </div>
+      <!--IMAGE ADD END------------------------>
+      <!--IMAGE BODY--------------------------->
+      <div class="row container-fluid p-2 m-0 col-12 boxes">
+        <div id="boxnumber_24"
+          class="velicina col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 p-2 tagsort tag_color tag_color_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_sasuke tag_sasuke_notcollapsed tag_drawing tag_drawing_notcollapsed tag_hamer tag_hamer_notcollapsed boxnumber_24">
+          <div id="box_24" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 img-pad text-center frame p-0 change_image_24 bg-tr"><span class="helper"></span><img id="size_24" class="rounded mx-auto" src="foto/Image106.jpg" alt="Image106.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_24">
+              <h3 id="naslov_24" class=" naslov_24 p-3 text-light text-center">Sasuke Colored</h3>
+              </p>
+              <p id="opis_24" class="text-light text-center pb-3 opis_24" style="font-weight: normal;">Sasuke in full color on A1 paper</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive24">
+                <div id="tag_112" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_112" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_112" class="m-0 p-0 text_tagx24"></div>
+                  </div>
+                </div>
+                <div id="tag_113" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_113" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_113" class="m-0 p-0 text_tagx24"></div>
+                  </div>
+                </div>
+                <div id="tag_114" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_114" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_114" class="m-0 p-0 text_tagx24"></div>
+                  </div>
+                </div>
+                <div id="tag_115" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_115" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sasuke</a></div>
+                    <div id="tag_115" class="m-0 p-0 text_tagx24"></div>
+                  </div>
+                </div>
+                <div id="tag_116" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_116" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_116" class="m-0 p-0 text_tagx24"></div>
+                  </div>
+                </div>
+                <div id="tag_117" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_117" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_117" class="m-0 p-0 text_tagx24"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag24"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_24"><a id="24" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_25"
+          class="velicina col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 p-2 tagsort tag_coloring tag_coloring_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_hamer tag_hamer_notcollapsed tag_color tag_color_notcollapsed tag_drawing tag_drawing_notcollapsed tag_sasuke tag_sasuke_notcollapsed boxnumber_25">
+          <div id="box_25" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 img-pad text-center frame custom-border p-0 change_image_25 bg-tr"><span class="helper"></span><img id="size_25" class="rounded mx-auto" src="foto/Image105.jpg" alt="Image105.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_25">
+              <h3 id="naslov_25" class=" naslov_25 p-3 text-light text-center">Sasuke Coloring</h3>
+              </p>
+              <p id="opis_25" class="text-light text-center pb-3 opis_25" style="font-weight: normal;">Coloring process</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive25">
+                <div id="tag_106" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_106" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">coloring</a></div>
+                    <div id="tag_106" class="m-0 p-0 text_tagx25"></div>
+                  </div>
+                </div>
+                <div id="tag_107" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_107" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_107" class="m-0 p-0 text_tagx25"></div>
+                  </div>
+                </div>
+                <div id="tag_108" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_108" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_108" class="m-0 p-0 text_tagx25"></div>
+                  </div>
+                </div>
+                <div id="tag_109" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_109" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_109" class="m-0 p-0 text_tagx25"></div>
+                  </div>
+                </div>
+                <div id="tag_110" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_110" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_110" class="m-0 p-0 text_tagx25"></div>
+                  </div>
+                </div>
+                <div id="tag_111" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_111" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_111" class="m-0 p-0 text_tagx25"></div>
+                  </div>
+                </div>
+                <div id="tag_118" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_118" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sasuke</a></div>
+                    <div id="tag_118" class="m-0 p-0 text_tagx25"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag25"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_25"><a id="25" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_23"
+          class="velicina p-2 tagsort tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_sasuke tag_sasuke_notcollapsed tag_drawing tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 tag_ink tag_ink_notcollapsed tag_hamer tag_hamer_notcollapsed boxnumber_23">
+          <div id="box_23" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame img-pad custom-border p-0 change_image_23 bg-tr"><span class="helper"></span><img id="size_23" class="rounded mx-auto" src="foto/Image104.jpg" alt="Image104.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_23">
+              <h3 id="naslov_23" class=" naslov_23 p-3 text-light text-center">Sasuke Inking</h3>
+              </p>
+              <p id="opis_23" class="text-light text-center pb-3 opis_23" style="font-weight: normal;">A1 sized sketch of Sasuke</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive23">
+                <div id="tag_99" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_99" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_99" class="m-0 p-0 text_tagx23"></div>
+                  </div>
+                </div>
+                <div id="tag_100" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_100" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_100" class="m-0 p-0 text_tagx23"></div>
+                  </div>
+                </div>
+                <div id="tag_101" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_101" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sasuke</a></div>
+                    <div id="tag_101" class="m-0 p-0 text_tagx23"></div>
+                  </div>
+                </div>
+                <div id="tag_102" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_102" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_102" class="m-0 p-0 text_tagx23"></div>
+                  </div>
+                </div>
+                <div id="tag_98" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_98" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">ink</a></div>
+                    <div id="tag_98" class="m-0 p-0 text_tagx23"></div>
+                  </div>
+                </div>
+                <div id="tag_103" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_103" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_103" class="m-0 p-0 text_tagx23"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag23"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_23"><a id="23" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_19"
+          class="velicina p-2 tagsort tag_sketch tag_sketch_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_sasuke tag_sasuke_notcollapsed tag_drawing tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 tag_hamer tag_hamer_notcollapsed boxnumber_19">
+          <div id="box_19" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame img-pad custom-border p-0 change_image_19 bg-tr"><span class="helper"></span><img id="size_19" class="rounded mx-auto" src="foto/Image103.jpg" alt="Image103.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_19">
+              <h3 id="naslov_19" class=" naslov_19 p-3 text-light text-center">Sasuke Sketch #3</h3>
+              </p>
+              <p id="opis_19" class="text-light text-center pb-3 opis_19" style="font-weight: normal;">A1 sized sketch of Sasuke</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive19">
+                <div id="tag_93" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_93" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_93" class="m-0 p-0 text_tagx19"></div>
+                  </div>
+                </div>
+                <div id="tag_94" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_94" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_94" class="m-0 p-0 text_tagx19"></div>
+                  </div>
+                </div>
+                <div id="tag_95" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_95" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_95" class="m-0 p-0 text_tagx19"></div>
+                  </div>
+                </div>
+                <div id="tag_96" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_96" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sasuke</a></div>
+                    <div id="tag_96" class="m-0 p-0 text_tagx19"></div>
+                  </div>
+                </div>
+                <div id="tag_97" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_97" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_97" class="m-0 p-0 text_tagx19"></div>
+                  </div>
+                </div>
+                <div id="tag_104" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_104" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_104" class="m-0 p-0 text_tagx19"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag19"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_19"><a id="19" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_21"
+          class="velicina p-2 tagsort tag_sketch tag_sketch_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_sasuke tag_sasuke_notcollapsed tag_drawing tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 tag_hamer tag_hamer_notcollapsed boxnumber_21">
+          <div id="box_21" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame img-pad custom-border p-0 change_image_21 bg-tr"><span class="helper"></span><img id="size_21" class="rounded mx-auto" src="foto/Image102.jpg" alt="Image102.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_21">
+              <h3 id="naslov_21" class=" naslov_21 p-3 text-light text-center">Sasuke Light Sketch #2</h3>
+              </p>
+              <p id="opis_21" class="text-light text-center pb-3 opis_21" style="font-weight: normal;">A1 sized sketch of Sasuke</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive21">
+                <div id="tag_88" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_88" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_88" class="m-0 p-0 text_tagx21"></div>
+                  </div>
+                </div>
+                <div id="tag_89" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_89" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_89" class="m-0 p-0 text_tagx21"></div>
+                  </div>
+                </div>
+                <div id="tag_90" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_90" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_90" class="m-0 p-0 text_tagx21"></div>
+                  </div>
+                </div>
+                <div id="tag_91" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_91" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sasuke</a></div>
+                    <div id="tag_91" class="m-0 p-0 text_tagx21"></div>
+                  </div>
+                </div>
+                <div id="tag_92" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_92" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_92" class="m-0 p-0 text_tagx21"></div>
+                  </div>
+                </div>
+                <div id="tag_105" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_105" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_105" class="m-0 p-0 text_tagx21"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag21"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_21"><a id="21" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_20"
+          class="velicina p-2 tagsort tag_sketch tag_sketch_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_sasuke tag_sasuke_notcollapsed tag_drawing tag_drawing_notcollapsed boxnumber_20 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_20" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_20 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_20" class="rounded mx-auto" src="foto/Image101.jpg" alt="Image101.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_20">
+              <h3 id="naslov_20" class=" naslov_20 p-3 text-light text-center">Sasuke Rough Sketch #1</h3>
+              </p>
+              <p id="opis_20" class="text-light text-center pb-3 opis_20" style="font-weight: normal;">A4 sized sketch of Sasuke</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive20">
+                <div id="tag_83" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_83" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_83" class="m-0 p-0 text_tagx20"></div>
+                  </div>
+                </div>
+                <div id="tag_84" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_84" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_84" class="m-0 p-0 text_tagx20"></div>
+                  </div>
+                </div>
+                <div id="tag_85" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_85" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_85" class="m-0 p-0 text_tagx20"></div>
+                  </div>
+                </div>
+                <div id="tag_86" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_86" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sasuke</a></div>
+                    <div id="tag_86" class="m-0 p-0 text_tagx20"></div>
+                  </div>
+                </div>
+                <div id="tag_87" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_87" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_87" class="m-0 p-0 text_tagx20"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag20"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_20"><a id="20" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_18"
+          class="velicina p-2 tagsort tag_color tag_color_notcollapsed tag_anime tag_anime_notcollapsed tag_anime_notebook tag_anime_notebook_notcollapsed tag_kotoura-san tag_kotoura-san_notcollapsed tag_drawing tag_drawing_notcollapsed boxnumber_18 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_18" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_18 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_18" class="rounded mx-auto" src="foto/Image99.jpg" alt="Image99.jpg" width="100%"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_18">
+              <h3 id="naslov_18" class=" naslov_18 p-3 text-light text-center">Kotoura-san</h3>
+              </p>
+              <p id="opis_18" class="text-light text-center pb-3 opis_18" style="font-weight: normal;">1st drawing in my anime notebook</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive18">
+                <div id="tag_78" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_78" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_78" class="m-0 p-0 text_tagx18"></div>
+                  </div>
+                </div>
+                <div id="tag_79" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_79" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_79" class="m-0 p-0 text_tagx18"></div>
+                  </div>
+                </div>
+                <div id="tag_80" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_80" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime_notebook</a></div>
+                    <div id="tag_80" class="m-0 p-0 text_tagx18"></div>
+                  </div>
+                </div>
+                <div id="tag_81" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_81" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">kotoura-san</a></div>
+                    <div id="tag_81" class="m-0 p-0 text_tagx18"></div>
+                  </div>
+                </div>
+                <div id="tag_82" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_82" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_82" class="m-0 p-0 text_tagx18"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag18"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_18"><a id="18" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_17"
+          class="velicina p-2 tagsort tag_color tag_color_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_hamer tag_hamer_notcollapsed tag_drawing tag_drawing_notcollapsed boxnumber_17 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_17" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_17 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_17" class="rounded mx-auto" src="foto/Image98.jpg" alt="Image98.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_17">
+              <h3 id="naslov_17" class=" naslov_17 p-3 text-light text-center">Naruto Close-Up #2</h3>
+              </p>
+              <p id="opis_17" class="text-light text-center pb-3 opis_17" style="font-weight: normal;"></p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive17">
+                <div id="tag_73" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_73" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_73" class="m-0 p-0 text_tagx17"></div>
+                  </div>
+                </div>
+                <div id="tag_74" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_74" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_74" class="m-0 p-0 text_tagx17"></div>
+                  </div>
+                </div>
+                <div id="tag_75" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_75" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_75" class="m-0 p-0 text_tagx17"></div>
+                  </div>
+                </div>
+                <div id="tag_76" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_76" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_76" class="m-0 p-0 text_tagx17"></div>
+                  </div>
+                </div>
+                <div id="tag_77" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_77" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_77" class="m-0 p-0 text_tagx17"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag17"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_17"><a id="17" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_11"
+          class="velicina p-2 tagsort tag_color tag_color_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_hamer tag_hamer_notcollapsed tag_drawing tag_drawing_notcollapsed boxnumber_11 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_11" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_11 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_11" class="rounded mx-auto" src="foto/Image97.jpg" alt="Image97.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_11">
+              <h3 id="naslov_11" class=" naslov_11 p-3 text-light text-center">Naruto Close-Up #1</h3>
+              </p>
+              <p id="opis_11" class="text-light text-center pb-3 opis_11" style="font-weight: normal;"></p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive11">
+                <div id="tag_68" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_68" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_68" class="m-0 p-0 text_tagx11"></div>
+                  </div>
+                </div>
+                <div id="tag_69" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_69" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_69" class="m-0 p-0 text_tagx11"></div>
+                  </div>
+                </div>
+                <div id="tag_70" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_70" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_70" class="m-0 p-0 text_tagx11"></div>
+                  </div>
+                </div>
+                <div id="tag_71" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_71" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_71" class="m-0 p-0 text_tagx11"></div>
+                  </div>
+                </div>
+                <div id="tag_72" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_72" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_72" class="m-0 p-0 text_tagx11"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag11"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_11"><a id="11" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_15"
+          class="velicina p-2 tagsort tag_color tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_hamer tag_hamer_notcollapsed tag_drawing boxnumber_15 tag_color_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_15" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_15 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_15" class="rounded mx-auto" src="foto/Image96.jpg" alt="Image96.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_15">
+              <h3 id="naslov_15" class=" naslov_15 p-3 text-light text-center">Naruto #2 Colored</h3>
+              </p>
+              <p id="opis_15" class="text-light text-center pb-3 opis_15" style="font-weight: normal;">Naruto in full color on A1 paper</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive15">
+                <div id="tag_61" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_61" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_61" class="m-0 p-0 text_tagx15"></div>
+                  </div>
+                </div>
+                <div id="tag_62" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_62" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_62" class="m-0 p-0 text_tagx15"></div>
+                  </div>
+                </div>
+                <div id="tag_63" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_63" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_63" class="m-0 p-0 text_tagx15"></div>
+                  </div>
+                </div>
+                <div id="tag_64" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_64" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_64" class="m-0 p-0 text_tagx15"></div>
+                  </div>
+                </div>
+                <div id="tag_65" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_65" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_65" class="m-0 p-0 text_tagx15"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag15"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_15"><a id="15" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_16"
+          class="velicina p-2 tagsort tag_coloring tag_coloring_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_hamer tag_hamer_notcollapsed tag_lofi tag_lofi_notcollapsed tag_color tag_drawing boxnumber_16 tag_color_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_16" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_16 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_16" class="rounded mx-auto" src="foto/Image95.jpg" alt="Image95.jpg" width="100%"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_16">
+              <h3 id="naslov_16" class=" naslov_16 p-3 text-light text-center">Naruto #2 Coloring #2</h3>
+              </p>
+              <p id="opis_16" class="text-light text-center pb-3 opis_16" style="font-weight: normal;">Coloring process while listening to Chilled Cow Lofi Hip-Hop</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive16">
+                <div id="tag_55" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_55" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">coloring</a></div>
+                    <div id="tag_55" class="m-0 p-0 text_tagx16"></div>
+                  </div>
+                </div>
+                <div id="tag_56" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_56" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_56" class="m-0 p-0 text_tagx16"></div>
+                  </div>
+                </div>
+                <div id="tag_57" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_57" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_57" class="m-0 p-0 text_tagx16"></div>
+                  </div>
+                </div>
+                <div id="tag_58" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_58" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_58" class="m-0 p-0 text_tagx16"></div>
+                  </div>
+                </div>
+                <div id="tag_59" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_59" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">lofi</a></div>
+                    <div id="tag_59" class="m-0 p-0 text_tagx16"></div>
+                  </div>
+                </div>
+                <div id="tag_60" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_60" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_60" class="m-0 p-0 text_tagx16"></div>
+                  </div>
+                </div>
+                <div id="tag_66" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_66" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_66" class="m-0 p-0 text_tagx16"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag16"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_16"><a id="16" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_14"
+          class="velicina p-2 tagsort tag_coloring tag_coloring_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_hamer tag_hamer_notcollapsed tag_lofi tag_lofi_notcollapsed tag_color tag_drawing boxnumber_14 tag_color_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_14" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_14 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_14" class="rounded mx-auto" src="foto/Image94.jpg" alt="Image94.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_14">
+              <h3 id="naslov_14" class=" naslov_14 p-3 text-light text-center">Naruto #2 Coloring</h3>
+              </p>
+              <p id="opis_14" class="text-light text-center pb-3 opis_14" style="font-weight: normal;">Coloring process while listening to Chilled Cow Lofi Hip-Hop</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive14">
+                <div id="tag_49" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_49" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">coloring</a></div>
+                    <div id="tag_49" class="m-0 p-0 text_tagx14"></div>
+                  </div>
+                </div>
+                <div id="tag_50" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_50" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_50" class="m-0 p-0 text_tagx14"></div>
+                  </div>
+                </div>
+                <div id="tag_51" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_51" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_51" class="m-0 p-0 text_tagx14"></div>
+                  </div>
+                </div>
+                <div id="tag_52" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_52" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_52" class="m-0 p-0 text_tagx14"></div>
+                  </div>
+                </div>
+                <div id="tag_53" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_53" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">lofi</a></div>
+                    <div id="tag_53" class="m-0 p-0 text_tagx14"></div>
+                  </div>
+                </div>
+                <div id="tag_54" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_54" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_54" class="m-0 p-0 text_tagx14"></div>
+                  </div>
+                </div>
+                <div id="tag_67" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_67" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_67" class="m-0 p-0 text_tagx14"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag14"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_14"><a id="14" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_13"
+          class="velicina p-2 tagsort tag_drawing tag_ink tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_hamer tag_hamer_notcollapsed boxnumber_13 tag_ink_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_13" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_13 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_13" class="rounded mx-auto" src="foto/Image93.jpg" alt="Image93.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_13">
+              <h3 id="naslov_13" class=" naslov_13 p-3 text-light text-center">Naruto #2 Inking</h3>
+              </p>
+              <p id="opis_13" class="text-light text-center pb-3 opis_13" style="font-weight: normal;"></p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive13">
+                <div id="tag_44" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_44" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_44" class="m-0 p-0 text_tagx13"></div>
+                  </div>
+                </div>
+                <div id="tag_45" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_45" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">ink</a></div>
+                    <div id="tag_45" class="m-0 p-0 text_tagx13"></div>
+                  </div>
+                </div>
+                <div id="tag_46" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_46" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_46" class="m-0 p-0 text_tagx13"></div>
+                  </div>
+                </div>
+                <div id="tag_47" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_47" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_47" class="m-0 p-0 text_tagx13"></div>
+                  </div>
+                </div>
+                <div id="tag_48" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_48" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_48" class="m-0 p-0 text_tagx13"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag13"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_13"><a id="13" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_10"
+          class="velicina p-2 tagsort tag_drawing tag_sketch tag_sketch_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed tag_hamer boxnumber_10 tag_hamer_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_10" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_10 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_10" class="rounded mx-auto" src="foto/Image92.jpg" alt="Image92.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_10">
+              <h3 id="naslov_10" class=" naslov_10 p-3 text-light text-center">Naruto #2 2nd Sketch</h3>
+              </p>
+              <p id="opis_10" class="text-light text-center pb-3 opis_10" style="font-weight: normal;">A1 sized sketch of Naruto</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive10">
+                <div id="tag_38" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_38" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_38" class="m-0 p-0 text_tagx10"></div>
+                  </div>
+                </div>
+                <div id="tag_39" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_39" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_39" class="m-0 p-0 text_tagx10"></div>
+                  </div>
+                </div>
+                <div id="tag_40" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_40" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_40" class="m-0 p-0 text_tagx10"></div>
+                  </div>
+                </div>
+                <div id="tag_41" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_41" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_41" class="m-0 p-0 text_tagx10"></div>
+                  </div>
+                </div>
+                <div id="tag_42" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_42" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_42" class="m-0 p-0 text_tagx10"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag10"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_10"><a id="10" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_7" class="velicina p-2 tagsort tag_drawing tag_sketch tag_sketch_notcollapsed tag_anime tag_anime_notcollapsed tag_naruto tag_naruto_notcollapsed boxnumber_7 tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_7" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_7 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_7" class="rounded mx-auto" src="foto/Image91.jpg" alt="Image91.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_7">
+              <h3 id="naslov_7" class=" naslov_7 p-3 text-light text-center">Naruto #2 Rough Sketch</h3>
+              </p>
+              <p id="opis_7" class="text-light text-center pb-3 opis_7" style="font-weight: normal;">A4 sized sketch of Naruto</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive7">
+                <div id="tag_22" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_22" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_22" class="m-0 p-0 text_tagx7"></div>
+                  </div>
+                </div>
+                <div id="tag_35" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_35" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_35" class="m-0 p-0 text_tagx7"></div>
+                  </div>
+                </div>
+                <div id="tag_36" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_36" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_36" class="m-0 p-0 text_tagx7"></div>
+                  </div>
+                </div>
+                <div id="tag_37" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_37" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_37" class="m-0 p-0 text_tagx7"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag7"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_7"><a id="7" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_9" class="velicina p-2 tagsort tag_drawing tag_anime tag_anime_notcollapsed tag_naruto tag_hamer boxnumber_9 tag_naruto_collapsed tag_hamer_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_9" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_9 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_9" class="rounded mx-auto" src="foto/Image90.jpg" alt="Image90.jpg" width="100%"
+                style="height: auto; width: 100%;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_9"></p>
+              <h3 id="naslov_9" class=" naslov_9 p-3 text-light text-center">Naruto Drawing 2#</h3>
+              <p></p>
+              <p id="opis_9" class="text-light text-center pb-3 opis_9" style="font-weight: normal;">Naruto A1 sized drawing completed</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive9">
+                <div id="tag_31" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_31" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_31" class="m-0 p-0 text_tagx9"></div>
+                  </div>
+                </div>
+                <div id="tag_32" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_32" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_32" class="m-0 p-0 text_tagx9"></div>
+                  </div>
+                </div>
+                <div id="tag_33" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_33" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_33" class="m-0 p-0 text_tagx9"></div>
+                  </div>
+                </div>
+                <div id="tag_34" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_34" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_34" class="m-0 p-0 text_tagx9"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag9"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_9"><a id="9" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_8"
+          class="velicina p-2 tagsort tag_drawing tag_sketch tag_anime tag_anime_notcollapsed tag_naruto tag_hamer boxnumber_8 tag_sketch_notcollapsed tag_naruto_collapsed tag_hamer_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_8" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_8 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_8" class="rounded mx-auto" src="foto/Image89.jpg" alt="Image89.jpg" width="100%"
+                style="height: auto; width: 100%;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_8"></p>
+              <h3 id="naslov_8" class=" naslov_8 p-3 text-light text-center">Naruto Drawing 1#</h3>
+              <p></p>
+              <p id="opis_8" class="text-light text-center pb-3 opis_8" style="font-weight: normal;">Naruto A1 sized drawing almost completed</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive8">
+                <div id="tag_26" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_26" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_26" class="m-0 p-0 text_tagx8"></div>
+                  </div>
+                </div>
+                <div id="tag_27" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_27" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_27" class="m-0 p-0 text_tagx8"></div>
+                  </div>
+                </div>
+                <div id="tag_28" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_28" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_28" class="m-0 p-0 text_tagx8"></div>
+                  </div>
+                </div>
+                <div id="tag_29" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_29" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_29" class="m-0 p-0 text_tagx8"></div>
+                  </div>
+                </div>
+                <div id="tag_30" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_30" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_30" class="m-0 p-0 text_tagx8"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag8"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_8"><a id="8" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_12"
+          class="velicina p-2 tagsort tag_drawing tag_anime tag_anime_notcollapsed tag_naruto tag_hamer tag_naruto_collapsed tag_hamer_notcollapsed tag_sketch tag_sketch_notcollapsed boxnumber_12 tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_12" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_12 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_12" class="rounded mx-auto" src="foto/Image88.jpg" alt="Image88.jpg" width="100%"
+                style="height: auto; width: 100%;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_12">
+              <h3 id="naslov_12" class=" naslov_12 p-3 text-light text-center">Naruto 2nd Sketch</h3>
+              </p>
+              <p></p>
+              <p id="opis_12" class="text-light text-center pb-3 opis_12" style="font-weight: normal;">A1 sized sketch</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive12">
+                <div id="tag_21" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_21" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_21" class="m-0 p-0 text_tagx12"></div>
+                  </div>
+                </div>
+                <div id="tag_23" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_23" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_23" class="m-0 p-0 text_tagx12"></div>
+                  </div>
+                </div>
+                <div id="tag_24" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_24" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_24" class="m-0 p-0 text_tagx12"></div>
+                  </div>
+                </div>
+                <div id="tag_25" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_25" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hamer</a></div>
+                    <div id="tag_25" class="m-0 p-0 text_tagx12"></div>
+                  </div>
+                </div>
+                <div id="tag_43" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_43" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_43" class="m-0 p-0 text_tagx12"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag12"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_12"><a id="12" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_6" class="velicina p-2 tagsort tag_drawing tag_sketch tag_anime tag_anime_notcollapsed tag_naruto boxnumber_6 tag_sketch_notcollapsed tag_naruto_collapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_6" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_6 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_6" class="rounded mx-auto" src="foto/Image87.jpg" alt="Image87.jpg" width="100%"
+                style="height: auto; width: 100%;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_6"></p>
+              <h3 id="naslov_6" class=" naslov_6 p-3 text-light text-center">Naruto 1st sketch</h3>
+              <p></p>
+              <p id="opis_6" class="text-light text-center pb-3 opis_6" style="font-weight: normal;">A4 sized sketch of Naruto</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive6">
+                <div id="tag_17" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_17" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_17" class="m-0 p-0 text_tagx6"></div>
+                  </div>
+                </div>
+                <div id="tag_18" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_18" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_18" class="m-0 p-0 text_tagx6"></div>
+                  </div>
+                </div>
+                <div id="tag_19" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_19" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_19" class="m-0 p-0 text_tagx6"></div>
+                  </div>
+                </div>
+                <div id="tag_20" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_20" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">naruto</a></div>
+                    <div id="tag_20" class="m-0 p-0 text_tagx6"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag6"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_6"><a id="6" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_5" class="velicina p-2 tagsort tag_digital tag_sketch tag_anime tag_anime_notcollapsed boxnumber_5 tag_sketch_notcollapsed tag_digital_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_5" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_5 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_5" class="rounded mx-auto" src="foto/Image86.jpg" alt="Image86.jpg" width="100%"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_5"></p>
+              <h3 id="naslov_5" class=" naslov_5 p-3 text-light text-center">Digital Sketch</h3>
+              <p></p>
+              <p id="opis_5" class="text-light text-center pb-3 opis_5" style="font-weight: normal;">An attempt at drawing digital</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive5">
+                <div id="tag_14" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_14" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">digital</a></div>
+                    <div id="tag_14" class="m-0 p-0 text_tagx5"></div>
+                  </div>
+                </div>
+                <div id="tag_15" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_15" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">sketch</a></div>
+                    <div id="tag_15" class="m-0 p-0 text_tagx5"></div>
+                  </div>
+                </div>
+                <div id="tag_16" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_16" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_16" class="m-0 p-0 text_tagx5"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag5"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_5"><a id="5" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_4" class="velicina p-2 tagsort tag_drawing tag_anime tag_anime_notcollapsed tag_pokemon tag_color boxnumber_4 tag_pokemon_notcollapsed tag_color_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_4" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_4 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_4" class="rounded mx-auto" src="foto/Image85.jpg" alt="Image85.jpg" width="100%"
+                style="height: auto; width: 100%;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_4"></p>
+              <h3 id="naslov_4" class=" naslov_4 p-3 text-light text-center">Pokemon Umbreon</h3>
+              <p></p>
+              <p id="opis_4" class="text-light text-center pb-3 opis_4" style="font-weight: normal;">Using colored pencils to draw Pokemon</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive4">
+                <div id="tag_10" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_10" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_10" class="m-0 p-0 text_tagx4"></div>
+                  </div>
+                </div>
+                <div id="tag_11" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_11" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_11" class="m-0 p-0 text_tagx4"></div>
+                  </div>
+                </div>
+                <div id="tag_12" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_12" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">pokemon</a></div>
+                    <div id="tag_12" class="m-0 p-0 text_tagx4"></div>
+                  </div>
+                </div>
+                <div id="tag_13" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_13" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_13" class="m-0 p-0 text_tagx4"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag4"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_4"><a id="4" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_3"
+          class="velicina p-2 tagsort tag_drawing tag_anime tag_black_and_white tag_hair boxnumber_3 tag_hair_collapsed tag_anime_collapsed tag_black_and_white_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_3" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_3 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_3" class="rounded mx-auto" src="foto/Image84.jpg" alt="Image84.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_3"></p>
+              <h3 id="naslov_3" class=" naslov_3 p-3 text-light text-center">Anime Girl Portret #1</h3>
+              <p></p>
+              <p id="opis_3" class="text-light text-center pb-3 opis_3" style="font-weight: normal;">Following yt tutorial on how to draw an anime-style girl</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive3">
+                <div id="tag_6" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_6" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_6" class="m-0 p-0 text_tagx3"></div>
+                  </div>
+                </div>
+                <div id="tag_7" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_7" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">anime</a></div>
+                    <div id="tag_7" class="m-0 p-0 text_tagx3"></div>
+                  </div>
+                </div>
+                <div id="tag_8" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_8" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">black_and_white</a></div>
+                    <div id="tag_8" class="m-0 p-0 text_tagx3"></div>
+                  </div>
+                </div>
+                <div id="tag_9" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_9" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hair</a></div>
+                    <div id="tag_9" class="m-0 p-0 text_tagx3"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag3"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_3"><a id="3" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_2" class="velicina p-2 tagsort tag_drawing tag_black_and_white tag_hair boxnumber_2 tag_hair_collapsed tag_black_and_white_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_2" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_2 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_2" class="rounded mx-auto" src="foto/Image83.jpg" alt="Image83.jpg" width="100%"
+                style="height: 100%; width: auto;"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_2"></p>
+              <h3 id="naslov_2" class=" naslov_2 p-3 text-light text-center">Girl Hair From Back</h3>
+              <p></p>
+              <p id="opis_2" class="text-light text-center pb-3 opis_2" style="font-weight: normal;">An attempt at drawing hair</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive2">
+                <div id="tag_3" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_3" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_3" class="m-0 p-0 text_tagx2"></div>
+                  </div>
+                </div>
+                <div id="tag_4" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_4" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">black_and_white</a></div>
+                    <div id="tag_4" class="m-0 p-0 text_tagx2"></div>
+                  </div>
+                </div>
+                <div id="tag_5" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_5" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">hair</a></div>
+                    <div id="tag_5" class="m-0 p-0 text_tagx2"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag2"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_2"><a id="2" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+        <div id="boxnumber_1" class="velicina p-2 tagsort tag_drawing tag_color tag_landscape boxnumber_1 tag_color_notcollapsed tag_landscape_notcollapsed tag_drawing_notcollapsed col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+          <div id="box_1" class="custom-shadow rounded inactive_box">
+            <div id="div_width" class="container-fluid m-0 text-center frame p-0 change_image_1 bg-tr img-pad custom-border"><span class="helper"></span><img id="size_1" class="rounded mx-auto" src="foto/Image82.jpg" alt="Image82.jpg" width="100%"></div>
+            <div class="container-fluid m-0 p-0 text-right">
+              <p class="text-center p-0 m-0 change_naslov_1"></p>
+              <h3 id="naslov_1" class=" naslov_1 p-3 text-light text-center">Nature VS Building</h3>
+              <p></p>
+              <p id="opis_1" class="text-light text-center pb-3 opis_1" style="font-weight: normal;">First time using decent colored pencils</p>
+              <div class="row container-fluid text-center mb-2 tag_box_inactive1">
+                <div id="tag_0" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_0" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">drawing</a></div>
+                    <div id="tag_0" class="m-0 p-0 text_tagx1"></div>
+                  </div>
+                </div>
+                <div id="tag_1" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_1" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">color</a></div>
+                    <div id="tag_1" class="m-0 p-0 text_tagx1"></div>
+                  </div>
+                </div>
+                <div id="tag_2" class="p-1 m-1 tag-shape-3">
+                  <div class="row p-0 m-0">
+                    <div class="m-0 p-0"><a id="text_tag_2" class="tageffect pl-2 pr-2" onclick="tagSort(this.innerHTML)">landscape</a></div>
+                    <div id="tag_2" class="m-0 p-0 text_tagx1"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-center p-0 change_tag1"></p>
+              <div class="pb-3 pt-0 m-0 text-right change_index_1"><a id="1" class="button custom-done pr-2 mr-2" onclick="boxEdit(this.id)">Edit</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <!--IMAGE BODY END------------------------>
+    </div>
+  </div>
+<!--IMAGES END-------------------------------------------------->
+</body>
+<!--body-------------------------------------------------------------------------------->
