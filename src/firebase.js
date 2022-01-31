@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,9 +8,34 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
+  sendEmailVerification, 
+  updateEmail, 
+  reauthenticateWithCredential,
+  EmailAuthProvider, 
 } from "firebase/auth";
-import { collection, doc, addDoc, getDocs, updateDoc, onSnapshot, deleteDoc  } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
+
+import { 
+  collection, 
+  doc, 
+  setDoc,
+  addDoc, 
+  getDocs, 
+  updateDoc ,
+  onSnapshot,
+  query,
+  where,
+  orderBy,
+  deleteDoc
+} from "firebase/firestore";
+
+import { 
+  getStorage, 
+  ref, 
+  uploadBytes, 
+  getDownloadURL, 
+  deleteObject,
+  listAll
+} from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCLMsaq8sP9fFRddGqc0qSVexytF65FweA",
@@ -26,24 +52,44 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const storage = getStorage(app);
 
-//Firebase
-export { getAuth };
-export { createUserWithEmailAndPassword };
-export { signInWithEmailAndPassword };
-export { onAuthStateChanged };
-export { signOut };
-export { sendPasswordResetEmail };
-export { app };
+//Firebase exports
+export { 
+  getAuth,
+  createUserWithEmailAndPassword, 
+  updateEmail, 
+  signInWithEmailAndPassword, 
+  onAuthStateChanged, 
+  signOut, 
+  sendPasswordResetEmail, 
+  sendEmailVerification, 
+  app,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+};
 
-//Firestore
-export { db };
-export { collection };
-export { addDoc };
-export { getDocs };
-export { updateDoc };
-export { doc };
-export { onSnapshot };
-export { deleteDoc };
+//Firestore exports
+export { 
+  db,
+  doc,
+  collection, 
+  setDoc, 
+  addDoc,
+  getDocs, 
+  updateDoc, 
+  where, 
+  query, 
+  onSnapshot,
+  orderBy, 
+  deleteDoc
+};
 
-//FirebaseStorage
-export { storage, ref, uploadBytes, getDownloadURL, deleteObject, getStorage };
+//FirebaseStorage exports
+export { 
+  storage, 
+  ref, 
+  uploadBytes, 
+  getDownloadURL, 
+  deleteObject, 
+  getStorage,
+  listAll
+};

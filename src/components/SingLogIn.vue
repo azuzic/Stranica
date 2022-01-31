@@ -180,6 +180,7 @@ export default {
           if (data.email === `${doc.data().email}`) {
             data.email = `${doc.data().email}`;
             data.username = `${doc.data().username}`;
+            data.id = `${doc.id}`;
             this.dataUsername = `${doc.data().username}`;
           }
         });
