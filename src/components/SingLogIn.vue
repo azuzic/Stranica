@@ -3,7 +3,7 @@
 
       <div class="home-link">
         <a @click="mode=true;" :class="mode ? 'active' : 'inactive'">
-          SING UP
+          SIGN UP
         </a>
         <a class="ml-4 mr-4">|</a>
         <a @click="mode=false;" :class="!mode ? 'active' : 'inactive'">
@@ -25,7 +25,7 @@
         <input class="c-input" type="password" v-model="passwordRepeat">
         <div class="div-btn">
           <button @click="isFilled() ? signup() : dummy()" class="btn" :class="isFilled() ? 'btn-active' : 'btn-inactive'">
-            SING UP
+            SIGN UP
           </button>
         </div>
       </div>
@@ -87,7 +87,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 export default {
-  name: 'SingLogIn',
+  name: 'SignLogIn',
   data() {
     return {
       username: "",

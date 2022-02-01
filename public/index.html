@@ -5,14 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-    Fontawesome
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
-    jQuery
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>-->
-
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
@@ -32,5 +24,67 @@
 }
 body {
   background-color: rgb(20, 11, 13);
+}
+input[type="file"] {
+    display: none;
+}
+.manga-edit {
+  transition: 0.5s;
+  cursor: pointer;
+  width: 140px;
+  margin: 16px;
+  height: 210px;
+  position: relative;
+}
+.manga-size-edit {
+  position: absolute;
+  width: 140px;
+  z-index: 200;
+  transition: 0.75s;
+  border-radius: 4px;
+}
+.deleteManga {
+  position: absolute;
+  z-index: 255;
+  font-weight: bold;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  right: 4px;
+  top: -12px;
+  font-size: 32px;
+}
+.deleteManga:hover {
+  color: #3DB4F2;
+}
+.manga {
+  transition: 0.5s;
+  cursor: pointer;
+  width: 50px;
+  height: 240px;
+}
+.manga-size {
+  z-index: 250;
+  transition: 0.75s;
+  position: absolute;
+  border-left: groove white 15px;
+  border-top: inset white 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 10px;
+  height: 200px;
+  transform: skewY(-10deg) scaleX(0.8);
+}
+.manga-size:hover {
+  z-index: 280;
+  transition: 0.5s;
+  position: absolute;
+  border-left: outset white 10px;
+  border-top: inset white 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 5px;
+  margin-top: -200px;
+  height: 300px;
+  transform: skewY(0deg) scaleX(1);
 }
 </style>

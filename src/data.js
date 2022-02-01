@@ -1,7 +1,6 @@
 export default {
-    username: "",
-    email: "",
-    id: "",
-    epicImg: "",
-  };
+  username: "",
+  email: "",
+  id: "",
+};
   
