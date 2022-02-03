@@ -2,29 +2,30 @@
   <div class="main-bg">
     <div class="bgbg"></div>
     <!--=================EDIT==================-->
-    <div v-if="username == 'mod959' && !edit" @click="styleManga(0), edit=true, manga.edit=true" class="edit"></div>
-    <div v-if="username == 'mod959' && edit" @click="styleManga(1), edit=false, manga.edit=false" class="edit2"></div>
+    <div v-if="!$store.state.isUploading">
+      <div v-if="username == 'mod959' && !edit" @click="styleManga(0), edit=true, manga.edit=true" class="edit"></div>
+      <div v-if="username == 'mod959' && edit" @click="styleManga(1), edit=false, manga.edit=false" class="edit2"></div>
+    </div>
     <!--=================/EDIT=================-->
     <!--=================EPICBG================-->
     <EpicBg edit="edit"/>
     <!--=================/EPICBG==============-->
     <!--=================MENU=================-->
     <div class="menu-bg sticky top-0">
-      <div @click="createMangaUpload()" class="edit-btn">
+      <div v-if="edit" @click="$store.state.isUploading ? dummy() : createMangaUpload()" class="edit-btn" :class="!$store.state.isUploading ? '' : 'opacity-25'">
         Add Collection
       </div>
     </div>
     <!--=================/MENU================-->
-    <div class="flex main-content">
+    <div class="main-content">
 
-      <div id="addMangaUpload" class="body grow sgrid-cols-auto p-8">
-        
+      <transition-group id="addMangaUpload" class="flex flex-wrap p-8" name="list" tag="div">
         <MangaUpload
           v-for="(z, i) of newMangaCollection"
             :key="`key-${i}`"
             :mangaCollection = z />
+      </transition-group>
 
-      </div>  
     </div>
 
     <div class="img-top"></div>
@@ -71,7 +72,6 @@ export default {
     createMangaUpload() {
       this.newMangaCollection = manga.mangaCollections;
       this.date = Date.now();
-      console.log(this.date);
       let id = this.date.toString();
       this.newMangaCollection.push({"img": [], "title": id});
     },
@@ -85,10 +85,17 @@ export default {
           }
         })
         const messageRef = await getDocs(collection(db, "users", data.id, "mangaCollection"));
+        let timer=0;
+        let time=0;
+        this.newMangaCollection = [];
         messageRef.forEach((doc) => {
-          manga.mangaCollections.push(doc.data());
+          setTimeout(() => {
+            manga.mangaCollections.push(doc.data());
+            this.newMangaCollection.push(doc.data());
+          }, time+timer);
+          timer+=doc.data().img.length*100;
         });
-        this.newMangaCollection = manga.mangaCollections;
+        
       }
       catch (e) {
         console.error(e);
@@ -296,7 +303,6 @@ export default {
   .body {
     height: 100%;
     margin: 36px 24px 36px 24px;
-    padding-right: 100px;
     .collection-edit {
       border: solid 2px #151F2E;
       border-radius: 24px;
@@ -367,6 +373,15 @@ export default {
       }
     }
   } 
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(-200px);
 }
 </style>
 

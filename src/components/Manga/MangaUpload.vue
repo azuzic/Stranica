@@ -1,62 +1,63 @@
 <template>
-  <div :id="'mangaCollectionCreator_'+collectionId" :class="manga.edit ? 'collection-edit pb-2' : 'collection'" class=" flex flex-wrap">
-    <input v-if="manga.edit" type="text" class="collection-title-input" v-model="mangaTitle" @change="updateTitle">
+  <div :id="'mangaCollectionCreator_'+collectionId" :class="manga.edit ? 'collection-edit pb-2' : 'collection'" class="grid grid-flow-col auto-cols-auto grid-flow-row-dense mr-24">
+    <input :disabled="$store.state.isUploading" v-if="manga.edit" type="text" class="collection-title-input" v-model="mangaTitle" @change="updateTitle">
     <p v-if="!manga.edit" class="collection-title">{{mangaTitle}}</p>
     <!--NEW IMG HERE-->
     
-    <div 
-    v-for="(z, i) of mangaCollection.img"
-            :key="`key-${i}`"
-            :id="'mangaDiv_'+collectionId+z.id" :class="z.file.length>0 ? 'manga' : 'invisible'"> 
-      <img :id="'mangaImg_'+collectionId+z.id" class="manga-size" :src="z.file.length>0 ? z.file : ''"> 
-      <div :id="'bind_'+collectionId+z.id" class="deleteManga invisible" @click="removeSelf(z)">x</div>
-    </div>
-
-    <div v-if="manga.edit"  :id="'mangaInsert_'+collectionId" :class="manga.edit ? 'manga-edit' : 'manga'">
-      <div>
-        <label :for="'manga-upload_'+this.collectionId" class="manga-upload">
-          <input :id="'manga-upload_'+collectionId" type="file" @change="previewManga">
-          <img :id="'mangaID_'+collectionId" :class="!hideManga ? 'manga-size-edit' : 'manga-hide'">
-          <div :class="hideManga ? 'manga-upload-text' : 'manga-hide'">
-            Upload manga 
-            <p class="big">+</p>
-          </div>
-
-        </label>
-
-        <div v-if="mangaLoaded" class="manga-prevent"> </div>
-
-        <div v-if="mangaLoaded" class="manga-keep">
-          <div class="text-center mt-2 mb-2">Keep image?</div>
-          <div class="grid grid-cols-2">
-            <div @click="mangaYES()" class="text-center yes-no">YES</div>
-            <div @click="mangaNO()" class="text-center yes-no">NO</div>
-          </div>
-        </div>
-
+    <transition-group class="flex flex-wrap" name="list" tag="div">
+      <div 
+      v-for="(z, i) of mangaCollection2"
+              :key="`key-${i}`"
+              :id="'mangaDiv_'+z.id" :class="z.file.length>0 ? manga.edit ? 'manga-edit': 'manga' : 'invisible'"> 
+        <img :id="'mangaImg_'+z.id" :class="manga.edit ? 'manga-size-edit': 'manga-size'" :src="z.file.length>0 ? z.file : ''"> 
+        <div :id="'bind_'+z.id" class="deleteManga" :class="manga.edit ? '': 'invisible'" @click="removeSelf(z)">x</div>
       </div>
-      
-    </div>
+
+      <div v-if="manga.edit && !$store.state.isUploading && mangaTitle == oldMangaTitle"  :id="'mangaInsert_'+collectionId" :class="manga.edit ? 'manga-edit' : 'manga'">
+        <div>
+          <label :for="'manga-upload_'+this.collectionId" class="manga-upload">
+            <input :id="'manga-upload_'+collectionId" type="file" @change="previewManga" multiple="multiple">
+            <img :id="'mangaID_'+collectionId" :class="!hideManga ? 'manga-size-edit' : 'manga-hide'">
+            <div :class="hideManga ? 'manga-upload-text' : 'manga-hide'">
+              Upload manga 
+              <p class="big">+</p>
+            </div>
+
+          </label>
+
+          <div v-if="mangaLoaded" class="manga-prevent"> </div>
+
+          <div v-if="mangaLoaded" class="manga-keep">
+            <div class="text-center mt-2 mb-2">Keep image?</div>
+            <div class="grid grid-cols-2">
+              <div @click="mangaYES()" class="text-center yes-no">YES</div>
+              <div @click="mangaNO()" class="text-center yes-no">NO</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </transition-group>
+
     <div v-if="manga.edit" class="collection-manga-btn flex">
-      <div @click="createCollection()" class="text-center btn">Create Collection</div>
-      <div @click="deleteCollection()" class="text-center btn">Delete Collection</div>
+      <div @click="$store.state.isUploading ? dummy() : createCollection()" class="text-center btn" :class="!$store.state.isUploading ? '':'opacity-25'">Update Title</div>
+      <div @click="$store.state.isUploading ? dummy() : deleteCollection()" class="text-center btn" :class="!$store.state.isUploading ? '':'opacity-25'">Delete Collection</div>
     </div>
+
   </div>
 </template>
 
 <script>
 import manga from "@/manga";
 import data from "@/data";
-import { doc, db, setDoc, getStorage, deleteObject, updateDoc } from "@/firebase";
-import { storage, ref, uploadBytes, getDownloadURL} from "@/firebase";
+import { doc, db, setDoc, getStorage, deleteObject, updateDoc, deleteDoc } from "@/firebase";
+import { storage, ref, uploadBytesResumable, getDownloadURL} from "@/firebase";
 
-function removeSelf(id) {
-  console.log(1);
-  document.getElementById("mangaDiv_" + id).remove();
-  let s = (element) => element.id == id;
-  let index = this.newMangaCollection.img.find(s);
-  this.newMangaCollection.img.splice(index);
-}
+let wait = function (seconds) {
+  return new Promise((resolveFn) => {
+    setTimeout(resolveFn, seconds * 1000);
+  });
+};
 
 export default {
   name: "mangaUpload",
@@ -68,29 +69,45 @@ export default {
       //EPICIMG
       manga,
       data,
+      mangaCollection2: [],
 
-      collectionId: this.mangaCollection.title.replace(/\s/g, '').replace(/[^a-zA-Z ]/g, ""),
+      collectionId: this.mangaCollection.title.replace(/\s/g, ''),
       mangaTitle: this.mangaCollection.title,
+      oldMangaTitle: this.mangaCollection.title,
       collectionTitle: "",
       hideManga: true,
       r_mangaImg: null,
       mangaImg: null,
       mangaLoaded: false,
       newMangaCollection: this.mangaCollection,
+      addedManga: [],
     }
+  },
+  mounted() {
+    if (this.mangaCollection.img.length == 0)
+      this.createCollection();
+    if (!manga.edit)
+      this.loadData();
+    else 
+      this.mangaCollection2=this.mangaCollection.img;
   },
   methods: {
     dummy() {},
+    async loadData() {
+      for (let i=0; i<this.mangaCollection.img.length; i++) {
+        this.mangaCollection2.push(this.mangaCollection.img[i]);
+        await wait(0.1);
+      }
+    },
     removeSelf: async function(z){
       try {
-        document.getElementById("mangaDiv_" + this.collectionId + z.id).remove();
+        document.getElementById("mangaDiv_" + z.id).remove();
         
         for (var i = this.newMangaCollection.img.length - 1; i >= 0; --i) {
             if (this.newMangaCollection.img[i].id == z.id) {
                 this.newMangaCollection.img.splice(i,1);
             }
         }
-        console.log(this.mangaCollection.title);
         let updateRef = doc(db, "users", data.id, "mangaCollection", this.mangaCollection.title);
         
         await updateDoc(updateRef, {
@@ -100,7 +117,7 @@ export default {
         let storage = getStorage();
         const desertRef = ref(storage, z.place);
         await deleteObject(desertRef);
-        console.log("Image: " + z.place + " deleted!");
+        console.log("Manga: " + z.place + " deleted!");
       }
       catch(e) {
         console.error("Error:" + e);
@@ -110,73 +127,161 @@ export default {
       this.newMangaCollection.title = this.mangaTitle;
     },
     bindingFunction(id) {
-      document.getElementById('bind_'+id).onclick = function() {
-        removeSelf(id);
+      document.getElementById('bind_'+id).onclick = () => {
+        document.getElementById("mangaDiv_" + id).remove();
+        for (var i = this.addedManga.length - 1; i >= 0; --i) {
+            if (this.addedManga[i].id == id) {
+                this.addedManga.splice(i,1);
+            }
+        }
+        console.log("Manga: " + id + " deleted!");
       };
     },
-    previewManga(event) {
-      let img = document.getElementById("mangaID_"+this.collectionId);
-      this.r_mangaImg = img.src;
-      this.mangaImg = event.target.files[0]; 
-      this.hideManga = false;
-      img.src = URL.createObjectURL(event.target.files[0]);
-      this.mangaLoaded = true;
+    async previewManga(event) {
+      if (event.target.files.length == 1) {
+        let img = document.getElementById("mangaID_"+this.collectionId);
+        this.r_mangaImg = img.src;
+        this.mangaImg = event.target.files[0]; 
+        this.hideManga = false;
+        img.src = URL.createObjectURL(event.target.files[0]);
+        this.mangaLoaded = true;
+      }
+      else {
+        for (let el of event.target.files) {
+          let img = document.getElementById("mangaID_"+this.collectionId);
+          this.r_mangaImg = img.src;
+          this.mangaImg = el; 
+          this.hideManga = false;
+          img.src = URL.createObjectURL(el);
+          await this.mangaYES();
+        }
+      }
     },
     mangaNO() {
-      let img = document.getElementById("mangaID_"+this.collectionId);
-      img.src = this.r_mangaImg;
-      this.hideManga = true;
-      this.mangaLoaded = false;
-    },
-    mangaYES() {
-      let url = URL.createObjectURL(this.mangaImg);
-      let mangaImages = this.newMangaCollection.img;
-      let l = this.newMangaCollection.title.replace(/\s/g, '').replace(/[^a-zA-Z ]/g, "") + mangaImages.length;
-      document.getElementById("mangaInsert_"+this.collectionId).insertAdjacentHTML("beforebegin", 
-      '<div id="mangaDiv_'+l+'" class="manga-edit">' +
-      '<img id="mangaImg_'+l+'" class="manga-size-edit" src="'+url+'">' +
-      '<div id="bind_'+l+'" class="deleteManga">x</div>'+
-      '</div>'
-      );
-      this.bindingFunction(l);
-      let place = "images/" + "manga/" + data.username + "/collections/" + this.newMangaCollection.title + "/" + this.mangaImg.name;
-      mangaImages.push({"id": l ,"place": place ,"file": this.mangaImg});
       let img = document.getElementById("mangaID_"+this.collectionId);
       img.src = '';
       this.hideManga = true;
       this.mangaLoaded = false;
     },
+    async mangaYES() {
+      let url = URL.createObjectURL(this.mangaImg);
+      let length = Date.now().toString();
+      let l = this.newMangaCollection.title.replace(/\s/g, '').replace(/[^a-zA-Z ]/g, "") + length;
+      document.getElementById("mangaInsert_"+this.collectionId).insertAdjacentHTML("beforebegin", 
+      '<div id="mangaDiv_'+l+'" class="manga-edit">' +
+      '<img id="mangaImg_'+l+'" class="manga-size-edit" src="'+url+'">' +
+      '<div id="bind_'+l+'" class="deleteManga">x</div>'+
+      '<div id=divloader_'+l+' class="loading-container">'+
+        '<div class="loading-bar">'+
+          '<div id=loader_'+l+' class="loading-bar-loader"></div>'+
+        '</div>'+
+      '</div>'+
+      '</div>'
+      );
+      this.bindingFunction(l);
+      let place = "images/" + "manga/" + data.username + "/collections/" + this.newMangaCollection.title + "/" + this.mangaImg.name;
+      this.addedManga.push({"id": l ,"place": place ,"file": this.mangaImg});
+      let img = document.getElementById("mangaID_"+this.collectionId);
+      img.src = '';
+      this.hideManga = true;
+      this.mangaLoaded = false;
+      await this.createCollection();
+    },
+    async uploadTaskPromise(el) {
+      return new Promise((resolve, reject) => {
+        let loader = document.getElementById("loader_"+el.id);
+        let divloader = document.getElementById("divloader_"+el.id);
+        let imageName = "images/" + "manga/" + data.username + "/collections/" + this.newMangaCollection.title + "/" + el.file.name;
+        const storageRef = ref(storage, imageName);
+        let uploadTask = uploadBytesResumable(storageRef, el.file);
+        uploadTask.on('state_changed', 
+          (snapshot) => {
+            let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            loader.style.width = (progress.toString() + "px");
+          }, 
+          (error) => {
+            console.error("Error: " + error);
+            reject();
+          }, 
+          () => {
+            divloader.remove();
+            console.log("Image " + imageName + " uploaded!");
+            resolve(getDownloadURL(ref(storage, imageName)));
+          }
+        )
+      })
+    },
     async createCollection() {
       try {
-        for (let el of this.newMangaCollection.img) {
-          let imageName = "images/" + "manga/" + data.username + "/collections/" + this.newMangaCollection.title + "/" + el.file.name;
-          const storageRef = ref(storage, imageName);
-          await uploadBytes(storageRef, el.file);
-          console.log("Image " + imageName + " uploaded!");
-          let url = await getDownloadURL(ref(storage, imageName));
-          el.file = url;
+        this.$store.state.isUploading = true;
+        let elements = document.getElementsByClassName("deleteManga");
+        for (let el of elements) {
+          el.classList.add("invisible");
         }
-        console.log(this.newMangaCollection.img);
+        for (let el of this.addedManga) {
+          el.file = await this.uploadTaskPromise(el);
+          this.mangaCollection2.push({"id": el.id ,"place": el.place ,"file": el.file});
+        }
+
+        let newImg = this.newMangaCollection.img.concat(this.addedManga);
+
+        if (this.mangaCollection.img.length == 0 || this.oldMangaTitle!=this.mangaTitle) {
+          await deleteDoc(doc(db, "users/"+data.id+"/mangaCollection/", this.oldMangaTitle));
+          console.log("Changed title!");
+        }
         await setDoc(doc(db, "users/"+data.id+"/mangaCollection/", this.mangaTitle), {
           title: this.mangaTitle,
-          img: this.newMangaCollection.img,
+          img: newImg,
         });
 
-        for (let el of this.newMangaCollection.img) {
-          document.getElementById("mangaImg_"+el.id).src = el.file;
+        for (let el of this.addedManga) {
+          document.getElementById("mangaDiv_"+el.id).remove();
         }
-        console.log("Added manga collection!");
-
+        this.newMangaCollection.img = newImg;
+        this.addedManga = [];
+        console.log("Updated manga collection!");
+        this.oldMangaTitle = this.mangaTitle;
+        this.$store.state.isUploading = false;
+        elements = document.getElementsByClassName("deleteManga");
+        for (let el of elements) {
+          el.classList.remove("invisible");
+        }
       } catch (e) {
         console.error("Error: ", e);
       }
     },
+    async deleteCollection() {
+      console.log("Deleting collection...");
+      let elements = document.getElementsByClassName("deleteManga");
+      for (let el of elements) {
+        el.classList.add("invisible");
+      }
+      this.$store.state.isUploading = true;
+
+      let storage = getStorage();
+      for (let el of this.newMangaCollection.img) {
+        const desertRef = ref(storage, el.place);
+        await deleteObject(desertRef);
+        document.getElementById("mangaDiv_"+el.id).remove();
+        console.log("Manga: " + el.place + " deleted!");
+      }
+      await deleteDoc(doc(db, "users/"+data.id+"/mangaCollection/", this.oldMangaTitle));
+      
+      console.log("Collection deleted!");
+      document.getElementById("mangaCollectionCreator_"+this.collectionId).remove();
+      this.$store.state.isUploading = false;
+      elements = document.getElementsByClassName("deleteManga");
+      for (let el of elements) {
+        el.classList.remove("invisible");
+      }
+    }
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .collection-edit {
+  transition: 0.25s; 
   border: solid 2px #151F2E;
   border-radius: 24px;
   margin-bottom: 12px;
@@ -195,7 +300,7 @@ export default {
     border-radius: 24px;
     margin: 8px;
     padding-left: 16px;
-    width: 100%;
+    width: calc(100% - 16px);
     font-size: 24px;
     margin-bottom: 18px;
     font-weight: bold;
@@ -209,6 +314,10 @@ export default {
       outline: none !important;
       border: solid 2px #223044;
     }
+    &:disabled {
+      color: #9fadbd2f;
+      border: solid 2px #223044 !important;
+    }
   }
   .manga-edit {
     transition: 0.5s;
@@ -218,6 +327,7 @@ export default {
     height: 210px;
     position: relative;
     .manga-size-edit {
+      transition: 0s !important;
       position: absolute;
       width: 140px;
       z-index: 200;
@@ -232,7 +342,7 @@ export default {
       color: #9FADBD;
       width: 140px;
       overflow: hidden;
-      height: 200px;
+      height: 210px;
       border-radius: 4px;
       z-index: 200;
       font-weight: bold;
@@ -317,5 +427,17 @@ export default {
   margin-bottom: 18px;
   font-weight: bold;
   color: #9FADBD;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: opacity 1s ease-in-out, margin-top 1s  ease-in-out;
+  z-index: 500;
+  margin-top: 0px;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  z-index: 500;
+  margin-top: -100px;
 }
 </style>
