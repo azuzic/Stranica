@@ -1,6 +1,10 @@
 <template>
   <div :id="'mangaCollectionCreator_'+collectionId" :class="manga.edit ? 'collection-edit pb-2' : 'collection'" class="grid grid-flow-col auto-cols-auto grid-flow-row-dense mr-24">
-    <input :disabled="$store.state.isUploading" v-if="manga.edit" type="text" class="collection-title-input" :class="{ 'input-title-ongoing': ongoing, 'input-title-finished': finished}" v-model="mangaTitle" @change="updateTitle">
+    <div class="relative">
+      <input :disabled="$store.state.isUploading" v-if="manga.edit" type="text" class="collection-title-input pr-10" :class="{ 'input-title-ongoing': ongoing, 'input-title-finished': finished, 'input-title-exists': mangaTitleCheck}" v-model="mangaTitle" @change="updateTitle">
+      <div v-if="manga.edit" @click="revertTitle()" class="ml-3 mr-1 icon-revert"></div>
+    </div>
+    <div v-if="!checkTitle()" class="manga-hide"></div>
     <p v-if="!manga.edit" class="collection-title" :class="{ 'title-ongoing': ongoing, 'title-finished': finished}">{{mangaTitle}}</p>
     <!--NEW IMG HERE-->
     
@@ -40,7 +44,7 @@
     </transition-group>
 
     <div v-if="manga.edit" class="collection-manga-btn flex">
-      <div @click="$store.state.isUploading ? dummy() : createCollection()" class="text-center btn" :class="!$store.state.isUploading && mangaTitle != oldMangaTitle ? '':'opacity-25'">Update Title</div>
+      <div @click="$store.state.isUploading ? dummy() : createCollection()" class="text-center btn" :class="!$store.state.isUploading && mangaTitle != oldMangaTitle && !mangaTitleCheck ? '':'opacity-25'">Update Title</div>
       <div @click="$store.state.isUploading ? dummy() : deleteCollection()" class="text-center btn" :class="!$store.state.isUploading ? '':'opacity-25'">Delete Collection</div>
       <div @click="updateState('ongoing')" class="ml-3 mr-1 icon" :class="ongoing ? 'ongoing-active' : 'ongoing'"></div>
       <div @click="updateState('finished')" class="icon" :class="finished ? 'finished-active' : 'finished'"></div>
@@ -52,7 +56,7 @@
 <script>
 import manga from "@/manga";
 import data from "@/data";
-import { doc, db, setDoc, getStorage, deleteObject, updateDoc, deleteDoc } from "@/firebase";
+import { doc, db, setDoc, getStorage, deleteObject, updateDoc, deleteDoc, getDocs, collection } from "@/firebase";
 import { storage, ref, uploadBytesResumable, getDownloadURL} from "@/firebase";
 
 let wait = function (seconds) {
@@ -77,6 +81,7 @@ export default {
       mangaTitle: this.mangaCollection.title,
       oldMangaTitle: this.mangaCollection.title,
       collectionTitle: "",
+      mangaTitleCheck: false,
 
       hideManga: true,
       r_mangaImg: null,
@@ -103,9 +108,30 @@ export default {
   },
   methods: {
     dummy() {},
+    async revertTitle() {
+      this.mangaTitle=this.oldMangaTitle;
+      await wait(0.1);
+      this.mangaTitleCheck=false; 
+    },
+    async checkTitle() {
+      if (this.mangaTitle != this.oldMangaTitle) {
+        await this.loadTitles();
+      }
+      return this.mangaTitleCheck;
+    },
+    async loadTitles() {
+      const querySnapshot = await getDocs(collection(db, "users", data.id, "mangaCollection"));
+      this.mangaTitleCheck = false;
+      querySnapshot.forEach((doc) => {
+        if (this.mangaTitle == `${doc.data().title}`) {
+          this.mangaTitleCheck = true;
+        }
+      });
+    },
     async loadData() {
       for (let i=0; i<this.mangaCollection.img.length; i++) {
         this.mangaCollection2.push(this.mangaCollection.img[i]);
+        this.$store.state.mangaTotal++;
         await wait(0.1);
       }
     },
@@ -233,6 +259,7 @@ export default {
             loader.style.width = ("100%");
             setTimeout(() => {
               divloader.remove();
+              this.$store.state.mangaTotal++;
             }, 100);
             console.log("Image " + imageName + " uploaded!");
             resolve(getDownloadURL(ref(storage, imageName)));
@@ -275,6 +302,8 @@ export default {
         for (let el of elements) {
           el.classList.remove("invisible");
         }
+        await wait(0.1);
+        this.mangaTitleCheck=false; 
       } catch (e) {
         console.error("Error: ", e);
       }
@@ -292,6 +321,7 @@ export default {
       for (let el of this.newMangaCollection.img) {
         const desertRef = ref(storage, el.place);
         await deleteObject(desertRef);
+        this.$store.state.mangaTotal--;
         document.getElementById("mangaDiv_"+el.id).remove();
         console.log("Manga: " + el.place + " deleted!");
       }
@@ -354,6 +384,10 @@ export default {
   }
   .input-title-ongoing {
     color: #c28c28;
+  }
+  .input-title-exists {
+    color: rgb(221, 31, 63);
+    text-decoration: line-through rgb(255, 255, 255) 3px;
   }
   .manga-edit {
     transition: 0.5s;
@@ -456,30 +490,51 @@ export default {
       cursor: pointer;
     }
   }
-  .icon {
-    width: 30px;
-    height: 30px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 90%;
-    &:hover {
-      opacity: 75%;
-      cursor: pointer;
-    }
-  }
-  .ongoing {
-    background-image: url(@/assets/manga/ongoing.svg);
-  }
-  .finished {
-    background-image: url(@/assets/manga/finished.svg);
-  }
-  .ongoing-active {
-    background-image: url(@/assets/manga/ongoing_active.svg);
-  }
-  .finished-active {
-    background-image: url(@/assets/manga/finished_active.svg);
+}
+.icon {
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  &:hover {
+    opacity: 75%;
+    cursor: pointer;
   }
 }
+.ongoing {
+  background-image: url(@/assets/manga/ongoing.svg);
+}
+.finished {
+  background-image: url(@/assets/manga/finished.svg);
+}
+.ongoing-active {
+  background-image: url(@/assets/manga/ongoing_active.svg);
+}
+.finished-active {
+  background-image: url(@/assets/manga/finished_active.svg);
+}
+.icon-revert {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  background-image: url(@/assets/manga/revert.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  transition: 0.1s;
+  &:hover {
+    opacity: 75%;
+    cursor: pointer;
+  }
+  &:active {
+    background-image: url(@/assets/manga/revert_active.svg);
+    transform: rotate(25deg);
+  }
+}
+
 .collection-title {
   width: 100%;
   font-size: 24px;

@@ -17,6 +17,8 @@
           <div @click="epicNO()" class="text-center yes-no">NO</div>
         </div>
       </div>
+
+      <div class="epic-title text-center"> <b>MANGA: </b> {{$store.state.mangaTotal}} </div>
       
       <div v-if="uploadingEpicImg" class="ultra-center">
         <Loading msg="Uploading image"/>
@@ -131,6 +133,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.epic-title {
+  font-size: 82px;
+  color: white;
+  text-shadow: 4px 2px black;
 }
 .epic-bg {
   height: 300px;

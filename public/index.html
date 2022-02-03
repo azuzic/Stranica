@@ -67,7 +67,7 @@ input[type="file"] {
 .manga-size {
   z-index: 250;
   transition: 0.75s;
-  position: absolute;
+  position: absolute !important;
   border-left: groove white 15px;
   border-top: inset white 5px;
   border-top-right-radius: 5px;
@@ -79,13 +79,13 @@ input[type="file"] {
 .manga-size:hover {
   z-index: 280;
   transition: 0.5s;
-  position: absolute;
+  position: absolute !important;
   border: 0px;
   border-radius: 8px;
   margin-top: -200px;
   height: 400px;
   box-shadow: 0px 0px 16px 4px #0b1622;
-  transform: skewY(0deg) scaleX(1);
+  transform: skewY(0deg) scaleX(1) !important;
 }
 .loading-container {
   position: absolute;
