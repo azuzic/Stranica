@@ -107,6 +107,8 @@ input[type="file"] {
 }
 .loading-bar-loader {
   position: absolute;
+  transition: width 0.1s linear;
+  width: 0px;
   z-index: 350;
   border-radius: 32px;
   text-align: center;
@@ -115,5 +117,10 @@ input[type="file"] {
 }
 .collection {
   width: auto;
+}
+.manga-hide {
+  height: 0px;
+  width: 0px;
+  opacity: 0%;
 }
 </style>

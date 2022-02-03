@@ -1,10 +1,10 @@
 <template>
   <div :id="'mangaCollectionCreator_'+collectionId" :class="manga.edit ? 'collection-edit pb-2' : 'collection'" class="grid grid-flow-col auto-cols-auto grid-flow-row-dense mr-24">
-    <input :disabled="$store.state.isUploading" v-if="manga.edit" type="text" class="collection-title-input" v-model="mangaTitle" @change="updateTitle">
-    <p v-if="!manga.edit" class="collection-title">{{mangaTitle}}</p>
+    <input :disabled="$store.state.isUploading" v-if="manga.edit" type="text" class="collection-title-input" :class="{ 'input-title-ongoing': ongoing, 'input-title-finished': finished}" v-model="mangaTitle" @change="updateTitle">
+    <p v-if="!manga.edit" class="collection-title" :class="{ 'title-ongoing': ongoing, 'title-finished': finished}">{{mangaTitle}}</p>
     <!--NEW IMG HERE-->
     
-    <transition-group class="flex flex-wrap" name="list" tag="div">
+    <transition-group class="flex flex-wrap" name="list" tag="div" :id="'mangaInsert_'+collectionId">
       <div 
       v-for="(z, i) of mangaCollection2"
               :key="`key-${i}`"
@@ -13,7 +13,7 @@
         <div :id="'bind_'+z.id" class="deleteManga" :class="manga.edit ? '': 'invisible'" @click="removeSelf(z)">x</div>
       </div>
 
-      <div v-if="manga.edit && !$store.state.isUploading && mangaTitle == oldMangaTitle"  :id="'mangaInsert_'+collectionId" :class="manga.edit ? 'manga-edit' : 'manga'">
+      <div v-if="manga.edit && !$store.state.isUploading && mangaTitle == oldMangaTitle  && !$store.state.multiple" :class="manga.edit ? 'manga-edit' : 'manga'">
         <div>
           <label :for="'manga-upload_'+this.collectionId" class="manga-upload">
             <input :id="'manga-upload_'+collectionId" type="file" @change="previewManga" multiple="multiple">
@@ -40,8 +40,10 @@
     </transition-group>
 
     <div v-if="manga.edit" class="collection-manga-btn flex">
-      <div @click="$store.state.isUploading ? dummy() : createCollection()" class="text-center btn" :class="!$store.state.isUploading ? '':'opacity-25'">Update Title</div>
+      <div @click="$store.state.isUploading ? dummy() : createCollection()" class="text-center btn" :class="!$store.state.isUploading && mangaTitle != oldMangaTitle ? '':'opacity-25'">Update Title</div>
       <div @click="$store.state.isUploading ? dummy() : deleteCollection()" class="text-center btn" :class="!$store.state.isUploading ? '':'opacity-25'">Delete Collection</div>
+      <div @click="updateState('ongoing')" class="ml-3 mr-1 icon" :class="ongoing ? 'ongoing-active' : 'ongoing'"></div>
+      <div @click="updateState('finished')" class="icon" :class="finished ? 'finished-active' : 'finished'"></div>
     </div>
 
   </div>
@@ -61,6 +63,7 @@ let wait = function (seconds) {
 
 export default {
   name: "mangaUpload",
+  emits: ["deleteFromList"],
   props: {
     mangaCollection: Object,
   },
@@ -69,18 +72,23 @@ export default {
       //EPICIMG
       manga,
       data,
-      mangaCollection2: [],
 
       collectionId: this.mangaCollection.title.replace(/\s/g, ''),
       mangaTitle: this.mangaCollection.title,
       oldMangaTitle: this.mangaCollection.title,
       collectionTitle: "",
+
       hideManga: true,
       r_mangaImg: null,
       mangaImg: null,
       mangaLoaded: false,
+
       newMangaCollection: this.mangaCollection,
       addedManga: [],
+      mangaCollection2: [],
+
+      ongoing: false,
+      finished: false,
     }
   },
   mounted() {
@@ -90,6 +98,8 @@ export default {
       this.loadData();
     else 
       this.mangaCollection2=this.mangaCollection.img;
+    if (this.mangaCollection.state=="ongoing") this.ongoing = true;
+    else this.finished = true;
   },
   methods: {
     dummy() {},
@@ -126,6 +136,21 @@ export default {
     updateTitle() {
       this.newMangaCollection.title = this.mangaTitle;
     },
+    async updateState(state) {
+      const ref = doc(db, "users/"+data.id+"/mangaCollection/", this.mangaTitle);
+      await updateDoc(ref, {
+        state: state
+      });
+      if (state == "ongoing") {
+        this.ongoing = true;
+        this.finished = false;
+      }
+      else {
+        this.ongoing = false;
+        this.finished = true;
+      }
+      console.log("Status updated!");
+    },
     bindingFunction(id) {
       document.getElementById('bind_'+id).onclick = () => {
         document.getElementById("mangaDiv_" + id).remove();
@@ -147,14 +172,13 @@ export default {
         this.mangaLoaded = true;
       }
       else {
+        this.$store.state.multiple = true;
         for (let el of event.target.files) {
-          let img = document.getElementById("mangaID_"+this.collectionId);
-          this.r_mangaImg = img.src;
           this.mangaImg = el; 
           this.hideManga = false;
-          img.src = URL.createObjectURL(el);
           await this.mangaYES();
         }
+        this.$store.state.multiple = false;
       }
     },
     mangaNO() {
@@ -167,7 +191,7 @@ export default {
       let url = URL.createObjectURL(this.mangaImg);
       let length = Date.now().toString();
       let l = this.newMangaCollection.title.replace(/\s/g, '').replace(/[^a-zA-Z ]/g, "") + length;
-      document.getElementById("mangaInsert_"+this.collectionId).insertAdjacentHTML("beforebegin", 
+      document.getElementById("mangaInsert_"+this.collectionId).insertAdjacentHTML("beforeend", 
       '<div id="mangaDiv_'+l+'" class="manga-edit">' +
       '<img id="mangaImg_'+l+'" class="manga-size-edit" src="'+url+'">' +
       '<div id="bind_'+l+'" class="deleteManga">x</div>'+
@@ -181,8 +205,10 @@ export default {
       this.bindingFunction(l);
       let place = "images/" + "manga/" + data.username + "/collections/" + this.newMangaCollection.title + "/" + this.mangaImg.name;
       this.addedManga.push({"id": l ,"place": place ,"file": this.mangaImg});
-      let img = document.getElementById("mangaID_"+this.collectionId);
-      img.src = '';
+      if (!this.$store.state.multiple) {
+        let img = document.getElementById("mangaID_"+this.collectionId);
+        img.src = '';
+      }
       this.hideManga = true;
       this.mangaLoaded = false;
       await this.createCollection();
@@ -197,14 +223,17 @@ export default {
         uploadTask.on('state_changed', 
           (snapshot) => {
             let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            loader.style.width = (progress.toString() + "px");
+            loader.style.width = (progress.toString() + "%");
           }, 
           (error) => {
             console.error("Error: " + error);
             reject();
           }, 
           () => {
-            divloader.remove();
+            loader.style.width = ("100%");
+            setTimeout(() => {
+              divloader.remove();
+            }, 100);
             console.log("Image " + imageName + " uploaded!");
             resolve(getDownloadURL(ref(storage, imageName)));
           }
@@ -252,6 +281,7 @@ export default {
     },
     async deleteCollection() {
       console.log("Deleting collection...");
+      this.$emit('deleteFromList', this.oldMangaTitle.replace(/\s/g, ''));
       let elements = document.getElementsByClassName("deleteManga");
       for (let el of elements) {
         el.classList.add("invisible");
@@ -319,6 +349,12 @@ export default {
       border: solid 2px #223044 !important;
     }
   }
+  .input-title-finished {
+    color: #5cb831;
+  }
+  .input-title-ongoing {
+    color: #c28c28;
+  }
   .manga-edit {
     transition: 0.5s;
     cursor: pointer;
@@ -352,9 +388,6 @@ export default {
         font-size: 48px;
         font-weight: bold;
         margin-top: -18px;
-      }
-      .manga-hide {
-        height: 0px;
       }
       .manga-upload-text {
         margin-top: 50%;
@@ -404,14 +437,17 @@ export default {
 }
 .collection-manga-btn {
   width: 100%;
+  display: flex;
+  align-items: center;
   .btn {
     transition: .5s;
     width: 150px;
+    height: 30px;
     background-color: rgba(35,38,67,.5);
     box-shadow: 0px 0px 8px -2px #0b1622b9;
     border-radius: 16px;
     color: #EDF1F5;
-    margin: 0px 8px 8px 8px;
+    margin: 0px 8px 0px 8px;
     padding: 4px 0px 4px 0px;
     &:hover {
       box-shadow: 0px 0px 10px -2px #0b1622;
@@ -419,6 +455,29 @@ export default {
       color: #9FADBD;
       cursor: pointer;
     }
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    &:hover {
+      opacity: 75%;
+      cursor: pointer;
+    }
+  }
+  .ongoing {
+    background-image: url(@/assets/manga/ongoing.svg);
+  }
+  .finished {
+    background-image: url(@/assets/manga/finished.svg);
+  }
+  .ongoing-active {
+    background-image: url(@/assets/manga/ongoing_active.svg);
+  }
+  .finished-active {
+    background-image: url(@/assets/manga/finished_active.svg);
   }
 }
 .collection-title {
@@ -428,6 +487,13 @@ export default {
   font-weight: bold;
   color: #9FADBD;
 }
+.title-ongoing {
+  color: #c28c28;
+}
+.title-finished {
+  color: #5cb831;
+}
+
 .list-enter-active,
 .list-leave-active {
   transition: opacity 1s ease-in-out, margin-top 1s  ease-in-out;

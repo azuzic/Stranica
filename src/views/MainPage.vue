@@ -21,9 +21,11 @@
 
       <transition-group id="addMangaUpload" class="flex flex-wrap p-8" name="list" tag="div">
         <MangaUpload
-          v-for="(z, i) of newMangaCollection"
-            :key="`key-${i}`"
-            :mangaCollection = z />
+          v-for="(z) of newMangaCollection"
+            :key="z.id"
+            :mangaCollection = z 
+            @deleteFromList="deleteFromList"  
+            />
       </transition-group>
 
     </div>
@@ -70,10 +72,18 @@ export default {
   methods: {
     dummy() {},
     createMangaUpload() {
-      this.newMangaCollection = manga.mangaCollections;
       this.date = Date.now();
       let id = this.date.toString();
-      this.newMangaCollection.push({"img": [], "title": id});
+      console.log(this.newMangaCollection);
+      this.newMangaCollection.unshift({"img": [], "title": id, "id": id, "state": 'ongoing'});
+    },
+    deleteFromList(value) {
+      console.log(value);
+      for (var i = this.newMangaCollection.length - 1; i >= 0; --i) {
+          if (this.newMangaCollection[i].title == value) {
+              this.newMangaCollection.splice(i,1);
+          }
+      }
     },
     async loadData() {
       try {
@@ -90,8 +100,9 @@ export default {
         this.newMangaCollection = [];
         messageRef.forEach((doc) => {
           setTimeout(() => {
-            manga.mangaCollections.push(doc.data());
-            this.newMangaCollection.push(doc.data());
+            this.date = Date.now();
+            let id = this.date.toString();
+            this.newMangaCollection.push({"img": doc.data().img, "title": doc.data().title, "id": id, "state": doc.data().state});
           }, time+timer);
           timer+=doc.data().img.length*100;
         });
