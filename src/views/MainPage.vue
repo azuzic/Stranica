@@ -2,7 +2,7 @@
   <div class="main-bg">
     <div class="bgbg"></div>
     <!--=================EDIT==================-->
-    <div v-if="!$store.state.isUploading">
+    <div v-if="!$store.state.isUploading && !loading">
       <div v-if="username == 'mod959' && !edit" @click="styleManga(0), edit=true, manga.edit=true" class="edit"></div>
       <div v-if="username == 'mod959' && edit" @click="styleManga(1), edit=false, manga.edit=false" class="edit2"></div>
     </div>
@@ -12,14 +12,17 @@
     <!--=================/EPICBG==============-->
     <!--=================MENU=================-->
     <div class="menu-bg sticky top-0">
+      <div @click="$store.state.isUploading || loading ? dummy() : changeLayout()" class="edit-btn mr-2" :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
+        Change layout
+      </div>
       <div v-if="edit" @click="$store.state.isUploading ? dummy() : createMangaUpload()" class="edit-btn" :class="!$store.state.isUploading ? '' : 'opacity-25'">
         Add Collection
       </div>
     </div>
     <!--=================/MENU================-->
-    <div class="main-content">
+    <div class="main-content flex items-center w-full">
 
-      <transition-group id="addMangaUpload" class="flex flex-wrap p-8" name="list" tag="div">
+      <transition-group id="addMangaUpload" class="flex flex-grow flex-wrap justify-center p-8" name="list" tag="div">
         <MangaUpload
           v-for="(z) of newMangaCollection"
             :key="z.id"
@@ -61,6 +64,8 @@ export default {
       data,
       manga,
       username: "",
+      layout: false,
+      loading: true,
 
       newMangaCollection: {},
       date: ""
@@ -95,18 +100,26 @@ export default {
           }
         })
         const messageRef = await getDocs(collection(db, "users", data.id, "mangaCollection"));
-        let timer=0;
-        let time=0;
         this.newMangaCollection = [];
-        messageRef.forEach((doc) => {
-          setTimeout(() => {
-            this.date = Date.now();
-            let id = this.date.toString();
-            this.newMangaCollection.push({"img": doc.data().img, "title": doc.data().title, "id": id, "state": doc.data().state});
-          }, time+timer);
-          timer+=doc.data().img.length*100;
-        });
-        
+        for(let i = 0; i<messageRef.docs.length; i++) {
+          let doc = messageRef.docs[i]._document.data.value.mapValue.fields;
+          let imgs = doc.img.arrayValue.values;
+          let img = [];
+          for (let k=0; k<imgs.length; k++) {
+            let t = imgs[k].mapValue.fields;
+            img.push({"file": t.file.stringValue, "id": t.id.stringValue, "place": t.place.stringValue});
+          }
+          this.date = Date.now();
+          let id = this.date.toString();
+          let title = doc.title.stringValue;
+          console.log(doc.title.stringValue);
+          let state = '';
+          if (doc.state != undefined)
+            state = doc.state.stringValue;
+          this.newMangaCollection.push({"img": img, "title": title, "id": id, "state": state});
+          await wait(0.1);
+        }
+        this.loading = false;
       }
       catch (e) {
         console.error(e);
@@ -115,49 +128,126 @@ export default {
       this.edit = true;
       this.edit = false;
     },
-    styleManga(n) {
+    async styleManga(n) {
       if (n) {
-        let elements = document.getElementsByClassName("deleteManga");
-        let elements2 = document.getElementsByClassName("manga-edit");
-        let elements3 = document.getElementsByClassName("manga-size-edit");
-        for (let el of elements) {
+        await wait(0.01);
+        let customGridID = document.getElementsByClassName("customGridID");
+        let deleteManga = document.getElementsByClassName("deleteManga");
+        let mangaID = document.getElementsByClassName("mangaID");
+        let mangasizeID = document.getElementsByClassName("mangasizeID");
+        let titleID = document.getElementsByClassName("titleID");
+        let insertID = document.getElementsByClassName("insertID");
+        for (let el of titleID) {
+          el.classList.remove("ml-14");
+        }
+        for (let el of customGridID) {
+          el.classList.remove("custom-grid");
+          el.classList.add("custom-grid2");
+        }
+        for (let el of deleteManga) {
           el.classList.add("invisible");
         }
-        for (let el of elements2) {
-          el.classList.add("manga");
-        }
-        for (let el of elements3) {
-          el.classList.add("manga-size");
-        }
-        elements = document.getElementsByClassName("manga");
-        elements2 = document.getElementsByClassName("manga-size");
-        for (let el of elements) {
+        for (let el of mangaID) {
           el.classList.remove("manga-edit");
+          el.classList.add("manga2");
         }
-        for (let el of elements2) {
+        for (let el of mangasizeID) {
           el.classList.remove("manga-size-edit");
+          el.classList.add("manga-size2");
+        }
+        for (let el of insertID) {
+          el.classList.remove("justify-center");
         }
       }
       else {
-        let elements = document.getElementsByClassName("deleteManga");
-        let elements2 = document.getElementsByClassName("manga");
-        let elements3 = document.getElementsByClassName("manga-size");
-        for (let el of elements) {
+        await wait(0.01);
+        let customGridID = document.getElementsByClassName("customGridID");
+        let deleteManga = document.getElementsByClassName("deleteManga");
+        let mangaID = document.getElementsByClassName("mangaID");
+        let mangasizeID = document.getElementsByClassName("mangasizeID");
+        let insertID = document.getElementsByClassName("insertID");
+        for (let el of customGridID) {
+          el.classList.remove("custom-grid2");
+          el.classList.add("custom-grid");
+        }
+        for (let el of deleteManga) {
           el.classList.remove("invisible");
         }
-        for (let el of elements2) {
+        for (let el of mangaID) {
+          el.classList.remove("manga");
           el.classList.add("manga-edit");
         }
-        for (let el of elements3) {
+        for (let el of mangasizeID) {
+          el.classList.remove("manga-size");
           el.classList.add("manga-size-edit");
         }
-        elements = document.getElementsByClassName("manga-edit");
-        elements2 = document.getElementsByClassName("manga-size-edit");
-        for (let el of elements) {
-          el.classList.remove("manga");
+        for (let el of insertID) {
+          el.classList.add("justify-center");
         }
-        for (let el of elements2) {
+      }
+    },
+    async changeLayout() {
+      this.layout = !this.layout;
+      if (this.layout) {
+        await wait(0.01);
+        let customGridID = document.getElementsByClassName("customGridID");
+        let mangahideID = document.getElementsByClassName("mangahideID");
+        let mangaID = document.getElementsByClassName("mangaID");
+        let mangasizeID = document.getElementsByClassName("mangasizeID");
+        let titleID = document.getElementsByClassName("titleID");
+        let insertID = document.getElementsByClassName("insertID");
+        for (let el of titleID) {
+          el.classList.remove("manga-hide");
+          el.classList.add("ml-14");
+        }
+        for (let el of customGridID) {
+          el.classList.remove("custom-grid2");
+          el.classList.add("custom-grid");
+        }
+        for (let el of mangaID) {
+          el.classList.remove("manga2");
+          el.classList.add("manga");
+        }
+        for (let el of mangasizeID) {
+          el.classList.remove("manga-size2");
+          el.classList.add("manga-size");
+        }
+        for (let el of mangahideID) {
+          el.classList.remove("manga-hide");
+        }
+        for (let el of insertID) {
+          el.classList.add("justify-center");
+        }
+      }
+      else {
+        await wait(0.01);
+        let customGridID = document.getElementsByClassName("customGridID");
+        let mangahideID = document.getElementsByClassName("mangahideID");
+        let mangaID = document.getElementsByClassName("mangaID");
+        let mangasizeID = document.getElementsByClassName("mangasizeID");
+        let titleID = document.getElementsByClassName("titleID");
+        let insertID = document.getElementsByClassName("insertID");
+        for (let el of titleID) {
+          el.classList.add("manga-hide");
+          el.classList.remove("ml-14");
+        }
+        for (let el of customGridID) {
+          el.classList.remove("custom-grid");
+          el.classList.add("custom-grid2");
+        }
+        for (let el of mangaID) {
+          el.classList.remove("manga");
+          el.classList.add("manga2");
+        }
+        for (let el of mangasizeID) {
           el.classList.remove("manga-size");
+          el.classList.add("manga-size2");
+        }
+        for (let el of mangahideID) {
+          el.classList.add("manga-hide");
+        }
+        for (let el of insertID) {
+          el.classList.remove("justify-center");
         }
       }
     }
@@ -393,6 +483,46 @@ export default {
 .list-leave-to {
   opacity: 0;
   transform: translateX(-200px);
+}
+.collection2 {
+  .collection-title {
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 18px;
+    font-weight: bold;
+    color: #9FADBD;
+  }
+  .manga {
+    transition: 0.5s;
+    cursor: pointer;
+    width: 50px;
+    height: 240px;
+    .manga-size {
+      z-index: 200;
+      transition: 0.75s;
+      position: absolute;
+      border-left: groove white 15px;
+      border-top: inset white 5px;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 1px;
+      border-bottom-left-radius: 10px;
+      height: 200px;
+      transform: skewY(-10deg) scaleX(0.8);
+      &:hover {
+        z-index: 250;
+        transition: 0.5s;
+        position: absolute;
+        border-left: outset white 10px;
+        border-top: inset white 5px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 5px;
+        margin-top: -200px;
+        height: 300px;
+        transform: skewY(0deg) scaleX(1);
+      }
+    }
+  } 
 }
 </style>
 

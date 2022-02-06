@@ -1,23 +1,23 @@
 <template>
-  <div :id="'mangaCollectionCreator_'+collectionId" :class="manga.edit ? 'collection-edit pb-2' : 'collection'" class="grid grid-flow-col auto-cols-auto grid-flow-row-dense mr-24">
+  <div :id="'mangaCollectionCreator_'+collectionId" class="customGridID custom-grid2" :class="manga.edit ? 'collection-edit pb-2' : 'collection'">
     <div class="relative">
       <input :disabled="$store.state.isUploading" v-if="manga.edit" type="text" class="collection-title-input pr-10" :class="{ 'input-title-ongoing': ongoing, 'input-title-finished': finished, 'input-title-exists': mangaTitleCheck}" v-model="mangaTitle" @change="updateTitle">
       <div v-if="manga.edit" @click="revertTitle()" class="ml-3 mr-1 icon-revert"></div>
     </div>
     <div v-if="!checkTitle()" class="manga-hide"></div>
-    <p v-if="!manga.edit" class="collection-title" :class="{ 'title-ongoing': ongoing, 'title-finished': finished}">{{mangaTitle}}</p>
+    <p v-if="!manga.edit" class="collection-title manga-hide titleID w-full text-center" :class="{ 'title-ongoing': ongoing, 'title-finished': finished}">{{mangaTitle}}</p>
     <!--NEW IMG HERE-->
     
-    <transition-group class="flex flex-wrap" name="list" tag="div" :id="'mangaInsert_'+collectionId">
+    <transition-group class="flex flex-wrap insertID" name="list" tag="div" :id="'mangaInsert_'+collectionId">
       <div 
       v-for="(z, i) of mangaCollection2"
               :key="`key-${i}`"
-              :id="'mangaDiv_'+z.id" :class="z.file.length>0 ? manga.edit ? 'manga-edit': 'manga' : 'invisible'"> 
-        <img :id="'mangaImg_'+z.id" :class="manga.edit ? 'manga-size-edit': 'manga-size'" :src="z.file.length>0 ? z.file : ''"> 
+              :id="'mangaDiv_'+z.id" :class="z.file.length>0 ? manga.edit ? 'manga-edit': i==0 ? 'manga2' : 'manga-hide mangahideID' : 'invisible'" class="mangaID"> 
+        <img :id="'mangaImg_'+z.id" :class="manga.edit ? 'manga-size-edit': 'manga-size2'" class="mangasizeID" :src="z.file.length>0 ? z.file : ''"> 
         <div :id="'bind_'+z.id" class="deleteManga" :class="manga.edit ? '': 'invisible'" @click="removeSelf(z)">x</div>
       </div>
 
-      <div v-if="manga.edit && !$store.state.isUploading && mangaTitle == oldMangaTitle  && !$store.state.multiple" :class="manga.edit ? 'manga-edit' : 'manga'">
+      <div v-if="manga.edit && !$store.state.isUploading && mangaTitle == oldMangaTitle  && !$store.state.multiple" :class="manga.edit ? 'manga-edit' : 'manga-hide'">
         <div>
           <label :for="'manga-upload_'+this.collectionId" class="manga-upload">
             <input :id="'manga-upload_'+collectionId" type="file" @change="previewManga" multiple="multiple">
@@ -560,5 +560,15 @@ export default {
   opacity: 0;
   z-index: 500;
   margin-top: -100px;
+}
+.custom-grid {
+  display: grid; 
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  grid-auto-flow: row dense;
+  margin-right: 6rem;
+}
+.custom-grid2 {
+  width: 160px;
 }
 </style>
