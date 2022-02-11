@@ -20,7 +20,8 @@
       </div>
     </div>
     <!--=================/MENU================-->
-    <div class="main-content flex items-center w-full">
+    <!--=================COLLECTIONS==========-->
+    <div class="main-content flex items-center justify-center w-full relative">
 
       <transition-group id="addMangaUpload" class="flex flex-grow flex-wrap justify-center p-8" name="list" tag="div">
         <MangaUpload
@@ -31,8 +32,10 @@
             />
       </transition-group>
 
-    </div>
+      <MangaOpen v-if="$store.state.mangaOpen" :mangaCollection=$store.state.mangaShow />
 
+    </div>
+    <!--================/COLLECTIONS==========-->
     <div class="img-top"></div>
   </div>
 </template>
@@ -43,6 +46,7 @@ import manga from "@/manga";
 import EpicBg from '@/components/Manga/EpicBg.vue';
 import { db, collection, getDocs } from "@/firebase";
 import MangaUpload from '@/components/Manga/MangaUpload.vue';
+import MangaOpen from '@/components/Manga/MangaOpen.vue';
 
 let wait = function (seconds) {
   return new Promise((resolveFn) => {
@@ -55,6 +59,7 @@ export default {
   components: {
     EpicBg,
     MangaUpload,
+    MangaOpen
   },
   data() {
 
@@ -80,7 +85,7 @@ export default {
       this.date = Date.now();
       let id = this.date.toString();
       console.log(this.newMangaCollection);
-      this.newMangaCollection.unshift({"img": [], "title": id, "id": id, "state": 'ongoing'});
+      this.newMangaCollection.unshift({"img": [], "title": id, "id": id, "mal_id": '', "state": 'ongoing'});
     },
     deleteFromList(value) {
       console.log(value);
@@ -105,20 +110,24 @@ export default {
           let doc = messageRef.docs[i]._document.data.value.mapValue.fields;
           let imgs = doc.img.arrayValue.values;
           let img = [];
-          for (let k=0; k<imgs.length; k++) {
-            let t = imgs[k].mapValue.fields;
-            img.push({"file": t.file.stringValue, "id": t.id.stringValue, "place": t.place.stringValue});
-          }
+          if (imgs !== undefined)
+            for (let k=0; k<imgs.length; k++) {
+              let t = imgs[k].mapValue.fields;
+              img.push({"file": t.file.stringValue, "id": t.id.stringValue, "place": t.place.stringValue});
+            }
           this.date = Date.now();
           let id = this.date.toString();
           let title = doc.title.stringValue;
-          console.log(doc.title.stringValue);
+          let mal_id = doc.mal_id.integerValue.toString();
+          this.$store.state.mangaDatalist.push(title);
           let state = '';
           if (doc.state != undefined)
             state = doc.state.stringValue;
-          this.newMangaCollection.push({"img": img, "title": title, "id": id, "state": state});
+          this.newMangaCollection.push({"img": img, "title": title, "id": id, "mal_id": mal_id, "state": state});
           await wait(0.1);
         }
+        console.log(this.$store.state.mangaDatalist);
+        this.$store.state.mangaShow = this.newMangaCollection[0];
         this.loading = false;
       }
       catch (e) {

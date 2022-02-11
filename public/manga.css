@@ -1,4 +1,3 @@
-
 .manga-edit {
   transition: 0.5s;
   cursor: pointer;
@@ -27,6 +26,7 @@
   font-size: 32px;
 }
 .deleteManga:hover {
+  cursor: pointer;
   color: #3DB4F2;
 }
 .manga {
@@ -97,7 +97,7 @@
 .manga2 {
   transition: 0.5s;
   cursor: pointer;
-  height: 220px;
+  height: 200px;
 }
 
 .manga-size2 {

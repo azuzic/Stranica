@@ -1,19 +1,37 @@
 <template>
-  <div :id="'mangaCollectionCreator_'+collectionId" class="customGridID custom-grid2" :class="manga.edit ? 'collection-edit pb-2' : 'collection'">
+  <div :id="'mangaCollectionCreator_'+collectionId" class="customGridID" :class="manga.edit ? 'collection-edit pb-2 custom-grid' : 'collection custom-grid2'">
     <div class="relative">
-      <input :disabled="$store.state.isUploading" v-if="manga.edit" type="text" class="collection-title-input pr-10" :class="{ 'input-title-ongoing': ongoing, 'input-title-finished': finished, 'input-title-exists': mangaTitleCheck}" v-model="mangaTitle" @change="updateTitle">
+      <input  type="text" 
+              :list="'mangaList'+collectionId" 
+              :disabled="$store.state.isUploading" 
+              v-if="manga.edit" 
+              class="collection-title-input pr-10" 
+              :class="{ 'input-title-ongoing': ongoing, 
+                        'input-title-finished': finished, 
+                        'input-title-exists': mangaTitleCheck }" 
+              v-model="mangaTitle" 
+              @input="updateTitle()"
+              @change="alertM()">
+       <datalist v-if="mangaTitle!=oldMangaTitle" :id="'mangaList'+collectionId">
+
+        <option v-for="(z, i) of $store.state.mangaDatalist"
+              :key="`key-${i}`"
+              :value="z">
+        </option>
+
+      </datalist>
       <div v-if="manga.edit" @click="revertTitle()" class="ml-3 mr-1 icon-revert"></div>
     </div>
-    <div v-if="!checkTitle()" class="manga-hide"></div>
+    
     <p v-if="!manga.edit" class="collection-title manga-hide titleID w-full text-center" :class="{ 'title-ongoing': ongoing, 'title-finished': finished}">{{mangaTitle}}</p>
     <!--NEW IMG HERE-->
     
-    <transition-group class="flex flex-wrap insertID" name="list" tag="div" :id="'mangaInsert_'+collectionId">
+    <transition-group class="flex flex-wrap insertID" :class="manga.edit ? 'justify-center' : ''" name="list" tag="div" :id="'mangaInsert_'+collectionId">
       <div 
       v-for="(z, i) of mangaCollection2"
               :key="`key-${i}`"
               :id="'mangaDiv_'+z.id" :class="z.file.length>0 ? manga.edit ? 'manga-edit': i==0 ? 'manga2' : 'manga-hide mangahideID' : 'invisible'" class="mangaID"> 
-        <img :id="'mangaImg_'+z.id" :class="manga.edit ? 'manga-size-edit': 'manga-size2'" class="mangasizeID" :src="z.file.length>0 ? z.file : ''"> 
+        <img :id="'mangaImg_'+z.id" :class="manga.edit ? 'manga-size-edit': 'manga-size2'" class="mangasizeID" :src="z.file.length>0 ? z.file : ''" @click="$store.state.mangaShow=mangaCollection; $store.state.mangaOpen=true"> 
         <div :id="'bind_'+z.id" class="deleteManga" :class="manga.edit ? '': 'invisible'" @click="removeSelf(z)">x</div>
       </div>
 
@@ -44,7 +62,7 @@
     </transition-group>
 
     <div v-if="manga.edit" class="collection-manga-btn flex">
-      <div @click="$store.state.isUploading ? dummy() : createCollection()" class="text-center btn" :class="!$store.state.isUploading && mangaTitle != oldMangaTitle && !mangaTitleCheck ? '':'opacity-25'">Update Title</div>
+      <div @click="$store.state.isUploading ? dummy() : createCollection()" class="text-center btn" :class="!$store.state.isUploading && mangaTitle != oldMangaTitle && !mangaTitleCheck && mal_id!='' ? '':'opacity-25'">Update Title</div>
       <div @click="$store.state.isUploading ? dummy() : deleteCollection()" class="text-center btn" :class="!$store.state.isUploading ? '':'opacity-25'">Delete Collection</div>
       <div @click="updateState('ongoing')" class="ml-3 mr-1 icon" :class="ongoing ? 'ongoing-active' : 'ongoing'"></div>
       <div @click="updateState('finished')" class="icon" :class="finished ? 'finished-active' : 'finished'"></div>
@@ -92,6 +110,9 @@ export default {
       addedManga: [],
       mangaCollection2: [],
 
+      mangaListSave: [],
+      mal_id: this.mangaCollection.mal_id,
+
       ongoing: false,
       finished: false,
     }
@@ -113,12 +134,6 @@ export default {
       await wait(0.1);
       this.mangaTitleCheck=false; 
     },
-    async checkTitle() {
-      if (this.mangaTitle != this.oldMangaTitle) {
-        await this.loadTitles();
-      }
-      return this.mangaTitleCheck;
-    },
     async loadTitles() {
       const querySnapshot = await getDocs(collection(db, "users", data.id, "mangaCollection"));
       this.mangaTitleCheck = false;
@@ -127,6 +142,40 @@ export default {
           this.mangaTitleCheck = true;
         }
       });
+    },
+    updateDatalist() {
+      let request = new XMLHttpRequest();
+      let self = this;
+      if (!this.mangaTitleCheck) {
+        request.open('GET', 'https://api.jikan.moe/v3/search/manga?q='+this.mangaTitle+'&page=1');
+        
+        request.onreadystatechange = function () {
+          if (this.readyState === 4) {
+            let mangaList = JSON.parse(this.responseText);
+            self.mangaListSave = mangaList.results;
+            self.$store.state.mangaDatalist = [];
+            for (let i=0; i < 10; i++) 
+              self.$store.state.mangaDatalist.push(mangaList.results[i].title + ' - ' +  mangaList.results[i].type  + ' - ' +  mangaList.results[i].mal_id);
+          }
+        };
+
+        request.send();
+      }
+    },
+    alertM() {
+      for (let i=0; i < this.mangaListSave.length; i++) {
+        let f = this.mangaListSave[i];
+        if ((f.title + ' - ' + f.type  + ' - ' +  f.mal_id) == this.mangaTitle)
+          this.mal_id = f.mal_id;
+      }
+    },
+    async updateTitle() {
+      this.newMangaCollection.title = this.mangaTitle;
+      if (this.mangaTitle.length > 2)
+        this.updateDatalist();
+      if (this.mangaTitle != this.oldMangaTitle) {
+        await this.loadTitles();
+      }
     },
     async loadData() {
       for (let i=0; i<this.mangaCollection.img.length; i++) {
@@ -158,9 +207,6 @@ export default {
       catch(e) {
         console.error("Error:" + e);
       }
-    },
-    updateTitle() {
-      this.newMangaCollection.title = this.mangaTitle;
     },
     async updateState(state) {
       const ref = doc(db, "users/"+data.id+"/mangaCollection/", this.mangaTitle);
@@ -287,6 +333,7 @@ export default {
         }
         await setDoc(doc(db, "users/"+data.id+"/mangaCollection/", this.mangaTitle), {
           title: this.mangaTitle,
+          mal_id: this.mal_id,
           img: newImg,
         });
 

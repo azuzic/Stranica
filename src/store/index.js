@@ -5,7 +5,10 @@ export default createStore({
     isUploading: false,
     multiple: false,
     titles: [],
-    mangaTotal: 0
+    mangaTotal: 0,
+    mangaShow: [{"img": [], "title": 'title', "id": 'id', "state": 'ongoing'}],
+    mangaDatalist: [],
+    mangaOpen: false,
   },
   getters: {
   },

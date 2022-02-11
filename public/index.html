@@ -20,6 +20,32 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+:root {
+    --vc-clr-primary: #3DB4F2;
+    --vc-clr-secondary: #9FADBD;
+    --vc-clr-white: #ffffff;
+    --vc-icn-width: 1.2em;
+    --vc-nav-width: 30px;
+    --vc-nav-color: #ffffff;
+    --vc-nav-background-color: var(--vc-clr-primary);
+    --vc-pgn-width: 10px;
+    --vc-pgn-height: 5px;
+    --vc-pgn-margin: 5px;
+    --vc-pgn-border-radius: 0;
+    --vc-pgn-background-color: var(--vc-clr-secondary);
+    --vc-pgn-active-color: var(--vc-clr-primary);
+}
+.carousel__pagination-item  button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+.carousel__pagination {
+  flex-wrap: wrap;
+  background-color: #151F2E;
+  border-radius: 8px;
+}
 * {
   font-family: 'Nunito', sans-serif;
 }
@@ -28,5 +54,11 @@ body {
 }
 input[type="file"] {
     display: none;
+}
+input::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
+datalist {
+	display: none !important;
 }
 </style>
