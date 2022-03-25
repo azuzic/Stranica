@@ -2,7 +2,7 @@
   <div class="main-bg">
     <div class="bgbg"></div>
     <!--=================EDIT==================-->
-    <div v-if="!$store.state.isUploading && !loading">
+    <div v-if="!$store.state.isUploading && !loading && false">
       <div v-if="username == 'mod959' && !edit" @click="styleManga(0), edit=true, manga.edit=true" class="edit"></div>
       <div v-if="username == 'mod959' && edit" @click="styleManga(1), edit=false, manga.edit=false" class="edit2"></div>
     </div>
@@ -17,6 +17,13 @@
       </div>
       <div v-if="edit" @click="$store.state.isUploading ? dummy() : createMangaUpload()" class="edit-btn" :class="!$store.state.isUploading ? '' : 'opacity-25'">
         Add Collection
+      </div>
+      <div>
+        <select class="edit-btn" :v-model="sort">
+          <option value="none">None</option>
+          <option value="Completed">Completed</option>
+          <option value="Ongoing">Ongoing</option>
+        </select>
       </div>
     </div>
     <!--=================/MENU================-->
@@ -71,6 +78,8 @@ export default {
       username: "",
       layout: false,
       loading: true,
+
+      sort: "none",
 
       newMangaCollection: {},
       date: ""

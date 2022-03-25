@@ -82,7 +82,7 @@ onAuthStateChanged(auth, (user) => {
     data.email = user.email;
   } else {
     console.log("NO USER");
-    data.email = '';
+    //data.email = '';
   }
 });
 
@@ -178,10 +178,10 @@ export default {
         const querySnapshot = await getDocs(collection(db, "users"));
         querySnapshot.forEach((doc) => {
           if (data.email === `${doc.data().email}`) {
-            data.email = `${doc.data().email}`;
-            data.username = `${doc.data().username}`;
-            data.id = `${doc.id}`;
-            this.dataUsername = `${doc.data().username}`;
+            //data.email = `${doc.data().email}`;
+            //data.username = `${doc.data().username}`;
+            //data.id = `${doc.id}`;
+            //this.dataUsername = `${doc.data().username}`;
           }
         });
       },
