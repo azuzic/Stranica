@@ -1,5 +1,5 @@
 <template>
-  <div :id="'mangaCollectionCreator_'+collectionId" class="customGridID" :class="manga.edit ? 'collection-edit pb-2 custom-grid' : 'collection custom-grid2'">
+  <div v-if="ongoing && $store.state.sort == 'g-ongoing' || finished && $store.state.sort == 'g-finished' || $store.state.sort == 'none'" :id="'mangaCollectionCreator_'+collectionId" class="customGridID" :class="manga.edit ? 'collection-edit pb-2 custom-grid' : 'collection custom-grid2'">
     <div class="relative">
       <input  type="text" 
               :list="'mangaList'+collectionId" 
@@ -598,7 +598,7 @@ export default {
 
 .list-enter-active,
 .list-leave-active {
-  transition: opacity 1s ease-in-out, margin-top 1s  ease-in-out;
+  transition: opacity 1s ease-in-out; //margin-top 1s  ease-in-out;
   z-index: 500;
   margin-top: 0px;
 }

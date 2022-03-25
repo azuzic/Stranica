@@ -94,6 +94,14 @@
   width: 0px;
   opacity: 0%;
 }
+.manga-show-transition {
+  transition: all 1s ease-in-out;
+  opacity: 100%;
+}
+.manga-hide-transition {
+  transition: all 1s ease-in-out;
+  opacity: 0%;
+}
 .manga2 {
   transition: 0.5s;
   cursor: pointer;

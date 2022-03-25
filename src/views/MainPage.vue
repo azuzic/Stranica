@@ -18,11 +18,14 @@
       <div v-if="edit" @click="$store.state.isUploading ? dummy() : createMangaUpload()" class="edit-btn" :class="!$store.state.isUploading ? '' : 'opacity-25'">
         Add Collection
       </div>
-      <div>
-        <select class="edit-btn" :v-model="sort">
-          <option value="none">None</option>
-          <option value="Completed">Completed</option>
-          <option value="Ongoing">Ongoing</option>
+      <div @click="$store.state.isUploading || loading ? dummy() : mangaSort(1)" class="edit-btn mr-2" :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
+        Sort <b v-if="az">Z - A</b> <b v-else>A - Z</b>
+      </div>
+      <div :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
+        <select :disabled="$store.state.isUploading || loading" class="edit-btn" v-model="sort" @change="$store.state.isUploading || loading ? dummy() : mangaSort(2)">
+          <option value="none">Show all</option>
+          <option value="finished">Show completed</option>
+          <option value="ongoing">Show ongoing</option>
         </select>
       </div>
     </div>
@@ -80,8 +83,10 @@ export default {
       loading: true,
 
       sort: "none",
+      az: true,
 
-      newMangaCollection: {},
+      newMangaCollection: [],
+      saveNewMangaCollection: [],
       date: ""
     }
   },
@@ -90,6 +95,46 @@ export default {
   },
   methods: {
     dummy() {},
+    mangaSort(s) {
+      switch(s) {
+        case 1: {
+          this.az = !this.az;
+          this.newMangaCollection.sort((a, b) => {
+            const nameA = a.title.toUpperCase(); // ignore upper and lowercase
+            const nameB = b.title.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+              return this.az ? -1 : 1;
+            }
+            if (nameA > nameB) {
+              return this.az ? 1 : -1;
+            }
+            // names must be equal
+            return 0;
+          })
+          break;
+        }
+        case 2: {
+          if (this.saveNewMangaCollection.length == 0) {
+              this.saveNewMangaCollection = this.newMangaCollection;
+              this.$store.state.tmangaTotal = this.$store.state.mangaTotal;
+          }
+          else {
+            this.newMangaCollection = [];
+            this.saveNewMangaCollection.forEach(e => {
+              this.newMangaCollection.push(e);
+            });
+            var i = 0;
+            while (i < this.newMangaCollection.length && this.sort!='none') {
+              if (this.newMangaCollection[i].state != this.sort) 
+                this.newMangaCollection.splice(i, 1);
+              else 
+                i++;
+            }
+          }
+          break;
+        }
+      }  
+    },
     createMangaUpload() {
       this.date = Date.now();
       let id = this.date.toString();

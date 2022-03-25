@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <div class="epic-title text-center"> <b>MANGA: </b> {{$store.state.mangaTotal}} </div>
+      <div class="epic-title text-center"> <b>MANGA: </b> <b v-if="$store.state.tmangaTotal==0 || $store.state.mangaTotal==$store.state.tmangaTotal">{{$store.state.mangaTotal}}</b> <b v-else>{{$store.state.tmangaTotal}}</b> </div>
       
       <div v-if="uploadingEpicImg" class="ultra-center">
         <Loading msg="Uploading image"/>
