@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     dummy() {},
-    mangaSort(s) {
+    async mangaSort(s) {
       switch(s) {
         case 1: {
           this.az = !this.az;
@@ -115,20 +115,32 @@ export default {
         }
         case 2: {
           if (this.saveNewMangaCollection.length == 0) {
-              this.saveNewMangaCollection = this.newMangaCollection;
-              this.$store.state.tmangaTotal = this.$store.state.mangaTotal;
+            this.newMangaCollection.forEach(e => {
+              this.saveNewMangaCollection.push(e);
+            });
+            this.$store.state.tmangaTotal = this.$store.state.mangaTotal;
           }
           else {
-            this.newMangaCollection = [];
-            this.saveNewMangaCollection.forEach(e => {
-              this.newMangaCollection.push(e);
-            });
+            for (let j = 0; j < this.saveNewMangaCollection.length; j++) {
+              let f = false;
+              this.newMangaCollection.forEach(e => {
+                if(e.title==this.saveNewMangaCollection[j].title) {
+                  f = true;
+                  console.log("yes");
+                }       
+              });
+              if (!f) {
+                this.newMangaCollection.push(this.saveNewMangaCollection[j]);
+                await wait(0.05);
+              }
+            }
             var i = 0;
             while (i < this.newMangaCollection.length && this.sort!='none') {
               if (this.newMangaCollection[i].state != this.sort) 
                 this.newMangaCollection.splice(i, 1);
               else 
                 i++;
+              await wait(0.05);
             }
           }
           break;
@@ -545,7 +557,7 @@ export default {
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
-  transform: translateX(-200px);
+  transform: translateX(0px);
 }
 .collection2 {
   .collection-title {
