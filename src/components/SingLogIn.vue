@@ -137,6 +137,7 @@ export default {
         .then((result) => {
           console.log("Uspješna prijava", result);
           this.getUserData();
+          this.$router.go()
         })
         .catch((e) => {
           let error = e.message.slice(22, -2).replace(/-/g, " ");
@@ -178,10 +179,10 @@ export default {
         const querySnapshot = await getDocs(collection(db, "users"));
         querySnapshot.forEach((doc) => {
           if (data.email === `${doc.data().email}`) {
-            //data.email = `${doc.data().email}`;
-            //data.username = `${doc.data().username}`;
-            //data.id = `${doc.id}`;
-            //this.dataUsername = `${doc.data().username}`;
+            data.email = `${doc.data().email}`;
+            data.username = `${doc.data().username}`;
+            data.id = `${doc.id}`;
+            this.dataUsername = `${doc.data().username}`;
           }
         });
       },

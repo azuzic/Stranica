@@ -3,8 +3,8 @@
     <div class="bgbg"></div>
     <!--=================EDIT==================-->
     <div v-if="!$store.state.isUploading && !loading && false">
-      <div v-if="username == 'mod959' && !edit" @click="styleManga(0), edit=true, manga.edit=true" class="edit"></div>
-      <div v-if="username == 'mod959' && edit" @click="styleManga(1), edit=false, manga.edit=false" class="edit2"></div>
+      <div v-if="username && !edit" @click="styleManga(0), edit=true, manga.edit=true" class="edit"></div>
+      <div v-if="username && edit" @click="styleManga(1), edit=false, manga.edit=false" class="edit2"></div>
     </div>
     <!--=================/EDIT=================-->
     <!--=================EPICBG================-->
@@ -120,28 +120,25 @@ export default {
             });
             this.$store.state.tmangaTotal = this.$store.state.mangaTotal;
           }
-          else {
-            for (let j = 0; j < this.saveNewMangaCollection.length; j++) {
-              let f = false;
-              this.newMangaCollection.forEach(e => {
-                if(e.title==this.saveNewMangaCollection[j].title) {
-                  f = true;
-                  console.log("yes");
-                }       
-              });
-              if (!f) {
-                this.newMangaCollection.push(this.saveNewMangaCollection[j]);
-                await wait(0.05);
-              }
-            }
-            var i = 0;
-            while (i < this.newMangaCollection.length && this.sort!='none') {
-              if (this.newMangaCollection[i].state != this.sort) 
-                this.newMangaCollection.splice(i, 1);
-              else 
-                i++;
+          for (let j = 0; j < this.saveNewMangaCollection.length; j++) {
+            let f = false;
+            this.newMangaCollection.forEach(e => {
+              if(e.title==this.saveNewMangaCollection[j].title) {
+                f = true;
+              }       
+            });
+            if (!f) {
+              this.newMangaCollection.push(this.saveNewMangaCollection[j]);
               await wait(0.05);
             }
+          }
+          var i = 0;
+          while (i < this.newMangaCollection.length && this.sort!='none') {
+            if (this.newMangaCollection[i].state != this.sort) 
+              this.newMangaCollection.splice(i, 1);
+            else 
+              i++;
+            await wait(0.05);
           }
           break;
         }
@@ -150,11 +147,9 @@ export default {
     createMangaUpload() {
       this.date = Date.now();
       let id = this.date.toString();
-      console.log(this.newMangaCollection);
       this.newMangaCollection.unshift({"img": [], "title": id, "id": id, "mal_id": '', "state": 'ongoing'});
     },
     deleteFromList(value) {
-      console.log(value);
       for (var i = this.newMangaCollection.length - 1; i >= 0; --i) {
           if (this.newMangaCollection[i].title == value) {
               this.newMangaCollection.splice(i,1);
@@ -184,7 +179,10 @@ export default {
           this.date = Date.now();
           let id = this.date.toString();
           let title = doc.title.stringValue;
-          let mal_id = doc.mal_id.integerValue.toString();
+          let mal_id = "";
+          if (doc.mal_id.integerValue != undefined)
+            mal_id = doc.mal_id.integerValue.toString();
+          else mal_id = doc.mal_id.mapValue.fields.stringValue.stringValue.toString();
           this.$store.state.mangaDatalist.push(title);
           let state = '';
           if (doc.state != undefined)
@@ -192,7 +190,6 @@ export default {
           this.newMangaCollection.push({"img": img, "title": title, "id": id, "mal_id": mal_id, "state": state});
           await wait(0.1);
         }
-        console.log(this.$store.state.mangaDatalist);
         this.$store.state.mangaShow = this.newMangaCollection[0];
         this.loading = false;
       }
