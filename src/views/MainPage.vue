@@ -2,7 +2,7 @@
   <div class="main-bg">
     <div class="bgbg"></div>
     <!--=================EDIT==================-->
-    <div v-if="!$store.state.isUploading && !loading && false">
+    <div v-if="!$store.state.isUploading && !loading && data.loggedEmail">
       <div v-if="username && !edit" @click="styleManga(0), edit=true, manga.edit=true" class="edit"></div>
       <div v-if="username && edit" @click="styleManga(1), edit=false, manga.edit=false" class="edit2"></div>
     </div>
@@ -12,13 +12,13 @@
     <!--=================/EPICBG==============-->
     <!--=================MENU=================-->
     <div class="menu-bg sticky top-0">
-      <div @click="$store.state.isUploading || loading ? dummy() : changeLayout()" class="edit-btn mr-2" :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
+      <div v-if="!edit" @click="$store.state.isUploading || loading ? dummy() : changeLayout()" class="edit-btn mr-2" :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
         Change layout
       </div>
       <div v-if="edit" @click="$store.state.isUploading ? dummy() : createMangaUpload()" class="edit-btn" :class="!$store.state.isUploading ? '' : 'opacity-25'">
         Add Collection
       </div>
-      <div @click="$store.state.isUploading || loading ? dummy() : mangaSort(1)" class="edit-btn mr-2" :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
+      <div click="$store.state.isUploading || loading ? dummy() : mangaSort(1)" class="edit-btn mr-2" :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
         Sort <b v-if="az">Z - A</b> <b v-else>A - Z</b>
       </div>
       <div :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
@@ -180,8 +180,10 @@ export default {
           let id = this.date.toString();
           let title = doc.title.stringValue;
           let mal_id = "";
-          if (doc.mal_id.integerValue != undefined)
+          if (doc.mal_id.integerValue != undefined )
             mal_id = doc.mal_id.integerValue.toString();
+          else if (doc.mal_id.stringValue != undefined )
+            mal_id = doc.mal_id.stringValue;
           else mal_id = doc.mal_id.mapValue.fields.stringValue.stringValue.toString();
           this.$store.state.mangaDatalist.push(title);
           let state = '';

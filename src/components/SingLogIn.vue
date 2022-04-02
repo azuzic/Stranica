@@ -80,6 +80,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("LOGGED IN: " + user.email);
     data.email = user.email;
+    data.loggedEmail = user.email;
   } else {
     console.log("NO USER");
     //data.email = '';
