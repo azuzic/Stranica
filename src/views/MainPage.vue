@@ -18,7 +18,7 @@
       <div v-if="edit" @click="$store.state.isUploading ? dummy() : createMangaUpload()" class="edit-btn" :class="!$store.state.isUploading ? '' : 'opacity-25'">
         Add Collection
       </div>
-      <div click="$store.state.isUploading || loading ? dummy() : mangaSort(1)" class="edit-btn mr-2" :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
+      <div @click="$store.state.isUploading || loading ? dummy() : mangaSort(1)" class="edit-btn mr-2" :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
         Sort <b v-if="az">Z - A</b> <b v-else>A - Z</b>
       </div>
       <div :class="!$store.state.isUploading && !loading ? '' : 'opacity-25'">
