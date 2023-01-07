@@ -147,7 +147,7 @@ export default {
       let request = new XMLHttpRequest();
       let self = this;
       if (!this.mangaTitleCheck) {
-        request.open('GET', 'https://api.jikan.moe/v3/search/manga?q='+this.mangaTitle+'&page=1');
+        request.open('GET', 'https://api.jikan.moe/v4/search/manga?q='+this.mangaTitle+'&page=1');
         
         request.onreadystatechange = function () {
           if (this.readyState === 4) {

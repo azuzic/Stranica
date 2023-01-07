@@ -116,7 +116,7 @@ export default {
       let request = new XMLHttpRequest();
       let self = this;
       if (!this.mangaTitleCheck) {
-        request.open('GET', 'https://api.jikan.moe/v3/manga/' + this.mangaCollection.mal_id);
+        request.open('GET', 'https://api.jikan.moe/v4/manga/' + this.mangaCollection.mal_id);
         
         request.onreadystatechange = function () {
           if (this.readyState === 4) {
