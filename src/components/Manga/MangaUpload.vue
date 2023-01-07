@@ -144,18 +144,19 @@ export default {
       });
     },
     updateDatalist() {
+      this.mangaTitle = this.mangaTitle.replace("?", "");
       let request = new XMLHttpRequest();
       let self = this;
       if (!this.mangaTitleCheck) {
-        request.open('GET', 'https://api.jikan.moe/v4/search/manga?q='+this.mangaTitle+'&page=1');
+        request.open('GET', 'https://api.jikan.moe/v4/manga?q='+this.mangaTitle+'&page=1');
         
         request.onreadystatechange = function () {
           if (this.readyState === 4) {
             let mangaList = JSON.parse(this.responseText);
-            self.mangaListSave = mangaList.results;
+            self.mangaListSave = mangaList.data;
             self.$store.state.mangaDatalist = [];
-            for (let i=0; i < 10; i++) 
-              self.$store.state.mangaDatalist.push(mangaList.results[i].title + ' - ' +  mangaList.results[i].type  + ' - ' +  mangaList.results[i].mal_id);
+              for (let i = 0; i < mangaList.data.length; i++) 
+                self.$store.state.mangaDatalist.push(mangaList.data[i].title + ' - ' + mangaList.data[i].type + ' - ' + mangaList.data[i].mal_id);
           }
         };
 
@@ -171,7 +172,9 @@ export default {
     },
     async updateTitle() {
       this.newMangaCollection.title = this.mangaTitle;
-      if (this.mangaTitle.length > 2)
+      let lastLetter = this.mangaTitle[this.mangaTitle.length - 1];
+      console.log(lastLetter);
+      if (lastLetter == '?')
         this.updateDatalist();
       if (this.mangaTitle != this.oldMangaTitle) {
         await this.loadTitles();

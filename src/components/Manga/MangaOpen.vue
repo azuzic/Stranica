@@ -99,8 +99,8 @@ export default {
     Pagination,
     Navigation,
   },
-  mounted() {
-    this.loadData();
+  async mounted() {
+    await this.loadData();
   },
   data() {
     return {
@@ -112,19 +112,19 @@ export default {
     mangaCollection: Object,
   },
   methods: {
-    loadData() {
+    async loadData() {
       let request = new XMLHttpRequest();
       let self = this;
       if (!this.mangaTitleCheck) {
-        request.open('GET', 'https://api.jikan.moe/v4/manga/' + this.mangaCollection.mal_id);
+        request.open('GET', 'https://api.jikan.moe/v4/manga/' + this.mangaCollection.mal_id + "/full");
         
         request.onreadystatechange = function () {
           if (this.readyState === 4) {
-            self.mangaDetails = JSON.parse(this.responseText);
+            let temp = JSON.parse(this.responseText);
+            self.mangaDetails = temp.data;
             self.published = self.mangaDetails.published;
           }
         };
-
         request.send();
       }
     },
