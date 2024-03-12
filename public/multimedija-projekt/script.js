@@ -350,12 +350,5 @@ function disableDarkMode() {
 }
 
 $(document).ready(function() {
-  var darkMode = getCookie('darkMode');
-  if (darkMode == "1") {
-      // use darkmode
-      enableDarkMode();
-  } else {
-      // no darkmode
-      disableDarkMode();
-  }
+  enableDarkMode();
 });
